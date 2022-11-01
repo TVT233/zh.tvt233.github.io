@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>你好！欢迎来到我的网站！</title>
+    <url>/414d15ce29a6.html</url>
+    <content><![CDATA[<h4 id="来看看这有什么"><a href="#来看看这有什么" class="headerlink" title="来看看这有什么"></a>来看看这有什么</h4><p>**<a href="https://zh.zihengzhang.top/about/">关于</a>**：在这你可以看到关于我的个人信息，教育和研究经历。如果你需要，里面还有我的个人简历和联系方式。</p>
+<p>**<a href="https://zh.zihengzhang.top/research/">研究</a>**：在这你可以看到我之前做过的一些研究，以及我现在正在做的研究。</p>
+<p>**<a href="https://zh.zihengzhang.top/applications/">应用</a>**：在这你可以找到我做过的一些应用方向的项目，展示视频以及相关理论介绍的论文。</p>
+<h4 id="关于我的博客"><a href="#关于我的博客" class="headerlink" title="关于我的博客"></a>关于我的博客</h4><p>在未来，我会写一些博客来记录自己的学习和生活，你可以依靠<a href="https://zh.zihengzhang.top/tags/">标签</a> 和 <a href="https://zh.zihengzhang.top/categories/">分类</a> 来找到它们。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>博客搭建及相关问题记录（二）</title>
+    <url>/3d7401568276.html</url>
+    <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/1b1c750fe7e1.html">上文</a>，我们今天讲讲怎么搭建自己的博客主题，以及如何上传自己的博客。</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><code>Next</code>是基于<code>Hexo</code>框架的一款博客主题，优点就是简洁，简便，可扩展性好。非常适合新手上手，后期也有足够多的扩展空间供你丰富自己的博客。</p>
+<h4 id="Next下载"><a href="#Next下载" class="headerlink" title="Next下载"></a>Next下载</h4><p>我们首先将<code>Next</code>主题下载到<code>根目录/themes</code>下。</p>
+<p>我们在根目录下打开<code>git bash here</code>（事实上其他终端也可以，例如<code>VS Code</code>，此后我们统称终端）</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h4 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h4><p>此时我们可以找到<code>根目录/_config.yml</code>,这个是我们博客站点的配置文件，值得一提的是，在<code>根目录/themes/next/</code>下，也有一个<code>_config.yml</code>，这个是我们<code>Next</code>主题的配置文件。为了区分这二者，我们此后统一称前者为<strong>站点配置文件</strong>，后者为<strong>主题配置文件</strong>。</p>
+<p>打开<strong>站点配置文件</strong>，并对其进行相关信息的修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: 你博客的名字</span><br><span class="line">subtitle: 博客副标题</span><br><span class="line">author: 作者的名字</span><br><span class="line">#language: zh-CN 简体中文 | zh-TW 繁体中文 | en 英文</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia/Shanghai</span><br><span class="line"></span><br><span class="line"># 主题改为 next</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<p>我们打开<strong>主题配置文件</strong>，找到<code>Schemes</code>字段（<code>Ctrl + F</code>搜索即可），发现有代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<p>分别代表了Next的四种风格，你可以选择你喜欢的那一款，将其取消注释（去掉前面的#，对其他行加#）。这里我选择了<code>Gemini</code>。</p>
+<p>此时我们在根目录终端，依次输入以下代（<code>/</code>前后的代码输入一种就可以，等价）。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除public文件夹，即清除以前的发布</span></span><br><span class="line">hexo clean / hexo cl</span><br><span class="line"><span class="comment"># 生成新的public文件夹</span></span><br><span class="line">hexo generate / hexo g</span><br><span class="line"><span class="comment"># 本地发布</span></span><br><span class="line">hexo server / hexo s</span><br></pre></td></tr></table></figure>
+
+<p>点击反馈的链接，我们就可以在本地查看自己的博客主页啦。</p>
+<h3 id="文章发布"><a href="#文章发布" class="headerlink" title="文章发布"></a>文章发布</h3><p>好了，我们的博客大致已经搭起来了。接下来我们来看看博客最重要的部分——文章应该怎么创建、编辑和发布。</p>
+<h4 id="文章创建"><a href="#文章创建" class="headerlink" title="文章创建"></a>文章创建</h4><p>我们在<strong>站点配置文件</strong>找到如下代码，将其中的<code>false</code>更改为<code>true</code>。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">post_asset_folder: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>此时，当我们在根目录终端中输入<code>hexo new mypost</code>，即会出现一个名为<code>mypost</code>的<code>md</code>文件，以及一个同名文件夹。这个.md文件就是我们要编辑的文章，而同名的文件夹可以为我们提供存储”这篇文章内的图片“的地址。</p>
+<h4 id="文章编辑"><a href="#文章编辑" class="headerlink" title="文章编辑"></a>文章编辑</h4><p>如果你是第一次接触.md文件可能不知道如何编辑它。其实记事本就可以，但很多格式上的问题导致用记事本很麻烦，在这里我们推荐一款软件，<a href="https://typoraio.cn/">Typora</a>，操作起来很方便。</p>
+<p>格式上来说，一篇文章的开头存在如下段落：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 题目</span><br><span class="line">date: 2022-10-23 10:25:34</span><br><span class="line"># 标签</span><br><span class="line">tag: </span><br><span class="line">- A</span><br><span class="line">- B</span><br><span class="line"># 类别</span><br><span class="line">categories: </span><br><span class="line">- xx</span><br><span class="line">- yy</span><br><span class="line">#后续可能还有其他内容</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>在这里，我们可以对文章的基本信息进行编辑。</p>
+<p>除此之外，文章的具体排版则可以根据自己的需求进行，我们主要讲讲文章中如何插入图片。</p>
+<p>首先在根目录终端中输入</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure>
+
+<p>安装 <code>hexo-renderer-marked</code> 插件。</p>
+<p>在<strong>站点配置文件</strong>中，将<code>post_asset_folder: false</code> 改为 <code>true</code> </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<p>并在其下添加如下内容</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+
+<p>此后，当我们在文章中输入<code>![](image.jpg)</code>，即代表我们在此处插入了同名文件夹中的<code>image.jpg</code>图片。</p>
+<h3 id="网页部署"><a href="#网页部署" class="headerlink" title="网页部署"></a>网页部署</h3><h4 id="部署前准备"><a href="#部署前准备" class="headerlink" title="部署前准备"></a>部署前准备</h4><p>首先我们安装部署的插件</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，我们进入<strong>站点配置文件</strong>，修改<code>deploy</code>字段如下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  // 记得替换成自己的repo</span><br><span class="line">  repo: git@github.com:TVT233/TVT233.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
+
+<p>此时，我们就可以向网页部署我们的内容啦。</p>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>文章发布同一切站点更改的发布一样，在根目录终端使用如下命令。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除public文件夹，即清除以前的发布</span></span><br><span class="line">hexo clean / hexo cl</span><br><span class="line"><span class="comment"># 生成新的public文件夹</span></span><br><span class="line">hexo generate / hexo g</span><br><span class="line"><span class="comment"># 本地发布</span></span><br><span class="line">hexo server / hexo s</span><br><span class="line"><span class="comment"># 网页发布</span></span><br><span class="line">hexo deploy / hexo d</span><br></pre></td></tr></table></figure>
+
+<p>如果你第一次部署时报错，可以尝试输入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;gitHub邮箱&quot;</span><br><span class="line">git config --global user.name &quot;gitHub用户名&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后继续重复上面的部署命令。</p>
+<p>过一会（可能几分钟），你就可以在浏览器输入<code>www.你的github用户名.github.io</code>来访问自己的博客啦。</p>
+]]></content>
+      <categories>
+        <category>经验记录</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客搭建及相关问题记录（一）</title>
+    <url>/1b1c750fe7e1.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近做了自己的博客，说实话我自己对前端的配置相关的问题确实不太懂，所以一切都是在边学边用下完成的。网上的教程有些写的不错，但时间太古早了。有些写的问题比较贴合我自己的情况，又比较零散。</p>
+<p>因此，我准备写一个帖子来记录自己的搭建过程。</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="静态？动态？"><a href="#静态？动态？" class="headerlink" title="静态？动态？"></a>静态？动态？</h4><p>首先，我们要知道自己想要的博客属于静态还是动态。</p>
+<p>所谓的静态并不是指网站不含有动画等可”动“的部分，而是指网站上的内容相对恒定，无互动性，服务器和数据库的支撑，但同时更新内容往往需要手动操作，因此维护工作量比较大。</p>
+<p>而动态网站则使用服务器和数据库来支持自己更加具有互动性，更自动的功能。但同时，这些功能也带来了网站的运行成本增加（一年几百很正常），以及在访问量大时网站运行速度下降等问题。</p>
+<p>说到这，你可能就明白了，我们的个人博客属于静态网站，因此运行成本是比较低的。</p>
+<h4 id="hexo-github托管"><a href="#hexo-github托管" class="headerlink" title="hexo + github托管"></a>hexo + github托管</h4><p>对于静态博客，我们在这里选择<a href="https://hexo.io/zh-cn/"><code>hexo</code></a>博客框架+<a href="https://github.com/"><code>github</code></a>托管的方式，这对于新手来说是比较友好的。等我们有了更多经验，则可以尝试更多的框架和更丰富的方式。</p>
+<p>有关于<code>hexo</code>的具体介绍和<code>github</code>的账号注册，大家可以在上面的链接中自行查看。我就不一一赘述了。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><p><a href="https://git-scm.com/"><code>git</code></a>是一个分布式版本控制系统，我们用<code>git</code>来向<code>github</code>这个服务器提交文件。</p>
+<p>在官网中选择<code>download</code>，选择你的系统，例如<code>windows</code>，再选择<code>64</code>位系统版本，下载安装即可。</p>
+<img src="/1b1c750fe7e1/git%E4%B8%8B%E8%BD%BD.png" class=""> 
+
+<p>安装后我们在文件夹中右键，会出现如下选项。</p>
+<img src="/1b1c750fe7e1/%E9%AA%8C%E8%AF%81git.jpg" class=""> 
+
+<p>选择后，进入命令行，输入<code>git --version</code>，若出现版本号，即为成功。</p>
+<img src="/1b1c750fe7e1/git%E7%89%88%E6%9C%AC.png" class="">
+
+
+
+<h4 id="连接git与github"><a href="#连接git与github" class="headerlink" title="连接git与github"></a>连接git与github</h4><p>之前我们说过，<code>git</code>可以理解为向<code>github</code>传输文件的工具。那么这种传输如何实现呢？</p>
+<p>我们用<code>SSH</code>来实现，即<code>Secure Shell</code>协议。</p>
+<h5 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h5><p>在任意文件夹中右键打开<code>git bash here</code>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#用rsa加密生成ssh钥匙</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>一直空格默认后，我们就可以发现在本地生成了两把钥匙：<code>id_rsa</code> 和 <code>id_rsa.pub</code>。由于我是<code>windows</code>系统，路径是<code>C:/Users/admin/.ssh</code>。</p>
+<h5 id="获取公钥并连接"><a href="#获取公钥并连接" class="headerlink" title="获取公钥并连接"></a>获取公钥并连接</h5><p>在该文件夹中右键打开<code>git bash here</code>依次输入</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>就可以看到对应的公钥了，将其复制下来备用。</p>
+<img src="/1b1c750fe7e1/ssh%E5%85%AC%E9%92%A5.png" class="">
+
+<p>打开<code>github</code>并登录，点击右上角个人头像，选择下拉菜单中的<code>settings</code>，点击左侧标签栏的<code>SSH and GPG keys</code>，点击<code>New SSH key</code>。输入你的公钥内容，<code>Title</code>任意填写，最后选择<code>Add SSH key</code>以保存即可。</p>
+<p>此时我们回到之前的<code>git bash</code>窗口，输入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>若出现<code>Are you sure you want to continue connecting (yes/no/[fingerprint])?</code></p>
+<p>我们输入<code>yes</code>，当弹出以下回复时，说明连接成功。</p>
+<img src="/1b1c750fe7e1/git%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F.png" class="">
+
+<p>至此，<code>git</code>与<code>github</code>成功连接。</p>
+<h3 id="github建库"><a href="#github建库" class="headerlink" title="github建库"></a>github建库</h3><p>接下来，我们在<code>github</code>建立一个仓库来保存自己主页的资源。</p>
+<p>登录<code>github</code>，点击右上角头像，下拉菜单中选择<code>repositories</code>，进入页面后点击<code>New</code>。</p>
+<p>在<code>repository name</code>一栏输入<code>自己的github账户名.github.io</code>。例如我的账户名叫<code>TVT233</code>，那么我在这里就要输入<code>TVT233.github.io</code>。</p>
+<img src="/1b1c750fe7e1/github%E5%BB%BA%E5%BA%93.png" class="">
+
+<p>并在下方勾选<code>Public</code>。</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p><code>Hexo</code>博客框架的搭建需要用到<code>npm</code>，一个<code>node</code>包管理工具，因此我们先来安装<code>node</code>。</p>
+<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h4><p>进入<a href="http://nodejs.cn/download/">node</a>官网，选择自己的操作系统并点击，即可下载对应的版本。</p>
+<p>下载完成后，我们建立一个文件夹作为安装目录。打开安装包后，一路<code>next</code>即可。记得更改安装路径就行了。</p>
+<p>安装好之后，我们来验证一下。<code>win+R</code>组合键，输入<code>cmd</code>打开命令行工具，输入以下命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看node安装版本</span></span><br><span class="line">node -v</span><br><span class="line"><span class="comment">#查看node安装路径</span></span><br><span class="line"><span class="built_in">where</span> node</span><br></pre></td></tr></table></figure>
+
+<p>若有对应的输出结果，即为安装成功。</p>
+<h4 id="搭建本地博客"><a href="#搭建本地博客" class="headerlink" title="搭建本地博客"></a>搭建本地博客</h4><p>安装好<code>node</code>后，我们在本地搭建自己的博客文件。首先新建一个文件夹，作为本地博客文件的存储点。<strong>大家一定要记得这个路径</strong>。</p>
+<h5 id="本地资源存储"><a href="#本地资源存储" class="headerlink" title="本地资源存储"></a>本地资源存储</h5><p>进入这个文件夹，右键<code>git bash here</code>,依次输入以下命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装hexo</span></span><br><span class="line">npm i -g hexo-cli</span><br><span class="line"><span class="comment">#初始化hexo</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>此时继续输入以下命令（二者等价，前者是后者的缩写）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">#</span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>在博客文件夹中会生成一个<code>public</code>文件夹，里面就是我们博客托管的内容</p>
+<h5 id="本地网页浏览"><a href="#本地网页浏览" class="headerlink" title="本地网页浏览"></a>本地网页浏览</h5><p>此时我们输入以下命令（二者等价，前者是后者的缩写）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br><span class="line">#</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>会反馈一个本地连接，左键点击它即可访问本地网页浏览我们的博客了。</p>
+<p>使用<code>Ctrl+c</code>可以关闭它。</p>
+<img src="/1b1c750fe7e1/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" class="">
+
+<p>到此，我们的博客就搭建完成啦。</p>
+]]></content>
+      <categories>
+        <category>经验记录</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零搭建MC服务器记录</title>
+    <url>/d3af824b28d7.html</url>
+    <content><![CDATA[<p>最近朋友准备搭建一个MC服务器，以供几位好友随时玩，网易的联机总是需要主机在线，不大方便。但等了几天也没搭好，赶上我有空，就尝试了一下。顺手记录。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先需要一台云服务器，国内主流的云平台像阿里云、腾讯云、华为云、U刻得（Ucloud）等都可以。</p>
+<p>这里我因为只是尝试一下，遂选用了<a href="https://account.aliyun.com/login/login.htm?oauth_callback=https://ecs.console.aliyun.com/server/i-0jla9660a9theaakxa14/detail?regionId=cn-wulanchabu">阿里云</a>，因为它有个<a href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
+<p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
+<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
+<p><img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png"></p>
+<p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
+<img src="/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png" class="">
+
+<h4 id="打开服务器控制台"><a href="#打开服务器控制台" class="headerlink" title="打开服务器控制台"></a>打开服务器控制台</h4><p>此时，我们点击左侧标签栏的“<strong>实例</strong>”，并选择我们的云服务器，进入页面后点击远程连接。选择“<strong>Workbench远程登陆</strong>”，即可在新的标签页中找到我们服务器的控制台。如果你喜欢用VNC或者其他任何连接方式也没问题，这里我以Workbench为例。</p>
+<img src="/d3af824b28d7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.jpg" class="">
+
+<img src="/d3af824b28d7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0.jpg" class="">
+
+<p>至此，我们的服务器配置问题结束了。</p>
+<h3 id="下载Java和MC服务器端"><a href="#下载Java和MC服务器端" class="headerlink" title="下载Java和MC服务器端"></a>下载Java和MC服务器端</h3><h4 id="建立目录"><a href="#建立目录" class="headerlink" title="建立目录"></a>建立目录</h4><p>首先，我们给MC建立一个目录</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#建立mc1.13.2</span></span><br><span class="line"><span class="built_in">mkdir</span> mc1.13.2</span><br><span class="line"><span class="comment">#进入mc1.13.2</span></span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><p>1.16及以下的版本使用Java8即可，而1.17及以上的版本则需要更新的Java。大家按照自己想玩的版本对应即可，我这里准备玩1.13.2所以使用Java8。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装Java</span></span><br><span class="line">sudo yum install java-1.8.0-openjdk</span><br><span class="line"><span class="comment">#安装过程中会出现询问，记得输入y以同意。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完毕后可用以下代码验证成功安装</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>若出现以下版本，则代表安装完成。</p>
+<img src="/d3af824b28d7/Java%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.jpg" class="">
+
+<h4 id="下载MC服务端"><a href="#下载MC服务端" class="headerlink" title="下载MC服务端"></a>下载MC服务端</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载MC服务端</span></span><br><span class="line">sudo wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar</span><br></pre></td></tr></table></figure>
+
+<p>这里我下载的是1.13.2的服务端，如果你想要玩其他版本，可以从<a href="https://mcversions.net/">这里</a>找到。</p>
+<h4 id="下载screen"><a href="#下载screen" class="headerlink" title="下载screen"></a>下载screen</h4><p>screen是一个可以创建虚拟终端的插件，我们可以使用它做到24小时运行服务器。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装screen</span></span><br><span class="line">sudo yum install -y screen</span><br><span class="line"><span class="comment">#创建并打开一个虚拟终端，名叫“mc”</span></span><br><span class="line">screen -R mc</span><br></pre></td></tr></table></figure>
+
+<p>此时你应该进入了一个新的界面，这说明你成功进入了虚拟终端。</p>
+<p>同样我们使用以下命令组合进入mc1.13.2目录下</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="运行MC服务器端"><a href="#运行MC服务器端" class="headerlink" title="运行MC服务器端"></a>运行MC服务器端</h3><h4 id="运行服务器端"><a href="#运行服务器端" class="headerlink" title="运行服务器端"></a>运行服务器端</h4><p>至此，我们就可以准备运行我们的服务器啦。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Xmx是最大使用内存 Xms是最小使用内存 server.jar是文件名.后缀</span></span><br><span class="line">java -Xmx1000M -Xms256M -jar server.jar</span><br></pre></td></tr></table></figure>
+
+<p>第一次没运行成功？没关系，往下看~</p>
+<h4 id="修改相关文件"><a href="#修改相关文件" class="headerlink" title="修改相关文件"></a>修改相关文件</h4><p>第一次运行不会成功，会报需要先同意EULA。</p>
+<p>这时我们进入Eula文件并修改</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入eula.txt文件</span></span><br><span class="line">vim eula.txt</span><br></pre></td></tr></table></figure>
+
+<p>进入后，点击<code>i</code>键进入编辑模式，将<code>false</code>更改为<code>true</code>。</p>
+<p>修改完毕后点击<code>ESC</code>退出编辑模式，并输入<code>:wq</code>退出文件。</p>
+<p>如果你或者你的朋友们使用的不是正版mc登录，那么你还需要将正版验证关掉。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入server.properties</span></span><br><span class="line">vim server.properties</span><br></pre></td></tr></table></figure>
+
+<p>找到其中的<code>online-mode</code>一行，并将<code>true</code>改为<code>false</code>即可。</p>
+<h3 id="用HMCL登录MC服务器"><a href="#用HMCL登录MC服务器" class="headerlink" title="用HMCL登录MC服务器"></a>用HMCL登录MC服务器</h3><p>打开<a href="https://hmcl.huangyuhui.net/">HMCL</a>启动器，下载对应的版本并打开多人模式。</p>
+<img src="/d3af824b28d7/MC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0.png" class="">
+
+<p>服务器地址为<strong>你服务器的<code>公网ip:25565</code><strong>。特别要注意的一点是，冒号是英文的冒号，MC窗口内中英文冒号看起来一样，自己一定要注意，否则导致</strong>主机名解析失败</strong>。</p>
+<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><img src="/d3af824b28d7/%E6%88%90%E5%8A%9F.png" class="">
+
+<h4 id="退出screen，完成24小时运行"><a href="#退出screen，完成24小时运行" class="headerlink" title="退出screen，完成24小时运行"></a>退出screen，完成24小时运行</h4><p>最后别忘了使用<code>Ctrl+a</code> 和 <code>d</code>退出screen，这样就可以24小时开启服务器不管啦。</p>
+]]></content>
+      <categories>
+        <category>游戏</category>
+      </categories>
+      <tags>
+        <tag>我的世界</tag>
+        <tag>MC</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我和L</title>
+    <url>/02063b73cdf0.html</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误，请再次输入。或者向我询问密码。" data-whm="哈希校验错误。">
+  <script id="hbeData" type="hbeData" data-hmacdigest="ad883b3706235e81e47200595be3fa843392f5287bc0d1ea2fa2085dcd0f47eb">4d6d125c1fb32335c839af56251180bd590953d219b8670b5d0c22e2c5225941ac7617a7b323620c4ae21d5eb3d9683778f1893955b426adbb27ba6f33458a19798124379c2104bd44fdb9f56ce4e82f80d2be816dc1289239f5f8a3f2636edb3dd96fe7d82d22ee6e228f5a9d3e7fd2f77392423a1efe6d6c1ae46ff2549cd0d433fc9ec2cf506734db57f03eecb97e233106f2d154a632ac7d85e177c85a3a278ebf3cf096a9446a73ca92971b79dea9e6bc7aa81ab54a8988c70afe26774a5394b9e32263653956c83abb0e9d4d17b7562e14b16455a3376833e731e1bf722d5b3dc338da44b2e566497e1e38e6d6582f4684e6c0de15ba96fd5057d7db1671dbf3c885d6a1d96a17c4be6358b7106681de88f51ed4fa5bfa1ba0cb112d7502f0329eb19b1769212a90b188cc52d126634ff2768ca6fb481da39e54cb63263fba6baa95754fe1662a606d4d4eefaec149634e3b016ddc1aa8e04845b5beb180a20e5cac0c64266f1629902a4cb75563b94fa5023be6daa186932154dbe0b2204c2724a660317961d19e74c20a60091bd6cd3c691cd5c9c4bd71db5cfa2237c175076ae2977c728e5fa89a060316b7b6c32093b566da9eb0e5c695cf863ea525e55b2f5b130a7e45a87e75b20a60c870b208f5a51fa8c8461761357d9fbea47cbe5caab4611b0bfb2561fd9372f0017feeeca699a88a22c7562ab87fef61f6387baa3dc8b8d39068c3e6e158ede4833c3e1e9d209a43161780137c79da000a53b607d0e18df0e44b2f9a7e9e1f84d44d19abae4218709b5ad8a9272fa3e4d1193ee4898f8494df602f909a9eaeac659b10297e6488b1003d79d9a45f1e8a6e310bb5dabbe1f12a9e9239504967372cb48f314687d5b72824aea8d0d85058166641cf39016b9769f5b9c50a44fd24606ddff991ffa3f9ac6b0a02069b285a036f47d023e299d8ecb45dd6b326e507330d383df9027e57206f32896157da025f6a17e8a210ea256acdc00a9353ae10db9a08e8b2073f0b626a13ef9e3cdf5e9f2db5903cbf161881b2db19213d09093977a3265b481f60d4f97ea2802729758eb02f1f8dae9134ddf37a08fdfa71951bb556263e4bd308ca4b76cd1d86e8f9a43ae9f1dbfb3e1b9ba2c4d5a713ba1dffdd7d21b64a338adfd3a998b667152b66f2c18589474e89d6ceaf112c49b340ad305f353f665b5462871740686a752729421639e5059473fca25a4267f082ae5a0f286f69e89a83a3521647e9be97d28699af4627d490b0df8a47e5fc99b8ac7c0f22fed1c320b85d06697ad5f5a71a14d635ef02d79e8dcef47b95cc79791c1ad59fed2e1b80896198a5004f6e73e99587aa2c824423ac0e6770508097378e62892fc90895a8a47c961b9beb6a0928f963bf5bf1f67328a99e74920d4a8ded4a0613fa90b6ca48b0b37e871931f2d2d7a476bed5b67147e6aea694e89df5dcba8d748b72a137769fab711dfce9da26263cfe42b25d6b2e5e2e661479e394a8e50db1ca241ff2e7ab374ba4740698ca12147cb00b5d25cc2ba3ed8ce8f3da4c17b5d774b89d75485fc94b884e94ea56d6b6432e53aa184368d9cf67d5a89c48c8b13bd25ef40942f6b1844f1a83be5baa7579c2a2be617fc757bbd7f4725590532fbf76da8b7ef2ddda8be4ac2b6874305267eef5d2fd8402b912793178844a176330b47b86d132fea270e420085c285d8f8f2d0c6dfd1de5024c045dfb727ebebd5cb6c70f2543638fa189d1afca5c379173e02ab7fe38466d3fb39b291ec013cf609325812e4c49d129deded775f8e545613f778e2f9ec36b643022b4c52dcb322add3c6f12d76e75d8279bff344b63fb2dd6e68657e2f2fe626b8eedf11d18e00519640c425904b7a46f39aa3aefa95d53eb77fc32441e5edf4bdb24f3fd41800325a137a94970fc3205206b852b99c721e992efb717db35bef4af24dd59e2f1b9792efbbca0f7fd7d099226c09d2b2b3662a3b1edd49e11a2cd78baf43e8fc7efc4f370aed1b2a96d9beb8219a06f06cac6880aa2c1d8024114bed214216314de6a92ee074766bb8cf28eb484f8921e72b66a0ebaecbbfaf28bdfaf4825e481b8118c02478bfbd19e871d7b273fb615c3be05fb8eac99fbe851e269724be7b5ed255bcf46075db5cec1f63659f8b137b1bd88f97cf77203ef7c75c8f43356491f802d0256285f88353a65c998a98e6406574a49204919d480bd7ef8ef4f6801463de02a7ee71ccbdf7916af02a80e9f66ffd8849c230b19e5fd0890bc06d6ec8e7e1c00c02918c92d5b5c4ec754198688e8e0d66cbadf74aa03f49382792babe34cf9b8592c29d3fb179f16333bf11b27a71d6c3fefdeb0d557d400ed7ed5780019722e4b61a60b5dd507b4f68f87d39924b6d62af50bd794849f4534e1b6c9c3c3a8118e4076305565ccf0d0f539994dd36bc0f6b7ad7d9478a9188f7dd05b436801dc3124ada0a65bf7e0791b69f6682b8e9d199522fd298803ed0e8e8c2787d717c54ba9c13f3e01a9a3cd46c492b09870bc6be0e09866493f87e9cdb3de4c439e510c5e50fa03ece2cd09f9591f130f4597baf6a10ab3fddb16c6256d4f102786ccb515a7c1ed0ad57eaab404b34b6bced110cffd87dc7afa99804cdfc9b3907a3ce6eba9f8f1c53ffa24d06e67247dfd63f6427f7a8c62a28ac5d487594e4b9972e0ec2f5b799d59be71c0f79b054f407f8384452e8b801dd1721ada04091c293b6a6b1d6d2a976fc0ec5697ad6fbd289f4855b64a3cf754b39fb56e6a27020e86bdd2689d46b7a79470a852b05aadc26ab92dd6e6a6bf6df9c2411dbd6cd50f5609191a67d56a172073f29ce263a6e86d2eaadba733ac37b067ddf48069bc3782797b11b6234a7250aa70fe199246d7a928eec020d0dc0f862f08fea7a9a8be4ef4c390ebb07e90fc12ca14ae4a10ec8c667f001c8c1e2cc4c88241e01cf6fc647628205d09142fe9506cd8f2100fa58c934daa52d1ee2d24648be5329d01ce7a067296ec9c56378e08bc8d29d0b12f556363ad5ec8d372257169886cd046cf1fcb2271a0ea8a45b5b34c095355a1957d7d891a924a1386777ca3b5fd91c4766275ba584c07c46829856a4cd1d0126b78e007120efe34d0c8a32aa82e0ab00c6e8005fd062aca48b5656a7e2c0bc87765056dbf0710d22bb360c872f0e210b96b3bfda02489338131000275fc8b82ded4d7eb74032e97915e12a71cbfe106e496612128eb375ab5b69e6eb790b55a8d62998dcddae2e905fd18bdfc46c11c4d495ccb54078bcf4ff8c222eac893109ae8a15e163b57436a6be334bb0294b2f7e2e000baf59f24226da3048a5696f46849bd58dced918d10af371d280e4c7e625c93d848d62f58f46857b95b37fa82370c27a9e561ea6ee0adff8044b55af84d4b6d83ce70f088e157b312c62ddd0607fbab3963d2f570906e71f84665dda2ac44707b23d0e3a7377878057f8e631db7e17bdc8c9fe4fe61996c4bd80e7a9460450fbbf64fae4d631063f25f5f9d1a05ca17f8aba8c5e033441e02923b692dff27a5e77a8a8487c5f78f840c2209b7f58037bb10a4982fbf85c29a521e622641dd7d618a5976b9b9a1e88e8abd0c43dce563285ed22b61c527701aa2f89c95ecff7588edf76a0d220239e5278a6d533f28a0a626a3e807b7d5ec0a1dc59989ddb358659df5f691b32c39b406411615321c4f31db140eeac785b5d57f5ae9d0267b0fdb289b0be46baaad09f007d8f930234a042dc50d0481927dd6239c06618afc5684515cd87c274b8f52105b1fee315116ce259e75881f60f558f688af1b12ff2eec730513707f1e0ff54580874eca9671966144391aaeabc11b84e8f134c815b72e5cc3f065a54f1a11c5efbf8db96cd06e05b2753ed55acf643a08e05bac4b887eb5a24ba6aea106fecdec1c941115fea62082ef5c7de141fbc30aa0f6cd8faae5ac6c6ae7bd1cfc210a5552bcf8f6444f5c8dd52f99828122b126acf92e32756e501bacb4bee22a9274662be746d9bb00b58b0bed5709dfebf0d78ad7b7294831f89014ff5da1fc724104baa3e951cb4e7f8b74a5583a219da5622a0542435f508619d8838e160124299082730ad46a987a208e1b4aa7def8e6c566f8dc327c89beb9144dd0c55d7449e20d7573c7fa0afa4bc5271a065c6f7d80e91cece1d00644acea124ae201bdf17113b18d5b214079b13458009cfe898726d3e672dd7ee49420edb5e36ad93aaacc7766fb7e7564c8bd280aa7ae5ffc3965c41afa68f06cb842e6bcf9cdb7b004d12343e9aa00b1641db03a8f87003be2400280c3c0ac96119cb5a641b49e41f9747484355e821454198975f99c9640b7b2bfd95d509b2812d8d5016ef87ead982538d9dec7b698422dfd258ab75ffe5e5d0e957d5f109eebf3f5034277d0fce0ef223579dd53b2526de56d09ec8866719eb863d8bce6a789852fe89d41fe870475e70764134e4d5b600b99a955cd18255982b343d8b4f8bab10037e261dc111f57b6a09c740b5b610c7ca6011862c30965e23b31b889818ebf9d722a75d13b53059a944b17cba9454d4f5b54d56411acb168ffb893af3cf152be04e6e7207d7c908d95a4c0bc3b6143d938886cd1c004992055d7c3b0654b3f68e4cec17109d19e0e53143453afd0cd93b506c56ddc0f6667c383f909209a1cf63cb34a8653301b1aa0476a0216fed1101ad0e0947bf3918e18a6f7d2632a0d31cab9635c4555ceccf899c379dfd3e30b7d7e608ae1435946402d98bf33eae3311d1c217f667e544b566a71fc8c504c194921d8e76c39bf043138b9bab8f7101bc8a381f98503e91ce1ea4b5bf12d6b77da98182cf431a23d416927f3be2b2fc73a42308c607b407129b41cbb72970be476f0765d18f2f422c920993efedc6e8cc44bb56d4095a90af39c2462ed48651c848f6f2a493d75071133562def01b8cc61770cfe9c79ca8ac6acdc23f3dabd30bd3f8a21c8d34257fa6773499223daa41009de784dc79bee21fa6ee7d83c2db6edea17d358f968e2310a31eb9c0393379ab30e5137c5156e4efb7a967e2ef041c8145e31d6ec26c9e259dffcbb7bb1bc7158123633e7f4da5981abec7a2763c1f9d762c3c1abfa7d1a98fc239efb5518a2711fefc9c10bcfa6818dcd49b860b088f3b77b91b0ea64894724f2068fb5b2f293633c27cc809bf4865729d1977d57f284655530943354863be7bc71f9afb3a85b435e44cead6743c8d0af5efa9d7ae3b8abc400d358fbc605632612a7bdead667b43042e7105e9f00a6f005452498d93816389bbcf45e5d61f61ff5b87c147bd170ac6b9a1f47839f9564bc183a459207dcc0ca66ed15f94c3505c4f08dcde07923104e403a9adca72f32cf59d17da82d8d27df2758a922492c3dccad0d05c372ba690174211bad36aa5ee4a0c615123d9c39f0e8ddb34d1fe3a358559d2d73efc817f812c1b904e8c0e47fdca036281ef28808d3fbba8d23b60418f26fb325461c4ddb4e7e64bb758c529a153caac86c9ede3dc0a472b163298c861c4a9309f5d1384c5be94bb8fcc84bc5ceb0eab1c89dcef5f5d5209ee79601f29b29344afbcce033b61781c93e52f3e8f18f7132bab4b73dbfcfd9042e89929d6ef683089f4d4868491057b478750d10b27c885d696c44e721495dd34a00a009f2847972fb08fa582b878e4814aa549ff0092de566befb53aa8f991734e33159e50cf93e03b3aa8343f9fd0dd2fffbc80fc4986955eb29a093e8c3867dea2bfb882dd78e2954670a33774a69461b2b22f843a91d4ed026b83c204ccc5cf96922d055e50a367d7fd5ac1244f5cdfff54b7b5f445c9078bc84037f80569fbd23efe1c52eeaa3f9296505b468ef7c9b430ec36ee5dde6a55b574b1d30762d08ffcb258a8df6effc141fa67b0db7769877d247966d3191eb95e5ca6d0b9b8f3cde924f0f0c21c23d077987b1c62547611fe1afff573f7e6dd0a64c539e02144dd192b83c142c26627b1f62190526d11eb262acaa01930a03e8dd74881296b1e17cd98b1b7ed5791d15dea24002d3a4d7d9a165841f58ecf33ed87bc62c74353d35e900cf4094a8fc7dcf5f66e41497ae72ee82e435ca893d8e43e12e3025eef2373d396473d83922a52fa3626832a676bb7a8a3d679a95721fb071db918044c5a39dae57ef07b69936a565668fc66da77620847d58858dbda8e184c6dfc0b6413a8dea81404f5eeded6586f15d77e248f2f416b0a27a8d658cd09b2fcccea1aaea826955a15fff62ea2d74de8fcf227b56dc0620afb4f725785391d73fb2e4a9ec222e8f1f5424fa04c30374fc78d4b13ec55ef5cdabb165063d3acf9a010afe16b32a73c8e366fcdec91656cef5e3907d681a9a1d3843a57206d804db030aa39796b25fe2cc59e21e98b1259396ea097bd9535e2baa2ce1d3aaeaf428eaeba2c8039c1a9c0bd4ad182e8da247d95ac6b72637a7d038ef14540b8cdccddf6829268717dd72ae8fca4212e6b117d0b9d9a3016015cc4f5aa9a654fb80b92f2d006facf8e281e36a384ef0cb87786a9dd51b7a9f697d8ddd7192f11eec94b576fbd6b2ea6ae5b4289f73f7fe924b8fa3d6a7042a41a1c01397a4a8a265e2ef180c937aafedd5df162f3d3fc9a3c533de5f13f061355d467aa8b93266124b63d894dd47eaf53f18aeab14e5982d9a4771006dbbc08fa7fe4c7d9fcbcfe81f183c66fa680e6fda5478d32ceef90329c74bb2c7e02eef7ad86c36340b9f06ac1b285ffdfcd67756eb2d16a5796a53afb6a74570fb6f3c0fa95a0f0cf9db7bb1bf8a14ab3609c7a8a6cb90fbb7ee70a77736710e980b95def032b3f12be3abb1221a3ca97df44b95a84028368b37cee1b44e0d58f70abf062e77c6c9ae61048547f9b2a21674552632cea3949051bb382abbba2a062ed5ec23a1a92d18e9207de6ff5eaa87f3557e8bf2ee043daf5a9b3c37bf4d18538fbc8901010a37e2bac66a2190b8f4436d108bfdb82b9729484ee0500e3c0d40754605a697f01bffc5b5672d42e5384640a8299637598a3f850d83e3503e36056252092a304883a025c63cf2e43ac800dc0b4dc19909f00bd54f37188eb994bb479a5522305f585232367c278430e21a343815887f5f28471248c1dd91aa651d8f2dcc94d4de19e8127e8220d9ee04398e3f20c565371a743862d83ebaad042cb666d059d7f8a70a72f61609af7781abcf8bcd9a47e887581904b0ef2e78f69e96d279f3a52b3b9199daf0cf789a0c3baa2ec9c0890d925f216d63fba271e43c4586087340a486fb67f2e53c88183a29e96b738ab0ae8885b6a5505b67202098e8ccff59bb4a52bf9bca995fc5ef10e7b38166e3c32f7a933b79207bb12f65cc15ede53ec0c32dbd8b86b53b289c0fa1e7433985478adb5064ee6e7df64be27c963ad8099bec0322563bf53b342620b7cafff3c4908bb51b4c25d8fd48a0a26c0b5babcdaa4824639935afc69adf1c4206821647bdf6f8d63ae94706148e348fb09e8a3f05b64ec3</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>需要密码</tag>
+        <tag>情感</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何写一篇文章的“related work”部分</title>
+    <url>/f2a7da94c8dc.html</url>
+    <content><![CDATA[<h3 id="如何写一篇文章的“related-work”部分"><a href="#如何写一篇文章的“related-work”部分" class="headerlink" title="如何写一篇文章的“related work”部分"></a>如何写一篇文章的“related work”部分</h3>]]></content>
+  </entry>
+</search>
