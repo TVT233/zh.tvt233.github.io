@@ -45,10 +45,7 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure>
 
 <p>安装 <code>hexo-renderer-marked</code> 插件。</p>
-<p>在<strong>站点配置文件</strong>中，将<code>post_asset_folder: false</code> 改为 <code>true</code> </p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-
-<p>并在其下添加如下内容</p>
+<p>在<strong>站点配置文件</strong>中，在 <code>post_asset_folder: true</code> 下添加以下内容</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
 
 <p>此后，当我们在文章中输入<code>![](image.jpg)</code>，即代表我们在此处插入了同名文件夹中的<code>image.jpg</code>图片。</p>
