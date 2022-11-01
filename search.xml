@@ -10,6 +10,59 @@
 ]]></content>
   </entry>
   <entry>
+    <title>博客搭建及相关问题记录（三）</title>
+    <url>/bbb012e90cee.html</url>
+    <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/3d7401568276.html#more">上文</a>，今天我们讲讲一些基础的信息布置和美化。</p>
+<h3 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h3><p>进入<strong>主题配置文件</strong>，找到<code>avatar</code>，修改代码如下</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/images/avatar.jpg</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be dispalyed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p><code>rounded</code>意思是头像将展示在圆中。<code>rotated</code>的意思是点击会旋转。大家将自己需要的设置为<code>true</code>即可。</p>
+<p>将自己的头像文件放在<code>themes/next/source/images</code>路径下，如果你的图片不是<code>jpg</code>格式，记得将上述代码中<code>url</code>后面的<code>.jpg</code>改为对应后缀。</p>
+<h3 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h3><h4 id="设置背景图片"><a href="#设置背景图片" class="headerlink" title="设置背景图片"></a>设置背景图片</h4><p>在<code>根目录/source</code>下新建一个文件夹，名为<code>_data</code>，在其中添加文件<code>styles.styl</code>，内容如下。（如果你对于VS Code等工具使用不熟练，可以先建一个<code>styles.txt</code>，写好内容后将后缀改为<code>.styl</code>）</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">body</span> &#123;</span><br><span class="line">  <span class="attr">background:</span> <span class="string">url(/images/background.jpg);</span> <span class="string">/*自定义的图片*/</span></span><br><span class="line">  <span class="attr">background-size:</span> <span class="string">1920px</span> <span class="string">1080px;</span> </span><br><span class="line">  <span class="string">/*像素值为1920*1080，根据你自己的图片选择，你也可以用cover来覆盖*/</span></span><br><span class="line">  <span class="attr">background-repeat:</span> <span class="literal">no</span><span class="string">-repeat;</span> <span class="string">/*拒绝重复填充*/</span></span><br><span class="line">  <span class="attr">background-attachment:</span> <span class="string">fixed;</span> <span class="string">/*固定图层，不随鼠标滚动而滚动*/</span></span><br><span class="line">  <span class="string">background-position:center;</span>		<span class="string">/*图片显示起始位置*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将命名为<code>background</code>的背景图片添加到<code>themes/next/source/images</code>。</p>
+<h4 id="设置透明度"><a href="#设置透明度" class="headerlink" title="设置透明度"></a>设置透明度</h4><p>有了背景图片，往往会被文章或其他板块挡住，无法尽情欣赏。因此板块的透明度调节势在必行。</p>
+<p>仍旧在上面的<code>styles.styl</code>文件中，添加如下代码</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">/*文章透明度*/</span></span><br><span class="line"><span class="string">.post-block</span> &#123;</span><br><span class="line">  <span class="attr">background:</span> <span class="string">rgba(255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.9</span><span class="string">)</span></span><br><span class="line">  <span class="attr">background-color:</span> <span class="string">;</span></span><br><span class="line">  <span class="attr">opacity:</span> <span class="number">0.9</span><span class="string">;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">/*侧边框的透明度设置*/</span></span><br><span class="line"><span class="string">.sidebar</span> &#123;</span><br><span class="line">  <span class="attr">background-color:</span> <span class="string">transparent;</span></span><br><span class="line">  <span class="attr">opacity:</span> <span class="number">0.9</span><span class="string">;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">/*菜单栏的透明度设置*/</span></span><br><span class="line"><span class="string">.header-inner</span> &#123;</span><br><span class="line">  <span class="attr">background:</span> <span class="string">rgba(255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.9</span><span class="string">);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">/*如果设置了本地搜索，设置它的透明度*/</span></span><br><span class="line"><span class="string">.popup</span> &#123;</span><br><span class="line">  <span class="attr">opacity:</span> <span class="number">0.9</span><span class="string">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按照自己的喜好调节透明度即可，个人推荐<code>0.85 / 0.9</code>为宜，更低会影响阅读体验。</p>
+<h3 id="添加标签页"><a href="#添加标签页" class="headerlink" title="添加标签页"></a>添加标签页</h3><p>如果你想在标签页添加新的标签，打开主题配置文件，找到<code>menu</code>字段。</p>
+<p>我们以添加 <code>tags</code> 这个标签为例。</p>
+<p>首先在menu字段下添加代码如下</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>tags: /tags/ || fa fa-tags</code>，<code>tags: </code> 为标签名， <code>/tags/</code> 为对应的前端路由， <code>fa</code>为图表的标签属性，<code>fa-tags</code>为图标的名称。默认的图标库在<a href="http://www.fontawesome.com.cn/faicons/#web-application">这里</a>，你可以找到自己喜欢的图标并替换。</p>
+<p>此时，我们在根目录终端输入</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时，我们在<code>themes/next</code>文件夹下可以看到新的文件夹<code>tags</code>，其中包含一个<code>index.md</code>文件，进行修改</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tags/index.md</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">我是选择标签的页面</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-04-14 10:58:17</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span> <span class="comment"># 设置页面类型</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="背景音乐"><a href="#背景音乐" class="headerlink" title="背景音乐"></a>背景音乐</h3><p>很多博客建议使用网易云外链，但据我使用，外链不美观且优化不好。这里我推荐使用<code>aplayer</code>插件，下载地址在<a href="https://github.com/DIYgod/APlayer">这里</a>。</p>
+<p>将仓库中<code>dist</code>文件夹复制到<code>根目录/themes/next/source</code>，在dist里新建music.js文件，添加代码如下</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ap = <span class="keyword">new</span> <span class="title class_">APlayer</span>(&#123;</span><br><span class="line">  <span class="attr">container</span>: <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;aplayer&quot;</span>),</span><br><span class="line">  <span class="attr">fixed</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">autoplay</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">theme</span>: <span class="string">&quot;#000&quot;</span>,</span><br><span class="line">  <span class="attr">mutex</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">lrcType</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">audio</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&quot;歌曲名&quot;</span>,</span><br><span class="line">      <span class="attr">artist</span>: <span class="string">&quot;作者&quot;</span>,</span><br><span class="line">      <span class="attr">url</span>: <span class="string">&quot;http://music.163.com/song/media/outer/url?id=网易云音乐id.mp3&quot;</span>,</span><br><span class="line">      <span class="attr">cover</span>:</span><br><span class="line"><span class="string">&quot;封面地址&quot;</span>,</span><br><span class="line">      <span class="attr">lrc</span>: ,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>网易云音乐id</code>可以在网易云音乐网页版打开一首歌曲，在地址栏中找到它的id，复制并替换进去即可。</p>
+<p><code>封面地址</code>可以对网易云音乐的歌曲封面<code>右键</code>，<code>在新的标签页打开</code>查看地址。</p>
+<p>我们进入<code>根目录/themes/next/layout/_layout.swig</code>，在<code>&lt;body&gt;</code>标签中添加</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">&lt;!--</span> <span class="string">aplayer</span> <span class="string">--&gt;</span></span><br><span class="line"><span class="string">&lt;div</span> <span class="string">id=&quot;aplayer&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;script</span> <span class="string">type=&quot;text/javascript&quot;</span> <span class="string">src=&quot;/dist/APlayer.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script</span> <span class="string">type=&quot;text/javascript&quot;</span> <span class="string">src=&quot;/dist/music.js&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在<head>标签中添加播放器样式代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;/dist/APlayer.min.css&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>经验记录</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客搭建及相关问题记录（二）</title>
     <url>/3d7401568276.html</url>
     <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/1b1c750fe7e1.html">上文</a>，我们今天讲讲怎么搭建自己的博客主题，以及如何上传自己的博客。</p>

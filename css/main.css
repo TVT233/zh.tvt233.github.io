@@ -1213,7 +1213,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #242eff;
+  background: #ff424e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2727,7 +2727,7 @@ pre {
 /*添加背景图*/
 body {
   background: url("/images/background.jpg"); /*自定义的图片*/
-  background-size: 1920px 1080px; /*拉伸到全屏显示*/
+  background-size: cover; /*拉伸到全屏显示*/
   background-repeat: no-repeat; /*拒绝重复填充*/
   background-attachment: fixed; /*固定图层，不随鼠标滚动而滚动*/
   background-position: center;
