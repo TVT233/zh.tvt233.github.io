@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>如何写一篇文章的“related work”部分</title>
-    <url>/f2a7da94c8dc.html</url>
-    <content><![CDATA[<h3 id="如何写一篇文章的“related-work”部分"><a href="#如何写一篇文章的“related-work”部分" class="headerlink" title="如何写一篇文章的“related work”部分"></a>如何写一篇文章的“related work”部分</h3>]]></content>
-  </entry>
-  <entry>
     <title>你好！欢迎来到我的网站！</title>
     <url>/414d15ce29a6.html</url>
     <content><![CDATA[<h4 id="来看看这有什么"><a href="#来看看这有什么" class="headerlink" title="来看看这有什么"></a>来看看这有什么</h4><p>**<a href="https://zh.zihengzhang.top/about/">关于</a>**：在这你可以看到关于我的个人信息，教育和研究经历。如果你需要，里面还有我的个人简历和联系方式。</p>
@@ -15,73 +10,67 @@
 ]]></content>
   </entry>
   <entry>
-    <title>从零搭建MC服务器记录</title>
-    <url>/d3af824b28d7.html</url>
-    <content><![CDATA[<p>最近朋友准备搭建一个MC服务器，以供几位好友随时玩，网易的联机总是需要主机在线，不大方便。但等了几天也没搭好，赶上我有空，就尝试了一下。顺手记录。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先需要一台云服务器，国内主流的云平台像阿里云、腾讯云、华为云、U刻得（Ucloud）等都可以。</p>
-<p>这里我因为只是尝试一下，遂选用了<a href="https://account.aliyun.com/login/login.htm?oauth_callback=https://ecs.console.aliyun.com/server/i-0jla9660a9theaakxa14/detail?regionId=cn-wulanchabu">阿里云</a>，因为它有个<a href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
-<p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
-<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
-<p><img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png"></p>
-<p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
-<img src="/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png" class="">
+    <title>博客搭建及相关问题记录（二）</title>
+    <url>/3d7401568276.html</url>
+    <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/1b1c750fe7e1.html">上文</a>，我们今天讲讲怎么搭建自己的博客主题，以及如何上传自己的博客。</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><code>Next</code>是基于<code>Hexo</code>框架的一款博客主题，优点就是简洁，简便，可扩展性好。非常适合新手上手，后期也有足够多的扩展空间供你丰富自己的博客。</p>
+<h4 id="Next下载"><a href="#Next下载" class="headerlink" title="Next下载"></a>Next下载</h4><p>我们首先将<code>Next</code>主题下载到<code>根目录/themes</code>下。</p>
+<p>我们在根目录下打开<code>git bash here</code>（事实上其他终端也可以，例如<code>VS Code</code>，此后我们统称终端）</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 
-<h4 id="打开服务器控制台"><a href="#打开服务器控制台" class="headerlink" title="打开服务器控制台"></a>打开服务器控制台</h4><p>此时，我们点击左侧标签栏的“<strong>实例</strong>”，并选择我们的云服务器，进入页面后点击远程连接。选择“<strong>Workbench远程登陆</strong>”，即可在新的标签页中找到我们服务器的控制台。如果你喜欢用VNC或者其他任何连接方式也没问题，这里我以Workbench为例。</p>
-<img src="/d3af824b28d7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.jpg" class="">
+<h4 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h4><p>此时我们可以找到<code>根目录/_config.yml</code>,这个是我们博客站点的配置文件，值得一提的是，在<code>根目录/themes/next/</code>下，也有一个<code>_config.yml</code>，这个是我们<code>Next</code>主题的配置文件。为了区分这二者，我们此后统一称前者为<strong>站点配置文件</strong>，后者为<strong>主题配置文件</strong>。</p>
+<p>打开<strong>站点配置文件</strong>，并对其进行相关信息的修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: 你博客的名字</span><br><span class="line">subtitle: 博客副标题</span><br><span class="line">author: 作者的名字</span><br><span class="line">#language: zh-CN 简体中文 | zh-TW 繁体中文 | en 英文</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia/Shanghai</span><br><span class="line"></span><br><span class="line"># 主题改为 next</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 
-<img src="/d3af824b28d7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0.jpg" class="">
+<p>我们打开<strong>主题配置文件</strong>，找到<code>Schemes</code>字段（<code>Ctrl + F</code>搜索即可），发现有代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
 
-<p>至此，我们的服务器配置问题结束了。</p>
-<h3 id="下载Java和MC服务器端"><a href="#下载Java和MC服务器端" class="headerlink" title="下载Java和MC服务器端"></a>下载Java和MC服务器端</h3><h4 id="建立目录"><a href="#建立目录" class="headerlink" title="建立目录"></a>建立目录</h4><p>首先，我们给MC建立一个目录</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#建立mc1.13.2</span></span><br><span class="line"><span class="built_in">mkdir</span> mc1.13.2</span><br><span class="line"><span class="comment">#进入mc1.13.2</span></span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+<p>分别代表了Next的四种风格，你可以选择你喜欢的那一款，将其取消注释（去掉前面的#，对其他行加#）。这里我选择了<code>Gemini</code>。</p>
+<p>此时我们在根目录终端，依次输入以下代（<code>/</code>前后的代码输入一种就可以，等价）。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除public文件夹，即清除以前的发布</span></span><br><span class="line">hexo clean / hexo cl</span><br><span class="line"><span class="comment"># 生成新的public文件夹</span></span><br><span class="line">hexo generate / hexo g</span><br><span class="line"><span class="comment"># 本地发布</span></span><br><span class="line">hexo server / hexo s</span><br></pre></td></tr></table></figure>
 
-<h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><p>1.16及以下的版本使用Java8即可，而1.17及以上的版本则需要更新的Java。大家按照自己想玩的版本对应即可，我这里准备玩1.13.2所以使用Java8。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装Java</span></span><br><span class="line">sudo yum install java-1.8.0-openjdk</span><br><span class="line"><span class="comment">#安装过程中会出现询问，记得输入y以同意。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完毕后可用以下代码验证成功安装</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<p>点击反馈的链接，我们就可以在本地查看自己的博客主页啦。</p>
+<h3 id="文章发布"><a href="#文章发布" class="headerlink" title="文章发布"></a>文章发布</h3><p>好了，我们的博客大致已经搭起来了。接下来我们来看看博客最重要的部分——文章应该怎么创建、编辑和发布。</p>
+<h4 id="文章创建"><a href="#文章创建" class="headerlink" title="文章创建"></a>文章创建</h4><p>我们在<strong>站点配置文件</strong>找到如下代码，将其中的<code>false</code>更改为<code>true</code>。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">post_asset_folder: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
-<p>若出现以下版本，则代表安装完成。</p>
-<img src="/d3af824b28d7/Java%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.jpg" class="">
+<p>此时，当我们在根目录终端中输入<code>hexo new mypost</code>，即会出现一个名为<code>mypost</code>的<code>md</code>文件，以及一个同名文件夹。这个.md文件就是我们要编辑的文章，而同名的文件夹可以为我们提供存储”这篇文章内的图片“的地址。</p>
+<h4 id="文章编辑"><a href="#文章编辑" class="headerlink" title="文章编辑"></a>文章编辑</h4><p>如果你是第一次接触.md文件可能不知道如何编辑它。其实记事本就可以，但很多格式上的问题导致用记事本很麻烦，在这里我们推荐一款软件，<a href="https://typoraio.cn/">Typora</a>，操作起来很方便。</p>
+<p>格式上来说，一篇文章的开头存在如下段落：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 题目</span><br><span class="line">date: 2022-10-23 10:25:34</span><br><span class="line"># 标签</span><br><span class="line">tag: </span><br><span class="line">- A</span><br><span class="line">- B</span><br><span class="line"># 类别</span><br><span class="line">categories: </span><br><span class="line">- xx</span><br><span class="line">- yy</span><br><span class="line">#后续可能还有其他内容</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
-<h4 id="下载MC服务端"><a href="#下载MC服务端" class="headerlink" title="下载MC服务端"></a>下载MC服务端</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载MC服务端</span></span><br><span class="line">sudo wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar</span><br></pre></td></tr></table></figure>
+<p>在这里，我们可以对文章的基本信息进行编辑。</p>
+<p>除此之外，文章的具体排版则可以根据自己的需求进行，我们主要讲讲文章中如何插入图片。</p>
+<p>首先在根目录终端中输入</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure>
 
-<p>这里我下载的是1.13.2的服务端，如果你想要玩其他版本，可以从<a href="https://mcversions.net/">这里</a>找到。</p>
-<h4 id="下载screen"><a href="#下载screen" class="headerlink" title="下载screen"></a>下载screen</h4><p>screen是一个可以创建虚拟终端的插件，我们可以使用它做到24小时运行服务器。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装screen</span></span><br><span class="line">sudo yum install -y screen</span><br><span class="line"><span class="comment">#创建并打开一个虚拟终端，名叫“mc”</span></span><br><span class="line">screen -R mc</span><br></pre></td></tr></table></figure>
+<p>安装 <code>hexo-renderer-marked</code> 插件。</p>
+<p>在<strong>站点配置文件</strong>中，在 <code>post_asset_folder: true</code> 下添加以下内容</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
 
-<p>此时你应该进入了一个新的界面，这说明你成功进入了虚拟终端。</p>
-<p>同样我们使用以下命令组合进入mc1.13.2目录下</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+<p>此后，当我们在文章中输入<code>![](image.jpg)</code>，即代表我们在此处插入了同名文件夹中的<code>image.jpg</code>图片。</p>
+<h3 id="网页部署"><a href="#网页部署" class="headerlink" title="网页部署"></a>网页部署</h3><h4 id="部署前准备"><a href="#部署前准备" class="headerlink" title="部署前准备"></a>部署前准备</h4><p>首先我们安装部署的插件</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
+<p>安装完成后，我们进入<strong>站点配置文件</strong>，修改<code>deploy</code>字段如下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  // 记得替换成自己的repo</span><br><span class="line">  repo: git@github.com:TVT233/TVT233.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
 
+<p>此时，我们就可以向网页部署我们的内容啦。</p>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>文章发布同一切站点更改的发布一样，在根目录终端使用如下命令。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除public文件夹，即清除以前的发布</span></span><br><span class="line">hexo clean / hexo cl</span><br><span class="line"><span class="comment"># 生成新的public文件夹</span></span><br><span class="line">hexo generate / hexo g</span><br><span class="line"><span class="comment"># 本地发布</span></span><br><span class="line">hexo server / hexo s</span><br><span class="line"><span class="comment"># 网页发布</span></span><br><span class="line">hexo deploy / hexo d</span><br></pre></td></tr></table></figure>
 
-<h3 id="运行MC服务器端"><a href="#运行MC服务器端" class="headerlink" title="运行MC服务器端"></a>运行MC服务器端</h3><h4 id="运行服务器端"><a href="#运行服务器端" class="headerlink" title="运行服务器端"></a>运行服务器端</h4><p>至此，我们就可以准备运行我们的服务器啦。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Xmx是最大使用内存 Xms是最小使用内存 server.jar是文件名.后缀</span></span><br><span class="line">java -Xmx1000M -Xms256M -jar server.jar</span><br></pre></td></tr></table></figure>
+<p>如果你第一次部署时报错，可以尝试输入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;gitHub邮箱&quot;</span><br><span class="line">git config --global user.name &quot;gitHub用户名&quot;</span><br></pre></td></tr></table></figure>
 
-<p>第一次没运行成功？没关系，往下看~</p>
-<h4 id="修改相关文件"><a href="#修改相关文件" class="headerlink" title="修改相关文件"></a>修改相关文件</h4><p>第一次运行不会成功，会报需要先同意EULA。</p>
-<p>这时我们进入Eula文件并修改</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入eula.txt文件</span></span><br><span class="line">vim eula.txt</span><br></pre></td></tr></table></figure>
-
-<p>进入后，点击<code>i</code>键进入编辑模式，将<code>false</code>更改为<code>true</code>。</p>
-<p>修改完毕后点击<code>ESC</code>退出编辑模式，并输入<code>:wq</code>退出文件。</p>
-<p>如果你或者你的朋友们使用的不是正版mc登录，那么你还需要将正版验证关掉。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入server.properties</span></span><br><span class="line">vim server.properties</span><br></pre></td></tr></table></figure>
-
-<p>找到其中的<code>online-mode</code>一行，并将<code>true</code>改为<code>false</code>即可。</p>
-<h3 id="用HMCL登录MC服务器"><a href="#用HMCL登录MC服务器" class="headerlink" title="用HMCL登录MC服务器"></a>用HMCL登录MC服务器</h3><p>打开<a href="https://hmcl.huangyuhui.net/">HMCL</a>启动器，下载对应的版本并打开多人模式。</p>
-<img src="/d3af824b28d7/MC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0.png" class="">
-
-<p>服务器地址为<strong>你服务器的<code>公网ip:25565</code><strong>。特别要注意的一点是，冒号是英文的冒号，MC窗口内中英文冒号看起来一样，自己一定要注意，否则导致</strong>主机名解析失败</strong>。</p>
-<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><img src="/d3af824b28d7/%E6%88%90%E5%8A%9F.png" class="">
-
-<h4 id="退出screen，完成24小时运行"><a href="#退出screen，完成24小时运行" class="headerlink" title="退出screen，完成24小时运行"></a>退出screen，完成24小时运行</h4><p>最后别忘了使用<code>Ctrl+a</code> 和 <code>d</code>退出screen，这样就可以24小时开启服务器不管啦。</p>
+<p>然后继续重复上面的部署命令。</p>
+<p>过一会（可能几分钟），你就可以在浏览器输入<code>www.你的github用户名.github.io</code>来访问自己的博客啦。</p>
 ]]></content>
       <categories>
-        <category>游戏</category>
+        <category>经验记录</category>
       </categories>
       <tags>
-        <tag>我的世界</tag>
-        <tag>MC</tag>
-        <tag>服务器</tag>
+        <tag>博客</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -167,67 +156,73 @@
       </tags>
   </entry>
   <entry>
-    <title>博客搭建及相关问题记录（二）</title>
-    <url>/3d7401568276.html</url>
-    <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/1b1c750fe7e1.html">上文</a>，我们今天讲讲怎么搭建自己的博客主题，以及如何上传自己的博客。</p>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><code>Next</code>是基于<code>Hexo</code>框架的一款博客主题，优点就是简洁，简便，可扩展性好。非常适合新手上手，后期也有足够多的扩展空间供你丰富自己的博客。</p>
-<h4 id="Next下载"><a href="#Next下载" class="headerlink" title="Next下载"></a>Next下载</h4><p>我们首先将<code>Next</code>主题下载到<code>根目录/themes</code>下。</p>
-<p>我们在根目录下打开<code>git bash here</code>（事实上其他终端也可以，例如<code>VS Code</code>，此后我们统称终端）</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+    <title>从零搭建MC服务器记录</title>
+    <url>/d3af824b28d7.html</url>
+    <content><![CDATA[<p>最近朋友准备搭建一个MC服务器，以供几位好友随时玩，网易的联机总是需要主机在线，不大方便。但等了几天也没搭好，赶上我有空，就尝试了一下。顺手记录。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先需要一台云服务器，国内主流的云平台像阿里云、腾讯云、华为云、U刻得（Ucloud）等都可以。</p>
+<p>这里我因为只是尝试一下，遂选用了<a href="https://account.aliyun.com/login/login.htm?oauth_callback=https://ecs.console.aliyun.com/server/i-0jla9660a9theaakxa14/detail?regionId=cn-wulanchabu">阿里云</a>，因为它有个<a href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
+<p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
+<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
+<p><img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png"></p>
+<p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
+<img src="/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png" class="">
 
-<h4 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h4><p>此时我们可以找到<code>根目录/_config.yml</code>,这个是我们博客站点的配置文件，值得一提的是，在<code>根目录/themes/next/</code>下，也有一个<code>_config.yml</code>，这个是我们<code>Next</code>主题的配置文件。为了区分这二者，我们此后统一称前者为<strong>站点配置文件</strong>，后者为<strong>主题配置文件</strong>。</p>
-<p>打开<strong>站点配置文件</strong>，并对其进行相关信息的修改。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: 你博客的名字</span><br><span class="line">subtitle: 博客副标题</span><br><span class="line">author: 作者的名字</span><br><span class="line">#language: zh-CN 简体中文 | zh-TW 繁体中文 | en 英文</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia/Shanghai</span><br><span class="line"></span><br><span class="line"># 主题改为 next</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<h4 id="打开服务器控制台"><a href="#打开服务器控制台" class="headerlink" title="打开服务器控制台"></a>打开服务器控制台</h4><p>此时，我们点击左侧标签栏的“<strong>实例</strong>”，并选择我们的云服务器，进入页面后点击远程连接。选择“<strong>Workbench远程登陆</strong>”，即可在新的标签页中找到我们服务器的控制台。如果你喜欢用VNC或者其他任何连接方式也没问题，这里我以Workbench为例。</p>
+<img src="/d3af824b28d7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.jpg" class="">
 
-<p>我们打开<strong>主题配置文件</strong>，找到<code>Schemes</code>字段（<code>Ctrl + F</code>搜索即可），发现有代码如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
+<img src="/d3af824b28d7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0.jpg" class="">
 
-<p>分别代表了Next的四种风格，你可以选择你喜欢的那一款，将其取消注释（去掉前面的#，对其他行加#）。这里我选择了<code>Gemini</code>。</p>
-<p>此时我们在根目录终端，依次输入以下代（<code>/</code>前后的代码输入一种就可以，等价）。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除public文件夹，即清除以前的发布</span></span><br><span class="line">hexo clean / hexo cl</span><br><span class="line"><span class="comment"># 生成新的public文件夹</span></span><br><span class="line">hexo generate / hexo g</span><br><span class="line"><span class="comment"># 本地发布</span></span><br><span class="line">hexo server / hexo s</span><br></pre></td></tr></table></figure>
+<p>至此，我们的服务器配置问题结束了。</p>
+<h3 id="下载Java和MC服务器端"><a href="#下载Java和MC服务器端" class="headerlink" title="下载Java和MC服务器端"></a>下载Java和MC服务器端</h3><h4 id="建立目录"><a href="#建立目录" class="headerlink" title="建立目录"></a>建立目录</h4><p>首先，我们给MC建立一个目录</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#建立mc1.13.2</span></span><br><span class="line"><span class="built_in">mkdir</span> mc1.13.2</span><br><span class="line"><span class="comment">#进入mc1.13.2</span></span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
 
-<p>点击反馈的链接，我们就可以在本地查看自己的博客主页啦。</p>
-<h3 id="文章发布"><a href="#文章发布" class="headerlink" title="文章发布"></a>文章发布</h3><p>好了，我们的博客大致已经搭起来了。接下来我们来看看博客最重要的部分——文章应该怎么创建、编辑和发布。</p>
-<h4 id="文章创建"><a href="#文章创建" class="headerlink" title="文章创建"></a>文章创建</h4><p>我们在<strong>站点配置文件</strong>找到如下代码，将其中的<code>false</code>更改为<code>true</code>。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">post_asset_folder: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><p>1.16及以下的版本使用Java8即可，而1.17及以上的版本则需要更新的Java。大家按照自己想玩的版本对应即可，我这里准备玩1.13.2所以使用Java8。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装Java</span></span><br><span class="line">sudo yum install java-1.8.0-openjdk</span><br><span class="line"><span class="comment">#安装过程中会出现询问，记得输入y以同意。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完毕后可用以下代码验证成功安装</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
 
-<p>此时，当我们在根目录终端中输入<code>hexo new mypost</code>，即会出现一个名为<code>mypost</code>的<code>md</code>文件，以及一个同名文件夹。这个.md文件就是我们要编辑的文章，而同名的文件夹可以为我们提供存储”这篇文章内的图片“的地址。</p>
-<h4 id="文章编辑"><a href="#文章编辑" class="headerlink" title="文章编辑"></a>文章编辑</h4><p>如果你是第一次接触.md文件可能不知道如何编辑它。其实记事本就可以，但很多格式上的问题导致用记事本很麻烦，在这里我们推荐一款软件，<a href="https://typoraio.cn/">Typora</a>，操作起来很方便。</p>
-<p>格式上来说，一篇文章的开头存在如下段落：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 题目</span><br><span class="line">date: 2022-10-23 10:25:34</span><br><span class="line"># 标签</span><br><span class="line">tag: </span><br><span class="line">- A</span><br><span class="line">- B</span><br><span class="line"># 类别</span><br><span class="line">categories: </span><br><span class="line">- xx</span><br><span class="line">- yy</span><br><span class="line">#后续可能还有其他内容</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>若出现以下版本，则代表安装完成。</p>
+<img src="/d3af824b28d7/Java%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.jpg" class="">
 
-<p>在这里，我们可以对文章的基本信息进行编辑。</p>
-<p>除此之外，文章的具体排版则可以根据自己的需求进行，我们主要讲讲文章中如何插入图片。</p>
-<p>首先在根目录终端中输入</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure>
+<h4 id="下载MC服务端"><a href="#下载MC服务端" class="headerlink" title="下载MC服务端"></a>下载MC服务端</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载MC服务端</span></span><br><span class="line">sudo wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar</span><br></pre></td></tr></table></figure>
 
-<p>安装 <code>hexo-renderer-marked</code> 插件。</p>
-<p>在<strong>站点配置文件</strong>中，在 <code>post_asset_folder: true</code> 下添加以下内容</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+<p>这里我下载的是1.13.2的服务端，如果你想要玩其他版本，可以从<a href="https://mcversions.net/">这里</a>找到。</p>
+<h4 id="下载screen"><a href="#下载screen" class="headerlink" title="下载screen"></a>下载screen</h4><p>screen是一个可以创建虚拟终端的插件，我们可以使用它做到24小时运行服务器。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装screen</span></span><br><span class="line">sudo yum install -y screen</span><br><span class="line"><span class="comment">#创建并打开一个虚拟终端，名叫“mc”</span></span><br><span class="line">screen -R mc</span><br></pre></td></tr></table></figure>
 
-<p>此后，当我们在文章中输入<code>![](image.jpg)</code>，即代表我们在此处插入了同名文件夹中的<code>image.jpg</code>图片。</p>
-<h3 id="网页部署"><a href="#网页部署" class="headerlink" title="网页部署"></a>网页部署</h3><h4 id="部署前准备"><a href="#部署前准备" class="headerlink" title="部署前准备"></a>部署前准备</h4><p>首先我们安装部署的插件</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>此时你应该进入了一个新的界面，这说明你成功进入了虚拟终端。</p>
+<p>同样我们使用以下命令组合进入mc1.13.2目录下</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
 
-<p>安装完成后，我们进入<strong>站点配置文件</strong>，修改<code>deploy</code>字段如下</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  // 记得替换成自己的repo</span><br><span class="line">  repo: git@github.com:TVT233/TVT233.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
 
-<p>此时，我们就可以向网页部署我们的内容啦。</p>
-<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>文章发布同一切站点更改的发布一样，在根目录终端使用如下命令。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除public文件夹，即清除以前的发布</span></span><br><span class="line">hexo clean / hexo cl</span><br><span class="line"><span class="comment"># 生成新的public文件夹</span></span><br><span class="line">hexo generate / hexo g</span><br><span class="line"><span class="comment"># 本地发布</span></span><br><span class="line">hexo server / hexo s</span><br><span class="line"><span class="comment"># 网页发布</span></span><br><span class="line">hexo deploy / hexo d</span><br></pre></td></tr></table></figure>
 
-<p>如果你第一次部署时报错，可以尝试输入以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;gitHub邮箱&quot;</span><br><span class="line">git config --global user.name &quot;gitHub用户名&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="运行MC服务器端"><a href="#运行MC服务器端" class="headerlink" title="运行MC服务器端"></a>运行MC服务器端</h3><h4 id="运行服务器端"><a href="#运行服务器端" class="headerlink" title="运行服务器端"></a>运行服务器端</h4><p>至此，我们就可以准备运行我们的服务器啦。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Xmx是最大使用内存 Xms是最小使用内存 server.jar是文件名.后缀</span></span><br><span class="line">java -Xmx1000M -Xms256M -jar server.jar</span><br></pre></td></tr></table></figure>
 
-<p>然后继续重复上面的部署命令。</p>
-<p>过一会（可能几分钟），你就可以在浏览器输入<code>www.你的github用户名.github.io</code>来访问自己的博客啦。</p>
+<p>第一次没运行成功？没关系，往下看~</p>
+<h4 id="修改相关文件"><a href="#修改相关文件" class="headerlink" title="修改相关文件"></a>修改相关文件</h4><p>第一次运行不会成功，会报需要先同意EULA。</p>
+<p>这时我们进入Eula文件并修改</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入eula.txt文件</span></span><br><span class="line">vim eula.txt</span><br></pre></td></tr></table></figure>
+
+<p>进入后，点击<code>i</code>键进入编辑模式，将<code>false</code>更改为<code>true</code>。</p>
+<p>修改完毕后点击<code>ESC</code>退出编辑模式，并输入<code>:wq</code>退出文件。</p>
+<p>如果你或者你的朋友们使用的不是正版mc登录，那么你还需要将正版验证关掉。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入server.properties</span></span><br><span class="line">vim server.properties</span><br></pre></td></tr></table></figure>
+
+<p>找到其中的<code>online-mode</code>一行，并将<code>true</code>改为<code>false</code>即可。</p>
+<h3 id="用HMCL登录MC服务器"><a href="#用HMCL登录MC服务器" class="headerlink" title="用HMCL登录MC服务器"></a>用HMCL登录MC服务器</h3><p>打开<a href="https://hmcl.huangyuhui.net/">HMCL</a>启动器，下载对应的版本并打开多人模式。</p>
+<img src="/d3af824b28d7/MC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0.png" class="">
+
+<p>服务器地址为<strong>你服务器的<code>公网ip:25565</code><strong>。特别要注意的一点是，冒号是英文的冒号，MC窗口内中英文冒号看起来一样，自己一定要注意，否则导致</strong>主机名解析失败</strong>。</p>
+<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><img src="/d3af824b28d7/%E6%88%90%E5%8A%9F.png" class="">
+
+<h4 id="退出screen，完成24小时运行"><a href="#退出screen，完成24小时运行" class="headerlink" title="退出screen，完成24小时运行"></a>退出screen，完成24小时运行</h4><p>最后别忘了使用<code>Ctrl+a</code> 和 <code>d</code>退出screen，这样就可以24小时开启服务器不管啦。</p>
 ]]></content>
       <categories>
-        <category>经验记录</category>
+        <category>游戏</category>
       </categories>
       <tags>
-        <tag>博客</tag>
-        <tag>Github</tag>
+        <tag>我的世界</tag>
+        <tag>MC</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -249,5 +244,10 @@
         <tag>需要密码</tag>
         <tag>情感</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>如何写一篇文章的“related work”部分</title>
+    <url>/f2a7da94c8dc.html</url>
+    <content><![CDATA[<h3 id="如何写一篇文章的“related-work”部分"><a href="#如何写一篇文章的“related-work”部分" class="headerlink" title="如何写一篇文章的“related work”部分"></a>如何写一篇文章的“related work”部分</h3>]]></content>
   </entry>
 </search>

@@ -1213,7 +1213,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0acdff;
+  background: #fff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2734,7 +2734,8 @@ body {
 }
 /*文章透明度*/
 .post-block {
-  background-color: transparent;
+  background: rgba(255,255,255,0.9);
+background-color
   opacity: 0.9;
 }
 /*侧边框的透明度设置*/
