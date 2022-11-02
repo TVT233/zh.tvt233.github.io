@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zh.zihengzhang.top/2b7de3448214.html</loc>
+    
+    <lastmod>2022-11-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zh.zihengzhang.top/bbb012e90cee.html</loc>
     
     <lastmod>2022-11-01</lastmod>
@@ -167,6 +176,20 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://zh.zihengzhang.top/tags/%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2022-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zh.zihengzhang.top/tags/%E4%B8%8B%E8%BD%BD/</loc>
+    <lastmod>2022-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -178,6 +201,13 @@
   
   <url>
     <loc>https://zh.zihengzhang.top/categories/%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2022-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zh.zihengzhang.top/categories/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2022-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

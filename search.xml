@@ -10,6 +10,39 @@
 ]]></content>
   </entry>
   <entry>
+    <title>种子文件与磁力链接及其下载方式</title>
+    <url>/2b7de3448214.html</url>
+    <content><![CDATA[<p>最近，室友总是问我关于种子文件和磁力链接的概念问题。好像我很了解这些一样，今天索性写一篇帖子介绍一下我对这两种下载方式的理解。</p>
+<h3 id="中心化下载与非中心化下载"><a href="#中心化下载与非中心化下载" class="headerlink" title="中心化下载与非中心化下载"></a>中心化下载与非中心化下载</h3><h4 id="中心化下载"><a href="#中心化下载" class="headerlink" title="中心化下载"></a>中心化下载</h4><p>中心化下载是我们最常接触到的下载模式，常见的<code>HTTP下载</code>，<code>FTP下载</code>都是中心化下载模式的具体方式。顾名思义，这种下载存在着一个中心，也就是存储资源的服务器。当你作为一个客户端向服务器请求下载时，服务器就会向你传输信息。而当很多人一起请求下载时，服务器也就成为了这个网络的<strong>中心</strong>。</p>
+<p>但这样的下载方式有一个很明显的缺陷，当同时下载的人过多，服务器的上行带宽一定会变得捉襟见肘，因此每个人的下载速度都会变慢。就像全班同学都去问同一个老师问题，老师就很难快速解答某一个同学了。</p>
+<h4 id="非中心化下载"><a href="#非中心化下载" class="headerlink" title="非中心化下载"></a>非中心化下载</h4><p>对于非中心化下载，就是由中心化下载进行<strong>去中心化</strong>的产物，让这个中心变得不再那么关键。而我们今天要说的种子文件和磁力链接都是非中心下载模式的具体方式。</p>
+<p>具体来说，就是我们的下载由原先的服务器向客户端传输数据，变为了客户端向客户端传输(<code>pear to pear</code>，简称<code>p2p</code>)。这样就形成了与中心化下载截然相反的局面，同时下载的人数越多，意味着同时向你传输数据的人数也可能越多，在一定合理的调度下，你的下载速度可能会不降反升。</p>
+<h3 id="种子文件与磁力链接"><a href="#种子文件与磁力链接" class="headerlink" title="种子文件与磁力链接"></a>种子文件与磁力链接</h3><h4 id="种子文件（BT下载）"><a href="#种子文件（BT下载）" class="headerlink" title="种子文件（BT下载）"></a>种子文件（BT下载）</h4><p>所谓的种子，就是包含着一颗植物的所有信息的原型，有它，你就有了整颗植物的指向性信息。同样，种子文件中也包含了我们整个文件的指向性信息（例如：文件的块大小，块索引，<code>Hash</code>验证码等），但同时它还包含了<code>Tracker</code>服务器的信息。</p>
+<p>当你尝试用种子文件下载时，首先你的客户端会解析<code>Tracker</code>信息，找到服务器地址并合理设置，之后由这个<code>Tracker</code>服务器为你指向正在同时下载这个文件的其他用户，由这些用户彼此之间进行上传和下载。</p>
+<p>如果继续用学生与老师的例子来比喻的话，那就是很多学生去问老师，老师并不直接回答问题，而是告诉每个人他们有疑惑的问题哪个同学明白，让他们互相解决，这样对老师的压力就小很多了。尽管这样听起来挺不负责任的，但由于种子文件中有Hash校验，在一定程度上不会出现<strong>不懂的同学误人子弟</strong>的现象。</p>
+<h4 id="磁力链接"><a href="#磁力链接" class="headerlink" title="磁力链接"></a>磁力链接</h4><p>尽管<code>BT下载</code>是去中心化的产物，但你一定看出来了，<code>Tracker</code>服务器仍然处于整个网络的中心地位，如果<code>Tracker</code>服务器被关闭，就可以阻断所有下载。</p>
+<p>有没有一种方式可以实现<code>P2P</code>下载模式，又没有真正的中心呢？</p>
+<p>答案是，有。那就是<a href="https://en.wikipedia.org/wiki/Distributed_hash_table">DHT技术</a>，<code>Distributed Hash Table</code>，即分布式哈希表。</p>
+<p>简单来说就是每个客户端负责一个小范围的路由并存储少量数据，从而连接成一个下载网络，而没有真正的中心。</p>
+<p>当你在客户端输入一个磁力链接后，客户端会从其中提取出一个20字节大小的哈希方法名，<code>infohash</code>，由这个哈希方法名得知自己周围的节点，并发送种子文件的下载请求，如果这些种子文件中包含<code>Tracker</code>，那么就可以像上述种子文件的下载方式那样进行下载。如果不包含<code>Tracker</code>，其中就会有哪些节点有包含Tracker的种子文件的信息，继续向这些节点发送种子文件的下载请求即可。</p>
+<p>这就是好像是当你不会一道题，班里没有老师，你就可以问周围的同学，如果他们有人会做且会讲，那你就可以让他给你讲，如果有人只会做不会讲，那他一定可以告诉你他是从哪里学会的，于是你就找到了那个会讲的人，你也就变成了有一个会做且知道谁会讲的人。</p>
+<h3 id="下载方式"><a href="#下载方式" class="headerlink" title="下载方式"></a>下载方式</h3><p>我知道，你们最关心的还是下载方式。</p>
+<p>由于P2P传输不经过中心服务器，因此在监管上存在着很大的难度，也由此滋生了盗版资源和非法资源的传播。但毕竟还有很多优秀的正版资源值得我们去下载，在这里我推荐两个客户端。</p>
+<h4 id="Bitcomet"><a href="#Bitcomet" class="headerlink" title="Bitcomet"></a>Bitcomet</h4><p><a href="https://www.bitcomet.com/en">bitcomet</a>是一款经典的BT下载器。下载完成后，安装时选择中文。安装好之后，打开<code>工具</code>标签，下来菜单中点击<code>选项</code>。依次点击<code>任务</code>，<code>bt下载</code>，<code>Tracker</code>。</p>
+<p>在这里你可以添加自己找到的Tracker服务器，这样当任务开始的时候，可以向更多的Tracker发送询问，从而获得更多的传输节点，提升下载速度。</p>
+<p>添加好后，勾选自动向BT下载任务添加以下Tracker服务器 和 每天自动更新Tracker列表。</p>
+<h4 id="qbittorent"><a href="#qbittorent" class="headerlink" title="qbittorent"></a>qbittorent</h4><p><a href="https://github.com/qbittorrent/qBittorrent">qbittorent</a>是另一款经典BT下载器，使用起来也是大同小异。大家自己探索以下就好。</p>
+<h4 id="Tracker"><a href="#Tracker" class="headerlink" title="Tracker"></a>Tracker</h4><p>至于Tracker列表，也许你能在<a href="https://trackerslist.com/#/zh?id=bitcomet-%e6%af%94%e7%89%b9%e5%bd%97%e6%98%9f">这里</a>找到。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>经验记录</tag>
+        <tag>下载</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客搭建及相关问题记录（三）</title>
     <url>/bbb012e90cee.html</url>
     <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/3d7401568276.html#more">上文</a>，今天我们讲讲一些基础的信息布置和美化。</p>
