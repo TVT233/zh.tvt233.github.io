@@ -411,10 +411,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-11-03 14:58:18 / 修改时间：15:38:59" itemprop="dateCreated datePublished" datetime="2022-11-03T14:58:18+08:00">2022-11-03</time>
+              <time title="创建时间：2022-11-03 14:58:18" itemprop="dateCreated datePublished" datetime="2022-11-03T14:58:18+08:00">2022-11-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-06 10:32:34" itemprop="dateModified" datetime="2022-11-06T10:32:34+08:00">2022-11-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -450,19 +456,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>书接<a href="http://zh.zihengzhang.top/bbb012e90cee.html">上文</a>，今天继续介绍一些博客装饰内容。</p>
-<h3 id="Pjax-优化"><a href="#Pjax-优化" class="headerlink" title="Pjax 优化"></a>Pjax 优化</h3><p><code>pjax</code>是一款基于<code>jQuery</code>的插件，基于<code>pushState</code>和<code>ajax</code>，实现站点的局部刷新。它将站点转化为<code>SPA</code>应用，可以提升页面切换速度。同时它可以解决<code>aplayer</code>插件切换页面后重新播放的问题。</p>
-<p>我们在根目录终端依次键入以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pjax <span class="built_in">source</span>/lib/pjax</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
-
-<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>标签云插件<code>hexo-tag-cloud</code>实现了较为炫酷的标签环绕效果，可以自定义标签云的字体、颜色、高亮显示。</p>
-<p>我们在终端键入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-cloud --save</span><br></pre></td></tr></table></figure>
-
-<p>进入路径<code>themes/next/layout/_macro/sidebar.swig</code>，然后找到<code>&lt;div class=&quot;site-overview-wrap sidebar-panel&quot;&gt;</code>，在该标签的后面添加：</p>
+          <p>本文介绍了博客的Pjax优化，标签云，代码和代码块高亮的配置方式</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2c0f12af2268.html#more" rel="contents">
+              <a class="btn" href="/2c0f12af2268.html">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -509,10 +506,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-11-02 17:12:44 / 修改时间：18:05:48" itemprop="dateCreated datePublished" datetime="2022-11-02T17:12:44+08:00">2022-11-02</time>
+              <time title="创建时间：2022-11-02 17:12:44" itemprop="dateCreated datePublished" datetime="2022-11-02T17:12:44+08:00">2022-11-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-06 10:34:51" itemprop="dateModified" datetime="2022-11-06T10:34:51+08:00">2022-11-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -548,15 +551,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>最近，室友总是问我关于种子文件和磁力链接的概念问题。好像我很了解这些一样，今天索性写一篇帖子介绍一下我对这两种下载方式的理解。</p>
-<h3 id="中心化下载与非中心化下载"><a href="#中心化下载与非中心化下载" class="headerlink" title="中心化下载与非中心化下载"></a>中心化下载与非中心化下载</h3><h4 id="中心化下载"><a href="#中心化下载" class="headerlink" title="中心化下载"></a>中心化下载</h4><p>中心化下载是我们最常接触到的下载模式，常见的<code>HTTP下载</code>，<code>FTP下载</code>都是中心化下载模式的具体方式。顾名思义，这种下载存在着一个中心，也就是存储资源的服务器。当你作为一个客户端向服务器请求下载时，服务器就会向你传输信息。而当很多人一起请求下载时，服务器也就成为了这个网络的<strong>中心</strong>。</p>
-<p>但这样的下载方式有一个很明显的缺陷，当同时下载的人过多，服务器的上行带宽一定会变得捉襟见肘，因此每个人的下载速度都会变慢。就像全班同学都去问同一个老师问题，老师就很难快速解答某一个同学了。</p>
-<h4 id="非中心化下载"><a href="#非中心化下载" class="headerlink" title="非中心化下载"></a>非中心化下载</h4><p>对于非中心化下载，就是由中心化下载进行<strong>去中心化</strong>的产物，让这个中心变得不再那么关键。而我们今天要说的种子文件和磁力链接都是非中心下载模式的具体方式。</p>
-<p>具体来说，就是我们的下载由原先的服务器向客户端传输数据，变为了客户端向客户端传输(<code>pear to pear</code>，简称<code>p2p</code>)。这样就形成了与中心化下载截然相反的局面，同时下载的人数越多，意味着同时向你传输数据的人数也可能越多，在一定合理的调度下，你的下载速度可能会不降反升。</p>
-<h3 id="种子文件与磁力链接"><a href="#种子文件与磁力链接" class="headerlink" title="种子文件与磁力链接"></a>种子文件与磁力链接</h3><h4 id="种子文件（BT下载）"><a href="#种子文件（BT下载）" class="headerlink" title="种子文件（BT下载）"></a>种子文件（BT下载）</h4>
+          <p>本文介绍了中心化和非中心化下载的区别，种子文件和磁力链接的具体概念。文末给出了具体的下载方式</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2b7de3448214.html#more" rel="contents">
+              <a class="btn" href="/2b7de3448214.html">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -603,10 +601,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-11-01 13:37:43 / 修改时间：14:24:00" itemprop="dateCreated datePublished" datetime="2022-11-01T13:37:43+08:00">2022-11-01</time>
+              <time title="创建时间：2022-11-01 13:37:43" itemprop="dateCreated datePublished" datetime="2022-11-01T13:37:43+08:00">2022-11-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-06 10:31:39" itemprop="dateModified" datetime="2022-11-06T10:31:39+08:00">2022-11-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -642,17 +646,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>书接<a href="http://zh.zihengzhang.top/3d7401568276.html#more">上文</a>，今天我们讲讲一些基础的信息布置和美化。</p>
-<h3 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h3><p>进入<strong>主题配置文件</strong>，找到<code>avatar</code>，修改代码如下</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/images/avatar.jpg</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be dispalyed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p><code>rounded</code>意思是头像将展示在圆中。<code>rotated</code>的意思是点击会旋转。大家将自己需要的设置为<code>true</code>即可。</p>
-<p>将自己的头像文件放在<code>themes/next/source/images</code>路径下，如果你的图片不是<code>jpg</code>格式，记得将上述代码中<code>url</code>后面的<code>.jpg</code>改为对应后缀。</p>
-<h3 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h3><h4 id="设置背景图片"><a href="#设置背景图片" class="headerlink" title="设置背景图片"></a>设置背景图片</h4><p>在<code>根目录/source</code>下新建一个文件夹，名为<code>_data</code>，在其中添加文件<code>styles.styl</code>，内容如下。（如果你对于VS Code等工具使用不熟练，可以先建一个<code>styles.txt</code>，写好内容后将后缀改为<code>.styl</code>）</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">body</span> &#123;</span><br><span class="line">  <span class="attr">background:</span> <span class="string">url(/images/background.jpg);</span> <span class="string">/*自定义的图片*/</span></span><br><span class="line">  <span class="attr">background-size:</span> <span class="string">1920px</span> <span class="string">1080px;</span> </span><br><span class="line">  <span class="string">/*像素值为1920*1080，根据你自己的图片选择，你也可以用cover来覆盖*/</span></span><br><span class="line">  <span class="attr">background-repeat:</span> <span class="literal">no</span><span class="string">-repeat;</span> <span class="string">/*拒绝重复填充*/</span></span><br><span class="line">  <span class="attr">background-attachment:</span> <span class="string">fixed;</span> <span class="string">/*固定图层，不随鼠标滚动而滚动*/</span></span><br><span class="line">  <span class="string">background-position:center;</span>		<span class="string">/*图片显示起始位置*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>本文介绍了博客的个人头像，背景图片，标签页及背景音乐的配置方法</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/bbb012e90cee.html#more" rel="contents">
+              <a class="btn" href="/bbb012e90cee.html">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -707,7 +704,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-01 12:12:24" itemprop="dateModified" datetime="2022-11-01T12:12:24+08:00">2022-11-01</time>
+                <time title="修改时间：2022-11-06 10:30:41" itemprop="dateModified" datetime="2022-11-06T10:30:41+08:00">2022-11-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -744,17 +741,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>书接<a href="http://zh.zihengzhang.top/1b1c750fe7e1.html">上文</a>，我们今天讲讲怎么搭建自己的博客主题，以及如何上传自己的博客。</p>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><code>Next</code>是基于<code>Hexo</code>框架的一款博客主题，优点就是简洁，简便，可扩展性好。非常适合新手上手，后期也有足够多的扩展空间供你丰富自己的博客。</p>
-<h4 id="Next下载"><a href="#Next下载" class="headerlink" title="Next下载"></a>Next下载</h4><p>我们首先将<code>Next</code>主题下载到<code>根目录/themes</code>下。</p>
-<p>我们在根目录下打开<code>git bash here</code>（事实上其他终端也可以，例如<code>VS Code</code>，此后我们统称终端）</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<h4 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h4><p>此时我们可以找到<code>根目录/_config.yml</code>,这个是我们博客站点的配置文件，值得一提的是，在<code>根目录/themes/next/</code>下，也有一个<code>_config.yml</code>，这个是我们<code>Next</code>主题的配置文件。为了区分这二者，我们此后统一称前者为<strong>站点配置文件</strong>，后者为<strong>主题配置文件</strong>。</p>
-<p>打开<strong>站点配置文件</strong>，并对其进行相关信息的修改。</p>
+          <p>本文介绍了hexo框架下next主题的安装方法，文章发布方式以及网页部署方式</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/3d7401568276.html#more" rel="contents">
+              <a class="btn" href="/3d7401568276.html">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -809,7 +799,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-31 21:32:58" itemprop="dateModified" datetime="2022-10-31T21:32:58+08:00">2022-10-31</time>
+                <time title="修改时间：2022-11-06 10:29:09" itemprop="dateModified" datetime="2022-11-06T10:29:09+08:00">2022-11-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -846,16 +836,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近做了自己的博客，说实话我自己对前端的配置相关的问题确实不太懂，所以一切都是在边学边用下完成的。网上的教程有些写的不错，但时间太古早了。有些写的问题比较贴合我自己的情况，又比较零散。</p>
-<p>因此，我准备写一个帖子来记录自己的搭建过程。</p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="静态？动态？"><a href="#静态？动态？" class="headerlink" title="静态？动态？"></a>静态？动态？</h4><p>首先，我们要知道自己想要的博客属于静态还是动态。</p>
-<p>所谓的静态并不是指网站不含有动画等可”动“的部分，而是指网站上的内容相对恒定，无互动性，服务器和数据库的支撑，但同时更新内容往往需要手动操作，因此维护工作量比较大。</p>
-<p>而动态网站则使用服务器和数据库来支持自己更加具有互动性，更自动的功能。但同时，这些功能也带来了网站的运行成本增加（一年几百很正常），以及在访问量大时网站运行速度下降等问题。</p>
-<p>说到这，你可能就明白了，我们的个人博客属于静态网站，因此运行成本是比较低的。</p>
-<h4 id="hexo-github托管"><a href="#hexo-github托管" class="headerlink" title="hexo + github托管"></a>hexo + github托管</h4>
+          <p>本文介绍了hexo框架下github托管静态博客的搭建工作</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/1b1c750fe7e1.html#more" rel="contents">
+              <a class="btn" href="/1b1c750fe7e1.html">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -910,7 +894,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-31 22:57:55" itemprop="dateModified" datetime="2022-10-31T22:57:55+08:00">2022-10-31</time>
+                <time title="修改时间：2022-11-06 10:33:46" itemprop="dateModified" datetime="2022-11-06T10:33:46+08:00">2022-11-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -947,16 +931,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>最近朋友准备搭建一个MC服务器，以供几位好友随时玩，网易的联机总是需要主机在线，不大方便。但等了几天也没搭好，赶上我有空，就尝试了一下。顺手记录。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先需要一台云服务器，国内主流的云平台像阿里云、腾讯云、华为云、U刻得（Ucloud）等都可以。</p>
-<p>这里我因为只是尝试一下，遂选用了<a target="_blank" rel="noopener" href="https://account.aliyun.com/login/login.htm?oauth_callback=https://ecs.console.aliyun.com/server/i-0jla9660a9theaakxa14/detail?regionId=cn-wulanchabu">阿里云</a>，因为它有个<a target="_blank" rel="noopener" href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
-<p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
-<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
-<p><img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png"></p>
-<p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
+          <p>本文介绍了MC服务器的配置、部署以及24小时运行的具体流程</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/d3af824b28d7.html#more" rel="contents">
+              <a class="btn" href="/d3af824b28d7.html">
                 阅读全文 &raquo;
               </a>
             </div>
