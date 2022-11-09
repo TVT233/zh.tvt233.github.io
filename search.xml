@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>你好！欢迎来到我的网站！</title>
+    <url>/414d15ce29a6.html</url>
+    <content><![CDATA[<h4 id="来看看这有什么"><a href="#来看看这有什么" class="headerlink" title="来看看这有什么"></a>来看看这有什么</h4><p>**<a href="https://zh.zihengzhang.top/about/">关于</a>**：在这你可以看到关于我的个人信息，教育和研究经历。如果你需要，里面还有我的个人简历和联系方式。</p>
+<p>**<a href="https://zh.zihengzhang.top/research/">研究</a>**：在这你可以看到我之前做过的一些研究，以及我现在正在做的研究。</p>
+<p>**<a href="https://zh.zihengzhang.top/applications/">应用</a>**：在这你可以找到我做过的一些应用方向的项目，展示视频以及相关理论介绍的论文。</p>
+<h4 id="关于我的博客"><a href="#关于我的博客" class="headerlink" title="关于我的博客"></a>关于我的博客</h4><p>在未来，我会写一些博客来记录自己的学习和生活，你可以依靠<a href="https://zh.zihengzhang.top/tags/">标签</a> 和 <a href="https://zh.zihengzhang.top/categories/">分类</a> 来找到它们。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>GRE Analysing Writing 总结——部分主题思路</title>
     <url>/cb6183d6dc95.html</url>
     <content><![CDATA[<h3 id="Assumption类指令题目"><a href="#Assumption类指令题目" class="headerlink" title="Assumption类指令题目"></a>Assumption类指令题目</h3><h4 id="Driver’s-education"><a href="#Driver’s-education" class="headerlink" title="Driver’s education"></a>Driver’s education</h4><p>The following appeared in a letter to the school board in the town of Centerville. </p>
@@ -213,162 +222,35 @@
       </tags>
   </entry>
   <entry>
-    <title>如何写一篇文章的“related work”部分</title>
-    <url>/f2a7da94c8dc.html</url>
-    <content><![CDATA[<h3 id="如何写一篇文章的“related-work”部分"><a href="#如何写一篇文章的“related-work”部分" class="headerlink" title="如何写一篇文章的“related work”部分"></a>如何写一篇文章的“related work”部分</h3>]]></content>
-  </entry>
-  <entry>
-    <title>你好！欢迎来到我的网站！</title>
-    <url>/414d15ce29a6.html</url>
-    <content><![CDATA[<h4 id="来看看这有什么"><a href="#来看看这有什么" class="headerlink" title="来看看这有什么"></a>来看看这有什么</h4><p>**<a href="https://zh.zihengzhang.top/about/">关于</a>**：在这你可以看到关于我的个人信息，教育和研究经历。如果你需要，里面还有我的个人简历和联系方式。</p>
-<p>**<a href="https://zh.zihengzhang.top/research/">研究</a>**：在这你可以看到我之前做过的一些研究，以及我现在正在做的研究。</p>
-<p>**<a href="https://zh.zihengzhang.top/applications/">应用</a>**：在这你可以找到我做过的一些应用方向的项目，展示视频以及相关理论介绍的论文。</p>
-<h4 id="关于我的博客"><a href="#关于我的博客" class="headerlink" title="关于我的博客"></a>关于我的博客</h4><p>在未来，我会写一些博客来记录自己的学习和生活，你可以依靠<a href="https://zh.zihengzhang.top/tags/">标签</a> 和 <a href="https://zh.zihengzhang.top/categories/">分类</a> 来找到它们。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>从零搭建MC服务器记录</title>
-    <url>/d3af824b28d7.html</url>
-    <content><![CDATA[<p>最近朋友准备搭建一个MC服务器，以供几位好友随时玩，网易的联机总是需要主机在线，不大方便。但等了几天也没搭好，赶上我有空，就尝试了一下。顺手记录。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先需要一台云服务器，国内主流的云平台像阿里云、腾讯云、华为云、U刻得（Ucloud）等都可以。</p>
-<p>这里我因为只是尝试一下，遂选用了<a href="https://account.aliyun.com/login/login.htm?oauth_callback=https://ecs.console.aliyun.com/server/i-0jla9660a9theaakxa14/detail?regionId=cn-wulanchabu">阿里云</a>，因为它有个<a href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
-<p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
-<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
-<p><img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png"></p>
-<p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
-<img src="/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png" class="">
+    <title>博客搭建及相关问题记录（四）</title>
+    <url>/2c0f12af2268.html</url>
+    <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/bbb012e90cee.html">上文</a>，今天继续介绍一些博客装饰内容。</p>
+<h3 id="Pjax-优化"><a href="#Pjax-优化" class="headerlink" title="Pjax 优化"></a>Pjax 优化</h3><p><code>pjax</code>是一款基于<code>jQuery</code>的插件，基于<code>pushState</code>和<code>ajax</code>，实现站点的局部刷新。它将站点转化为<code>SPA</code>应用，可以提升页面切换速度。同时它可以解决<code>aplayer</code>插件切换页面后重新播放的问题。</p>
+<p>我们在根目录终端依次键入以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pjax <span class="built_in">source</span>/lib/pjax</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
 
-<h4 id="打开服务器控制台"><a href="#打开服务器控制台" class="headerlink" title="打开服务器控制台"></a>打开服务器控制台</h4><p>此时，我们点击左侧标签栏的“<strong>实例</strong>”，并选择我们的云服务器，进入页面后点击远程连接。选择“<strong>Workbench远程登陆</strong>”，即可在新的标签页中找到我们服务器的控制台。如果你喜欢用VNC或者其他任何连接方式也没问题，这里我以Workbench为例。</p>
-<img src="/d3af824b28d7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.jpg" class="">
+<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>标签云插件<code>hexo-tag-cloud</code>实现了较为炫酷的标签环绕效果，可以自定义标签云的字体、颜色、高亮显示。</p>
+<p>我们在终端键入命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-cloud --save</span><br></pre></td></tr></table></figure>
 
-<img src="/d3af824b28d7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0.jpg" class="">
+<p>进入路径<code>themes/next/layout/_macro/sidebar.swig</code>，然后找到<code>&lt;div class=&quot;site-overview-wrap sidebar-panel&quot;&gt;</code>，在该标签的后面添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if site.tags.length &gt; 1 %&#125;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcloud.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcanvas.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;div class=&quot;widget-wrap&quot;&gt;</span><br><span class="line">  &lt;h5 class=&quot;widget-title&quot;&gt;标签云&lt;/h5&gt;</span><br><span class="line">  &lt;div id=&quot;myCanvasContainer&quot; class=&quot;widget tagcloud&quot;&gt;</span><br><span class="line">    &lt;canvas width=&quot;250&quot; height=&quot;250&quot; id=&quot;resCanvas&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line">      &#123;&#123; list_tags() &#125;&#125;</span><br><span class="line">    &lt;/canvas&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
-<p>至此，我们的服务器配置问题结束了。</p>
-<h3 id="下载Java和MC服务器端"><a href="#下载Java和MC服务器端" class="headerlink" title="下载Java和MC服务器端"></a>下载Java和MC服务器端</h3><h4 id="建立目录"><a href="#建立目录" class="headerlink" title="建立目录"></a>建立目录</h4><p>首先，我们给MC建立一个目录</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#建立mc1.13.2</span></span><br><span class="line"><span class="built_in">mkdir</span> mc1.13.2</span><br><span class="line"><span class="comment">#进入mc1.13.2</span></span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+<p>具体位置如图所示：</p>
+<p><img src="/2c0f12af2268/%E4%BD%8D%E7%BD%AE.png"></p>
+<p>之后，进入项目根目录<code>blog</code>，打开站点配置文件<code>_config.yml</code>，找个空地添加以下代码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">标签云</span></span><br><span class="line">tag_cloud:</span><br><span class="line">  textFont: Trebuchet MS, Helvetica # 字体</span><br><span class="line">  textColor: &quot;#333&quot; # 字体颜色</span><br><span class="line">  textHeight: 20 # 字体大小</span><br><span class="line">  outlineColor: &quot;#E2E1D1&quot;</span><br><span class="line">  maxSpeed: 0.2 # 旋转速度</span><br><span class="line">  pauseOnSelected: true # 当选中对应标签时，是否停止转动</span><br></pre></td></tr></table></figure>
 
-<h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><p>1.16及以下的版本使用Java8即可，而1.17及以上的版本则需要更新的Java。大家按照自己想玩的版本对应即可，我这里准备玩1.13.2所以使用Java8。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装Java</span></span><br><span class="line">sudo yum install java-1.8.0-openjdk</span><br><span class="line"><span class="comment">#安装过程中会出现询问，记得输入y以同意。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完毕后可用以下代码验证成功安装</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>custom_file_path</code>字段，将<code>style</code>的注释取消：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line">  style: <span class="built_in">source</span>/_data/styles.styl</span><br></pre></td></tr></table></figure>
 
-<p>若出现以下版本，则代表安装完成。</p>
-<img src="/d3af824b28d7/Java%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.jpg" class="">
+<p>在<code>blog/source</code>下新建一个<code>_data</code>文件夹，文件夹中新建一个<code>styles.styl</code>文件（不用<code>VScode</code>的同学，可以新建一个<code>styles.txt</code>，再更改它的后缀）。在上面编辑以下代码：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">code</span> &#123;</span><br><span class="line">  <span class="attr">color:</span> <span class="comment">#ff7600;</span></span><br><span class="line">  <span class="attr">background:</span> <span class="comment">#fbf7f8;</span></span><br><span class="line">  <span class="attr">margin:</span> <span class="string">2px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">margin:</span> <span class="string">5px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line">  <span class="attr">padding:</span> <span class="string">5px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">code,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#d6d6d6;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="下载MC服务端"><a href="#下载MC服务端" class="headerlink" title="下载MC服务端"></a>下载MC服务端</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载MC服务端</span></span><br><span class="line">sudo wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar</span><br></pre></td></tr></table></figure>
+<h3 id="代码块高亮"><a href="#代码块高亮" class="headerlink" title="代码块高亮"></a>代码块高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>codeblock</code>字段：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">night</span> <span class="string">bright</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">mac</span></span><br></pre></td></tr></table></figure>
 
-<p>这里我下载的是1.13.2的服务端，如果你想要玩其他版本，可以从<a href="https://mcversions.net/">这里</a>找到。</p>
-<h4 id="下载screen"><a href="#下载screen" class="headerlink" title="下载screen"></a>下载screen</h4><p>screen是一个可以创建虚拟终端的插件，我们可以使用它做到24小时运行服务器。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装screen</span></span><br><span class="line">sudo yum install -y screen</span><br><span class="line"><span class="comment">#创建并打开一个虚拟终端，名叫“mc”</span></span><br><span class="line">screen -R mc</span><br></pre></td></tr></table></figure>
-
-<p>此时你应该进入了一个新的界面，这说明你成功进入了虚拟终端。</p>
-<p>同样我们使用以下命令组合进入mc1.13.2目录下</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="运行MC服务器端"><a href="#运行MC服务器端" class="headerlink" title="运行MC服务器端"></a>运行MC服务器端</h3><h4 id="运行服务器端"><a href="#运行服务器端" class="headerlink" title="运行服务器端"></a>运行服务器端</h4><p>至此，我们就可以准备运行我们的服务器啦。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Xmx是最大使用内存 Xms是最小使用内存 server.jar是文件名.后缀</span></span><br><span class="line">java -Xmx1000M -Xms256M -jar server.jar</span><br></pre></td></tr></table></figure>
-
-<p>第一次没运行成功？没关系，往下看~</p>
-<h4 id="修改相关文件"><a href="#修改相关文件" class="headerlink" title="修改相关文件"></a>修改相关文件</h4><p>第一次运行不会成功，会报需要先同意EULA。</p>
-<p>这时我们进入Eula文件并修改</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入eula.txt文件</span></span><br><span class="line">vim eula.txt</span><br></pre></td></tr></table></figure>
-
-<p>进入后，点击<code>i</code>键进入编辑模式，将<code>false</code>更改为<code>true</code>。</p>
-<p>修改完毕后点击<code>ESC</code>退出编辑模式，并输入<code>:wq</code>退出文件。</p>
-<p>如果你或者你的朋友们使用的不是正版mc登录，那么你还需要将正版验证关掉。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入server.properties</span></span><br><span class="line">vim server.properties</span><br></pre></td></tr></table></figure>
-
-<p>找到其中的<code>online-mode</code>一行，并将<code>true</code>改为<code>false</code>即可。</p>
-<h3 id="用HMCL登录MC服务器"><a href="#用HMCL登录MC服务器" class="headerlink" title="用HMCL登录MC服务器"></a>用HMCL登录MC服务器</h3><p>打开<a href="https://hmcl.huangyuhui.net/">HMCL</a>启动器，下载对应的版本并打开多人模式。</p>
-<img src="/d3af824b28d7/MC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0.png" class="">
-
-<p>服务器地址为<strong>你服务器的<code>公网ip:25565</code><strong>。特别要注意的一点是，冒号是英文的冒号，MC窗口内中英文冒号看起来一样，自己一定要注意，否则导致</strong>主机名解析失败</strong>。</p>
-<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><img src="/d3af824b28d7/%E6%88%90%E5%8A%9F.png" class="">
-
-<h4 id="退出screen，完成24小时运行"><a href="#退出screen，完成24小时运行" class="headerlink" title="退出screen，完成24小时运行"></a>退出screen，完成24小时运行</h4><p>最后别忘了使用<code>Ctrl+a</code> 和 <code>d</code>退出screen，这样就可以24小时开启服务器不管啦。</p>
-]]></content>
-      <categories>
-        <category>游戏</category>
-      </categories>
-      <tags>
-        <tag>我的世界</tag>
-        <tag>MC</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客搭建及相关问题记录（一）</title>
-    <url>/1b1c750fe7e1.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近做了自己的博客，说实话我自己对前端的配置相关的问题确实不太懂，所以一切都是在边学边用下完成的。网上的教程有些写的不错，但时间太古早了。有些写的问题比较贴合我自己的情况，又比较零散。</p>
-<p>因此，我准备写一个帖子来记录自己的搭建过程。</p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="静态？动态？"><a href="#静态？动态？" class="headerlink" title="静态？动态？"></a>静态？动态？</h4><p>首先，我们要知道自己想要的博客属于静态还是动态。</p>
-<p>所谓的静态并不是指网站不含有动画等可”动“的部分，而是指网站上的内容相对恒定，无互动性，服务器和数据库的支撑，但同时更新内容往往需要手动操作，因此维护工作量比较大。</p>
-<p>而动态网站则使用服务器和数据库来支持自己更加具有互动性，更自动的功能。但同时，这些功能也带来了网站的运行成本增加（一年几百很正常），以及在访问量大时网站运行速度下降等问题。</p>
-<p>说到这，你可能就明白了，我们的个人博客属于静态网站，因此运行成本是比较低的。</p>
-<h4 id="hexo-github托管"><a href="#hexo-github托管" class="headerlink" title="hexo + github托管"></a>hexo + github托管</h4><p>对于静态博客，我们在这里选择<a href="https://hexo.io/zh-cn/"><code>hexo</code></a>博客框架+<a href="https://github.com/"><code>github</code></a>托管的方式，这对于新手来说是比较友好的。等我们有了更多经验，则可以尝试更多的框架和更丰富的方式。</p>
-<p>有关于<code>hexo</code>的具体介绍和<code>github</code>的账号注册，大家可以在上面的链接中自行查看。我就不一一赘述了。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><p><a href="https://git-scm.com/"><code>git</code></a>是一个分布式版本控制系统，我们用<code>git</code>来向<code>github</code>这个服务器提交文件。</p>
-<p>在官网中选择<code>download</code>，选择你的系统，例如<code>windows</code>，再选择<code>64</code>位系统版本，下载安装即可。</p>
-<img src="/1b1c750fe7e1/git%E4%B8%8B%E8%BD%BD.png" class=""> 
-
-<p>安装后我们在文件夹中右键，会出现如下选项。</p>
-<img src="/1b1c750fe7e1/%E9%AA%8C%E8%AF%81git.jpg" class=""> 
-
-<p>选择后，进入命令行，输入<code>git --version</code>，若出现版本号，即为成功。</p>
-<img src="/1b1c750fe7e1/git%E7%89%88%E6%9C%AC.png" class="">
-
-
-
-<h4 id="连接git与github"><a href="#连接git与github" class="headerlink" title="连接git与github"></a>连接git与github</h4><p>之前我们说过，<code>git</code>可以理解为向<code>github</code>传输文件的工具。那么这种传输如何实现呢？</p>
-<p>我们用<code>SSH</code>来实现，即<code>Secure Shell</code>协议。</p>
-<h5 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h5><p>在任意文件夹中右键打开<code>git bash here</code>输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#用rsa加密生成ssh钥匙</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-
-<p>一直空格默认后，我们就可以发现在本地生成了两把钥匙：<code>id_rsa</code> 和 <code>id_rsa.pub</code>。由于我是<code>windows</code>系统，路径是<code>C:/Users/admin/.ssh</code>。</p>
-<h5 id="获取公钥并连接"><a href="#获取公钥并连接" class="headerlink" title="获取公钥并连接"></a>获取公钥并连接</h5><p>在该文件夹中右键打开<code>git bash here</code>依次输入</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure>
-
-<p>就可以看到对应的公钥了，将其复制下来备用。</p>
-<img src="/1b1c750fe7e1/ssh%E5%85%AC%E9%92%A5.png" class="">
-
-<p>打开<code>github</code>并登录，点击右上角个人头像，选择下拉菜单中的<code>settings</code>，点击左侧标签栏的<code>SSH and GPG keys</code>，点击<code>New SSH key</code>。输入你的公钥内容，<code>Title</code>任意填写，最后选择<code>Add SSH key</code>以保存即可。</p>
-<p>此时我们回到之前的<code>git bash</code>窗口，输入以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<p>若出现<code>Are you sure you want to continue connecting (yes/no/[fingerprint])?</code></p>
-<p>我们输入<code>yes</code>，当弹出以下回复时，说明连接成功。</p>
-<img src="/1b1c750fe7e1/git%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F.png" class="">
-
-<p>至此，<code>git</code>与<code>github</code>成功连接。</p>
-<h3 id="github建库"><a href="#github建库" class="headerlink" title="github建库"></a>github建库</h3><p>接下来，我们在<code>github</code>建立一个仓库来保存自己主页的资源。</p>
-<p>登录<code>github</code>，点击右上角头像，下拉菜单中选择<code>repositories</code>，进入页面后点击<code>New</code>。</p>
-<p>在<code>repository name</code>一栏输入<code>自己的github账户名.github.io</code>。例如我的账户名叫<code>TVT233</code>，那么我在这里就要输入<code>TVT233.github.io</code>。</p>
-<img src="/1b1c750fe7e1/github%E5%BB%BA%E5%BA%93.png" class="">
-
-<p>并在下方勾选<code>Public</code>。</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p><code>Hexo</code>博客框架的搭建需要用到<code>npm</code>，一个<code>node</code>包管理工具，因此我们先来安装<code>node</code>。</p>
-<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h4><p>进入<a href="http://nodejs.cn/download/">node</a>官网，选择自己的操作系统并点击，即可下载对应的版本。</p>
-<p>下载完成后，我们建立一个文件夹作为安装目录。打开安装包后，一路<code>next</code>即可。记得更改安装路径就行了。</p>
-<p>安装好之后，我们来验证一下。<code>win+R</code>组合键，输入<code>cmd</code>打开命令行工具，输入以下命令</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看node安装版本</span></span><br><span class="line">node -v</span><br><span class="line"><span class="comment">#查看node安装路径</span></span><br><span class="line"><span class="built_in">where</span> node</span><br></pre></td></tr></table></figure>
-
-<p>若有对应的输出结果，即为安装成功。</p>
-<h4 id="搭建本地博客"><a href="#搭建本地博客" class="headerlink" title="搭建本地博客"></a>搭建本地博客</h4><p>安装好<code>node</code>后，我们在本地搭建自己的博客文件。首先新建一个文件夹，作为本地博客文件的存储点。<strong>大家一定要记得这个路径</strong>。</p>
-<h5 id="本地资源存储"><a href="#本地资源存储" class="headerlink" title="本地资源存储"></a>本地资源存储</h5><p>进入这个文件夹，右键<code>git bash here</code>,依次输入以下命令</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装hexo</span></span><br><span class="line">npm i -g hexo-cli</span><br><span class="line"><span class="comment">#初始化hexo</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<p>此时继续输入以下命令（二者等价，前者是后者的缩写）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">#</span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>在博客文件夹中会生成一个<code>public</code>文件夹，里面就是我们博客托管的内容</p>
-<h5 id="本地网页浏览"><a href="#本地网页浏览" class="headerlink" title="本地网页浏览"></a>本地网页浏览</h5><p>此时我们输入以下命令（二者等价，前者是后者的缩写）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br><span class="line">#</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>会反馈一个本地连接，左键点击它即可访问本地网页浏览我们的博客了。</p>
-<p>使用<code>Ctrl+c</code>可以关闭它。</p>
-<img src="/1b1c750fe7e1/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" class="">
-
-<p>到此，我们的博客就搭建完成啦。</p>
+<p><code>codeblock</code>字段会更改代码块的主题样式，感兴趣的同学不妨都尝试一下，找到自己喜欢的风格。</p>
 ]]></content>
       <categories>
         <category>经验记录</category>
@@ -376,6 +258,39 @@
       <tags>
         <tag>博客</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>种子文件与磁力链接及其下载方式</title>
+    <url>/2b7de3448214.html</url>
+    <content><![CDATA[<p>最近，室友总是问我关于种子文件和磁力链接的概念问题。好像我很了解这些一样，今天索性写一篇帖子介绍一下我对这两种下载方式的理解。</p>
+<h3 id="中心化下载与非中心化下载"><a href="#中心化下载与非中心化下载" class="headerlink" title="中心化下载与非中心化下载"></a>中心化下载与非中心化下载</h3><h4 id="中心化下载"><a href="#中心化下载" class="headerlink" title="中心化下载"></a>中心化下载</h4><p>中心化下载是我们最常接触到的下载模式，常见的<code>HTTP下载</code>，<code>FTP下载</code>都是中心化下载模式的具体方式。顾名思义，这种下载存在着一个中心，也就是存储资源的服务器。当你作为一个客户端向服务器请求下载时，服务器就会向你传输信息。而当很多人一起请求下载时，服务器也就成为了这个网络的<strong>中心</strong>。</p>
+<p>但这样的下载方式有一个很明显的缺陷，当同时下载的人过多，服务器的上行带宽一定会变得捉襟见肘，因此每个人的下载速度都会变慢。就像全班同学都去问同一个老师问题，老师就很难快速解答某一个同学了。</p>
+<h4 id="非中心化下载"><a href="#非中心化下载" class="headerlink" title="非中心化下载"></a>非中心化下载</h4><p>对于非中心化下载，就是由中心化下载进行<strong>去中心化</strong>的产物，让这个中心变得不再那么关键。而我们今天要说的种子文件和磁力链接都是非中心下载模式的具体方式。</p>
+<p>具体来说，就是我们的下载由原先的服务器向客户端传输数据，变为了客户端向客户端传输(<code>pear to pear</code>，简称<code>p2p</code>)。这样就形成了与中心化下载截然相反的局面，同时下载的人数越多，意味着同时向你传输数据的人数也可能越多，在一定合理的调度下，你的下载速度可能会不降反升。</p>
+<h3 id="种子文件与磁力链接"><a href="#种子文件与磁力链接" class="headerlink" title="种子文件与磁力链接"></a>种子文件与磁力链接</h3><h4 id="种子文件（BT下载）"><a href="#种子文件（BT下载）" class="headerlink" title="种子文件（BT下载）"></a>种子文件（BT下载）</h4><p>所谓的种子，就是包含着一颗植物的所有信息的原型，有它，你就有了整颗植物的指向性信息。同样，种子文件中也包含了我们整个文件的指向性信息（例如：文件的块大小，块索引，<code>Hash</code>验证码等），但同时它还包含了<code>Tracker</code>服务器的信息。</p>
+<p>当你尝试用种子文件下载时，首先你的客户端会解析<code>Tracker</code>信息，找到服务器地址并合理设置，之后由这个<code>Tracker</code>服务器为你指向正在同时下载这个文件的其他用户，由这些用户彼此之间进行上传和下载。</p>
+<p>如果继续用学生与老师的例子来比喻的话，那就是很多学生去问老师，老师并不直接回答问题，而是告诉每个人他们有疑惑的问题哪个同学明白，让他们互相解决，这样对老师的压力就小很多了。尽管这样听起来挺不负责任的，但由于种子文件中有Hash校验，在一定程度上不会出现<strong>不懂的同学误人子弟</strong>的现象。</p>
+<h4 id="磁力链接"><a href="#磁力链接" class="headerlink" title="磁力链接"></a>磁力链接</h4><p>尽管<code>BT下载</code>是去中心化的产物，但你一定看出来了，<code>Tracker</code>服务器仍然处于整个网络的中心地位，如果<code>Tracker</code>服务器被关闭，就可以阻断所有下载。</p>
+<p>有没有一种方式可以实现<code>P2P</code>下载模式，又没有真正的中心呢？</p>
+<p>答案是，有。那就是<a href="https://en.wikipedia.org/wiki/Distributed_hash_table">DHT技术</a>，<code>Distributed Hash Table</code>，即分布式哈希表。</p>
+<p>简单来说就是每个客户端负责一个小范围的路由并存储少量数据，从而连接成一个下载网络，而没有真正的中心。</p>
+<p>当你在客户端输入一个磁力链接后，客户端会从其中提取出一个20字节大小的哈希方法名，<code>infohash</code>，由这个哈希方法名得知自己周围的节点，并发送种子文件的下载请求，如果这些种子文件中包含<code>Tracker</code>，那么就可以像上述种子文件的下载方式那样进行下载。如果不包含<code>Tracker</code>，其中就会有哪些节点有包含Tracker的种子文件的信息，继续向这些节点发送种子文件的下载请求即可。</p>
+<p>这就是好像是当你不会一道题，班里没有老师，你就可以问周围的同学，如果他们有人会做且会讲，那你就可以让他给你讲，如果有人只会做不会讲，那他一定可以告诉你他是从哪里学会的，于是你就找到了那个会讲的人，你也就变成了有一个会做且知道谁会讲的人。</p>
+<h3 id="下载方式"><a href="#下载方式" class="headerlink" title="下载方式"></a>下载方式</h3><p>我知道，你们最关心的还是下载方式。</p>
+<p>由于P2P传输不经过中心服务器，因此在监管上存在着很大的难度，也由此滋生了盗版资源和非法资源的传播。但毕竟还有很多优秀的正版资源值得我们去下载，在这里我推荐两个客户端。</p>
+<h4 id="Bitcomet"><a href="#Bitcomet" class="headerlink" title="Bitcomet"></a>Bitcomet</h4><p><a href="https://www.bitcomet.com/en">bitcomet</a>是一款经典的BT下载器。下载完成后，安装时选择中文。安装好之后，打开<code>工具</code>标签，下来菜单中点击<code>选项</code>。依次点击<code>任务</code>，<code>bt下载</code>，<code>Tracker</code>。</p>
+<p>在这里你可以添加自己找到的Tracker服务器，这样当任务开始的时候，可以向更多的Tracker发送询问，从而获得更多的传输节点，提升下载速度。</p>
+<p>添加好后，勾选自动向BT下载任务添加以下Tracker服务器 和 每天自动更新Tracker列表。</p>
+<h4 id="qbittorent"><a href="#qbittorent" class="headerlink" title="qbittorent"></a>qbittorent</h4><p><a href="https://github.com/qbittorrent/qBittorrent">qbittorent</a>是另一款经典BT下载器，使用起来也是大同小异。大家自己探索以下就好。</p>
+<h4 id="Tracker"><a href="#Tracker" class="headerlink" title="Tracker"></a>Tracker</h4><p>至于Tracker列表，也许你能在<a href="https://trackerslist.com/#/zh?id=bitcomet-%e6%af%94%e7%89%b9%e5%bd%97%e6%98%9f">这里</a>找到。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>经验记录</tag>
+        <tag>下载</tag>
       </tags>
   </entry>
   <entry>
@@ -496,35 +411,78 @@
       </tags>
   </entry>
   <entry>
-    <title>博客搭建及相关问题记录（四）</title>
-    <url>/2c0f12af2268.html</url>
-    <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/bbb012e90cee.html">上文</a>，今天继续介绍一些博客装饰内容。</p>
-<h3 id="Pjax-优化"><a href="#Pjax-优化" class="headerlink" title="Pjax 优化"></a>Pjax 优化</h3><p><code>pjax</code>是一款基于<code>jQuery</code>的插件，基于<code>pushState</code>和<code>ajax</code>，实现站点的局部刷新。它将站点转化为<code>SPA</code>应用，可以提升页面切换速度。同时它可以解决<code>aplayer</code>插件切换页面后重新播放的问题。</p>
-<p>我们在根目录终端依次键入以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pjax <span class="built_in">source</span>/lib/pjax</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
+    <title>博客搭建及相关问题记录（一）</title>
+    <url>/1b1c750fe7e1.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近做了自己的博客，说实话我自己对前端的配置相关的问题确实不太懂，所以一切都是在边学边用下完成的。网上的教程有些写的不错，但时间太古早了。有些写的问题比较贴合我自己的情况，又比较零散。</p>
+<p>因此，我准备写一个帖子来记录自己的搭建过程。</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="静态？动态？"><a href="#静态？动态？" class="headerlink" title="静态？动态？"></a>静态？动态？</h4><p>首先，我们要知道自己想要的博客属于静态还是动态。</p>
+<p>所谓的静态并不是指网站不含有动画等可”动“的部分，而是指网站上的内容相对恒定，无互动性，服务器和数据库的支撑，但同时更新内容往往需要手动操作，因此维护工作量比较大。</p>
+<p>而动态网站则使用服务器和数据库来支持自己更加具有互动性，更自动的功能。但同时，这些功能也带来了网站的运行成本增加（一年几百很正常），以及在访问量大时网站运行速度下降等问题。</p>
+<p>说到这，你可能就明白了，我们的个人博客属于静态网站，因此运行成本是比较低的。</p>
+<h4 id="hexo-github托管"><a href="#hexo-github托管" class="headerlink" title="hexo + github托管"></a>hexo + github托管</h4><p>对于静态博客，我们在这里选择<a href="https://hexo.io/zh-cn/"><code>hexo</code></a>博客框架+<a href="https://github.com/"><code>github</code></a>托管的方式，这对于新手来说是比较友好的。等我们有了更多经验，则可以尝试更多的框架和更丰富的方式。</p>
+<p>有关于<code>hexo</code>的具体介绍和<code>github</code>的账号注册，大家可以在上面的链接中自行查看。我就不一一赘述了。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><p><a href="https://git-scm.com/"><code>git</code></a>是一个分布式版本控制系统，我们用<code>git</code>来向<code>github</code>这个服务器提交文件。</p>
+<p>在官网中选择<code>download</code>，选择你的系统，例如<code>windows</code>，再选择<code>64</code>位系统版本，下载安装即可。</p>
+<img src="/1b1c750fe7e1/git%E4%B8%8B%E8%BD%BD.png" class=""> 
 
-<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>标签云插件<code>hexo-tag-cloud</code>实现了较为炫酷的标签环绕效果，可以自定义标签云的字体、颜色、高亮显示。</p>
-<p>我们在终端键入命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-cloud --save</span><br></pre></td></tr></table></figure>
+<p>安装后我们在文件夹中右键，会出现如下选项。</p>
+<img src="/1b1c750fe7e1/%E9%AA%8C%E8%AF%81git.jpg" class=""> 
 
-<p>进入路径<code>themes/next/layout/_macro/sidebar.swig</code>，然后找到<code>&lt;div class=&quot;site-overview-wrap sidebar-panel&quot;&gt;</code>，在该标签的后面添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if site.tags.length &gt; 1 %&#125;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcloud.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcanvas.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;div class=&quot;widget-wrap&quot;&gt;</span><br><span class="line">  &lt;h5 class=&quot;widget-title&quot;&gt;标签云&lt;/h5&gt;</span><br><span class="line">  &lt;div id=&quot;myCanvasContainer&quot; class=&quot;widget tagcloud&quot;&gt;</span><br><span class="line">    &lt;canvas width=&quot;250&quot; height=&quot;250&quot; id=&quot;resCanvas&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line">      &#123;&#123; list_tags() &#125;&#125;</span><br><span class="line">    &lt;/canvas&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>选择后，进入命令行，输入<code>git --version</code>，若出现版本号，即为成功。</p>
+<img src="/1b1c750fe7e1/git%E7%89%88%E6%9C%AC.png" class="">
 
-<p>具体位置如图所示：</p>
-<p><img src="/2c0f12af2268/%E4%BD%8D%E7%BD%AE.png"></p>
-<p>之后，进入项目根目录<code>blog</code>，打开站点配置文件<code>_config.yml</code>，找个空地添加以下代码：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">标签云</span></span><br><span class="line">tag_cloud:</span><br><span class="line">  textFont: Trebuchet MS, Helvetica # 字体</span><br><span class="line">  textColor: &quot;#333&quot; # 字体颜色</span><br><span class="line">  textHeight: 20 # 字体大小</span><br><span class="line">  outlineColor: &quot;#E2E1D1&quot;</span><br><span class="line">  maxSpeed: 0.2 # 旋转速度</span><br><span class="line">  pauseOnSelected: true # 当选中对应标签时，是否停止转动</span><br></pre></td></tr></table></figure>
 
-<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>custom_file_path</code>字段，将<code>style</code>的注释取消：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line">  style: <span class="built_in">source</span>/_data/styles.styl</span><br></pre></td></tr></table></figure>
 
-<p>在<code>blog/source</code>下新建一个<code>_data</code>文件夹，文件夹中新建一个<code>styles.styl</code>文件（不用<code>VScode</code>的同学，可以新建一个<code>styles.txt</code>，再更改它的后缀）。在上面编辑以下代码：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">code</span> &#123;</span><br><span class="line">  <span class="attr">color:</span> <span class="comment">#ff7600;</span></span><br><span class="line">  <span class="attr">background:</span> <span class="comment">#fbf7f8;</span></span><br><span class="line">  <span class="attr">margin:</span> <span class="string">2px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">margin:</span> <span class="string">5px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line">  <span class="attr">padding:</span> <span class="string">5px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">code,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#d6d6d6;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="连接git与github"><a href="#连接git与github" class="headerlink" title="连接git与github"></a>连接git与github</h4><p>之前我们说过，<code>git</code>可以理解为向<code>github</code>传输文件的工具。那么这种传输如何实现呢？</p>
+<p>我们用<code>SSH</code>来实现，即<code>Secure Shell</code>协议。</p>
+<h5 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h5><p>在任意文件夹中右键打开<code>git bash here</code>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#用rsa加密生成ssh钥匙</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 
-<h3 id="代码块高亮"><a href="#代码块高亮" class="headerlink" title="代码块高亮"></a>代码块高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>codeblock</code>字段：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">night</span> <span class="string">bright</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">mac</span></span><br></pre></td></tr></table></figure>
+<p>一直空格默认后，我们就可以发现在本地生成了两把钥匙：<code>id_rsa</code> 和 <code>id_rsa.pub</code>。由于我是<code>windows</code>系统，路径是<code>C:/Users/admin/.ssh</code>。</p>
+<h5 id="获取公钥并连接"><a href="#获取公钥并连接" class="headerlink" title="获取公钥并连接"></a>获取公钥并连接</h5><p>在该文件夹中右键打开<code>git bash here</code>依次输入</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure>
 
-<p><code>codeblock</code>字段会更改代码块的主题样式，感兴趣的同学不妨都尝试一下，找到自己喜欢的风格。</p>
+<p>就可以看到对应的公钥了，将其复制下来备用。</p>
+<img src="/1b1c750fe7e1/ssh%E5%85%AC%E9%92%A5.png" class="">
+
+<p>打开<code>github</code>并登录，点击右上角个人头像，选择下拉菜单中的<code>settings</code>，点击左侧标签栏的<code>SSH and GPG keys</code>，点击<code>New SSH key</code>。输入你的公钥内容，<code>Title</code>任意填写，最后选择<code>Add SSH key</code>以保存即可。</p>
+<p>此时我们回到之前的<code>git bash</code>窗口，输入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>若出现<code>Are you sure you want to continue connecting (yes/no/[fingerprint])?</code></p>
+<p>我们输入<code>yes</code>，当弹出以下回复时，说明连接成功。</p>
+<img src="/1b1c750fe7e1/git%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F.png" class="">
+
+<p>至此，<code>git</code>与<code>github</code>成功连接。</p>
+<h3 id="github建库"><a href="#github建库" class="headerlink" title="github建库"></a>github建库</h3><p>接下来，我们在<code>github</code>建立一个仓库来保存自己主页的资源。</p>
+<p>登录<code>github</code>，点击右上角头像，下拉菜单中选择<code>repositories</code>，进入页面后点击<code>New</code>。</p>
+<p>在<code>repository name</code>一栏输入<code>自己的github账户名.github.io</code>。例如我的账户名叫<code>TVT233</code>，那么我在这里就要输入<code>TVT233.github.io</code>。</p>
+<img src="/1b1c750fe7e1/github%E5%BB%BA%E5%BA%93.png" class="">
+
+<p>并在下方勾选<code>Public</code>。</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p><code>Hexo</code>博客框架的搭建需要用到<code>npm</code>，一个<code>node</code>包管理工具，因此我们先来安装<code>node</code>。</p>
+<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h4><p>进入<a href="http://nodejs.cn/download/">node</a>官网，选择自己的操作系统并点击，即可下载对应的版本。</p>
+<p>下载完成后，我们建立一个文件夹作为安装目录。打开安装包后，一路<code>next</code>即可。记得更改安装路径就行了。</p>
+<p>安装好之后，我们来验证一下。<code>win+R</code>组合键，输入<code>cmd</code>打开命令行工具，输入以下命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看node安装版本</span></span><br><span class="line">node -v</span><br><span class="line"><span class="comment">#查看node安装路径</span></span><br><span class="line"><span class="built_in">where</span> node</span><br></pre></td></tr></table></figure>
+
+<p>若有对应的输出结果，即为安装成功。</p>
+<h4 id="搭建本地博客"><a href="#搭建本地博客" class="headerlink" title="搭建本地博客"></a>搭建本地博客</h4><p>安装好<code>node</code>后，我们在本地搭建自己的博客文件。首先新建一个文件夹，作为本地博客文件的存储点。<strong>大家一定要记得这个路径</strong>。</p>
+<h5 id="本地资源存储"><a href="#本地资源存储" class="headerlink" title="本地资源存储"></a>本地资源存储</h5><p>进入这个文件夹，右键<code>git bash here</code>,依次输入以下命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装hexo</span></span><br><span class="line">npm i -g hexo-cli</span><br><span class="line"><span class="comment">#初始化hexo</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>此时继续输入以下命令（二者等价，前者是后者的缩写）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">#</span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>在博客文件夹中会生成一个<code>public</code>文件夹，里面就是我们博客托管的内容</p>
+<h5 id="本地网页浏览"><a href="#本地网页浏览" class="headerlink" title="本地网页浏览"></a>本地网页浏览</h5><p>此时我们输入以下命令（二者等价，前者是后者的缩写）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br><span class="line">#</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>会反馈一个本地连接，左键点击它即可访问本地网页浏览我们的博客了。</p>
+<p>使用<code>Ctrl+c</code>可以关闭它。</p>
+<img src="/1b1c750fe7e1/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" class="">
+
+<p>到此，我们的博客就搭建完成啦。</p>
 ]]></content>
       <categories>
         <category>经验记录</category>
@@ -532,6 +490,76 @@
       <tags>
         <tag>博客</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零搭建MC服务器记录</title>
+    <url>/d3af824b28d7.html</url>
+    <content><![CDATA[<p>最近朋友准备搭建一个MC服务器，以供几位好友随时玩，网易的联机总是需要主机在线，不大方便。但等了几天也没搭好，赶上我有空，就尝试了一下。顺手记录。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先需要一台云服务器，国内主流的云平台像阿里云、腾讯云、华为云、U刻得（Ucloud）等都可以。</p>
+<p>这里我因为只是尝试一下，遂选用了<a href="https://account.aliyun.com/login/login.htm?oauth_callback=https://ecs.console.aliyun.com/server/i-0jla9660a9theaakxa14/detail?regionId=cn-wulanchabu">阿里云</a>，因为它有个<a href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
+<p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
+<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
+<p><img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png"></p>
+<p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
+<img src="/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png" class="">
+
+<h4 id="打开服务器控制台"><a href="#打开服务器控制台" class="headerlink" title="打开服务器控制台"></a>打开服务器控制台</h4><p>此时，我们点击左侧标签栏的“<strong>实例</strong>”，并选择我们的云服务器，进入页面后点击远程连接。选择“<strong>Workbench远程登陆</strong>”，即可在新的标签页中找到我们服务器的控制台。如果你喜欢用VNC或者其他任何连接方式也没问题，这里我以Workbench为例。</p>
+<img src="/d3af824b28d7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.jpg" class="">
+
+<img src="/d3af824b28d7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0.jpg" class="">
+
+<p>至此，我们的服务器配置问题结束了。</p>
+<h3 id="下载Java和MC服务器端"><a href="#下载Java和MC服务器端" class="headerlink" title="下载Java和MC服务器端"></a>下载Java和MC服务器端</h3><h4 id="建立目录"><a href="#建立目录" class="headerlink" title="建立目录"></a>建立目录</h4><p>首先，我们给MC建立一个目录</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#建立mc1.13.2</span></span><br><span class="line"><span class="built_in">mkdir</span> mc1.13.2</span><br><span class="line"><span class="comment">#进入mc1.13.2</span></span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><p>1.16及以下的版本使用Java8即可，而1.17及以上的版本则需要更新的Java。大家按照自己想玩的版本对应即可，我这里准备玩1.13.2所以使用Java8。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装Java</span></span><br><span class="line">sudo yum install java-1.8.0-openjdk</span><br><span class="line"><span class="comment">#安装过程中会出现询问，记得输入y以同意。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完毕后可用以下代码验证成功安装</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>若出现以下版本，则代表安装完成。</p>
+<img src="/d3af824b28d7/Java%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.jpg" class="">
+
+<h4 id="下载MC服务端"><a href="#下载MC服务端" class="headerlink" title="下载MC服务端"></a>下载MC服务端</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载MC服务端</span></span><br><span class="line">sudo wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar</span><br></pre></td></tr></table></figure>
+
+<p>这里我下载的是1.13.2的服务端，如果你想要玩其他版本，可以从<a href="https://mcversions.net/">这里</a>找到。</p>
+<h4 id="下载screen"><a href="#下载screen" class="headerlink" title="下载screen"></a>下载screen</h4><p>screen是一个可以创建虚拟终端的插件，我们可以使用它做到24小时运行服务器。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装screen</span></span><br><span class="line">sudo yum install -y screen</span><br><span class="line"><span class="comment">#创建并打开一个虚拟终端，名叫“mc”</span></span><br><span class="line">screen -R mc</span><br></pre></td></tr></table></figure>
+
+<p>此时你应该进入了一个新的界面，这说明你成功进入了虚拟终端。</p>
+<p>同样我们使用以下命令组合进入mc1.13.2目录下</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="运行MC服务器端"><a href="#运行MC服务器端" class="headerlink" title="运行MC服务器端"></a>运行MC服务器端</h3><h4 id="运行服务器端"><a href="#运行服务器端" class="headerlink" title="运行服务器端"></a>运行服务器端</h4><p>至此，我们就可以准备运行我们的服务器啦。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Xmx是最大使用内存 Xms是最小使用内存 server.jar是文件名.后缀</span></span><br><span class="line">java -Xmx1000M -Xms256M -jar server.jar</span><br></pre></td></tr></table></figure>
+
+<p>第一次没运行成功？没关系，往下看~</p>
+<h4 id="修改相关文件"><a href="#修改相关文件" class="headerlink" title="修改相关文件"></a>修改相关文件</h4><p>第一次运行不会成功，会报需要先同意EULA。</p>
+<p>这时我们进入Eula文件并修改</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入eula.txt文件</span></span><br><span class="line">vim eula.txt</span><br></pre></td></tr></table></figure>
+
+<p>进入后，点击<code>i</code>键进入编辑模式，将<code>false</code>更改为<code>true</code>。</p>
+<p>修改完毕后点击<code>ESC</code>退出编辑模式，并输入<code>:wq</code>退出文件。</p>
+<p>如果你或者你的朋友们使用的不是正版mc登录，那么你还需要将正版验证关掉。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入server.properties</span></span><br><span class="line">vim server.properties</span><br></pre></td></tr></table></figure>
+
+<p>找到其中的<code>online-mode</code>一行，并将<code>true</code>改为<code>false</code>即可。</p>
+<h3 id="用HMCL登录MC服务器"><a href="#用HMCL登录MC服务器" class="headerlink" title="用HMCL登录MC服务器"></a>用HMCL登录MC服务器</h3><p>打开<a href="https://hmcl.huangyuhui.net/">HMCL</a>启动器，下载对应的版本并打开多人模式。</p>
+<img src="/d3af824b28d7/MC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0.png" class="">
+
+<p>服务器地址为<strong>你服务器的<code>公网ip:25565</code><strong>。特别要注意的一点是，冒号是英文的冒号，MC窗口内中英文冒号看起来一样，自己一定要注意，否则导致</strong>主机名解析失败</strong>。</p>
+<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><img src="/d3af824b28d7/%E6%88%90%E5%8A%9F.png" class="">
+
+<h4 id="退出screen，完成24小时运行"><a href="#退出screen，完成24小时运行" class="headerlink" title="退出screen，完成24小时运行"></a>退出screen，完成24小时运行</h4><p>最后别忘了使用<code>Ctrl+a</code> 和 <code>d</code>退出screen，这样就可以24小时开启服务器不管啦。</p>
+]]></content>
+      <categories>
+        <category>游戏</category>
+      </categories>
+      <tags>
+        <tag>我的世界</tag>
+        <tag>MC</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -555,36 +583,8 @@
       </tags>
   </entry>
   <entry>
-    <title>种子文件与磁力链接及其下载方式</title>
-    <url>/2b7de3448214.html</url>
-    <content><![CDATA[<p>最近，室友总是问我关于种子文件和磁力链接的概念问题。好像我很了解这些一样，今天索性写一篇帖子介绍一下我对这两种下载方式的理解。</p>
-<h3 id="中心化下载与非中心化下载"><a href="#中心化下载与非中心化下载" class="headerlink" title="中心化下载与非中心化下载"></a>中心化下载与非中心化下载</h3><h4 id="中心化下载"><a href="#中心化下载" class="headerlink" title="中心化下载"></a>中心化下载</h4><p>中心化下载是我们最常接触到的下载模式，常见的<code>HTTP下载</code>，<code>FTP下载</code>都是中心化下载模式的具体方式。顾名思义，这种下载存在着一个中心，也就是存储资源的服务器。当你作为一个客户端向服务器请求下载时，服务器就会向你传输信息。而当很多人一起请求下载时，服务器也就成为了这个网络的<strong>中心</strong>。</p>
-<p>但这样的下载方式有一个很明显的缺陷，当同时下载的人过多，服务器的上行带宽一定会变得捉襟见肘，因此每个人的下载速度都会变慢。就像全班同学都去问同一个老师问题，老师就很难快速解答某一个同学了。</p>
-<h4 id="非中心化下载"><a href="#非中心化下载" class="headerlink" title="非中心化下载"></a>非中心化下载</h4><p>对于非中心化下载，就是由中心化下载进行<strong>去中心化</strong>的产物，让这个中心变得不再那么关键。而我们今天要说的种子文件和磁力链接都是非中心下载模式的具体方式。</p>
-<p>具体来说，就是我们的下载由原先的服务器向客户端传输数据，变为了客户端向客户端传输(<code>pear to pear</code>，简称<code>p2p</code>)。这样就形成了与中心化下载截然相反的局面，同时下载的人数越多，意味着同时向你传输数据的人数也可能越多，在一定合理的调度下，你的下载速度可能会不降反升。</p>
-<h3 id="种子文件与磁力链接"><a href="#种子文件与磁力链接" class="headerlink" title="种子文件与磁力链接"></a>种子文件与磁力链接</h3><h4 id="种子文件（BT下载）"><a href="#种子文件（BT下载）" class="headerlink" title="种子文件（BT下载）"></a>种子文件（BT下载）</h4><p>所谓的种子，就是包含着一颗植物的所有信息的原型，有它，你就有了整颗植物的指向性信息。同样，种子文件中也包含了我们整个文件的指向性信息（例如：文件的块大小，块索引，<code>Hash</code>验证码等），但同时它还包含了<code>Tracker</code>服务器的信息。</p>
-<p>当你尝试用种子文件下载时，首先你的客户端会解析<code>Tracker</code>信息，找到服务器地址并合理设置，之后由这个<code>Tracker</code>服务器为你指向正在同时下载这个文件的其他用户，由这些用户彼此之间进行上传和下载。</p>
-<p>如果继续用学生与老师的例子来比喻的话，那就是很多学生去问老师，老师并不直接回答问题，而是告诉每个人他们有疑惑的问题哪个同学明白，让他们互相解决，这样对老师的压力就小很多了。尽管这样听起来挺不负责任的，但由于种子文件中有Hash校验，在一定程度上不会出现<strong>不懂的同学误人子弟</strong>的现象。</p>
-<h4 id="磁力链接"><a href="#磁力链接" class="headerlink" title="磁力链接"></a>磁力链接</h4><p>尽管<code>BT下载</code>是去中心化的产物，但你一定看出来了，<code>Tracker</code>服务器仍然处于整个网络的中心地位，如果<code>Tracker</code>服务器被关闭，就可以阻断所有下载。</p>
-<p>有没有一种方式可以实现<code>P2P</code>下载模式，又没有真正的中心呢？</p>
-<p>答案是，有。那就是<a href="https://en.wikipedia.org/wiki/Distributed_hash_table">DHT技术</a>，<code>Distributed Hash Table</code>，即分布式哈希表。</p>
-<p>简单来说就是每个客户端负责一个小范围的路由并存储少量数据，从而连接成一个下载网络，而没有真正的中心。</p>
-<p>当你在客户端输入一个磁力链接后，客户端会从其中提取出一个20字节大小的哈希方法名，<code>infohash</code>，由这个哈希方法名得知自己周围的节点，并发送种子文件的下载请求，如果这些种子文件中包含<code>Tracker</code>，那么就可以像上述种子文件的下载方式那样进行下载。如果不包含<code>Tracker</code>，其中就会有哪些节点有包含Tracker的种子文件的信息，继续向这些节点发送种子文件的下载请求即可。</p>
-<p>这就是好像是当你不会一道题，班里没有老师，你就可以问周围的同学，如果他们有人会做且会讲，那你就可以让他给你讲，如果有人只会做不会讲，那他一定可以告诉你他是从哪里学会的，于是你就找到了那个会讲的人，你也就变成了有一个会做且知道谁会讲的人。</p>
-<h3 id="下载方式"><a href="#下载方式" class="headerlink" title="下载方式"></a>下载方式</h3><p>我知道，你们最关心的还是下载方式。</p>
-<p>由于P2P传输不经过中心服务器，因此在监管上存在着很大的难度，也由此滋生了盗版资源和非法资源的传播。但毕竟还有很多优秀的正版资源值得我们去下载，在这里我推荐两个客户端。</p>
-<h4 id="Bitcomet"><a href="#Bitcomet" class="headerlink" title="Bitcomet"></a>Bitcomet</h4><p><a href="https://www.bitcomet.com/en">bitcomet</a>是一款经典的BT下载器。下载完成后，安装时选择中文。安装好之后，打开<code>工具</code>标签，下来菜单中点击<code>选项</code>。依次点击<code>任务</code>，<code>bt下载</code>，<code>Tracker</code>。</p>
-<p>在这里你可以添加自己找到的Tracker服务器，这样当任务开始的时候，可以向更多的Tracker发送询问，从而获得更多的传输节点，提升下载速度。</p>
-<p>添加好后，勾选自动向BT下载任务添加以下Tracker服务器 和 每天自动更新Tracker列表。</p>
-<h4 id="qbittorent"><a href="#qbittorent" class="headerlink" title="qbittorent"></a>qbittorent</h4><p><a href="https://github.com/qbittorrent/qBittorrent">qbittorent</a>是另一款经典BT下载器，使用起来也是大同小异。大家自己探索以下就好。</p>
-<h4 id="Tracker"><a href="#Tracker" class="headerlink" title="Tracker"></a>Tracker</h4><p>至于Tracker列表，也许你能在<a href="https://trackerslist.com/#/zh?id=bitcomet-%e6%af%94%e7%89%b9%e5%bd%97%e6%98%9f">这里</a>找到。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>经验记录</tag>
-        <tag>下载</tag>
-      </tags>
+    <title>如何写一篇文章的“related work”部分</title>
+    <url>/f2a7da94c8dc.html</url>
+    <content><![CDATA[<h3 id="如何写一篇文章的“related-work”部分"><a href="#如何写一篇文章的“related-work”部分" class="headerlink" title="如何写一篇文章的“related work”部分"></a>如何写一篇文章的“related work”部分</h3>]]></content>
   </entry>
 </search>
