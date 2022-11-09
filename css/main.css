@@ -1213,7 +1213,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #8a6166;
+  background: #ec906e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2733,9 +2733,7 @@ body {
   background-position: center;
 }
 /*文章透明度*/
-.post-block {
-  background: rgba(255,255,255,0.9);
-background-color
+.content {
   opacity: 0.9;
 }
 /*侧边框的透明度设置*/
@@ -2745,7 +2743,7 @@ background-color
 }
 /*菜单栏的透明度设置*/
 .header-inner {
-  background: rgba(255,255,255,0.9);
+  opacity: 0.9;
 }
 /*如果设置了本地搜索，设置它的透明度*/
 .popup {

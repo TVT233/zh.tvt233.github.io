@@ -169,6 +169,20 @@
   </url>
   
   <url>
+    <loc>https://zh.zihengzhang.top/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2022-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zh.zihengzhang.top/tags/Github/</loc>
+    <lastmod>2022-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://zh.zihengzhang.top/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/</loc>
     <lastmod>2022-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -184,20 +198,6 @@
   
   <url>
     <loc>https://zh.zihengzhang.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2022-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zh.zihengzhang.top/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2022-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zh.zihengzhang.top/tags/Github/</loc>
     <lastmod>2022-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -241,14 +241,14 @@
   </url>
   
   <url>
-    <loc>https://zh.zihengzhang.top/categories/%E6%B8%B8%E6%88%8F/</loc>
+    <loc>https://zh.zihengzhang.top/categories/%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2022-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zh.zihengzhang.top/categories/%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/</loc>
+    <loc>https://zh.zihengzhang.top/categories/%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2022-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
