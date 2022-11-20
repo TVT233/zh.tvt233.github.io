@@ -78,7 +78,11 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
   <link rel="stylesheet" href="/dist/APlayer.min.css" />
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -288,51 +292,39 @@
 <h4 id="Next下载"><a href="#Next下载" class="headerlink" title="Next下载"></a>Next下载</h4><p>我们首先将<code>Next</code>主题下载到<code>根目录/themes</code>下。</p>
 <p>我们在根目录下打开<code>git bash here</code>（事实上其他终端也可以，例如<code>VS Code</code>，此后我们统称终端）</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
 <h4 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h4><p>此时我们可以找到<code>根目录/_config.yml</code>,这个是我们博客站点的配置文件，值得一提的是，在<code>根目录/themes/next/</code>下，也有一个<code>_config.yml</code>，这个是我们<code>Next</code>主题的配置文件。为了区分这二者，我们此后统一称前者为<strong>站点配置文件</strong>，后者为<strong>主题配置文件</strong>。</p>
 <p>打开<strong>站点配置文件</strong>，并对其进行相关信息的修改。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: 你博客的名字</span><br><span class="line">subtitle: 博客副标题</span><br><span class="line">author: 作者的名字</span><br><span class="line">#language: zh-CN 简体中文 | zh-TW 繁体中文 | en 英文</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia/Shanghai</span><br><span class="line"></span><br><span class="line"># 主题改为 next</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-
 <p>我们打开<strong>主题配置文件</strong>，找到<code>Schemes</code>字段（<code>Ctrl + F</code>搜索即可），发现有代码如下。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
-
 <p>分别代表了Next的四种风格，你可以选择你喜欢的那一款，将其取消注释（去掉前面的#，对其他行加#）。这里我选择了<code>Gemini</code>。</p>
 <p>此时我们在根目录终端，依次输入以下代（<code>/</code>前后的代码输入一种就可以，等价）。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除public文件夹，即清除以前的发布</span></span><br><span class="line">hexo clean / hexo cl</span><br><span class="line"><span class="comment"># 生成新的public文件夹</span></span><br><span class="line">hexo generate / hexo g</span><br><span class="line"><span class="comment"># 本地发布</span></span><br><span class="line">hexo server / hexo s</span><br></pre></td></tr></table></figure>
-
 <p>点击反馈的链接，我们就可以在本地查看自己的博客主页啦。</p>
 <h3 id="文章发布"><a href="#文章发布" class="headerlink" title="文章发布"></a>文章发布</h3><p>好了，我们的博客大致已经搭起来了。接下来我们来看看博客最重要的部分——文章应该怎么创建、编辑和发布。</p>
 <h4 id="文章创建"><a href="#文章创建" class="headerlink" title="文章创建"></a>文章创建</h4><p>我们在<strong>站点配置文件</strong>找到如下代码，将其中的<code>false</code>更改为<code>true</code>。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
 <p>此时，当我们在根目录终端中输入<code>hexo new mypost</code>，即会出现一个名为<code>mypost</code>的<code>md</code>文件，以及一个同名文件夹。这个.md文件就是我们要编辑的文章，而同名的文件夹可以为我们提供存储”这篇文章内的图片“的地址。</p>
 <h4 id="文章编辑"><a href="#文章编辑" class="headerlink" title="文章编辑"></a>文章编辑</h4><p>如果你是第一次接触.md文件可能不知道如何编辑它。其实记事本就可以，但很多格式上的问题导致用记事本很麻烦，在这里我们推荐一款软件，<a target="_blank" rel="noopener" href="https://typoraio.cn/">Typora</a>，操作起来很方便。</p>
 <p>格式上来说，一篇文章的开头存在如下段落：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 题目</span><br><span class="line">date: 2022-10-23 10:25:34</span><br><span class="line"># 标签</span><br><span class="line">tag: </span><br><span class="line">- A</span><br><span class="line">- B</span><br><span class="line"># 类别</span><br><span class="line">categories: </span><br><span class="line">- xx</span><br><span class="line">- yy</span><br><span class="line">#后续可能还有其他内容</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
 <p>在这里，我们可以对文章的基本信息进行编辑。</p>
 <p>除此之外，文章的具体排版则可以根据自己的需求进行，我们主要讲讲文章中如何插入图片。</p>
 <p>首先在根目录终端中输入</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure>
-
 <p>安装 <code>hexo-renderer-marked</code> 插件。</p>
 <p>在<strong>站点配置文件</strong>中，在 <code>post_asset_folder: true</code> 下添加以下内容</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
-
 <p>此后，当我们在文章中输入<code>![](image.jpg)</code>，即代表我们在此处插入了同名文件夹中的<code>image.jpg</code>图片。</p>
 <h3 id="网页部署"><a href="#网页部署" class="headerlink" title="网页部署"></a>网页部署</h3><h4 id="部署前准备"><a href="#部署前准备" class="headerlink" title="部署前准备"></a>部署前准备</h4><p>首先我们安装部署的插件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
 <p>安装完成后，我们进入<strong>站点配置文件</strong>，修改<code>deploy</code>字段如下</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  // 记得替换成自己的repo</span><br><span class="line">  repo: git@github.com:TVT233/TVT233.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
-
 <p>此时，我们就可以向网页部署我们的内容啦。</p>
 <h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>文章发布同一切站点更改的发布一样，在根目录终端使用如下命令。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除public文件夹，即清除以前的发布</span></span><br><span class="line">hexo clean / hexo cl</span><br><span class="line"><span class="comment"># 生成新的public文件夹</span></span><br><span class="line">hexo generate / hexo g</span><br><span class="line"><span class="comment"># 本地发布</span></span><br><span class="line">hexo server / hexo s</span><br><span class="line"><span class="comment"># 网页发布</span></span><br><span class="line">hexo deploy / hexo d</span><br></pre></td></tr></table></figure>
-
 <p>如果你第一次部署时报错，可以尝试输入以下内容</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;gitHub邮箱&quot;</span><br><span class="line">git config --global user.name &quot;gitHub用户名&quot;</span><br></pre></td></tr></table></figure>
-
 <p>然后继续重复上面的部署命令。</p>
 <p>过一会（可能几分钟），你就可以在浏览器输入<code>www.你的github用户名.github.io</code>来访问自己的博客啦。</p>
 
@@ -450,7 +442,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -463,7 +455,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -512,7 +504,7 @@
         <h5 class="widget-title">标签云</h5>
         <div id="myCanvasContainer" class="widget tagcloud">
           <canvas width="250" height="250" id="resCanvas" style="width:100%">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GRE/" rel="tag">GRE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MC/" rel="tag">MC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8B%E8%BD%BD/" rel="tag">下载</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" rel="tag">我的世界</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B3%E8%AF%B7/" rel="tag">申请</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6/" rel="tag">研究</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/" rel="tag">经验记录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AF%AD/" rel="tag">英语</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/" rel="tag">需要密码</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GRE/" rel="tag">GRE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MC/" rel="tag">MC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8B%E8%BD%BD/" rel="tag">下载</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" rel="tag">我的世界</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/" rel="tag">概念总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B3%E8%AF%B7/" rel="tag">申请</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6/" rel="tag">研究</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/" rel="tag">经验记录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AF%AD/" rel="tag">英语</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/" rel="tag">需要密码</a><span class="tag-list-count">1</span></li></ul>
           </canvas>
         </div>
       </div>
@@ -547,12 +539,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">27k</span>
+    <span title="站点总字数">29k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">25 分钟</span>
+    <span title="站点阅读时长">27 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://lib.baomitu.com/canvas-nest.js/1.0.1/canvas-nest.js"></script> <div id="site-runtime">
@@ -755,6 +747,8 @@ window.addEventListener('pjax:success', () => {
 
 
     <div id="pjax">
+  
+
   
 
   

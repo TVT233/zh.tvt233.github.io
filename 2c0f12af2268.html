@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="张子恒">
 <meta property="og:description" content="本文介绍了博客的Pjax优化，标签云，代码和代码块高亮的配置方式">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zh.zihengzhang.top/2c0f12af2268/%E4%BD%8D%E7%BD%AE.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/%E4%BD%8D%E7%BD%AE.png">
 <meta property="article:published_time" content="2022-11-03T06:58:18.000Z">
 <meta property="article:modified_time" content="2022-11-06T02:32:34.732Z">
 <meta property="article:author" content="张子恒">
 <meta property="article:tag" content="博客">
 <meta property="article:tag" content="Github">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zh.zihengzhang.top/2c0f12af2268/%E4%BD%8D%E7%BD%AE.png">
+<meta name="twitter:image" content="https://zh.zihengzhang.top/%E4%BD%8D%E7%BD%AE.png">
 
 <link rel="canonical" href="https://zh.zihengzhang.top/2c0f12af2268.html">
 
@@ -80,7 +80,11 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
   <link rel="stylesheet" href="/dist/APlayer.min.css" />
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -289,28 +293,21 @@
 <h3 id="Pjax-优化"><a href="#Pjax-优化" class="headerlink" title="Pjax 优化"></a>Pjax 优化</h3><p><code>pjax</code>是一款基于<code>jQuery</code>的插件，基于<code>pushState</code>和<code>ajax</code>，实现站点的局部刷新。它将站点转化为<code>SPA</code>应用，可以提升页面切换速度。同时它可以解决<code>aplayer</code>插件切换页面后重新播放的问题。</p>
 <p>我们在根目录终端依次键入以下命令：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pjax <span class="built_in">source</span>/lib/pjax</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
-
 <h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>标签云插件<code>hexo-tag-cloud</code>实现了较为炫酷的标签环绕效果，可以自定义标签云的字体、颜色、高亮显示。</p>
 <p>我们在终端键入命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-cloud --save</span><br></pre></td></tr></table></figure>
-
 <p>进入路径<code>themes/next/layout/_macro/sidebar.swig</code>，然后找到<code>&lt;div class=&quot;site-overview-wrap sidebar-panel&quot;&gt;</code>，在该标签的后面添加：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if site.tags.length &gt; 1 %&#125;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcloud.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcanvas.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;div class=&quot;widget-wrap&quot;&gt;</span><br><span class="line">  &lt;h5 class=&quot;widget-title&quot;&gt;标签云&lt;/h5&gt;</span><br><span class="line">  &lt;div id=&quot;myCanvasContainer&quot; class=&quot;widget tagcloud&quot;&gt;</span><br><span class="line">    &lt;canvas width=&quot;250&quot; height=&quot;250&quot; id=&quot;resCanvas&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line">      &#123;&#123; list_tags() &#125;&#125;</span><br><span class="line">    &lt;/canvas&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
 <p>具体位置如图所示：</p>
-<p><img src="/2c0f12af2268/%E4%BD%8D%E7%BD%AE.png"></p>
+<p><img src="位置.png" alt=""></p>
 <p>之后，进入项目根目录<code>blog</code>，打开站点配置文件<code>_config.yml</code>，找个空地添加以下代码：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">标签云</span></span><br><span class="line">tag_cloud:</span><br><span class="line">  textFont: Trebuchet MS, Helvetica # 字体</span><br><span class="line">  textColor: &quot;#333&quot; # 字体颜色</span><br><span class="line">  textHeight: 20 # 字体大小</span><br><span class="line">  outlineColor: &quot;#E2E1D1&quot;</span><br><span class="line">  maxSpeed: 0.2 # 旋转速度</span><br><span class="line">  pauseOnSelected: true # 当选中对应标签时，是否停止转动</span><br></pre></td></tr></table></figure>
-
 <h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>custom_file_path</code>字段，将<code>style</code>的注释取消：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line">  style: <span class="built_in">source</span>/_data/styles.styl</span><br></pre></td></tr></table></figure>
-
 <p>在<code>blog/source</code>下新建一个<code>_data</code>文件夹，文件夹中新建一个<code>styles.styl</code>文件（不用<code>VScode</code>的同学，可以新建一个<code>styles.txt</code>，再更改它的后缀）。在上面编辑以下代码：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">code</span> &#123;</span><br><span class="line">  <span class="attr">color:</span> <span class="comment">#ff7600;</span></span><br><span class="line">  <span class="attr">background:</span> <span class="comment">#fbf7f8;</span></span><br><span class="line">  <span class="attr">margin:</span> <span class="string">2px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">margin:</span> <span class="string">5px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line">  <span class="attr">padding:</span> <span class="string">5px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">code,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#d6d6d6;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="代码块高亮"><a href="#代码块高亮" class="headerlink" title="代码块高亮"></a>代码块高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>codeblock</code>字段：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">night</span> <span class="string">bright</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">mac</span></span><br></pre></td></tr></table></figure>
-
 <p><code>codeblock</code>字段会更改代码块的主题样式，感兴趣的同学不妨都尝试一下，找到自己喜欢的风格。</p>
 
     </div>
@@ -427,7 +424,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -440,7 +437,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -489,7 +486,7 @@
         <h5 class="widget-title">标签云</h5>
         <div id="myCanvasContainer" class="widget tagcloud">
           <canvas width="250" height="250" id="resCanvas" style="width:100%">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GRE/" rel="tag">GRE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MC/" rel="tag">MC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8B%E8%BD%BD/" rel="tag">下载</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" rel="tag">我的世界</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B3%E8%AF%B7/" rel="tag">申请</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6/" rel="tag">研究</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/" rel="tag">经验记录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AF%AD/" rel="tag">英语</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/" rel="tag">需要密码</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GRE/" rel="tag">GRE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MC/" rel="tag">MC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8B%E8%BD%BD/" rel="tag">下载</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" rel="tag">我的世界</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/" rel="tag">概念总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B3%E8%AF%B7/" rel="tag">申请</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6/" rel="tag">研究</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/" rel="tag">经验记录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AF%AD/" rel="tag">英语</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/" rel="tag">需要密码</a><span class="tag-list-count">1</span></li></ul>
           </canvas>
         </div>
       </div>
@@ -524,12 +521,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">27k</span>
+    <span title="站点总字数">29k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">25 分钟</span>
+    <span title="站点阅读时长">27 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://lib.baomitu.com/canvas-nest.js/1.0.1/canvas-nest.js"></script> <div id="site-runtime">
@@ -732,6 +729,8 @@ window.addEventListener('pjax:success', () => {
 
 
     <div id="pjax">
+  
+
   
 
   

@@ -20,17 +20,23 @@
     var CONFIG = {"hostname":"zh.zihengzhang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="北京航空航天大学高等理工学院 电子信息工程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="张子恒">
-<meta property="og:url" content="https://zh.zihengzhang.top/tags/%E6%83%85%E6%84%9F/index.html">
+  <meta name="description" content="一直感觉自己有关于机器学习的基础概念不牢固，归根结底是没有系统地学习过。抽出几天学习了Andrew Ng的机器学习课程，并做了一系列的笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习基础概念笔记（一）">
+<meta property="og:url" content="https://zh.zihengzhang.top/a218cd18cb36.html">
 <meta property="og:site_name" content="张子恒">
-<meta property="og:description" content="北京航空航天大学高等理工学院 电子信息工程">
+<meta property="og:description" content="一直感觉自己有关于机器学习的基础概念不牢固，归根结底是没有系统地学习过。抽出几天学习了Andrew Ng的机器学习课程，并做了一系列的笔记。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zh.zihengzhang.top/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%85%B8%E6%B5%81%E7%A8%8B.png">
+<meta property="article:published_time" content="2022-11-19T05:27:29.000Z">
+<meta property="article:modified_time" content="2022-11-20T15:05:22.959Z">
 <meta property="article:author" content="张子恒">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="概念总结">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zh.zihengzhang.top/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%85%B8%E6%B5%81%E7%A8%8B.png">
 
-<link rel="canonical" href="https://zh.zihengzhang.top/tags/%E6%83%85%E6%84%9F/">
+<link rel="canonical" href="https://zh.zihengzhang.top/a218cd18cb36.html">
 
 
 <script id="page-configurations">
@@ -38,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 情感 | 张子恒</title>
+  <title>机器学习基础概念笔记（一） | 张子恒</title>
   
 
 
@@ -201,54 +207,201 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">情感
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zh.zihengzhang.top/a218cd18cb36.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="张子恒">
+      <meta itemprop="description" content="北京航空航天大学高等理工学院 电子信息工程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张子恒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机器学习基础概念笔记（一）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-19 13:27:29" itemprop="dateCreated datePublished" datetime="2022-11-19T13:27:29+08:00">2022-11-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-20 23:05:22" itemprop="dateModified" datetime="2022-11-20T23:05:22+08:00">2022-11-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+            <div class="post-description">一直感觉自己有关于机器学习的基础概念不牢固，归根结底是没有系统地学习过。抽出几天学习了Andrew Ng的机器学习课程，并做了一系列的笔记。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h3 id="机器学习（Machine-Learning）的定义："><a href="#机器学习（Machine-Learning）的定义：" class="headerlink" title="机器学习（Machine Learning）的定义："></a>机器学习（Machine Learning）的定义：</h3><p>赋予计算机无需明确编程即可学习的能力的研究领域。—— 阿瑟·萨缪尔</p>
+<p>Field of study that gives computers the ability to learn without being explicitly programmed.    —— Arthur Samuel</p>
+<h3 id="监督学习与非监督学习（Supervised-Learning-and-Unsupervised-Learning）"><a href="#监督学习与非监督学习（Supervised-Learning-and-Unsupervised-Learning）" class="headerlink" title="监督学习与非监督学习（Supervised Learning and Unsupervised Learning）"></a>监督学习与非监督学习（Supervised Learning and Unsupervised Learning）</h3><h4 id="监督学习的特征"><a href="#监督学习的特征" class="headerlink" title="监督学习的特征"></a>监督学习的特征</h4><p>监督学习的特征是训练集中给出样本的正确答案/标签（right answer given），目的是对更多的样本进行预测。监督学习可以分为连续输出的回归问题（regression）和离散输出的分类问题（classification）。</p>
+<h4 id="非监督学习的特征"><a href="#非监督学习的特征" class="headerlink" title="非监督学习的特征"></a>非监督学习的特征</h4><p>无监督学习的特征是训练集中的样本都不具有标签，或具有相同的标签，目的是对样本进行分类，即聚类算法（clustering）。</p>
+<h3 id="常用的记号"><a href="#常用的记号" class="headerlink" title="常用的记号"></a>常用的记号</h3><p>在开始介绍具体内容之前，我们先介绍一下常用的记号。</p>
+<p>对于一个训练集，其中包含m个训练样本。X代表所有样本的输入/特征，Y代表所有样本的输出/标签。$(x,y)$指一个训练样本，$(x^{(i)},y^{(i)})$指第i个训练样本。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m</td>
+<td>训练样本数量</td>
+</tr>
+<tr>
+<td>X</td>
+<td>输入变量/特征（Input variable/features）</td>
+</tr>
+<tr>
+<td>y</td>
+<td>输入变量/特征 （Output variable/label）</td>
+</tr>
+<tr>
+<td>$(x,y)$</td>
+<td>一个训练样本</td>
+</tr>
+<tr>
+<td>$(x^{(i)},y^{(i)})$</td>
+<td>第i个训练样本</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h3><h4 id="回归问题（Regression）"><a href="#回归问题（Regression）" class="headerlink" title="回归问题（Regression）"></a>回归问题（Regression）</h4><p>对于回归问题，我们总是有这样的思路</p>
+<p><img src="监督学习经典流程.png" alt=""></p>
+<p>我们使用学习算法对训练集中的样本进行学习，学习的结果就是我们得到的假设函数。再利用这个假设函数对新的输入进行处理，获得对应的输出。</p>
+<p>而在回归问题中线性回归是基础的内容，而一元线性回归则是最为基础的形式。</p>
+<p>对于一元线性回归，我们的假设函数形式总是有这样的形式</p>
+<p>$h_{θ}(x)=θ_0+θ_1x$</p>
+<p>下面我们以一元线性回归为例，对几个最基础的概念进行解释。</p>
+<h5 id="代价函数（Cost-function）"><a href="#代价函数（Cost-function）" class="headerlink" title="代价函数（Cost function）"></a>代价函数（Cost function）</h5><p>代价函数用来描述我们回归的结果对于训练集中样本的偏离程度，显然我们的回归结果由$θ_0$和$θ_1$共同决定，因此，我们定义的代价函数如下</p>
+<p>$J(θ_0,θ_1)=\frac{1}{2m}Σ_{i=1}^m(h_θ(x^{(i)})-y^{(i)})^2$</p>
+<p>即，所有样本预测值和真实值的差的平方和的算数平均。算术平均之所以有系数$\frac{1}{2}$是因为在后面求导的时候可以约掉，而加一个常数并不影响我们对代价函数的理解。这样定义的代价函数我们称之为<strong>平方误差代价函数</strong>。</p>
+<p>我们的目标是使我们的假设函数是对于所有样本最好的回归，因此问题也就转化为了使代价函数的值最小，即$minimize J(θ_0,θ_1)$。</p>
+<p>如何寻找到这个最小值呢？我们下面介绍两种方法，梯度下降和正规方程。</p>
+<h4 id="梯度下降（Gradient-descent）"><a href="#梯度下降（Gradient-descent）" class="headerlink" title="梯度下降（Gradient descent）"></a>梯度下降（Gradient descent）</h4><h5 id="梯度下降的方法"><a href="#梯度下降的方法" class="headerlink" title="梯度下降的方法"></a>梯度下降的方法</h5><p>我们采用求偏导的方法判断下降的方向，设置学习率（learning rate）决定我们下降时每一步走的有多远。</p>
+<p>具体的方法是：</p>
+<p>重复直至$θ_j$收敛(convergence) : {</p>
+<p>​    $θ_j$ = $θ_j-\alpha\frac{\partial}{\partialθ_j}J(θ_0,θ_1)$ $(for j=0, j=1)$</p>
+<p>}</p>
+<p>值得注意的一点是，若干个$θ_j$需要同时被更新，否则$θ_1$将被$J(newθ_0,θ_1)$所决定，这事不正确的。</p>
+<p>而当接近局部最低点的时候，导数项（derivative）趋于零，所以$θ_j$的变化是越来越小的。</p>
+<h5 id="偏导的简单计算和说明"><a href="#偏导的简单计算和说明" class="headerlink" title="偏导的简单计算和说明"></a>偏导的简单计算和说明</h5><p>下面我对一元线性回归的两个偏导项做一个简单的计算，如果你有微积分基础一定可以看懂。</p>
+<p>$\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\Sigma_{i=1}^m(\theta_0+\theta_1x^{(i)}-y^{(i)})^2$</p>
+<p>对$\theta_0$，$j=0$：</p>
+<p>$\frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)=\frac{1}{m}\Sigma^m_{i=1}(\theta_0+\theta_1x^{(i)}-y^{(i)})$</p>
+<p>对$\theta_1$，$j=1$：</p>
+<p>$\frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)=\frac{1}{m}\Sigma^m_{i=1}(\theta_0+\theta_1x^{(i)}-y^{(i)})x^{(i)}$</p>
+<p>可以想见，如果$h_{θ}(x)$的表达式为$h_{θ}(x)=θ_0+θ_1x_1+\theta_2x_2$的话，对$\theta_2$的偏导结果在形式上与$\theta_1$是一致的，只有下标不同。而$\theta_0$的表达式则缺少$x^{(i)}$一项，因此我们通常假设一个输入特征$x_0\equiv0$，这样的结果就是所有$\theta_j$的偏导在形式上都得到了统一。</p>
+<h5 id="线性回归最优解的必然性"><a href="#线性回归最优解的必然性" class="headerlink" title="线性回归最优解的必然性"></a>线性回归最优解的必然性</h5><p>但显然，按照梯度下降收敛的结果可能只是一个局部最优解，就像在半山腰的你只会往山下走，而山的那一边可能有着更加低洼的地带不被你所见。不过这个问题在线性回归中并不存在，原因是<strong>线性回归的代价函数一定是凸函数（convex function），只有一个最低点</strong>。因此线性回归问题使用梯度下降总是可以得到全局最优。</p>
+<h5 id="Batch-和-Iteration的定义"><a href="#Batch-和-Iteration的定义" class="headerlink" title="Batch 和 Iteration的定义"></a>Batch 和 Iteration的定义</h5><p>从上述代价函数的定义可以看出，我们使用所有训练样本之后会进行一次梯度下降，那么一次梯度下降所使用的样本集群我们称之为一个<strong>Batch</strong>，而这样一次更新的过程我们称之为一个<strong>iteration</strong>。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-27T10:25:07+08:00"
-              content="2022-10-27">
-          10-27
-        </time>
-      </div>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+              <a href="/tags/%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/" rel="tag"><i class="fa fa-tag"></i> 概念总结</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/02063b73cdf0.html" itemprop="url">
-            <span itemprop="name">我和L</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/a022104043b5.html" rel="prev" title="クローラー1号機初体験（爬虫1号的初体验）">
+      <i class="fa fa-chevron-left"></i> クローラー1号機初体験（爬虫1号的初体验）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
   
 
-  
-
-
+  <script src="https://giscus.app/client.js"
+        data-repo="TVT233/discussion"
+        data-repo-id="R_kgDOIa5p6Q"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOIa5p6c4CSgsW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+  </script>
 
           </div>
           
@@ -298,6 +451,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88Machine-Learning%EF%BC%89%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">机器学习（Machine Learning）的定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9D%9E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%88Supervised-Learning-and-Unsupervised-Learning%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">监督学习与非监督学习（Supervised Learning and Unsupervised Learning）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.</span> <span class="nav-text">监督学习的特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.</span> <span class="nav-text">非监督学习的特征</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AE%B0%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">常用的记号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">监督学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92%E9%97%AE%E9%A2%98%EF%BC%88Regression%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">回归问题（Regression）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%EF%BC%88Cost-function%EF%BC%89"><span class="nav-number">4.1.1.</span> <span class="nav-text">代价函数（Cost function）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88Gradient-descent%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">梯度下降（Gradient descent）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.1.</span> <span class="nav-text">梯度下降的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%8F%E5%AF%BC%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%92%8C%E8%AF%B4%E6%98%8E"><span class="nav-number">4.2.2.</span> <span class="nav-text">偏导的简单计算和说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%9C%80%E4%BC%98%E8%A7%A3%E7%9A%84%E5%BF%85%E7%84%B6%E6%80%A7"><span class="nav-number">4.2.3.</span> <span class="nav-text">线性回归最优解的必然性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Batch-%E5%92%8C-Iteration%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.2.4.</span> <span class="nav-text">Batch 和 Iteration的定义</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -621,6 +775,61 @@ window.addEventListener('pjax:success', () => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 <script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
