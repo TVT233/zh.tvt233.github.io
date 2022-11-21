@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="张子恒">
 <meta property="og:description" content="本文介绍了MC服务器的配置、部署以及24小时运行的具体流程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zh.zihengzhang.top/%E5%AE%89%E5%85%A8%E7%BB%84.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png">
 <meta property="og:image" content="https://zh.zihengzhang.top/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png">
 <meta property="og:image" content="https://zh.zihengzhang.top/d3af824b28d7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.jpg">
 <meta property="og:image" content="https://zh.zihengzhang.top/d3af824b28d7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0.jpg">
@@ -35,13 +35,13 @@
 <meta property="og:image" content="https://zh.zihengzhang.top/d3af824b28d7/MC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0.png">
 <meta property="og:image" content="https://zh.zihengzhang.top/d3af824b28d7/%E6%88%90%E5%8A%9F.png">
 <meta property="article:published_time" content="2022-10-29T13:36:11.000Z">
-<meta property="article:modified_time" content="2022-11-06T02:33:46.962Z">
+<meta property="article:modified_time" content="2022-11-21T01:54:11.246Z">
 <meta property="article:author" content="张子恒">
 <meta property="article:tag" content="我的世界">
 <meta property="article:tag" content="MC">
 <meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zh.zihengzhang.top/%E5%AE%89%E5%85%A8%E7%BB%84.png">
+<meta name="twitter:image" content="https://zh.zihengzhang.top/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png">
 
 <link rel="canonical" href="https://zh.zihengzhang.top/d3af824b28d7.html">
 
@@ -251,7 +251,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-06 10:33:46" itemprop="dateModified" datetime="2022-11-06T10:33:46+08:00">2022-11-06</time>
+                <time title="修改时间：2022-11-21 09:54:11" itemprop="dateModified" datetime="2022-11-21T09:54:11+08:00">2022-11-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -301,7 +301,7 @@
 <p>这里我因为只是尝试一下，遂选用了<a target="_blank" rel="noopener" href="https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fecs.console.aliyun.com%2Fserver%2Fi-0jla9660a9theaakxa14%2Fdetail%3FregionId%3Dcn-wulanchabu">阿里云</a>，因为它有个<a target="_blank" rel="noopener" href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
 <p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
 <h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
-<p><img src="安全组.png" alt=""></p>
+<img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png" class="">
 <p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
 <img src="/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png" class="">
 <h4 id="打开服务器控制台"><a href="#打开服务器控制台" class="headerlink" title="打开服务器控制台"></a>打开服务器控制台</h4><p>此时，我们点击左侧标签栏的“<strong>实例</strong>”，并选择我们的云服务器，进入页面后点击远程连接。选择“<strong>Workbench远程登陆</strong>”，即可在新的标签页中找到我们服务器的控制台。如果你喜欢用VNC或者其他任何连接方式也没问题，这里我以Workbench为例。</p>
