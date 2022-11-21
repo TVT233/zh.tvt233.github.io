@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://zh.zihengzhang.top/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%85%B8%E6%B5%81%E7%A8%8B.png">
 <meta property="og:image" content="https://zh.zihengzhang.top/a218cd18cb36/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%85%B8%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2022-11-19T05:27:29.000Z">
-<meta property="article:modified_time" content="2022-11-21T02:05:26.178Z">
+<meta property="article:modified_time" content="2022-11-21T05:45:23.483Z">
 <meta property="article:author" content="张子恒">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="概念总结">
@@ -245,7 +245,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-21 10:05:26" itemprop="dateModified" datetime="2022-11-21T10:05:26+08:00">2022-11-21</time>
+                <time title="修改时间：2022-11-21 13:45:23" itemprop="dateModified" datetime="2022-11-21T13:45:23+08:00">2022-11-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,14 +270,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
+              <span>5.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>5 分钟</span>
             </span>
             <div class="post-description">一直感觉自己有关于机器学习的基础概念不牢固，归根结底是没有系统地学习过。抽出几天学习了Andrew Ng的机器学习课程，并做了一系列的笔记。</div>
 
@@ -295,7 +295,7 @@
 <h2 id="监督学习与非监督学习（Supervised-Learning-and-Unsupervised-Learning）"><a href="#监督学习与非监督学习（Supervised-Learning-and-Unsupervised-Learning）" class="headerlink" title="监督学习与非监督学习（Supervised Learning and Unsupervised Learning）"></a>监督学习与非监督学习（Supervised Learning and Unsupervised Learning）</h2><h3 id="监督学习的特征"><a href="#监督学习的特征" class="headerlink" title="监督学习的特征"></a>监督学习的特征</h3><p>监督学习的特征是训练集中给出样本的正确答案/标签（right answer given），目的是对更多的样本进行预测。监督学习可以分为连续输出的回归问题（regression）和离散输出的分类问题（classification）。</p>
 <h3 id="非监督学习的特征"><a href="#非监督学习的特征" class="headerlink" title="非监督学习的特征"></a>非监督学习的特征</h3><p>无监督学习的特征是训练集中的样本都不具有标签，或具有相同的标签，目的是对样本进行分类，即聚类算法（clustering）。</p>
 <h2 id="常用的记号"><a href="#常用的记号" class="headerlink" title="常用的记号"></a>常用的记号</h2><p>在开始介绍具体内容之前，我们先介绍一下常用的记号。</p>
-<p>对于一个训练集，其中包含m个训练样本。X代表所有样本的输入/特征，Y代表所有样本的输出/标签。$(x,y)$指一个训练样本，$(x^{(i)},y^{(i)})$指第i个训练样本。</p>
+<p>对于一个训练集，其中包含$m$个训练样本，每个样本有$n$个输入/特征。$X$代表所有样本的输入/特征，$Y$代表所有样本的输出/标签。$x^{(i)}$代表第$i$个样本的输入/特征，$x^{(i)}_j$代表第$i$个样本的第$j$个输入/特征，$(x,y)$指一个训练样本，$(x^{(i)},y^{(i)})$指第$i$个训练样本。</p>
 <div class="table-container">
 <table>
 <thead>
@@ -306,16 +306,28 @@
 </thead>
 <tbody>
 <tr>
-<td>m</td>
+<td>$m$</td>
 <td>训练样本数量</td>
 </tr>
 <tr>
-<td>X</td>
+<td>$n$</td>
+<td>每个样本输入/特征的数量</td>
+</tr>
+<tr>
+<td>$X$</td>
 <td>输入变量/特征（Input variable/features）</td>
 </tr>
 <tr>
-<td>y</td>
+<td>$y$</td>
 <td>输入变量/特征 （Output variable/label）</td>
+</tr>
+<tr>
+<td>$x^{(i)}$</td>
+<td>第$i$个样本的输入/特征</td>
+</tr>
+<tr>
+<td>$x^{(i)}_j$</td>
+<td>第$i$个样本的第$j$个输入/特征</td>
 </tr>
 <tr>
 <td>$(x,y)$</td>
@@ -323,7 +335,7 @@
 </tr>
 <tr>
 <td>$(x^{(i)},y^{(i)})$</td>
-<td>第i个训练样本</td>
+<td>第$i$个训练样本</td>
 </tr>
 </tbody>
 </table>
@@ -346,7 +358,7 @@
 <p>重复直至$θ_j$收敛(convergence) : {</p>
 <p>​    $θ_j$ = $θ_j-\alpha\frac{\partial}{\partialθ_j}J(θ_0,θ_1)$ $(for j=0, j=1)$</p>
 <p>}</p>
-<p>值得注意的一点是，若干个$θ_j$需要同时被更新，否则$θ_1$将被$J(newθ_0,θ_1)$所决定，这事不正确的。</p>
+<p>值得注意的一点是，若干个$θ_j$需要同时被更新，否则$θ_1$将被$J(newθ_0,θ_1)$所决定，这是不正确的。</p>
 <p>而当接近局部最低点的时候，导数项（derivative）趋于零，所以$θ_j$的变化是越来越小的。</p>
 <h5 id="偏导的简单计算和说明"><a href="#偏导的简单计算和说明" class="headerlink" title="偏导的简单计算和说明"></a>偏导的简单计算和说明</h5><p>下面我对一元线性回归的两个偏导项做一个简单的计算，如果你有微积分基础一定可以看懂。</p>
 <p>$\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\Sigma_{i=1}^m(\theta_0+\theta_1x^{(i)}-y^{(i)})^2$</p>
@@ -357,6 +369,62 @@
 <p>可以想见，如果$h_{θ}(x)$的表达式为$h_{θ}(x)=θ_0+θ_1x_1+\theta_2x_2$的话，对$\theta_2$的偏导结果在形式上与$\theta_1$是一致的，只有下标不同。而$\theta_0$的表达式则缺少$x^{(i)}$一项，因此我们通常假设一个输入特征$x_0\equiv0$，这样的结果就是所有$\theta_j$的偏导在形式上都得到了统一。</p>
 <h5 id="线性回归最优解的必然性"><a href="#线性回归最优解的必然性" class="headerlink" title="线性回归最优解的必然性"></a>线性回归最优解的必然性</h5><p>但显然，按照梯度下降收敛的结果可能只是一个局部最优解，就像在半山腰的你只会往山下走，而山的那一边可能有着更加低洼的地带不被你所见。不过这个问题在线性回归中并不存在，原因是<strong>线性回归的代价函数一定是凸函数（convex function），只有一个最低点</strong>。因此线性回归问题使用梯度下降总是可以得到全局最优。</p>
 <h5 id="Batch-和-Iteration的定义"><a href="#Batch-和-Iteration的定义" class="headerlink" title="Batch 和 Iteration的定义"></a>Batch 和 Iteration的定义</h5><p>从上述代价函数的定义可以看出，我们使用所有训练样本之后会进行一次梯度下降，那么一次梯度下降所使用的样本集群我们称之为一个<strong>Batch</strong>，而这样一次更新的过程我们称之为一个<strong>iteration</strong>。</p>
+<h4 id="多特征（Multiple-Features-Variables）"><a href="#多特征（Multiple-Features-Variables）" class="headerlink" title="多特征（Multiple Features/ Variables）"></a>多特征（Multiple Features/ Variables）</h4><p>多特征的输入导致了回归问题由一元变成了多元线性回归（multiple linear regression），即$x^{(i)}_j$的$j$不再始终为1。</p>
+<p>我们的假设函数因此随之改变为$h_\theta(x)=\theta_0+\theta_1x_1+…+\theta_nx_n$。在<code>偏导的简单计算和说明</code>部分中我们提到了，添加$x_0\equiv0$可以使各个偏导项具有相同的形式，于是我们的假设函数变为</p>
+<p>$h_\theta(x)=\theta_0x_0+\theta_1x_1+…+\theta_nx_n$</p>
+<p>使用矩阵乘法可以写作</p>
+<p>$h_\theta(x)=\left[\begin{matrix}\theta_0,\theta_1,…,\theta_n\end{matrix}\right]\left[\begin{matrix}x_0\\x_1\.\.\.\\x_n\end{matrix}\right]=\theta^TX$</p>
+<p>同样的，对于多元线性回归，我们的代价函数也需要增加相应的系数$\theta_j$作为变量，即</p>
+<p>$J(\theta)=J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\Sigma_{i=1}^mh_\theta(x^{(i)}-y^{(i)})^2$</p>
+<h5 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h5><p>所谓的特征缩放，指的是让训练集样本的不同特征都大致在同一个范围内。</p>
+<p>例如我们每个样本有两个特征，$x_1$和$x_2$，分别代表着房屋的面积（平方米）和卧室数量（个）。那么$x_1$的变化范围大概是$50-500$这个范围，而$x_2$的变化范围则是在10以下。</p>
+<p>在这样的情况下，$J(\theta)$的等高线会是一个个瘦长的椭圆，如果此时进行梯度下降的话，迭代的次数会更多，整体的速度也会更慢。因此我们要将这两个特征变化到大致一致的范围里，目的是提高梯度下降的速度。</p>
+<p>常用的手段是均值归一化（mean normalization）</p>
+<p>令$x_i=\frac{x_i-\mu_i}{S_i}$，其中$S_i$代表$x$这个特征的范围</p>
+<p>这样的变换可以将$x_i$缩放到[-0.5，0.5]的范围中。</p>
+<p>值得一提的是，我们不需要把所有的特征都严格地缩放到同意范围，只要大致在一个数量级就可以，例如[-3，3]，[-0.5，0.5]都是可以接受的。</p>
+<h5 id="学习率（Learning-Rate）"><a href="#学习率（Learning-Rate）" class="headerlink" title="学习率（Learning Rate）"></a>学习率（Learning Rate）</h5><p>通过式子$θ_j=θ_j-\alpha\frac{\partial}{\partialθ_j}J(θ_0,θ_1)$， $(for j=0, j=1)$</p>
+<p>我们可以发现$\alpha$决定着每一次$\theta_j$变化的程度。如果$\alpha$太大，那么$\theta_j$可能会在变化的过程中错过局部最小值，于是最后$J(\theta)$便无法收敛。</p>
+<p>而如果$\alpha$变得太小，虽然最终一定会收敛到局部最小值，但步子迈的太小势必导致这个过程是很缓慢的。</p>
+<p>因此我们需要在不同的问题中恰当地调整$\alpha$来使得$J(\theta)$能够收敛，又能够尽快收敛。具体来说，我们可以在每一次更新$\theta_j$后统计一下$J(\theta)$的值，并画图，这样我们就得到了$J(\theta)$关于迭代次数（number of iterations）的变化曲线。当这条曲线趋于平缓乃至直线的时候，就收敛了。我们可以此为依据进行$\alpha$的调整。</p>
+<p>当然你也可以统计每次$\theta_j$变化之后$J_\theta$缩小的比例，这些都是可用的方法。</p>
+<h5 id="特征与多项式回归-Polynomial-Regression"><a href="#特征与多项式回归-Polynomial-Regression" class="headerlink" title="特征与多项式回归(Polynomial Regression)"></a>特征与多项式回归(Polynomial Regression)</h5><p>有的时候输出和输入的关系并非是简单的线性关系，例如某些问题的假设函数存在如下关系</p>
+<p>$h_\theta(x)=\theta_0+\theta_1x_1+\theta_2x_1^2+\theta_3x_1^3$</p>
+<p>这显然超出了我们线性回归的范畴，于是我们需要把它变化成线性的形式，也就是<strong>多项式回归</strong>。</p>
+<p>$h_\theta(x)=\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_3$，其中$x_1=x_1,x_2=x_1^2,x_3=x_1^3$</p>
+<p>这样的变化使得原本输入只有一个特征$x_1$，现在多出了两个特征$x_2$和$x_3$。只不过他们都和$x_1$有着对应的关系。</p>
+<p>但这样做会导致这几个特征不在一个数量级上，因此需要对这些特征做特征缩放才行。</p>
+<h4 id="正规方程（Normal-Equation）"><a href="#正规方程（Normal-Equation）" class="headerlink" title="正规方程（Normal Equation）"></a>正规方程（Normal Equation）</h4><p>正规方程提供了一种梯度下降以外的求$J_\theta$最小值的方法，那就是对$J_\theta$求偏导，并让所有的$\frac{\partial}{\partial\theta_j}J(\theta)=0$。不过这需要一定的数学基础，在这里Andrew Ng直接给出了方程，使用这个方程即可求出使得$J_\theta$达到最小值的$\theta$。</p>
+<p>$\theta=(X^TX)^{-1}X^TY$</p>
+<p>在刚看到这个式子的时候不太理解为什么不是$\theta=(X)^{-1}Y$，后来发现$X$未必是方阵，所以不一定能取逆，只有$X^TX$才能够保证是方阵。</p>
+<p>但是方阵也未必可以取逆，如果这个方阵是非满秩的，即存在某些行或者某些列之间线性相关，就不能取逆。</p>
+<p>如果是列之间线性相关，则说明存在多余的特征，例如预测房价的时候输入了房子的面积和房子的公摊面积，而公摊面积=面积*常数，那这个公摊面积就是一个多余的特征，去掉即可。</p>
+<p>如果是行之间线性相关，则说明存在两个样本所有特征都存在一个倍数关系，这种情况下我们可以采取求伪逆矩阵的方式（例如matlab中的pinv()函数）来规避。（其实列线性相关也可以求伪逆矩阵，但冗余的特征总是不必要存在的，所以我们选择删除）</p>
+<p>下面我们对比一下梯度下降和正规方程的优劣</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">梯度下降（Gradient Descent）</th>
+<th>正规方程（Normal Equation）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">需要选择合适的学习率$\alpha$</td>
+<td>不需要选择学习率$\alpha$</td>
+</tr>
+<tr>
+<td style="text-align:left">需要很多次迭代</td>
+<td>只需要一次迭代</td>
+</tr>
+<tr>
+<td style="text-align:left">在特征数$n$很大时可以很好地工作</td>
+<td>在特征数$n$很大时速度很慢</td>
+</tr>
+</tbody>
+</table>
+</div>
 
     </div>
 
@@ -453,7 +521,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88Machine-Learning%EF%BC%89%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">机器学习（Machine Learning）的定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9D%9E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%88Supervised-Learning-and-Unsupervised-Learning%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">监督学习与非监督学习（Supervised Learning and Unsupervised Learning）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.</span> <span class="nav-text">监督学习的特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.</span> <span class="nav-text">非监督学习的特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AE%B0%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">常用的记号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">监督学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92%E9%97%AE%E9%A2%98%EF%BC%88Regression%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">回归问题（Regression）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%EF%BC%88Cost-function%EF%BC%89"><span class="nav-number">4.1.1.</span> <span class="nav-text">代价函数（Cost function）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88Gradient-descent%EF%BC%89"><span class="nav-number">4.1.2.</span> <span class="nav-text">梯度下降（Gradient descent）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">梯度下降的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%8F%E5%AF%BC%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%92%8C%E8%AF%B4%E6%98%8E"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">偏导的简单计算和说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%9C%80%E4%BC%98%E8%A7%A3%E7%9A%84%E5%BF%85%E7%84%B6%E6%80%A7"><span class="nav-number">4.1.2.3.</span> <span class="nav-text">线性回归最优解的必然性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Batch-%E5%92%8C-Iteration%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.1.2.4.</span> <span class="nav-text">Batch 和 Iteration的定义</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88Machine-Learning%EF%BC%89%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">机器学习（Machine Learning）的定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9D%9E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%88Supervised-Learning-and-Unsupervised-Learning%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">监督学习与非监督学习（Supervised Learning and Unsupervised Learning）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.</span> <span class="nav-text">监督学习的特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.</span> <span class="nav-text">非监督学习的特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AE%B0%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">常用的记号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">监督学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92%E9%97%AE%E9%A2%98%EF%BC%88Regression%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">回归问题（Regression）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%EF%BC%88Cost-function%EF%BC%89"><span class="nav-number">4.1.1.</span> <span class="nav-text">代价函数（Cost function）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88Gradient-descent%EF%BC%89"><span class="nav-number">4.1.2.</span> <span class="nav-text">梯度下降（Gradient descent）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">梯度下降的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%8F%E5%AF%BC%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%92%8C%E8%AF%B4%E6%98%8E"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">偏导的简单计算和说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%9C%80%E4%BC%98%E8%A7%A3%E7%9A%84%E5%BF%85%E7%84%B6%E6%80%A7"><span class="nav-number">4.1.2.3.</span> <span class="nav-text">线性回归最优解的必然性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Batch-%E5%92%8C-Iteration%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.1.2.4.</span> <span class="nav-text">Batch 和 Iteration的定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%89%B9%E5%BE%81%EF%BC%88Multiple-Features-Variables%EF%BC%89"><span class="nav-number">4.1.3.</span> <span class="nav-text">多特征（Multiple Features&#x2F; Variables）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E7%BC%A9%E6%94%BE"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">特征缩放</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87%EF%BC%88Learning-Rate%EF%BC%89"><span class="nav-number">4.1.3.2.</span> <span class="nav-text">学习率（Learning Rate）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E4%B8%8E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%9B%9E%E5%BD%92-Polynomial-Regression"><span class="nav-number">4.1.3.3.</span> <span class="nav-text">特征与多项式回归(Polynomial Regression)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B%EF%BC%88Normal-Equation%EF%BC%89"><span class="nav-number">4.1.4.</span> <span class="nav-text">正规方程（Normal Equation）</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -566,12 +634,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">29k</span>
+    <span title="站点总字数">32k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">27 分钟</span>
+    <span title="站点阅读时长">29 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://lib.baomitu.com/canvas-nest.js/1.0.1/canvas-nest.js"></script> <div id="site-runtime">
