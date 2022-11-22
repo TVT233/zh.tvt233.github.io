@@ -20,23 +20,26 @@
     var CONFIG = {"hostname":"zh.zihengzhang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文旨在将GRE分析写作中的指令分门别类，加以总结，以便更好地在考试中去对应它们，避免因未对应指令而被判低分（">
+  <meta name="description" content="这篇笔记主要介绍了监督学习中分类问题的解决方法和注意事项，包括二分类和多分类。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GRE Analysing Writing 总结——指令篇">
-<meta property="og:url" content="https://zh.zihengzhang.top/8296d351526e.html">
+<meta property="og:title" content="机器学习基础概念笔记（二）">
+<meta property="og:url" content="https://zh.zihengzhang.top/8a55cfbaf1ca.html">
 <meta property="og:site_name" content="张子恒">
-<meta property="og:description" content="本文旨在将GRE分析写作中的指令分门别类，加以总结，以便更好地在考试中去对应它们，避免因未对应指令而被判低分（">
+<meta property="og:description" content="这篇笔记主要介绍了监督学习中分类问题的解决方法和注意事项，包括二分类和多分类。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zh.zihengzhang.top/GRE%E5%86%99%E4%BD%9C%E9%AB%98%E9%A2%91%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%80%83%E7%82%B9%E7%B2%BE%E6%9E%90.jpg">
-<meta property="article:published_time" content="2022-11-05T14:25:21.047Z">
-<meta property="article:modified_time" content="2022-11-21T02:03:28.278Z">
+<meta property="og:image" content="https://zh.zihengzhang.top/8a55cfbaf1ca/sigmoid.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/8a55cfbaf1ca/cost_y=1.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/8a55cfbaf1ca/cost_y=0.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/8a55cfbaf1ca/multiple_classification.png">
+<meta property="article:published_time" content="2022-11-21T13:57:39.000Z">
+<meta property="article:modified_time" content="2022-11-22T05:44:55.278Z">
 <meta property="article:author" content="张子恒">
-<meta property="article:tag" content="英语">
-<meta property="article:tag" content="GRE">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="概念总结">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zh.zihengzhang.top/GRE%E5%86%99%E4%BD%9C%E9%AB%98%E9%A2%91%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%80%83%E7%82%B9%E7%B2%BE%E6%9E%90.jpg">
+<meta name="twitter:image" content="https://zh.zihengzhang.top/8a55cfbaf1ca/sigmoid.png">
 
-<link rel="canonical" href="https://zh.zihengzhang.top/8296d351526e.html">
+<link rel="canonical" href="https://zh.zihengzhang.top/8a55cfbaf1ca.html">
 
 
 <script id="page-configurations">
@@ -49,7 +52,7 @@
   };
 </script>
 
-  <title>GRE Analysing Writing 总结——指令篇 | 张子恒</title>
+  <title>机器学习基础概念笔记（二） | 张子恒</title>
   
 
 
@@ -214,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zh.zihengzhang.top/8296d351526e.html">
+    <link itemprop="mainEntityOfPage" href="https://zh.zihengzhang.top/8a55cfbaf1ca.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -227,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          GRE Analysing Writing 总结——指令篇
+          机器学习基础概念笔记（二）
         </h1>
 
         <div class="post-meta">
@@ -237,14 +240,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-11-05 22:25:21" itemprop="dateCreated datePublished" datetime="2022-11-05T22:25:21+08:00">2022-11-05</time>
+              <time title="创建时间：2022-11-21 21:57:39" itemprop="dateCreated datePublished" datetime="2022-11-21T21:57:39+08:00">2022-11-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-21 10:03:28" itemprop="dateModified" datetime="2022-11-21T10:03:28+08:00">2022-11-21</time>
+                <time title="修改时间：2022-11-22 13:44:55" itemprop="dateModified" datetime="2022-11-22T13:44:55+08:00">2022-11-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,16 +272,16 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.6k</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>3 分钟</span>
             </span>
-            <div class="post-description">本文旨在将GRE分析写作中的指令分门别类，加以总结，以便更好地在考试中去对应它们，避免因未对应指令而被判低分（<3.0）。</div>
+            <div class="post-description">这篇笔记主要介绍了监督学习中分类问题的解决方法和注意事项，包括二分类和多分类。</div>
 
         </div>
       </header>
@@ -289,80 +292,88 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://www.ets.org/content/dam/ets-org/pdfs/gre/issue-pool.pdf">Issue官方题库</a>   <a target="_blank" rel="noopener" href="https://www.ets.org/content/dam/ets-org/pdfs/gre/argument-pool.pdf">Argument官方题库</a></p>
-<p>最近考了GRE，准备将自己的学习成果记录下来。一来帮助自己梳理脉络，二来给后面有需要的人临时抱抱佛脚。诸君自己斟酌着参考即可。</p>
-<p>我喜欢在这里把<code>Instruction</code>译作<code>指令</code>，因为不听它的真的会完蛋。</p>
-<p><strong>前提：ETS对我们行文所采取的立场并不看重！</strong></p>
-<h3 id="Issue类指令"><a href="#Issue类指令" class="headerlink" title="Issue类指令"></a>Issue类指令</h3><h4 id="是非判断类"><a href="#是非判断类" class="headerlink" title="是非判断类"></a>是非判断类</h4><p>Write a response in which you discuss the extent to which you agree or disagree with the statement and explain your reasoning for the position you take. In developing and supporting your position, you should consider ways in which the statement might or might not hold true and explain how these considerations shape your position.</p>
-<p>这种<code>Instruction</code>对我们的行文和立场没有影响，extend一词可以理解为既可以<code>100%</code>同意某观点，也可以<code>50%</code>同意某观点。</p>
-<h4 id="因果类"><a href="#因果类" class="headerlink" title="因果类"></a>因果类</h4><p>Write a response in which you discuss the extent to which you agree or disagree with the claim and the reason on which that claim is based.</p>
-<p>在这种<code>Instruction</code>中，我们要谈及两方面内容，一是题目中得结论<code>claim</code>，二是题目中支持结论成立得原因<code>reason</code>。</p>
-<p>值得注意的一点是，我们除了上述二者，还应该对原因到结论的推理过程加以审视。例如：即使原因成立，它也未必是构成该结论的所有原因，即其他原因也有可能退出该结论。</p>
-<h4 id="两种看法类"><a href="#两种看法类" class="headerlink" title="两种看法类"></a>两种看法类</h4><p>Write a response in which you discuss which view more closely aligns with your own position and explain your reasoning for the position you take. In developing and supporting your position, you should address both of the views presented.</p>
-<p>这种<code>Instruction</code>的题目会包含两种观点，大部分情况下两者在表面上是相互排斥的，但本质上有可能是不矛盾的，这点需要被重视。行文中<strong>两种观点必须都要兼顾</strong>，注意事项有二：</p>
-<p>一、题目中虽有<code>more closely</code>一词，但我们行文中完全可以说<code>两种观点与我们的立场一样接近</code>。这一点并不违背指令，还是那句话，<strong>我们的立场并不重要</strong>。</p>
-<p>二、并不一定全文同时带着两种观点走，可以两段讨论一个。一段讨论另一个。</p>
-<p>最常见的写法是：一段写观点A，一段写观点B，一段写A与B之间的关系。</p>
-<h4 id="敌方看法类"><a href="#敌方看法类" class="headerlink" title="敌方看法类"></a>敌方看法类</h4><p>Write a response in which you discuss the extent to which you agree or disagree with the claim. In developing and supporting your position, be sure to address the most compelling reasons and/or examples that could be used to challenge your position.</p>
-<p>这种<code>Instruction</code>要兼顾两个内容，<code>我们的观点</code>和<code>敌方观点的理由/例子</code>。敌方的观点是有我们的观点取反所决定的。</p>
-<p>注意事项有二：</p>
-<p>一、要针对一种敌方看法展开一段论证。<strong>一段就够，但至少要有一段。</strong></p>
-<p>二、讨论敌方观点时，并不一定要反对它，可以做让步承认其合理性，可以辩证思考，既同意又反对，可以从本质上判断敌我观点是否矛盾等等。不要对敌方观点草率地做出评价，要先分析，对方为什么反对，出发点和依据又是什么。</p>
-<p>常用的敌方观点段落思维模板是<code>敌方看法+我对敌方看法的分析+我对敌方看法的评价</code></p>
-<h4 id="建议类（一）"><a href="#建议类（一）" class="headerlink" title="建议类（一）"></a>建议类（一）</h4><p>Write a response in which you discuss the extent to which you agree or disagree with the recommendation and explain your reasoning for the position you take. In developing and supporting your position, describe specific circumstances in which adopting the recommendation would or would not be advantageous and explain how these examples shape your position.</p>
-<p>这种<code>Instruction</code>对应的题目往往是一条建议，我们不仅需要给出我们的立场和理由，还要描述这条建议什么时候有利advantageous，什么时候不利no<code>t advantageous</code>。</p>
-<p>这个有利和不利是针对于建议所造成的结果来说的，因此这篇文章的讨论和分析一定是围绕建议所产生的结果，如果偏离了这个范畴就不能满足指令要求。</p>
-<h4 id="建议类（二）"><a href="#建议类（二）" class="headerlink" title="建议类（二）"></a>建议类（二）</h4><p>Write a response in which you discuss your views on the policy and explain your reasoning for the position you take. In developing and supporting your position, you should consider the possible consequences of implementing the policy and explain how these consequences shape your position.</p>
-<p>这种<code>Instruction</code>对应的题目往往是一条政策，与建议所不同的是，政策显得更加强硬，主题是国家、政府、学校等。</p>
-<p>不过我们的应对方式同建议类（一）是一致的，唯一需要注意的区别在于，（一）需要我们阐述不同结果产生的情况<code>specific circumstances</code>，而（二）不许要。</p>
-<h3 id="Argument类指令"><a href="#Argument类指令" class="headerlink" title="Argument类指令"></a>Argument类指令</h3><p>解题流程：</p>
+        <h3 id="分类（Classification）"><a href="#分类（Classification）" class="headerlink" title="分类（Classification）"></a>分类（Classification）</h3><h4 id="逻辑回归（Logistic-Regression）的引入"><a href="#逻辑回归（Logistic-Regression）的引入" class="headerlink" title="逻辑回归（Logistic Regression）的引入"></a>逻辑回归（Logistic Regression）的引入</h4><p>当我们从传统的回归问题转移到分类问题时，最大的变化就是输出由连续的变为了离散的。对于分类问题，我们可以分为两大部分，即二分类（binary classification）和多分类（multiple classification）。而二分类又是多分类的基础，所以我们必须对二分类加以重点审视。</p>
+<p>所谓的二分类，就是输出结果只有两种，1和0。其中输出为1的类我们称之为正类（positive class），而输出为0的类我们称之为负类（negative class）。</p>
+<p>回顾之前讲的线性回归，其输出结果是连续且没有限制的，也就是说可以出现在[0，1]以内的输出，也可以出现这个范围以外的输出。那么如何将这种输出转化为离散的0，1输出呢？最简单的思路就是设置一个阈值，例如0.5。但如果你尝试这样做的话，你会发现当输出比较极端的训练样本出现时，训练出来的结果往往不能很好地拟合这些样本。</p>
+<p>于是我们思考，能不能将输出的结果限制在[0，1]之间，这样就可以很好地拟合这些样本了。于是就有了我们所说的逻辑回归。</p>
+<h4 id="假设函数（Hypothesis-Function）"><a href="#假设函数（Hypothesis-Function）" class="headerlink" title="假设函数（Hypothesis Function）"></a>假设函数（Hypothesis Function）</h4><p>在前面的回归问题中，我们的假设函数为$h_\theta(x)=\theta^TX$，在这里我们引入一个新的函数，$Sigmoid$函数</p>
+<p>​                                                    $Sigmoid：g(z)=\frac{1}{1+e^{-z}}$</p>
+<img src="/8a55cfbaf1ca/sigmoid.png" class="">
+<p>我们令$z=\theta^TX$，于是得到了新的假设函数</p>
+<p>​                                                   $h_\theta(x)=g(\theta^TX)=\frac{1}{1+e^{-θ^TX}}$</p>
+<p>这样，我们就将假设函数的输出固定在了[0，1]之间。这就是逻辑回归中的假设函数。</p>
+<p>$h_\theta(x)$的具体含义是在以$\theta$为参数，输入为$x$的前提下，$y=1$的概率，即$P(y=1|x;\theta)$</p>
+<p>而由于二分类中输出值要么为1，要么为0，我们可以得出</p>
+<p>​                                               $P(y=0|x;\theta)=1-P(y=1|x;\theta)$</p>
+<h4 id="决策边界（Decision-Boundary）"><a href="#决策边界（Decision-Boundary）" class="headerlink" title="决策边界（Decision Boundary）"></a>决策边界（Decision Boundary）</h4><h5 id="从-x-到-y-的映射"><a href="#从-x-到-y-的映射" class="headerlink" title="从$x$到$y$的映射"></a>从$x$到$y$的映射</h5><p>我们首先来总结以下输入$x$到输出$y$的完整映射。</p>
+<p>对于逻辑回归，我们有如下定义，</p>
+<p>$h_\theta(x)=g(\theta^Tx)$，$g(z)=\frac{1}{1+e^-z}$</p>
+<p>又由$Sigmoid$函数的性质，</p>
+<p>$g(z)\geq0.5,\quad 当\,z\geq0\quad;\quad\,g(z)&lt;0.5,\quad 当\,z&lt;0$</p>
+<p>我们可以推出，</p>
+<p>$h_\theta(x)=g(\theta^Tx)\geq0.5,\quad 当\,\theta^Tx\geq0\quad;\quad\,h_\theta(x)=g(\theta^Tx)&lt;0.5,\quad 当\,\theta^Tx&lt;0$</p>
+<p>若我们再给出阈值$0.5$，使得</p>
+<p>$y=1,\quad 当h_\theta(x)\geq0.5 \quad;\quad y=0,\quad 当h_\theta(x)&lt;0.5$ </p>
+<p>我们就得到了由$x$到$y$的完整映射。</p>
+<h5 id="决策边界的举例"><a href="#决策边界的举例" class="headerlink" title="决策边界的举例"></a>决策边界的举例</h5><p>此时我们举一例，$h_\theta(x)=g(\theta^Tx)=g(-3+x_1+x_2)$</p>
+<p>当$h_\theta(x)\geq0.5$时，即$-3+x_1+x_2\geq0$时，$y=1$</p>
+<p>可见，直线$-3+x_1+x_2$是区分正类和负类的边界，我们称之为<strong>决策边界</strong>。</p>
+<h5 id="决策边界的两点说明"><a href="#决策边界的两点说明" class="headerlink" title="决策边界的两点说明"></a>决策边界的两点说明</h5><p>对于决策边界，有两点需要说明：</p>
 <ol>
-<li>通读文章，定位论据和结论</li>
-<li>依据论据和结论，再现原<code>Argument</code>的推理过程</li>
-<li>按照<code>Instruction</code>对原<code>Argument</code>进行分析</li>
+<li>决策边界不一定只有直线，在添加高阶变量后决策边界可以是很复杂的形状。例如，$h_\theta(x)=g(\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_1^2+\theta_4x_2^2)$，若最终$\theta=\left[-1,0,0,1,1\right]^T$，则决策边界为$x_1^2+x_2^2=1$，是一个圆。</li>
+<li>决策边界是假设函数的一个属性，每一个参数确定的假设函数都对应着一个决策边界，而非训练集的属性。训练集是用来获得假设函数的参数的。</li>
 </ol>
-<p><code>Argument</code>类指令分为四类：<code>Assumption</code>，<code>Evidence</code>，<code>Explanation</code>，<code>Question</code>。</p>
-<h4 id="Assumption类指令"><a href="#Assumption类指令" class="headerlink" title="Assumption类指令"></a>Assumption类指令</h4><p>Write a response in which you examine the stated and/or unstated assumptions of the argument. Be sure to explain how the argument depends on these assumptions and what the implications are for the argument if the assumptions prove unwarranted.</p>
-<p>什么是<code>Assumption</code>？<code>Assumption</code>可以理解为<code>poorly supported claim</code>，即没有被很好地支持的论断，可以是被作者明确提到的（<code>stated</code>），也可以是没有明确提到的（<code>unstated</code>）。</p>
-<p>逻辑上的结构是这样的：<code>Assumption</code> =&gt; 分论点/论断 =&gt; 结论</p>
-<p><strong>我们要做的事情</strong>就是：找到这样的<code>Assumption</code>，指出其不成立的情况，并且说明这些<code>Assumption</code>一旦不成立，作者的最终结论会如何被削弱。</p>
-<p>那么行文要写几个中间段呢？我的理解是：作者做了几次推导，就写几个中间段。如果作者用了一个<code>Assumption</code>做了一次推导，推出了一个分论点，那么这一个<code>Assumption</code>就可以成为一个中间段；而如果作者用了三个<code>Assumption</code>推出了一个分论点，那么这三个<code>Assumption</code>就可以合并为一段。</p>
-<p>具体到每一段应该如何写：</p>
-<ol>
-<li>找出原文中各论断或结论所依赖的<code>Assumption</code></li>
-<li>指出这些<code>Assumption</code>在什么情况下不成立</li>
-<li>阐明这些<code>Assumption</code>一旦不成立，作者的结论就会被削弱</li>
-</ol>
-<h4 id="Evidence类指令"><a href="#Evidence类指令" class="headerlink" title="Evidence类指令"></a>Evidence类指令</h4><p>Write a response in which you discuss what specific evidence is needed to evaluate the argument and explain how the evidence would weaken or strengthen the argument.</p>
-<p>在这种类型的题目中，我们无法确定其中一些<code>Assumption</code>是否成立，因为缺失了重要的证据。于是我们就<strong>不能贸然评价</strong>原<code>Argument</code>是否成立（<code>wrong</code>，<code>unconvincing</code>，flawed），否则就偏离了指令的要求。</p>
-<p><strong>我们要做的事情</strong>就是：提供新的具体的证据（<code>specific evidence</code>）来完善推理过程。有了新的证据，就可以对结论做出评价，这种评价可能是正面加强结论（<code>strengthen</code>），也可使负面削弱结论（<code>weaken</code>）</p>
-<p>具体到每一段应该如何写：</p>
-<ol>
-<li>指出我们现在还无法评价作者的某一个论断</li>
-<li>说明为了更好地评价这一论断，我们还需要什么样的新证据</li>
-<li>用新证据削弱或者增强作者的这一论断</li>
-</ol>
-<h4 id="Explanation类指令"><a href="#Explanation类指令" class="headerlink" title="Explanation类指令"></a>Explanation类指令</h4><p>Write a response in which you discuss one or more alternative explanations that could rival the proposed explanation and explain how your explanation(s) can plausibly account for the facts presented in the argument.</p>
-<p>这种指令对应的题目一般都会阐述一个现象或者事实，然后对这个现象或事实给出一个解释。指令要求我们给出其他的解释，并说明这些解释如何说明文章中的现象或事实。</p>
-<p><strong>我们要做的事情</strong>就是：对于每一个分论点所包含的现象或事实，给出一个有别于这个分论点的新解释，而后做出让步：即使分论点成立，也可能是因为其他原因而非原<code>Argument</code>中的结论。</p>
-<p>具体到每一段应该如何写：</p>
-<ol>
-<li>复述作者对题目中现象的解释，指出其解释不唯一</li>
-<li>给出其他解释并详细说明</li>
-</ol>
-<h4 id="Question类指令"><a href="#Question类指令" class="headerlink" title="Question类指令"></a>Question类指令</h4><p>Write a response in which you discuss what questions would need to be answered in order to decide whether the recommendation and the argument on which it is based are reasonable. Be sure to explain how the answers to these questions would help to evaluate the recommendation.</p>
-<p>其实这类指令和<code>Assumption</code>类没有本质的区别，只不过我们评价的方式变成了问问题而已。</p>
-<p><strong>我们要做的事情</strong>可以参考<code>Assumption</code>类，将<code>Assumption</code>变为对应的提问来评价即可。</p>
-<p>具体到每一段应该如何写：</p>
-<ol>
-<li>指出我们现在还无法评价原<code>Argument</code>中的某一论断</li>
-<li>说明为了更好地评价这一建议，我们还需要问什么样的问题</li>
-<li>给出问题的答案并用答案来评价题目中的建议（可以是正面的，也可以是负面的）</li>
-</ol>
-<hr>
-<p>参考文献：GRE写作高频题目及考点精析 黑皮书</p>
-<p><img src="GRE写作高频题目及考点精析.jpg" alt="GRE写作高频题目及考点精析"></p>
-
+<h4 id="代价函数（Cost-Function）"><a href="#代价函数（Cost-Function）" class="headerlink" title="代价函数（Cost Function）"></a>代价函数（Cost Function）</h4><h5 id="代价函数的修改"><a href="#代价函数的修改" class="headerlink" title="代价函数的修改"></a>代价函数的修改</h5><p>我们之前说过，对于平方误差代价函数，</p>
+<p>$J(θ)=\frac{1}{2m}Σ_{i=1}^m(h_θ(x^{(i)})-y^{(i)})^2=\frac{1}{m}\Sigma^m_{i=1}Cost(h_\theta(x^{(i)}-y^{(i)}))$</p>
+<p>其中，$Cost(h_\theta(x^{(i)}-y^{(i)}))=\frac{1}{2}(h_θ(x^{(i)})-y^{(i)})^2$</p>
+<p>在线性回归问题中$J(\theta)$是凸函数，因此梯度下降始终可以获得全局最优解。但是可以证明的是，到了分类问题中，对于我们的假设函数$h_\theta(x)=g(\theta^TX)=\frac{1}{1+e^{-θ^TX}}$，此时的$J(\theta)$就是非凸的（not convex）。这显然与我们的期望不符，我们仍然希望它是凸的。</p>
+<p>于是我们对$Cost(h_\theta(x^{(i)}-y^{(i)}))$做如下修改</p>
+<p>令$Cost(h_\theta(x^{(i)}-y^{(i)}))=\begin{cases}-ln\,h_\theta(x),\quad y=1\\ -ln\,(1-h_\theta(x)),\quad y=0\end{cases}$</p>
+<p>也可以简写为$Cost(h_\theta(x^{(i)}-y^{(i)}))=-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x))$ </p>
+<p>于是$J(\theta)=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))$</p>
+<img src="/8a55cfbaf1ca/cost_y=1.png" class="">
+<img src="/8a55cfbaf1ca/cost_y=0.png" class="">
+<p>可以看到当$y=1$时，如果预测结果$h_\theta(x)$为$1$，那么$Cost=0$，即没有代价。而如果预测结果$h_\theta(x)$为$1$，那么$Cost\longrightarrow\infty$，即代价无穷大。而当$y=0$时则规则相反。</p>
+<p>可以证明的一点是，这样的代价函数使得$J(\theta)$在分类问题中依然是凸函数。不过这一点在Andrew Ng的课程中没有被证明，至于这样的$Cost$函数是如何被发现的，Andrew Ng提到是由统计学中的极大似然法推广而来，对于这两点，有兴趣的同学可以自行尝试。</p>
+<h5 id="代价函数的偏微分"><a href="#代价函数的偏微分" class="headerlink" title="代价函数的偏微分"></a>代价函数的偏微分</h5><p>在做梯度下降时，我们会涉及到代价函数$J(\theta)$偏微分的计算，即$\frac{\partial}{\partial\theta_j}J(\theta)$</p>
+<p>这一步推导虽然简单，但比较繁琐，我把具体结果写出来，不过有能力的同学建议自己推一遍，这样可以加深理解。我的推导过程在这。</p>
+<p>$\frac{\partial}{\partial\theta_j}J(\theta)=\frac{1}{m}\Sigma_{i=1}^mh_\theta((x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>如果你还记得回归问题中代价函数的偏微分，你会惊奇地发现，虽然代价函数$J(\theta)$发生了变化，但其偏微分的形式确实一致的。</p>
+<h4 id="一些高级优化概念"><a href="#一些高级优化概念" class="headerlink" title="一些高级优化概念"></a>一些高级优化概念</h4><p>最后Andrew Ng给我们在分类算法处留了几个高级优化算法，但并没有具体地进行介绍。着重强调的一点是，这些算法的内涵往往比较深奥，但并不需要彻底地弄懂他们的原理也可以熟练地使用。我自己会在之后出几篇专门介绍它们的博客。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>优化算法（Opitimization Algorithm）</th>
+<th>相对于梯度下降的优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- 共轭梯度法（Conjugate Gradient）</td>
+<td>- 不需要手动选择学习率$\alpha$</td>
+<td>-算法结构更加复杂</td>
+</tr>
+<tr>
+<td>- BFGS算法</td>
+<td>- 一般比梯度下降速度快</td>
+<td></td>
+</tr>
+<tr>
+<td>- L-BFGS算法</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="多元分类：一对多（Multiple-Classification）"><a href="#多元分类：一对多（Multiple-Classification）" class="headerlink" title="多元分类：一对多（Multiple Classification）"></a>多元分类：一对多（Multiple Classification）</h4><p>到这里，我们已经大致掌握了二分类的思路，下面我们需要考虑如何将多分类转化为我们熟悉的二分类。</p>
+<p>一个最简单的思想就是，我们对于某一种类，将其视为正类，其他所有类视为负类，这样就变成了二分类，就可以构造出一个分类器。</p>
+<p>如果我们对于每一种类都使用这种思想构造出一种分类器，那么多分类问题不就转化为若干个二分类了吗？</p>
+<img src="/8a55cfbaf1ca/multiple_classification.png" class="">
+<p>具体来说，就像Andrew Ng课件中的这张图一样，我们有三种类需要区分，三角，方块和红叉。</p>
+<p>对于这三种类，分别构建三种训练集，每一种训练集中将对应的类视为正类，而其他的视为负类。就可以训练出右边的三种分类器，它们的作用是对一个输入判断这个输入的输出是三角、方块和红叉的概率。</p>
+<p>通过比较三种分类器的输出，即这个输入对应的输出是三种类的概率，我们就可以知道这个输入对应的输出最可能是哪一种类，也就解决了这个多分类问题。</p>
 
     </div>
 
@@ -373,8 +384,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E8%8B%B1%E8%AF%AD/" rel="tag"><i class="fa fa-tag"></i> 英语</a>
-              <a href="/tags/GRE/" rel="tag"><i class="fa fa-tag"></i> GRE</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+              <a href="/tags/%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/" rel="tag"><i class="fa fa-tag"></i> 概念总结</a>
           </div>
 
         
@@ -383,13 +394,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2c0f12af2268.html" rel="prev" title="博客搭建及相关问题记录（四）">
-      <i class="fa fa-chevron-left"></i> 博客搭建及相关问题记录（四）
+    <a href="/a218cd18cb36.html" rel="prev" title="机器学习基础概念笔记（一）">
+      <i class="fa fa-chevron-left"></i> 机器学习基础概念笔记（一）
     </a></div>
-      <div class="post-nav-item">
-    <a href="/cb6183d6dc95.html" rel="next" title="GRE Analysing Writing 总结——部分主题思路">
-      GRE Analysing Writing 总结——部分主题思路 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -462,7 +470,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Issue%E7%B1%BB%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Issue类指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E9%9D%9E%E5%88%A4%E6%96%AD%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">是非判断类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%A0%E6%9E%9C%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">因果类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E7%9C%8B%E6%B3%95%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">两种看法类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%8C%E6%96%B9%E7%9C%8B%E6%B3%95%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">敌方看法类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E8%AE%AE%E7%B1%BB%EF%BC%88%E4%B8%80%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">建议类（一）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E8%AE%AE%E7%B1%BB%EF%BC%88%E4%BA%8C%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">建议类（二）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Argument%E7%B1%BB%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">Argument类指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Assumption%E7%B1%BB%E6%8C%87%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">Assumption类指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Evidence%E7%B1%BB%E6%8C%87%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">Evidence类指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Explanation%E7%B1%BB%E6%8C%87%E4%BB%A4"><span class="nav-number">2.3.</span> <span class="nav-text">Explanation类指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Question%E7%B1%BB%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.</span> <span class="nav-text">Question类指令</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%EF%BC%88Classification%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">分类（Classification）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%EF%BC%88Logistic-Regression%EF%BC%89%E7%9A%84%E5%BC%95%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑回归（Logistic Regression）的引入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E5%87%BD%E6%95%B0%EF%BC%88Hypothesis-Function%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">假设函数（Hypothesis Function）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C%EF%BC%88Decision-Boundary%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">决策边界（Decision Boundary）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%8E-x-%E5%88%B0-y-%E7%9A%84%E6%98%A0%E5%B0%84"><span class="nav-number">1.3.1.</span> <span class="nav-text">从$x$到$y$的映射</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C%E7%9A%84%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">决策边界的举例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C%E7%9A%84%E4%B8%A4%E7%82%B9%E8%AF%B4%E6%98%8E"><span class="nav-number">1.3.3.</span> <span class="nav-text">决策边界的两点说明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%EF%BC%88Cost-Function%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">代价函数（Cost Function）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">1.4.1.</span> <span class="nav-text">代价函数的修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E5%81%8F%E5%BE%AE%E5%88%86"><span class="nav-number">1.4.2.</span> <span class="nav-text">代价函数的偏微分</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%BC%98%E5%8C%96%E6%A6%82%E5%BF%B5"><span class="nav-number">1.5.</span> <span class="nav-text">一些高级优化概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E5%88%86%E7%B1%BB%EF%BC%9A%E4%B8%80%E5%AF%B9%E5%A4%9A%EF%BC%88Multiple-Classification%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">多元分类：一对多（Multiple Classification）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -786,6 +794,61 @@ window.addEventListener('pjax:success', () => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 <script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>

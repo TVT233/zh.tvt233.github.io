@@ -10,6 +10,100 @@
 ]]></content>
   </entry>
   <entry>
+    <title>机器学习基础概念笔记（二）</title>
+    <url>/8a55cfbaf1ca.html</url>
+    <content><![CDATA[<h3 id="分类（Classification）"><a href="#分类（Classification）" class="headerlink" title="分类（Classification）"></a>分类（Classification）</h3><h4 id="逻辑回归（Logistic-Regression）的引入"><a href="#逻辑回归（Logistic-Regression）的引入" class="headerlink" title="逻辑回归（Logistic Regression）的引入"></a>逻辑回归（Logistic Regression）的引入</h4><p>当我们从传统的回归问题转移到分类问题时，最大的变化就是输出由连续的变为了离散的。对于分类问题，我们可以分为两大部分，即二分类（binary classification）和多分类（multiple classification）。而二分类又是多分类的基础，所以我们必须对二分类加以重点审视。</p>
+<p>所谓的二分类，就是输出结果只有两种，1和0。其中输出为1的类我们称之为正类（positive class），而输出为0的类我们称之为负类（negative class）。</p>
+<p>回顾之前讲的线性回归，其输出结果是连续且没有限制的，也就是说可以出现在[0，1]以内的输出，也可以出现这个范围以外的输出。那么如何将这种输出转化为离散的0，1输出呢？最简单的思路就是设置一个阈值，例如0.5。但如果你尝试这样做的话，你会发现当输出比较极端的训练样本出现时，训练出来的结果往往不能很好地拟合这些样本。</p>
+<p>于是我们思考，能不能将输出的结果限制在[0，1]之间，这样就可以很好地拟合这些样本了。于是就有了我们所说的逻辑回归。</p>
+<h4 id="假设函数（Hypothesis-Function）"><a href="#假设函数（Hypothesis-Function）" class="headerlink" title="假设函数（Hypothesis Function）"></a>假设函数（Hypothesis Function）</h4><p>在前面的回归问题中，我们的假设函数为$h_\theta(x)=\theta^TX$，在这里我们引入一个新的函数，$Sigmoid$函数</p>
+<p>​                                                    $Sigmoid：g(z)=\frac{1}{1+e^{-z}}$</p>
+<img src="/8a55cfbaf1ca/sigmoid.png" class="">
+<p>我们令$z=\theta^TX$，于是得到了新的假设函数</p>
+<p>​                                                   $h_\theta(x)=g(\theta^TX)=\frac{1}{1+e^{-θ^TX}}$</p>
+<p>这样，我们就将假设函数的输出固定在了[0，1]之间。这就是逻辑回归中的假设函数。</p>
+<p>$h_\theta(x)$的具体含义是在以$\theta$为参数，输入为$x$的前提下，$y=1$的概率，即$P(y=1|x;\theta)$</p>
+<p>而由于二分类中输出值要么为1，要么为0，我们可以得出</p>
+<p>​                                               $P(y=0|x;\theta)=1-P(y=1|x;\theta)$</p>
+<h4 id="决策边界（Decision-Boundary）"><a href="#决策边界（Decision-Boundary）" class="headerlink" title="决策边界（Decision Boundary）"></a>决策边界（Decision Boundary）</h4><h5 id="从-x-到-y-的映射"><a href="#从-x-到-y-的映射" class="headerlink" title="从$x$到$y$的映射"></a>从$x$到$y$的映射</h5><p>我们首先来总结以下输入$x$到输出$y$的完整映射。</p>
+<p>对于逻辑回归，我们有如下定义，</p>
+<p>$h_\theta(x)=g(\theta^Tx)$，$g(z)=\frac{1}{1+e^-z}$</p>
+<p>又由$Sigmoid$函数的性质，</p>
+<p>$g(z)\geq0.5,\quad 当\,z\geq0\quad;\quad\,g(z)&lt;0.5,\quad 当\,z&lt;0$</p>
+<p>我们可以推出，</p>
+<p>$h_\theta(x)=g(\theta^Tx)\geq0.5,\quad 当\,\theta^Tx\geq0\quad;\quad\,h_\theta(x)=g(\theta^Tx)&lt;0.5,\quad 当\,\theta^Tx&lt;0$</p>
+<p>若我们再给出阈值$0.5$，使得</p>
+<p>$y=1,\quad 当h_\theta(x)\geq0.5 \quad;\quad y=0,\quad 当h_\theta(x)&lt;0.5$ </p>
+<p>我们就得到了由$x$到$y$的完整映射。</p>
+<h5 id="决策边界的举例"><a href="#决策边界的举例" class="headerlink" title="决策边界的举例"></a>决策边界的举例</h5><p>此时我们举一例，$h_\theta(x)=g(\theta^Tx)=g(-3+x_1+x_2)$</p>
+<p>当$h_\theta(x)\geq0.5$时，即$-3+x_1+x_2\geq0$时，$y=1$</p>
+<p>可见，直线$-3+x_1+x_2$是区分正类和负类的边界，我们称之为<strong>决策边界</strong>。</p>
+<h5 id="决策边界的两点说明"><a href="#决策边界的两点说明" class="headerlink" title="决策边界的两点说明"></a>决策边界的两点说明</h5><p>对于决策边界，有两点需要说明：</p>
+<ol>
+<li>决策边界不一定只有直线，在添加高阶变量后决策边界可以是很复杂的形状。例如，$h_\theta(x)=g(\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_1^2+\theta_4x_2^2)$，若最终$\theta=\left[-1,0,0,1,1\right]^T$，则决策边界为$x_1^2+x_2^2=1$，是一个圆。</li>
+<li>决策边界是假设函数的一个属性，每一个参数确定的假设函数都对应着一个决策边界，而非训练集的属性。训练集是用来获得假设函数的参数的。</li>
+</ol>
+<h4 id="代价函数（Cost-Function）"><a href="#代价函数（Cost-Function）" class="headerlink" title="代价函数（Cost Function）"></a>代价函数（Cost Function）</h4><h5 id="代价函数的修改"><a href="#代价函数的修改" class="headerlink" title="代价函数的修改"></a>代价函数的修改</h5><p>我们之前说过，对于平方误差代价函数，</p>
+<p>$J(θ)=\frac{1}{2m}Σ_{i=1}^m(h_θ(x^{(i)})-y^{(i)})^2=\frac{1}{m}\Sigma^m_{i=1}Cost(h_\theta(x^{(i)}-y^{(i)}))$</p>
+<p>其中，$Cost(h_\theta(x^{(i)}-y^{(i)}))=\frac{1}{2}(h_θ(x^{(i)})-y^{(i)})^2$</p>
+<p>在线性回归问题中$J(\theta)$是凸函数，因此梯度下降始终可以获得全局最优解。但是可以证明的是，到了分类问题中，对于我们的假设函数$h_\theta(x)=g(\theta^TX)=\frac{1}{1+e^{-θ^TX}}$，此时的$J(\theta)$就是非凸的（not convex）。这显然与我们的期望不符，我们仍然希望它是凸的。</p>
+<p>于是我们对$Cost(h_\theta(x^{(i)}-y^{(i)}))$做如下修改</p>
+<p>令$Cost(h_\theta(x^{(i)}-y^{(i)}))=\begin{cases}-ln\,h_\theta(x),\quad y=1\\ -ln\,(1-h_\theta(x)),\quad y=0\end{cases}$</p>
+<p>也可以简写为$Cost(h_\theta(x^{(i)}-y^{(i)}))=-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x))$ </p>
+<p>于是$J(\theta)=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))$</p>
+<img src="/8a55cfbaf1ca/cost_y=1.png" class="">
+<img src="/8a55cfbaf1ca/cost_y=0.png" class="">
+<p>可以看到当$y=1$时，如果预测结果$h_\theta(x)$为$1$，那么$Cost=0$，即没有代价。而如果预测结果$h_\theta(x)$为$1$，那么$Cost\longrightarrow\infty$，即代价无穷大。而当$y=0$时则规则相反。</p>
+<p>可以证明的一点是，这样的代价函数使得$J(\theta)$在分类问题中依然是凸函数。不过这一点在Andrew Ng的课程中没有被证明，至于这样的$Cost$函数是如何被发现的，Andrew Ng提到是由统计学中的极大似然法推广而来，对于这两点，有兴趣的同学可以自行尝试。</p>
+<h5 id="代价函数的偏微分"><a href="#代价函数的偏微分" class="headerlink" title="代价函数的偏微分"></a>代价函数的偏微分</h5><p>在做梯度下降时，我们会涉及到代价函数$J(\theta)$偏微分的计算，即$\frac{\partial}{\partial\theta_j}J(\theta)$</p>
+<p>这一步推导虽然简单，但比较繁琐，我把具体结果写出来，不过有能力的同学建议自己推一遍，这样可以加深理解。我的推导过程在这。</p>
+<p>$\frac{\partial}{\partial\theta_j}J(\theta)=\frac{1}{m}\Sigma_{i=1}^mh_\theta((x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>如果你还记得回归问题中代价函数的偏微分，你会惊奇地发现，虽然代价函数$J(\theta)$发生了变化，但其偏微分的形式确实一致的。</p>
+<h4 id="一些高级优化概念"><a href="#一些高级优化概念" class="headerlink" title="一些高级优化概念"></a>一些高级优化概念</h4><p>最后Andrew Ng给我们在分类算法处留了几个高级优化算法，但并没有具体地进行介绍。着重强调的一点是，这些算法的内涵往往比较深奥，但并不需要彻底地弄懂他们的原理也可以熟练地使用。我自己会在之后出几篇专门介绍它们的博客。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>优化算法（Opitimization Algorithm）</th>
+<th>相对于梯度下降的优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- 共轭梯度法（Conjugate Gradient）</td>
+<td>- 不需要手动选择学习率$\alpha$</td>
+<td>-算法结构更加复杂</td>
+</tr>
+<tr>
+<td>- BFGS算法</td>
+<td>- 一般比梯度下降速度快</td>
+<td></td>
+</tr>
+<tr>
+<td>- L-BFGS算法</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="多元分类：一对多（Multiple-Classification）"><a href="#多元分类：一对多（Multiple-Classification）" class="headerlink" title="多元分类：一对多（Multiple Classification）"></a>多元分类：一对多（Multiple Classification）</h4><p>到这里，我们已经大致掌握了二分类的思路，下面我们需要考虑如何将多分类转化为我们熟悉的二分类。</p>
+<p>一个最简单的思想就是，我们对于某一种类，将其视为正类，其他所有类视为负类，这样就变成了二分类，就可以构造出一个分类器。</p>
+<p>如果我们对于每一种类都使用这种思想构造出一种分类器，那么多分类问题不就转化为若干个二分类了吗？</p>
+<img src="/8a55cfbaf1ca/multiple_classification.png" class="">
+<p>具体来说，就像Andrew Ng课件中的这张图一样，我们有三种类需要区分，三角，方块和红叉。</p>
+<p>对于这三种类，分别构建三种训练集，每一种训练集中将对应的类视为正类，而其他的视为负类。就可以训练出右边的三种分类器，它们的作用是对一个输入判断这个输入的输出是三角、方块和红叉的概率。</p>
+<p>通过比较三种分类器的输出，即这个输入对应的输出是三种类的概率，我们就可以知道这个输入对应的输出最可能是哪一种类，也就解决了这个多分类问题。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>概念总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习基础概念笔记（一）</title>
     <url>/a218cd18cb36.html</url>
     <content><![CDATA[<h2 id="机器学习（Machine-Learning）的定义："><a href="#机器学习（Machine-Learning）的定义：" class="headerlink" title="机器学习（Machine Learning）的定义："></a>机器学习（Machine Learning）的定义：</h2><p>赋予计算机无需明确编程即可学习的能力的研究领域。—— 阿瑟·萨缪尔</p>
@@ -95,7 +189,7 @@
 <p>我们的假设函数因此随之改变为$h_\theta(x)=\theta_0+\theta_1x_1+…+\theta_nx_n$。在<code>偏导的简单计算和说明</code>部分中我们提到了，添加$x_0\equiv0$可以使各个偏导项具有相同的形式，于是我们的假设函数变为</p>
 <p>$h_\theta(x)=\theta_0x_0+\theta_1x_1+…+\theta_nx_n$</p>
 <p>使用矩阵乘法可以写作</p>
-<p>$h_\theta(x)=\left[\begin{matrix}\theta_0,\theta_1,…,\theta_n\end{matrix}\right]\left[\begin{matrix}x_0\\x_1\.\.\.\\x_n\end{matrix}\right]=\theta^TX$</p>
+<p>$h_\theta(x)=\left[\begin{matrix}\theta_0,\theta_1,…,\theta_n\end{matrix}\right]\left[\begin{matrix}x_0\\x_1\\ .\\ .\\ .\\x_n\end{matrix}\right]=\theta^TX$</p>
 <p>同样的，对于多元线性回归，我们的代价函数也需要增加相应的系数$\theta_j$作为变量，即</p>
 <p>$J(\theta)=J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\Sigma_{i=1}^mh_\theta(x^{(i)}-y^{(i)})^2$</p>
 <h5 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h5><p>所谓的特征缩放，指的是让训练集样本的不同特征都大致在同一个范围内。</p>
