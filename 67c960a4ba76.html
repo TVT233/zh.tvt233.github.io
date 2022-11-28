@@ -20,21 +20,26 @@
     var CONFIG = {"hostname":"zh.zihengzhang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文旨在将本人在申请期间写的Research Proposal加以概括，提炼写作方式。">
+  <meta name="description" content="这篇笔记主要介绍了机器学习中针对过拟合的正则化手段。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Research Proposal的写作方式">
-<meta property="og:url" content="https://zh.zihengzhang.top/77844727fb45.html">
+<meta property="og:title" content="机器学习基础概念笔记（三）">
+<meta property="og:url" content="https://zh.zihengzhang.top/67c960a4ba76.html">
 <meta property="og:site_name" content="张子恒">
-<meta property="og:description" content="本文旨在将本人在申请期间写的Research Proposal加以概括，提炼写作方式。">
+<meta property="og:description" content="这篇笔记主要介绍了机器学习中针对过拟合的正则化手段。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-11T05:27:48.000Z">
-<meta property="article:modified_time" content="2022-11-11T11:39:02.235Z">
+<meta property="og:image" content="https://zh.zihengzhang.top/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png">
+<meta property="article:published_time" content="2022-11-24T06:53:05.000Z">
+<meta property="article:modified_time" content="2022-11-28T08:59:26.451Z">
 <meta property="article:author" content="张子恒">
-<meta property="article:tag" content="申请">
-<meta property="article:tag" content="研究">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="概念总结">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zh.zihengzhang.top/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png">
 
-<link rel="canonical" href="https://zh.zihengzhang.top/77844727fb45.html">
+<link rel="canonical" href="https://zh.zihengzhang.top/67c960a4ba76.html">
 
 
 <script id="page-configurations">
@@ -47,7 +52,7 @@
   };
 </script>
 
-  <title>Research Proposal的写作方式 | 张子恒</title>
+  <title>机器学习基础概念笔记（三） | 张子恒</title>
   
 
 
@@ -212,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zh.zihengzhang.top/77844727fb45.html">
+    <link itemprop="mainEntityOfPage" href="https://zh.zihengzhang.top/67c960a4ba76.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -225,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Research Proposal的写作方式
+          机器学习基础概念笔记（三）
         </h1>
 
         <div class="post-meta">
@@ -234,10 +239,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-11-11 13:27:48 / 修改时间：19:39:02" itemprop="dateCreated datePublished" datetime="2022-11-11T13:27:48+08:00">2022-11-11</time>
+              <time title="创建时间：2022-11-24 14:53:05" itemprop="dateCreated datePublished" datetime="2022-11-24T14:53:05+08:00">2022-11-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-28 16:59:26" itemprop="dateModified" datetime="2022-11-28T16:59:26+08:00">2022-11-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -261,16 +272,16 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+              <span>3.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
-            <div class="post-description">本文旨在将本人在申请期间写的Research Proposal加以概括，提炼写作方式。</div>
+            <div class="post-description">这篇笔记主要介绍了机器学习中针对过拟合的正则化手段。</div>
 
         </div>
       </header>
@@ -281,57 +292,52 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>首先给大家提供一个爱丁堡大学的<a target="_blank" rel="noopener" href="https://github.com/TVT233/personal-information/raw/main/How-to-Write-a-Good-Postgraduate-Research-Proposal.pdf">写作指导</a></p>
-<h3 id="Research-Proposal-的黄金法则"><a href="#Research-Proposal-的黄金法则" class="headerlink" title="Research Proposal 的黄金法则"></a>Research Proposal 的黄金法则</h3><h4 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h4><ol>
-<li>目标明确、客观、简介且现实</li>
-<li>问问自己为什么应该资助这项项目？为什么你是承担这个项目的最佳人选？</li>
-<li>问问自己为什么这项研究很重要，很及时？</li>
-<li>清楚地陈述和证明项目的目标的意义（仅仅有趣是不够的）</li>
-<li>这项研究如何造福更广泛的群体？</li>
+        <h3 id="欠拟合问题和过拟合问题（Underfitting-and-Overfitting）"><a href="#欠拟合问题和过拟合问题（Underfitting-and-Overfitting）" class="headerlink" title="欠拟合问题和过拟合问题（Underfitting and Overfitting）"></a>欠拟合问题和过拟合问题（Underfitting and Overfitting）</h3><h4 id="欠拟合问题"><a href="#欠拟合问题" class="headerlink" title="欠拟合问题"></a>欠拟合问题</h4><p>之前我们说过了，如果对一个比较复杂的问题，采用形式比较简单的假设函数，那么就会导致最终结果的代价函数最低值很高，也就是说假设函数和训练集数据拟合的并不好。这样的状态我们称之为欠拟合（underfitting）</p>
+<p>例如在线性回归中的欠拟合</p>
+<img src="/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png" class="">
+<p>以及在逻辑回归中的欠拟合</p>
+<img src="/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png" class="">
+<h4 id="过拟合问题"><a href="#过拟合问题" class="headerlink" title="过拟合问题"></a>过拟合问题</h4><p>通过欠拟合问题的情况，我们不难想到还存在一种情况，就是假设函数对训练集数据过于“符合“了。这种符合超过了我们的需求，甚至对我们之后的预测工作是不利的。这样的状态我们称之为过拟合（overfitting）。</p>
+<p>例如在线性回归中的过拟合</p>
+<img src="/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png" class="">
+<p>以及在逻辑回归中的过拟合</p>
+<img src="/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png" class="">
+<p>而导致这种现象根本的原因是假设函数中的变量太多了，没有足够的数据对它们进行约束。</p>
+<h4 id="解决过拟合的两种手段"><a href="#解决过拟合的两种手段" class="headerlink" title="解决过拟合的两种手段"></a>解决过拟合的两种手段</h4><ol>
+<li>减少特征的数量：可以手动选择哪些特征应该被保留，也可以使用模型选择算法（Model Selection Algorithm），这个之后我们会具体讲到。</li>
+<li>正则化（Regularization）：保留特征，但减小量级或$\theta_j$的值</li>
 </ol>
-<h4 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h4><ol>
-<li>如果空间允许，请提供清晰的项目名称</li>
-<li>使用章节题目</li>
-<li>尽量分段，而不是把文本堆积在一起</li>
-<li>尽量写短句，没人愿意在研究计划里分析长难句</li>
-<li>如果允许，提供图表、图像来解释文本</li>
-</ol>
-<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><ol>
-<li>可以提前和潜在主管聊一聊（email），询问他们的想法</li>
-<li>如果有机会，将自己的想法呈现一下，听取他们的意见</li>
-<li>查看资助机构/学校的具体要求，例如字数等</li>
-</ol>
-<h3 id="Research-Proposal-的文章结构"><a href="#Research-Proposal-的文章结构" class="headerlink" title="Research Proposal 的文章结构"></a>Research Proposal 的文章结构</h3><p>一般来说，要具体看机构的要求，这里只给出最普遍的结构供大家参考。在不同场景下（例如有字数限制），大家根据需求自行删改即可。</p>
-<h4 id="常见的结构"><a href="#常见的结构" class="headerlink" title="常见的结构"></a>常见的结构</h4><ol>
-<li>标题（<code>Title</code>)和摘要（<code>Abstract</code>）</li>
-<li>背景（<code>Background Information</code>）/  相关工作（<code>Related Work</code>）</li>
-<li>假设（<code>Hypothesis</code>）和目标（<code>Objectives</code>）</li>
-<li>研究方法（<code>Methodology</code>）</li>
-<li>总结（<code>Summary</code>）/  结论（<code>Conclusion</code>）</li>
-</ol>
-<h3 id="具体写作要求"><a href="#具体写作要求" class="headerlink" title="具体写作要求"></a>具体写作要求</h3><h4 id="学术诚信在先"><a href="#学术诚信在先" class="headerlink" title="学术诚信在先"></a>学术诚信在先</h4><p>先说一点比较重要的，在研究计划中提及的所有出版物都应该被标注引用，如果不这样做的话实际上是抄袭（<code>Plagiarism</code>）。即使你觉得作者的原话是对这个意思的最好阐述，你也最好用自己的话改写一下。如果必须要逐字引用，记得使用<strong>引号</strong>和<strong>斜体</strong>来标注。</p>
-<h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><p>在摘要中，我们应该向读者表达清楚自己研究计划的要点和结论。整体风格应该和全文一致。</p>
-<h4 id="背景-相关工作"><a href="#背景-相关工作" class="headerlink" title="背景/相关工作"></a>背景/相关工作</h4><p>在这里，我们应该首先向读者以文献综述的形式介绍背景信息，尽快引起将读者的思绪带入情景之中。之后清楚地阐明自己研究的有效性和必要性，说明研究的目的和目标。</p>
-<p>值得说明的一点是，这种有效性只要是基于合理的假设和推理即可，不必非要说得很夸张。</p>
-<p>之后可以介绍本方向之前的一些工作，并探讨它们的不足，证明自己对于此研究所属领域的背景、方法、理论和矛盾点都有着很好的了解。</p>
-<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h5 id="假设和目标"><a href="#假设和目标" class="headerlink" title="假设和目标"></a>假设和目标</h5><p>我们在此部分可以详实地阐述自己研究所基于的假设和期望的目标。值得注意的是，目标不必过于夸大，可行永远是目标的第一要素，在此基础上则可以进行扩展。</p>
-<p>在描述的过程中，你可以通过向自己提问的方式来找出需要补充的要素：</p>
-<ol>
-<li>为什么其他人应该为我的研究投入资金？</li>
-<li>我的研究最终的受益群体是谁？最好说的具体一点，让世界受益的研究听起来太模糊了。</li>
-<li>是否有证据，比如文献或数据，证明这项研究的成果将填补某项空白，或者可以很好的应用于现在的体系之上？</li>
-<li>这项研究是否够及时，有创新，响应大的行业趋势？</li>
-<li>其实你也可以写上具体的日程目标，比如每6个月的时间计划。</li>
-</ol>
-<h5 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h5><p>研究方法可以说是最为重要的部分。</p>
-<ol>
-<li>自己使用的研究方法做出简要的介绍</li>
-<li>解释为什么你认为它是最为合适的研究方法</li>
-<li>考虑了哪些替代方法</li>
-<li>为什么没有使用这些替代方法（反向证明自己方法的合理性）</li>
-<li>为什么你选择的这个研究场所适合你的这套研究方法（比如提供专业知识，数据，设备等）</li>
-</ol>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在<code>Research Proposal</code>的结尾写好总结可以帮助审阅的人识别重要信息，毕竟大家都爱看摘要和总结。总结的方式有很多种，但大体上来说都是对自己的研究的完整概括：使用什么方法，解决了什么问题，提升了哪些性能，使得哪些人受益等等。</p>
+<p>我们接下来的内容就来具体讲讲正则化的含义和具体实现方法</p>
+<h3 id="正则化与代价函数"><a href="#正则化与代价函数" class="headerlink" title="正则化与代价函数"></a>正则化与代价函数</h3><h4 id="代价函数的更新"><a href="#代价函数的更新" class="headerlink" title="代价函数的更新"></a>代价函数的更新</h4><p>当出现过拟合时，我们最简单的手段就是手动地去挑选一些变量并去掉。</p>
+<p>例如，对假设函数</p>
+<p>$h_\theta(x^{(i)})=\theta_0+\theta_1x_1+\theta_3x_3+\theta_4x_4$</p>
+<p>我们手动去掉了$x_3$和$x_4$，其等价的说法就是令$\theta_3, \theta_4\equiv0$</p>
+<p>但这样直接的做法会完全去掉$x_3$和$x_4$两种特征的影响。有的时候我们并不像接受这种简单粗暴的做法，而是想在不过拟合的基础上，保留$x_3$和$x_4$的一部分影响。于是我们就思考，怎样做才能让最终的$\theta_3$和$\theta_4$趋于$0$而又不等于0呢？</p>
+<p>答案是，对我们的代价函数进行改造。</p>
+<p>对于MSE代价函数，我们有如下形式</p>
+<p>$J(\theta)=min_\theta\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$</p>
+<p>如果我们在其后加上大系数的$\theta_3$和$\theta_4$，例如$+1000\theta_3+1000\theta_4$，那么当我们尝试最小化$J(\theta)$的时候，$\theta_3$和$\theta_4$自然就会非常小。相比于$\theta_1$和$\theta_2$来讲，它们就好像收到了额外的”惩罚“，于是我们称$+1000\theta_3+1000\theta_4$为 $x_3$和$x_4$ 的惩罚项。</p>
+<h4 id="正则化参数（Regularization-Parameter）"><a href="#正则化参数（Regularization-Parameter）" class="headerlink" title="正则化参数（Regularization Parameter）"></a>正则化参数（Regularization Parameter）</h4><p>当我们添加了一些参数的惩罚项之后，在最小化代价函数之后，假设函数就会变得简单，更加平滑，不易过拟合。</p>
+<p>但是显然，我们在事先并不清楚哪些特征时相关度较低的，这怎么办呢？</p>
+<p>先别忙，解决这个问题之前，我们先来下个定义</p>
+<p>我们首先对于所有的特征都添加惩罚项（除了$x_0$），但是系数向量$\lambda$待定。这个$\lambda$我们就称为<strong>正则化参数</strong>。</p>
+<p>$J(\theta)=\frac{1}{2m}[\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\Sigma_{i=1}^n\theta_j^2]$</p>
+<p>值得注意的是，这里惩罚项用的是$\theta_j^2$，目的是偏微分后去掉前面的系数$\frac{1}{2m}$</p>
+<p>显然，$\lambda_j$代表了对某一种特征的惩罚程度，如果$\lambda_j$非常大，则对应的$\theta_j\rightarrow0$，拟合结果就变成了一条直线，欠拟合了。</p>
+<p>因此我们可以看出，选择合适的正则化参数对我们是很重要的。</p>
+<p>下面我们具体来给出在线性回归和逻辑回归两种情况下的正则化。</p>
+<h3 id="线性回归与逻辑回归的正则化"><a href="#线性回归与逻辑回归的正则化" class="headerlink" title="线性回归与逻辑回归的正则化"></a>线性回归与逻辑回归的正则化</h3><h4 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h4><script type="math/tex; mode=display">J(\theta)^{old}=\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2</script><p>↓</p>
+<p>$J(\theta)^{new}=\frac{1}{2m}[\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\Sigma_{i=1}^n\theta_j^2]$</p>
+<p>$\frac{\partial J(\theta)}{\partial \theta_j}=\frac{1}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda}{m}\theta_j$</p>
+<p>$\therefore\theta_j^{new}=\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda\alpha}{m}\theta_j=(1-\frac{\alpha\lambda}{m})\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>而对于线性回归中的正规方程，我们可以使用如下方法进行正则化</p>
+<p>$\theta=(X^TX+\lambda\Psi)^{-1}X^Ty$</p>
+<p>其中，$\Psi=\left[\begin{matrix}0\space\space\space\space\space\space\space\space\space\space\space\space\\\space\space1\space\space\space\space\space\space\space\space\space\space\\\space\space1\space\space\space\space\\\space\space\space\space1\\ …\end{matrix}\right]$</p>
+<h4 id="逻辑回归的正则化"><a href="#逻辑回归的正则化" class="headerlink" title="逻辑回归的正则化"></a>逻辑回归的正则化</h4><script type="math/tex; mode=display">J(\theta)^{old}=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))</script><p>↓</p>
+<p>$J(\theta)^{new}=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))+\frac{\lambda}{2m}\Sigma_{j=1}^n\theta_j^2$</p>
+<p>$\frac{\partial J(\theta)}{\partial \theta_j}=\frac{1}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda}{m}\theta_j$</p>
+<p>$\therefore\theta_j^{new}=\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda\alpha}{m}\theta_j=(1-\frac{\alpha\lambda}{m})\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>从这里可以看到，尽管正则化后线性回归和逻辑回归的两种假设函数形式有所区别，但其偏微分项是一致的，因此更新后的$\theta_j$也是形式一致的。</p>
 
     </div>
 
@@ -342,8 +348,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E7%94%B3%E8%AF%B7/" rel="tag"><i class="fa fa-tag"></i> 申请</a>
-              <a href="/tags/%E7%A0%94%E7%A9%B6/" rel="tag"><i class="fa fa-tag"></i> 研究</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+              <a href="/tags/%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/" rel="tag"><i class="fa fa-tag"></i> 概念总结</a>
           </div>
 
         
@@ -352,13 +358,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/cb6183d6dc95.html" rel="prev" title="GRE Analysing Writing 总结——部分主题思路">
-      <i class="fa fa-chevron-left"></i> GRE Analysing Writing 总结——部分主题思路
+    <a href="/4e61adc1b875.html" rel="prev" title="分类问题中代价函数的偏微分推导">
+      <i class="fa fa-chevron-left"></i> 分类问题中代价函数的偏微分推导
     </a></div>
-      <div class="post-nav-item">
-    <a href="/a022104043b5.html" rel="next" title="クローラー1号機初体験（爬虫1号的初体验）">
-      クローラー1号機初体験（爬虫1号的初体验） <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -431,7 +434,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Research-Proposal-%E7%9A%84%E9%BB%84%E9%87%91%E6%B3%95%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">Research Proposal 的黄金法则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.</span> <span class="nav-text">内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A3%8E%E6%A0%BC"><span class="nav-number">1.2.</span> <span class="nav-text">风格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Research-Proposal-%E7%9A%84%E6%96%87%E7%AB%A0%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">Research Proposal 的文章结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">常见的结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%86%99%E4%BD%9C%E8%A6%81%E6%B1%82"><span class="nav-number">3.</span> <span class="nav-text">具体写作要求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E6%9C%AF%E8%AF%9A%E4%BF%A1%E5%9C%A8%E5%85%88"><span class="nav-number">3.1.</span> <span class="nav-text">学术诚信在先</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">3.2.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.3.</span> <span class="nav-text">背景&#x2F;相关工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">3.4.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E5%92%8C%E7%9B%AE%E6%A0%87"><span class="nav-number">3.4.1.</span> <span class="nav-text">假设和目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95"><span class="nav-number">3.4.2.</span> <span class="nav-text">研究方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E9%97%AE%E9%A2%98%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88%E9%97%AE%E9%A2%98%EF%BC%88Underfitting-and-Overfitting%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">欠拟合问题和过拟合问题（Underfitting and Overfitting）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">欠拟合问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">过拟合问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%BF%87%E6%8B%9F%E5%90%88%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%89%8B%E6%AE%B5"><span class="nav-number">1.3.</span> <span class="nav-text">解决过拟合的两种手段</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%E4%B8%8E%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">正则化与代价函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="nav-number">2.1.</span> <span class="nav-text">代价函数的更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%E5%8F%82%E6%95%B0%EF%BC%88Regularization-Parameter%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">正则化参数（Regularization Parameter）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%8E%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">线性回归与逻辑回归的正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">3.1.</span> <span class="nav-text">线性回归的正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">3.2.</span> <span class="nav-text">逻辑回归的正则化</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -755,6 +758,61 @@ window.addEventListener('pjax:success', () => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 <script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>

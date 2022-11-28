@@ -10,6 +10,64 @@
 ]]></content>
   </entry>
   <entry>
+    <title>机器学习基础概念笔记（三）</title>
+    <url>/67c960a4ba76.html</url>
+    <content><![CDATA[<h3 id="欠拟合问题和过拟合问题（Underfitting-and-Overfitting）"><a href="#欠拟合问题和过拟合问题（Underfitting-and-Overfitting）" class="headerlink" title="欠拟合问题和过拟合问题（Underfitting and Overfitting）"></a>欠拟合问题和过拟合问题（Underfitting and Overfitting）</h3><h4 id="欠拟合问题"><a href="#欠拟合问题" class="headerlink" title="欠拟合问题"></a>欠拟合问题</h4><p>之前我们说过了，如果对一个比较复杂的问题，采用形式比较简单的假设函数，那么就会导致最终结果的代价函数最低值很高，也就是说假设函数和训练集数据拟合的并不好。这样的状态我们称之为欠拟合（underfitting）</p>
+<p>例如在线性回归中的欠拟合</p>
+<img src="/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png" class="">
+<p>以及在逻辑回归中的欠拟合</p>
+<img src="/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png" class="">
+<h4 id="过拟合问题"><a href="#过拟合问题" class="headerlink" title="过拟合问题"></a>过拟合问题</h4><p>通过欠拟合问题的情况，我们不难想到还存在一种情况，就是假设函数对训练集数据过于“符合“了。这种符合超过了我们的需求，甚至对我们之后的预测工作是不利的。这样的状态我们称之为过拟合（overfitting）。</p>
+<p>例如在线性回归中的过拟合</p>
+<img src="/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png" class="">
+<p>以及在逻辑回归中的过拟合</p>
+<img src="/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png" class="">
+<p>而导致这种现象根本的原因是假设函数中的变量太多了，没有足够的数据对它们进行约束。</p>
+<h4 id="解决过拟合的两种手段"><a href="#解决过拟合的两种手段" class="headerlink" title="解决过拟合的两种手段"></a>解决过拟合的两种手段</h4><ol>
+<li>减少特征的数量：可以手动选择哪些特征应该被保留，也可以使用模型选择算法（Model Selection Algorithm），这个之后我们会具体讲到。</li>
+<li>正则化（Regularization）：保留特征，但减小量级或$\theta_j$的值</li>
+</ol>
+<p>我们接下来的内容就来具体讲讲正则化的含义和具体实现方法</p>
+<h3 id="正则化与代价函数"><a href="#正则化与代价函数" class="headerlink" title="正则化与代价函数"></a>正则化与代价函数</h3><h4 id="代价函数的更新"><a href="#代价函数的更新" class="headerlink" title="代价函数的更新"></a>代价函数的更新</h4><p>当出现过拟合时，我们最简单的手段就是手动地去挑选一些变量并去掉。</p>
+<p>例如，对假设函数</p>
+<p>$h_\theta(x^{(i)})=\theta_0+\theta_1x_1+\theta_3x_3+\theta_4x_4$</p>
+<p>我们手动去掉了$x_3$和$x_4$，其等价的说法就是令$\theta_3, \theta_4\equiv0$</p>
+<p>但这样直接的做法会完全去掉$x_3$和$x_4$两种特征的影响。有的时候我们并不像接受这种简单粗暴的做法，而是想在不过拟合的基础上，保留$x_3$和$x_4$的一部分影响。于是我们就思考，怎样做才能让最终的$\theta_3$和$\theta_4$趋于$0$而又不等于0呢？</p>
+<p>答案是，对我们的代价函数进行改造。</p>
+<p>对于MSE代价函数，我们有如下形式</p>
+<p>$J(\theta)=min_\theta\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$</p>
+<p>如果我们在其后加上大系数的$\theta_3$和$\theta_4$，例如$+1000\theta_3+1000\theta_4$，那么当我们尝试最小化$J(\theta)$的时候，$\theta_3$和$\theta_4$自然就会非常小。相比于$\theta_1$和$\theta_2$来讲，它们就好像收到了额外的”惩罚“，于是我们称$+1000\theta_3+1000\theta_4$为 $x_3$和$x_4$ 的惩罚项。</p>
+<h4 id="正则化参数（Regularization-Parameter）"><a href="#正则化参数（Regularization-Parameter）" class="headerlink" title="正则化参数（Regularization Parameter）"></a>正则化参数（Regularization Parameter）</h4><p>当我们添加了一些参数的惩罚项之后，在最小化代价函数之后，假设函数就会变得简单，更加平滑，不易过拟合。</p>
+<p>但是显然，我们在事先并不清楚哪些特征时相关度较低的，这怎么办呢？</p>
+<p>先别忙，解决这个问题之前，我们先来下个定义</p>
+<p>我们首先对于所有的特征都添加惩罚项（除了$x_0$），但是系数向量$\lambda$待定。这个$\lambda$我们就称为<strong>正则化参数</strong>。</p>
+<p>$J(\theta)=\frac{1}{2m}[\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\Sigma_{i=1}^n\theta_j^2]$</p>
+<p>值得注意的是，这里惩罚项用的是$\theta_j^2$，目的是偏微分后去掉前面的系数$\frac{1}{2m}$</p>
+<p>显然，$\lambda_j$代表了对某一种特征的惩罚程度，如果$\lambda_j$非常大，则对应的$\theta_j\rightarrow0$，拟合结果就变成了一条直线，欠拟合了。</p>
+<p>因此我们可以看出，选择合适的正则化参数对我们是很重要的。</p>
+<p>下面我们具体来给出在线性回归和逻辑回归两种情况下的正则化。</p>
+<h3 id="线性回归与逻辑回归的正则化"><a href="#线性回归与逻辑回归的正则化" class="headerlink" title="线性回归与逻辑回归的正则化"></a>线性回归与逻辑回归的正则化</h3><h4 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h4><script type="math/tex; mode=display">J(\theta)^{old}=\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2</script><p>↓</p>
+<p>$J(\theta)^{new}=\frac{1}{2m}[\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\Sigma_{i=1}^n\theta_j^2]$</p>
+<p>$\frac{\partial J(\theta)}{\partial \theta_j}=\frac{1}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda}{m}\theta_j$</p>
+<p>$\therefore\theta_j^{new}=\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda\alpha}{m}\theta_j=(1-\frac{\alpha\lambda}{m})\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>而对于线性回归中的正规方程，我们可以使用如下方法进行正则化</p>
+<p>$\theta=(X^TX+\lambda\Psi)^{-1}X^Ty$</p>
+<p>其中，$\Psi=\left[\begin{matrix}0\space\space\space\space\space\space\space\space\space\space\space\space\\\space\space1\space\space\space\space\space\space\space\space\space\space\\\space\space1\space\space\space\space\\\space\space\space\space1\\ …\end{matrix}\right]$</p>
+<h4 id="逻辑回归的正则化"><a href="#逻辑回归的正则化" class="headerlink" title="逻辑回归的正则化"></a>逻辑回归的正则化</h4><script type="math/tex; mode=display">J(\theta)^{old}=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))</script><p>↓</p>
+<p>$J(\theta)^{new}=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))+\frac{\lambda}{2m}\Sigma_{j=1}^n\theta_j^2$</p>
+<p>$\frac{\partial J(\theta)}{\partial \theta_j}=\frac{1}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda}{m}\theta_j$</p>
+<p>$\therefore\theta_j^{new}=\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda\alpha}{m}\theta_j=(1-\frac{\alpha\lambda}{m})\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>从这里可以看到，尽管正则化后线性回归和逻辑回归的两种假设函数形式有所区别，但其偏微分项是一致的，因此更新后的$\theta_j$也是形式一致的。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>概念总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>分类问题中代价函数的偏微分推导</title>
     <url>/4e61adc1b875.html</url>
     <content><![CDATA[<p>在<a href="http://zh.zihengzhang.top/8a55cfbaf1ca.html">分类问题</a>中，我们会遇到代价函数$J(\theta)$</p>
@@ -194,7 +252,7 @@
 <p>下面我们以一元线性回归为例，对几个最基础的概念进行解释。</p>
 <h4 id="代价函数（Cost-function）"><a href="#代价函数（Cost-function）" class="headerlink" title="代价函数（Cost function）"></a>代价函数（Cost function）</h4><p>代价函数用来描述我们回归的结果对于训练集中样本的偏离程度，显然我们的回归结果由$θ_0$和$θ_1$共同决定，因此，我们定义的代价函数如下</p>
 <p>$J(θ_0,θ_1)=\frac{1}{2m}Σ_{i=1}^m(h_θ(x^{(i)})-y^{(i)})^2$</p>
-<p>即，所有样本预测值和真实值的差的平方和的算数平均。算术平均之所以有系数$\frac{1}{2}$是因为在后面求导的时候可以约掉，而加一个常数并不影响我们对代价函数的理解。这样定义的代价函数我们称之为<strong>平方误差代价函数</strong>。</p>
+<p>即，所有样本预测值和真实值的差的平方和的算数平均。算术平均之所以有系数$\frac{1}{2}$是因为在后面求导的时候可以约掉，而加一个常数并不影响我们对代价函数的理解。这样定义的代价函数我们称之为<strong>平方误差代价函数（Mean Square Error，简称MSE）</strong>。</p>
 <p>我们的目标是使我们的假设函数是对于所有样本最好的回归，因此问题也就转化为了使代价函数的值最小，即$minimize J(θ_0,θ_1)$。</p>
 <p>如何寻找到这个最小值呢？我们下面介绍两种方法，梯度下降和正规方程。</p>
 <h4 id="梯度下降（Gradient-descent）"><a href="#梯度下降（Gradient-descent）" class="headerlink" title="梯度下降（Gradient descent）"></a>梯度下降（Gradient descent）</h4><h5 id="梯度下降的方法"><a href="#梯度下降的方法" class="headerlink" title="梯度下降的方法"></a>梯度下降的方法</h5><p>我们采用求偏导的方法判断下降的方向，设置学习率（learning rate）决定我们下降时每一步走的有多远。</p>
