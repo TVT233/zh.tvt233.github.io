@@ -10,6 +10,106 @@
 ]]></content>
   </entry>
   <entry>
+    <title>机器学习基础概念笔记（四）</title>
+    <url>/69f0ef2f8958.html</url>
+    <content><![CDATA[<h3 id="非线性假设"><a href="#非线性假设" class="headerlink" title="非线性假设"></a>非线性假设</h3><p>之前我们讲到了，在非线性的情况下我们可以采用多项式拟合的方法将非线性的问题转化为线性的。但事实上，这样做存在着很大的局限性。</p>
+<p>问题就出在当某个问题存在的特征较多时，采用多项式拟合会有很多很多项，超出了我们的接受范围。</p>
+<p>举例，在一张50*50的图中，共有2500个像素。我们只考虑对其进行二项式回归，可以计算的是，符合条件的二次项就将达到300多万个。因此，当特征数量$n$较大时，多项式拟合并非一个好办法。</p>
+<h3 id="神经网络（Neural-Network）"><a href="#神经网络（Neural-Network）" class="headerlink" title="神经网络（Neural Network）"></a>神经网络（Neural Network）</h3><h4 id="神经元与大脑"><a href="#神经元与大脑" class="headerlink" title="神经元与大脑"></a>神经元与大脑</h4><p>众所周知，神经元包含轴突和树突，可以粗略的理解为每个神经元利用树突来从其他神经元获得信息，而后经过激活从轴突向其他神经元输出信息。</p>
+<p>这样的结构给了人们以启发，创造了拥有类似结构的<strong>神经网络（Neural Network）</strong>。神经网络起源于人们希望制造出模拟大脑的机器，在上世纪80-90年代得到广泛地应用。计算机技术的发展使得大规模神经网络得以应用。</p>
+<h4 id="模型展示"><a href="#模型展示" class="headerlink" title="模型展示"></a>模型展示</h4><p>逻辑单元(logistic unit)</p>
+<img src="/69f0ef2f8958/neural_unit.jpg" class="">
+<p>最基础的逻辑单元大致如上图所示，左边的x1,x2,x3为输入层的神经元，右边空置的圆圈则是由这三个输入逻辑单元得出的输出，我们定义为x。这个输出x经过$Sigmoid$激活后，也就对应着我们的假设函数$h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}$.值得一提的是，在输入层中存在着一个不由输入决定的神经元x0，我们称之为偏置单元（bias unit）。</p>
+<p>可以看到，我们在这个逻辑单元中实现了$h_\theta(x)$的计算，大致可以分为两步：</p>
+<ol>
+<li>由输入层和偏置单元计算出激活前的输出结果x。</li>
+<li>由x经$Sigmoid$激活得到真正的输出$h_\theta(x)$</li>
+</ol>
+<h4 id="一些记号"><a href="#一些记号" class="headerlink" title="一些记号"></a>一些记号</h4><p>接下来我们是对神经网络中的一些常见的概念和记号进行定义，以方便我们后续的讨论。</p>
+<p>在神经网络中：</p>
+<p>第一层：输入层（input layer）</p>
+<p>最后一层：输出层（output layer）</p>
+<p>中间层：隐藏层（hidden layer）</p>
+<p>记号：$a^{(j)}_i$为第$j$层的第$i$个神经元的激活项</p>
+<p>激活（activation）：指使一个神经元计算并输出值</p>
+<p>$\Theta^j$：控制$j$到$j+1$层的权重矩阵，显然如果$j$层和$j+1$层分别有$S_j$和$S_{J+1}$个单元。则$\Theta_j$有$[S_{j+1}*(S_j+1)]$的维度。</p>
+<p>$\theta^{(i)}_{jk}$指的是第$i$层中第$k$个神经元到第$i+1$层中第$j$个神经元的权重，其中偏置神经元的序号为0.</p>
+<h4 id="前向传播与架构"><a href="#前向传播与架构" class="headerlink" title="前向传播与架构"></a>前向传播与架构</h4><p>有了这些定义，我们就可以将上面这张图中的逻辑单元以数学的形式表达出来。</p>
+<p>显然，中间层激活输出的结果应为$a^{(2)}_1$</p>
+<p>$a^{(2)}_1=g(\theta_{10}^{(1)}x_0+\theta_{11}^{(1)}x_1+\theta_{12}^{(1)}x_2+\theta_{13}^{(1)}x_3)$</p>
+<p>我们给在括号里的部分，也就是经$Sigmoid$激活之前的结果赋予一个记号$Z$</p>
+<p>$a^{(2)}=g(Z^{(2)})$</p>
+<p>$h_\theta(x)=a^{(2)}$</p>
+<p>这个过程我们由输入层推导出了输出层的结果，这个过程我们称之为<strong>前向传播（forward propagation）</strong>。</p>
+<p>不同神经元之间的连接方式，我们称之为<strong>架构（architecture）</strong>。</p>
+<h3 id="对神经网络直觉理解"><a href="#对神经网络直觉理解" class="headerlink" title="对神经网络直觉理解"></a>对神经网络直觉理解</h3><p>我们之前给出的定义都是比较抽象的，接下来我们通过几个例子给出神经网络具体是如何工作的。</p>
+<h4 id="逻辑“与”"><a href="#逻辑“与”" class="headerlink" title="逻辑“与”"></a>逻辑“与”</h4><p>对于$Sigmoid$函数，我们可以认为</p>
+<p>当$x&gt;5$的时候，$g(x)\rightarrow1$</p>
+<p>当$x&lt;-5$的时候，$g(x)\rightarrow0$</p>
+<p>因此，我们设$\Theta^{(1)}=[-30,20,20]$，</p>
+<img src="/69f0ef2f8958/AND.jpg" class="">
+<p>则中间层神经元激活输出为$a^{(2)}=g(-30+20x_1+20x_2)$</p>
+<p>我们发现，当且仅当二值化输入x1和x2均为1的时候，激活输出$a^{(2)}=1$，实现了逻辑“与”的效果。</p>
+<h4 id="逻辑“或”"><a href="#逻辑“或”" class="headerlink" title="逻辑“或”"></a>逻辑“或”</h4><p>同理，对于逻辑“或”，我们可以设权重矩阵$\Theta^{(1)}=[-10,20,20]$，即可达成逻辑“或”的效果。</p>
+<h4 id="更复杂的情况：逻辑“同或”"><a href="#更复杂的情况：逻辑“同或”" class="headerlink" title="更复杂的情况：逻辑“同或”"></a>更复杂的情况：逻辑“同或”</h4><p>所谓的“同或”，指的是当两个输入相同的时候，输出1，而当两个输入不同时，输出0.</p>
+<p>对于两个二值化输入x1和x2，显然我们可以分为两种情况讨论，即同时为0或同时为1时，输出1，否则均输出0.</p>
+<p>那么对于这样的情况我们也可以构建对应的神经网络如下</p>
+<img src="/69f0ef2f8958/XNOR.jpg" class="">
+<p>可以看到，对于x1和x2的四种不同输入，我们有着如下输出。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$x_1$</th>
+<th>$x_2$</th>
+<th>$a_1^{(2)}$</th>
+<th>$a_2^{(2)}$</th>
+<th>$a_1^{(3)}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>我们在神经网络中添加了更多的隐藏层，从而实现了逻辑“同或”。我们在这里只需要对神经网络的工作方式有一个直观的理解即可，具体参数的求解会在后面涉及。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>概念总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习基础概念笔记（三）</title>
     <url>/67c960a4ba76.html</url>
     <content><![CDATA[<h3 id="欠拟合问题和过拟合问题（Underfitting-and-Overfitting）"><a href="#欠拟合问题和过拟合问题（Underfitting-and-Overfitting）" class="headerlink" title="欠拟合问题和过拟合问题（Underfitting and Overfitting）"></a>欠拟合问题和过拟合问题（Underfitting and Overfitting）</h3><h4 id="欠拟合问题"><a href="#欠拟合问题" class="headerlink" title="欠拟合问题"></a>欠拟合问题</h4><p>之前我们说过了，如果对一个比较复杂的问题，采用形式比较简单的假设函数，那么就会导致最终结果的代价函数最低值很高，也就是说假设函数和训练集数据拟合的并不好。这样的状态我们称之为欠拟合（underfitting）</p>
