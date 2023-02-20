@@ -20,17 +20,26 @@
     var CONFIG = {"hostname":"zh.zihengzhang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="北京航空航天大学高等理工学院 电子信息工程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="张子恒">
-<meta property="og:url" content="https://zh.zihengzhang.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+  <meta name="description" content="爷又回来了 最近开始做毕设了，毕设需要用到YOLOv5，因此我准备彻底把YOLOv1-v5的原理理解一下。一来自己用着也能更加顺手，而来后期答辩可能会被问到，早晚得准备。 虽然说YOLOv5的开源代码使用起来是比较方便的，但是如果不对原理进行理解，始终像黑盒一样使用，那对于后续的延申、扩展以及研究都是很不利的，答辩问到大概也是个寄。所以今天来总结一下我对于YOLOv1的理解。  输入输出输入YOL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YOLO系列之我见：YOLOv1">
+<meta property="og:url" content="https://zh.zihengzhang.top/ff8c2a327d16.html">
 <meta property="og:site_name" content="张子恒">
-<meta property="og:description" content="北京航空航天大学高等理工学院 电子信息工程">
+<meta property="og:description" content="爷又回来了 最近开始做毕设了，毕设需要用到YOLOv5，因此我准备彻底把YOLOv1-v5的原理理解一下。一来自己用着也能更加顺手，而来后期答辩可能会被问到，早晚得准备。 虽然说YOLOv5的开源代码使用起来是比较方便的，但是如果不对原理进行理解，始终像黑盒一样使用，那对于后续的延申、扩展以及研究都是很不利的，答辩问到大概也是个寄。所以今天来总结一下我对于YOLOv1的理解。  输入输出输入YOL">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zh.zihengzhang.top/ff8c2a327d16/7X7.jpg">
+<meta property="og:image" content="https://zh.zihengzhang.top/ff8c2a327d16/%E5%AE%8C%E6%95%B4%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://zh.zihengzhang.top/ff8c2a327d16/%E7%AE%80%E7%95%A5%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://zh.zihengzhang.top/ff8c2a327d16/%E6%A0%B7%E6%9C%AC%E6%A0%87%E7%AD%BE.jpg">
+<meta property="og:image" content="https://zh.zihengzhang.top/ff8c2a327d16/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpg">
+<meta property="article:published_time" content="2023-02-19T16:36:02.000Z">
+<meta property="article:modified_time" content="2023-02-20T07:56:18.966Z">
 <meta property="article:author" content="张子恒">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zh.zihengzhang.top/ff8c2a327d16/7X7.jpg">
 
-<link rel="canonical" href="https://zh.zihengzhang.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+<link rel="canonical" href="https://zh.zihengzhang.top/ff8c2a327d16.html">
 
 
 <script id="page-configurations">
@@ -38,12 +47,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 服务器 | 张子恒</title>
+  <title>YOLO系列之我见：YOLOv1 | 张子恒</title>
   
 
 
@@ -201,54 +210,182 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">服务器
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zh.zihengzhang.top/ff8c2a327d16.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="张子恒">
+      <meta itemprop="description" content="北京航空航天大学高等理工学院 电子信息工程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张子恒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          YOLO系列之我见：YOLOv1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-02-20 00:36:02 / 修改时间：15:56:18" itemprop="dateCreated datePublished" datetime="2023-02-20T00:36:02+08:00">2023-02-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <p>爷又回来了</p>
+<p>最近开始做毕设了，毕设需要用到YOLOv5，因此我准备彻底把YOLOv1-v5的原理理解一下。一来自己用着也能更加顺手，而来后期答辩可能会被问到，早晚得准备。</p>
+<p>虽然说YOLOv5的开源代码使用起来是比较方便的，但是如果不对原理进行理解，始终像黑盒一样使用，那对于后续的延申、扩展以及研究都是很不利的，答辩问到大概也是个寄。所以今天来总结一下我对于YOLOv1的理解。</p>
+<hr>
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>YOLOv1的输入是一整张$448<em>448</em>3$的图像，如果原始图像非此尺寸，则需要进行缩放。究其原因是网络末尾衔接了两个全连接层，而全连接层的输入是固定的，因此反推回去我们的输入也是需要固定的。</p>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>直接输出的是一个$7<em>7</em>30$的张量。</p>
+<h5 id="7-7的含义"><a href="#7-7的含义" class="headerlink" title="7*7的含义"></a>7*7的含义</h5><img src="/ff8c2a327d16/7X7.jpg" class="">
+<p>如图所示，对于一张图像，首先将它分为7*7个网格（grid cell）。</p>
+<h5 id="30的含义"><a href="#30的含义" class="headerlink" title="30的含义"></a>30的含义</h5><p>可以考虑是每一个网格输出一个30维的向量。对于某一个网格来说，它负责给出两个bounding box，这两个bounding box每个都包含5个参数，即4个位置参数与1个置信度confidence。</p>
+<p>4个位置参数，即</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>centre_X</td>
+<td>bounding box 中心的横坐标</td>
+</tr>
+<tr>
+<td>centre_Y</td>
+<td>bounding box 中心的纵坐标</td>
+</tr>
+<tr>
+<td>width</td>
+<td>bounding box 的宽</td>
+</tr>
+<tr>
+<td>height</td>
+<td>bounding box 的高</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>所谓的置信度，我们现在可以简单的理解为这个bounding box中含有目标的概率，注意是含有目标，而非含有某一类目标。</p>
+<p>而具体到哪一类目标，我们还需要在存在目标的前提下，是某一类目标的条件概率**，YOLOv1中共分20类，因此我们需要如下参数：</p>
+<p>$Pr(C_1|Object),Pr(C_2|Object),…,Pr(C_{20}|Object)$</p>
+<p>注意，这些条件概率对于在同一个网格中的两个bounding box是一致的，故我们认为对一个网格需要：$2*(4+1)+20=30$个参数，这就是30的含义。</p>
+<hr>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><img src="/ff8c2a327d16/%E5%AE%8C%E6%95%B4%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg" class="">
+<p>总体来说，YOLOv1的网络结构还是比较简单的，若干卷积层，池化层，最后衔接两个全连接层。和最常见的CNN对象分类网络几乎没啥区别。</p>
+<img src="/ff8c2a327d16/%E7%AE%80%E7%95%A5%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg" class="">
+<p>所以我们可以简单地把网络看成输入图像经过神经网络整合成一个输出张量。既然网络结构是常见且简单的，那最重要的事情就是去理解输出的含义和损失函数的计算。</p>
+<hr>
+<h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>在进行反向传播之前我们需要先构造好训练样本，换句话说，你得告诉网络正确的$7<em>7</em>30$输出张量是什么。</p>
+<h4 id="训练样本构造"><a href="#训练样本构造" class="headerlink" title="训练样本构造"></a>训练样本构造</h4><p>首先，所有7*7个网格的20个类别参数全部置为0，如果某个目标的中心点落在某个网格内，那就将这个网格对应的这个目标的类别参数改为1.</p>
+<p>其次，对于负责预测对象的网格（即目标中心点落在的这个网格），看它的两个bounding box与基准事实（Ground Truth，后称GT）的交并比（Intersection over Union，后称IOU），较大的那个bounding box对应的4个位置参数改为GT的位置参数，较小的bounding box对应的位置参数则保持不变。同样，对于IOU较大的bounding box，置信度参数置为1，较小的则置为0。</p>
+<img src="/ff8c2a327d16/%E6%A0%B7%E6%9C%AC%E6%A0%87%E7%AD%BE.jpg" class="">
+<p>例如，某个网格中包含一自行车的中心点，那么该网格的30维向量中，自行车类别参数为1，其余类别参数为0。而该网格的两个bounding box中，bounding box1的IOU更大，则其置信度为1，位置参数为GT的位置参数。</p>
+<h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><img src="/ff8c2a327d16/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpg" class="">
+<p>待续…</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-29T21:36:11+08:00"
-              content="2022-10-29">
-          10-29
-        </time>
-      </div>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/d3af824b28d7.html" itemprop="url">
-            <span itemprop="name">从零搭建MC服务器记录</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/6b01edd3d048.html" rel="prev" title="一些尴尬事">
+      <i class="fa fa-chevron-left"></i> 一些尴尬事
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
   
 
-  
-
-
+  <script src="https://giscus.app/client.js"
+        data-repo="TVT233/discussion"
+        data-repo-id="R_kgDOIa5p6Q"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOIa5p6c4CSgsW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+  </script>
 
           </div>
           
@@ -298,6 +435,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">1.</span> <span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">1.2.</span> <span class="nav-text">输出</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-7%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">7*7的含义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#30%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">30的含义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-number">3.</span> <span class="nav-text">反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E6%9E%84%E9%80%A0"><span class="nav-number">3.1.</span> <span class="nav-text">训练样本构造</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">损失函数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
