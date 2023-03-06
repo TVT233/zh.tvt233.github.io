@@ -1,6 +1,665 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>你好！欢迎来到我的网站！</title>
+    <url>/414d15ce29a6.html</url>
+    <content><![CDATA[<h4 id="来看看这有什么"><a href="#来看看这有什么" class="headerlink" title="来看看这有什么"></a>来看看这有什么</h4><p><strong><a href="https://zh.zihengzhang.top/about/">关于</a></strong>：在这你可以看到关于我的个人信息，教育和研究经历。如果你需要，里面还有我的个人简历和联系方式。</p>
+<p><strong><a href="https://zh.zihengzhang.top/research/">研究</a></strong>：在这你可以看到我之前做过的一些研究，以及我现在正在做的研究。</p>
+<p><strong><a href="https://zh.zihengzhang.top/applications/">应用</a></strong>：在这你可以找到我做过的一些应用方向的项目，展示视频以及相关理论介绍的论文。</p>
+<h4 id="关于我的博客"><a href="#关于我的博客" class="headerlink" title="关于我的博客"></a>关于我的博客</h4><p>在未来，我会写一些博客来记录自己的学习和生活，你可以依靠<a href="https://zh.zihengzhang.top/tags/">标签</a> 和 <a href="https://zh.zihengzhang.top/categories/">分类</a> 来找到它们。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>字符串匹配算法KMP</title>
+    <url>/53dc1a240a44.html</url>
+    <content><![CDATA[<h3 id="KMP算法的原理粗解"><a href="#KMP算法的原理粗解" class="headerlink" title="KMP算法的原理粗解"></a>KMP算法的原理粗解</h3><p>首先给出两篇讲解作为辅助，一篇在<a href="https://leetcode.cn/leetbook/read/array-and-string/cpoo6/">leetcode</a>，一篇在<a href="https://blog.csdn.net/yyzsir/article/details/89462339">CSDN</a>。</p>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>对于一个字符串P一个子串T，我们要寻找在P中是否存在与P一致的子串。我们称这个子串T为“模式”，因此也称这种匹配为“模式匹配”。在后面，我们仍称子串T为T串，而非模式串。请大家记住。</p>
+<p>传统的做法是朴素模式匹配，也就是从P的第一个字符作为起始，依次比较每个字符，如果发现某个字符不同，即失配，则将起始字符向后移动一位，继续尝试。</p>
+<p>这种方法思路简单清晰，但是在匹配过程中存在很多无用功，对时间和资源存在浪费。</p>
+<h4 id="最长公共前后缀"><a href="#最长公共前后缀" class="headerlink" title="最长公共前后缀"></a>最长公共前后缀</h4><img src="/53dc1a240a44/%E8%AF%95%E6%83%B3.jpg" class="">
+<p>试想这样一个场景如上图，我们接下来的讲解都以之为例子。当我们比对T与P的时候，发现某一个字符失配（即图中P串中的字符“T”与T串中的字符“Y”），其实这意味着另一件事，就是说前面的若干字符均是匹配的（即图中T串中字符”Y”前面的”AC”），我们暂时把这些匹配的字符称为“匹配字符串”。</p>
+<p>对于匹配字符串，如果我们能在T串中找到另一个与之匹配的串，将它们对齐，那么就可以省去许多操作。即，T串中字符“Y”前面的字符”AC”是与P串中的字符串匹配的，我们找到T串中的另一个字符“AC”，也就是位于首位的“AC”，把它和P串中的字符“AC”对齐。</p>
+<p>问题是，我们怎么找到T串中另一个相同的匹配字符串呢？对于T串中的失配字符“Y”，其之前的所有字符构成的字符串我们称之为N串。我们要找的匹配字符串必是这个N串的后缀（这是显然的，因为Y才是第一个失配的字符），而我们要让T串与P串中的某部分完全匹配，也就是说我们要找的与匹配字符串相匹配的字符串必定是N串的前缀。否则N串最前面的字符一定是失配状态的，就不用比较了。这部分文字叙述有点绕，大家要想清楚。</p>
+<p>因此，问题就转换成了：我们要在这个N串中找到最长的公共前后缀，找到之后，把T串向右移动，直到这个前缀到达之前后缀所在的位置，就和P串中的匹配字符串部分对上了。</p>
+<h4 id="移动位数"><a href="#移动位数" class="headerlink" title="移动位数"></a>移动位数</h4><p>下面我们要考虑，所谓的把T串向右移动以让前缀部分到达后缀部分的位置，到底要移动多少位？</p>
+<img src="/53dc1a240a44/%E7%A7%BB%E5%8A%A8.png" class="">
+<p>如果失配的字符位于T串中的下标是j的话，我们将T串向右移动j位（注意是从零计数的），自然T串的首位就位于之前失配位的位置了，但我们需要的是将T串的匹配前缀与之前失配位前的匹配后缀对齐，如上图所示，最长公共前后缀的长度为K，我们就还需要把此时的T向左移动K位，因此对于这个问题，我们需要将T串向右移动的位数位$j-K$，其中j为失配位的下标，K为最长公共前后缀的长度。</p>
+<h3 id="实际操作过程中"><a href="#实际操作过程中" class="headerlink" title="实际操作过程中"></a>实际操作过程中</h3><img src="/53dc1a240a44/%E5%89%8D%E5%90%8E%E7%BC%80.png" class="">
+<p>在实际变成的过程中，我们通常将T串中的每个子串都计算出最长公共前后缀，并保存在数组next[]中，这样当我们遇到某一位失配时，立刻计算$j-next[j]$得到T串右移的位数。</p>
+<img src="/53dc1a240a44/next.png" class="">
+<p>而对于next[]，我们定义next[0]=-1，因为根据之前的定义，第0位之前的部分是不存在的，遑论最大公共前后缀，因此我们手动标记其为-1. 如果第0位不匹配，我们依然可以使用$j-next[j]$计算出T串需要向右移动一位，这是合理的。而next[1]=0而非1，这是因为我们<strong>在定义最大公共前后缀时，是规定不包含字符串自身的</strong>，因此对于第1位字符之前的字符串，其只有1位，所以不存在最大公共字符串，因此长度位0.</p>
+<p>那么next[]的其他位应该如何计算呢？在这里我们给出方法，原理虽然简单但阐述起来过于绕口，通过文字描述倒不如大家自己思考，还能加深印象。</p>
+<p>当我们知道next[j]=k时，我们只需要比较$P_k$与$P_j$即可，如果相等，则next[j+1]=k+1，否则next[j+1]=0. 其中$P_i$指的是T串中的第i位。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>算法与数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>YOLO系列之我见：YOLOv1</title>
+    <url>/ff8c2a327d16.html</url>
+    <content><![CDATA[<p>爷又回来了</p>
+<p>最近开始做毕设了，毕设需要用到YOLOv5，因此我准备彻底把YOLOv1-v5的原理理解一下。一来自己用着也能更加顺手，而来后期答辩可能会被问到，早晚得准备。</p>
+<p>虽然说YOLOv5的开源代码使用起来是比较方便的，但是如果不对原理进行理解，始终像黑盒一样使用，那对于后续的延申、扩展以及研究都是很不利的，答辩问到大概也是个寄。所以今天来总结一下我对于YOLOv1的理解。</p>
+<hr>
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>YOLOv1的输入是一整张$448×448×3$的图像，如果原始图像非此尺寸，则需要进行缩放。究其原因是网络末尾衔接了两个全连接层，而全连接层的输入是固定的，因此反推回去我们的输入也是需要固定的。</p>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>直接输出的是一个$7<em>7</em>30$的张量。</p>
+<h5 id="7-7的含义"><a href="#7-7的含义" class="headerlink" title="7*7的含义"></a>7*7的含义</h5><img src="/ff8c2a327d16/7X7.jpg" class="">
+<p>如图所示，对于一张图像，首先将它分为7*7个网格（grid cell）。</p>
+<h5 id="30的含义"><a href="#30的含义" class="headerlink" title="30的含义"></a>30的含义</h5><p>可以考虑是每一个网格输出一个30维的向量。对于某一个网格来说，它负责给出两个bounding box，这两个bounding box每个都包含5个参数，即4个位置参数与1个置信度confidence。</p>
+<p>4个位置参数，即</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>centre_X</td>
+<td>bounding box 中心的横坐标</td>
+</tr>
+<tr>
+<td>centre_Y</td>
+<td>bounding box 中心的纵坐标</td>
+</tr>
+<tr>
+<td>width</td>
+<td>bounding box 的宽</td>
+</tr>
+<tr>
+<td>height</td>
+<td>bounding box 的高</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>所谓的置信度，我们现在可以简单的理解为这个bounding box中含有目标的概率，注意是含有目标，而非含有某一类目标。</p>
+<p>而具体到哪一类目标，我们还需要在存在目标的前提下，是某一类目标的条件概率**，YOLOv1中共分20类，因此我们需要如下参数：</p>
+<p>$Pr(C_1|Object),Pr(C_2|Object),…,Pr(C_{20}|Object)$</p>
+<p>注意，这些条件概率对于在同一个网格中的两个bounding box是一致的，故我们认为对一个网格需要：$2*(4+1)+20=30$个参数，这就是30的含义。</p>
+<hr>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><img src="/ff8c2a327d16/%E5%AE%8C%E6%95%B4%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg" class="">
+<p>总体来说，YOLOv1的网络结构还是比较简单的，若干卷积层，池化层，最后衔接两个全连接层。和最常见的CNN对象分类网络几乎没啥区别。</p>
+<img src="/ff8c2a327d16/%E7%AE%80%E7%95%A5%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg" class="">
+<p>所以我们可以简单地把网络看成输入图像经过神经网络整合成一个输出张量。既然网络结构是常见且简单的，那最重要的事情就是去理解输出的含义和损失函数的计算。</p>
+<hr>
+<h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>在进行反向传播之前我们需要先构造好训练样本，换句话说，你得告诉网络正确的$7<em>7</em>30$输出张量是什么。</p>
+<h4 id="训练样本构造"><a href="#训练样本构造" class="headerlink" title="训练样本构造"></a>训练样本构造</h4><p>首先，所有7*7个网格的20个类别参数全部置为0，如果某个目标的中心点落在某个网格内，那就将这个网格对应的这个目标的类别参数改为1.</p>
+<p>其次，对于负责预测对象的网格（即目标中心点落在的这个网格），看它的两个bounding box与基准事实（Ground Truth，后称GT）的交并比（Intersection over Union，后称IOU），较大的那个bounding box对应的4个位置参数改为GT的位置参数，较小的bounding box对应的位置参数则保持不变。同样，对于IOU较大的bounding box，置信度参数置为1，较小的则置为0。</p>
+<img src="/ff8c2a327d16/%E6%A0%B7%E6%9C%AC%E6%A0%87%E7%AD%BE.jpg" class="">
+<p>例如，某个网格中包含一自行车的中心点，那么该网格的30维向量中，自行车类别参数为1，其余类别参数为0。而该网格的两个bounding box中，bounding box1的IOU更大，则其置信度为1，位置参数为GT的位置参数。</p>
+<h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><img src="/ff8c2a327d16/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpg" class="">
+<p>待续…</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些尴尬事</title>
+    <url>/6b01edd3d048.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>机器学习基础概念笔记（四）</title>
+    <url>/69f0ef2f8958.html</url>
+    <content><![CDATA[<h3 id="非线性假设"><a href="#非线性假设" class="headerlink" title="非线性假设"></a>非线性假设</h3><p>之前我们讲到了，在非线性的情况下我们可以采用多项式拟合的方法将非线性的问题转化为线性的。但事实上，这样做存在着很大的局限性。</p>
+<p>问题就出在当某个问题存在的特征较多时，采用多项式拟合会有很多很多项，超出了我们的接受范围。</p>
+<p>举例，在一张50*50的图中，共有2500个像素。我们只考虑对其进行二项式回归，可以计算的是，符合条件的二次项就将达到300多万个。因此，当特征数量$n$较大时，多项式拟合并非一个好办法。</p>
+<h3 id="神经网络（Neural-Network）"><a href="#神经网络（Neural-Network）" class="headerlink" title="神经网络（Neural Network）"></a>神经网络（Neural Network）</h3><h4 id="神经元与大脑"><a href="#神经元与大脑" class="headerlink" title="神经元与大脑"></a>神经元与大脑</h4><p>众所周知，神经元包含轴突和树突，可以粗略的理解为每个神经元利用树突来从其他神经元获得信息，而后经过激活从轴突向其他神经元输出信息。</p>
+<p>这样的结构给了人们以启发，创造了拥有类似结构的<strong>神经网络（Neural Network）</strong>。神经网络起源于人们希望制造出模拟大脑的机器，在上世纪80-90年代得到广泛地应用。计算机技术的发展使得大规模神经网络得以应用。</p>
+<h4 id="模型展示"><a href="#模型展示" class="headerlink" title="模型展示"></a>模型展示</h4><p>逻辑单元(logistic unit)</p>
+<img src="/69f0ef2f8958/neural_unit.jpg" class="">
+<p>最基础的逻辑单元大致如上图所示，左边的x1,x2,x3为输入层的神经元，右边空置的圆圈则是由这三个输入逻辑单元得出的输出，我们定义为x。这个输出x经过$Sigmoid$激活后，也就对应着我们的假设函数$h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}$.值得一提的是，在输入层中存在着一个不由输入决定的神经元x0，我们称之为偏置单元（bias unit）。</p>
+<p>可以看到，我们在这个逻辑单元中实现了$h_\theta(x)$的计算，大致可以分为两步：</p>
+<ol>
+<li>由输入层和偏置单元计算出激活前的输出结果x。</li>
+<li>由x经$Sigmoid$激活得到真正的输出$h_\theta(x)$</li>
+</ol>
+<h4 id="一些记号"><a href="#一些记号" class="headerlink" title="一些记号"></a>一些记号</h4><p>接下来我们是对神经网络中的一些常见的概念和记号进行定义，以方便我们后续的讨论。</p>
+<p>在神经网络中：</p>
+<p>第一层：输入层（input layer）</p>
+<p>最后一层：输出层（output layer）</p>
+<p>中间层：隐藏层（hidden layer）</p>
+<p>记号：$a^{(j)}_i$为第$j$层的第$i$个神经元的激活项</p>
+<p>激活（activation）：指使一个神经元计算并输出值</p>
+<p>$\Theta^j$：控制$j$到$j+1$层的权重矩阵，显然如果$j$层和$j+1$层分别有$S_j$和$S_{J+1}$个单元。则$\Theta_j$有$[S_{j+1}*(S_j+1)]$的维度。</p>
+<p>$\theta^{(i)}_{jk}$指的是第$i$层中第$k$个神经元到第$i+1$层中第$j$个神经元的权重，其中偏置神经元的序号为0.</p>
+<h4 id="前向传播与架构"><a href="#前向传播与架构" class="headerlink" title="前向传播与架构"></a>前向传播与架构</h4><p>有了这些定义，我们就可以将上面这张图中的逻辑单元以数学的形式表达出来。</p>
+<p>显然，中间层激活输出的结果应为$a^{(2)}_1$</p>
+<p>$a^{(2)}_1=g(\theta_{10}^{(1)}x_0+\theta_{11}^{(1)}x_1+\theta_{12}^{(1)}x_2+\theta_{13}^{(1)}x_3)$</p>
+<p>我们给在括号里的部分，也就是经$Sigmoid$激活之前的结果赋予一个记号$Z$</p>
+<p>$a^{(2)}=g(Z^{(2)})$</p>
+<p>$h_\theta(x)=a^{(2)}$</p>
+<p>这个过程我们由输入层推导出了输出层的结果，这个过程我们称之为<strong>前向传播（forward propagation）</strong>。</p>
+<p>不同神经元之间的连接方式，我们称之为<strong>架构（architecture）</strong>。</p>
+<h3 id="对神经网络直觉理解"><a href="#对神经网络直觉理解" class="headerlink" title="对神经网络直觉理解"></a>对神经网络直觉理解</h3><p>我们之前给出的定义都是比较抽象的，接下来我们通过几个例子给出神经网络具体是如何工作的。</p>
+<h4 id="逻辑“与”"><a href="#逻辑“与”" class="headerlink" title="逻辑“与”"></a>逻辑“与”</h4><p>对于$Sigmoid$函数，我们可以认为</p>
+<p>当$x&gt;5$的时候，$g(x)\rightarrow1$</p>
+<p>当$x&lt;-5$的时候，$g(x)\rightarrow0$</p>
+<p>因此，我们设$\Theta^{(1)}=[-30,20,20]$，</p>
+<img src="/69f0ef2f8958/AND.jpg" class="">
+<p>则中间层神经元激活输出为$a^{(2)}=g(-30+20x_1+20x_2)$</p>
+<p>我们发现，当且仅当二值化输入x1和x2均为1的时候，激活输出$a^{(2)}=1$，实现了逻辑“与”的效果。</p>
+<h4 id="逻辑“或”"><a href="#逻辑“或”" class="headerlink" title="逻辑“或”"></a>逻辑“或”</h4><p>同理，对于逻辑“或”，我们可以设权重矩阵$\Theta^{(1)}=[-10,20,20]$，即可达成逻辑“或”的效果。</p>
+<h4 id="更复杂的情况：逻辑“同或”"><a href="#更复杂的情况：逻辑“同或”" class="headerlink" title="更复杂的情况：逻辑“同或”"></a>更复杂的情况：逻辑“同或”</h4><p>所谓的“同或”，指的是当两个输入相同的时候，输出1，而当两个输入不同时，输出0.</p>
+<p>对于两个二值化输入x1和x2，显然我们可以分为两种情况讨论，即同时为0或同时为1时，输出1，否则均输出0.</p>
+<p>那么对于这样的情况我们也可以构建对应的神经网络如下</p>
+<img src="/69f0ef2f8958/XNOR.jpg" class="">
+<p>可以看到，对于x1和x2的四种不同输入，我们有着如下输出。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$x_1$</th>
+<th>$x_2$</th>
+<th>$a_1^{(2)}$</th>
+<th>$a_2^{(2)}$</th>
+<th>$a_1^{(3)}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>我们在神经网络中添加了更多的隐藏层，从而实现了逻辑“同或”。我们在这里只需要对神经网络的工作方式有一个直观的理解即可，具体参数的求解会在后面涉及。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>概念总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习基础概念笔记（三）</title>
+    <url>/67c960a4ba76.html</url>
+    <content><![CDATA[<h3 id="欠拟合问题和过拟合问题（Underfitting-and-Overfitting）"><a href="#欠拟合问题和过拟合问题（Underfitting-and-Overfitting）" class="headerlink" title="欠拟合问题和过拟合问题（Underfitting and Overfitting）"></a>欠拟合问题和过拟合问题（Underfitting and Overfitting）</h3><h4 id="欠拟合问题"><a href="#欠拟合问题" class="headerlink" title="欠拟合问题"></a>欠拟合问题</h4><p>之前我们说过了，如果对一个比较复杂的问题，采用形式比较简单的假设函数，那么就会导致最终结果的代价函数最低值很高，也就是说假设函数和训练集数据拟合的并不好。这样的状态我们称之为欠拟合（underfitting）</p>
+<p>例如在线性回归中的欠拟合</p>
+<img src="/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png" class="">
+<p>以及在逻辑回归中的欠拟合</p>
+<img src="/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png" class="">
+<h4 id="过拟合问题"><a href="#过拟合问题" class="headerlink" title="过拟合问题"></a>过拟合问题</h4><p>通过欠拟合问题的情况，我们不难想到还存在一种情况，就是假设函数对训练集数据过于“符合“了。这种符合超过了我们的需求，甚至对我们之后的预测工作是不利的。这样的状态我们称之为过拟合（overfitting）。</p>
+<p>例如在线性回归中的过拟合</p>
+<img src="/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png" class="">
+<p>以及在逻辑回归中的过拟合</p>
+<img src="/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png" class="">
+<p>而导致这种现象根本的原因是假设函数中的变量太多了，没有足够的数据对它们进行约束。</p>
+<h4 id="解决过拟合的两种手段"><a href="#解决过拟合的两种手段" class="headerlink" title="解决过拟合的两种手段"></a>解决过拟合的两种手段</h4><ol>
+<li>减少特征的数量：可以手动选择哪些特征应该被保留，也可以使用模型选择算法（Model Selection Algorithm），这个之后我们会具体讲到。</li>
+<li>正则化（Regularization）：保留特征，但减小量级或$\theta_j$的值</li>
+</ol>
+<p>我们接下来的内容就来具体讲讲正则化的含义和具体实现方法</p>
+<h3 id="正则化与代价函数"><a href="#正则化与代价函数" class="headerlink" title="正则化与代价函数"></a>正则化与代价函数</h3><h4 id="代价函数的更新"><a href="#代价函数的更新" class="headerlink" title="代价函数的更新"></a>代价函数的更新</h4><p>当出现过拟合时，我们最简单的手段就是手动地去挑选一些变量并去掉。</p>
+<p>例如，对假设函数</p>
+<p>$h_\theta(x^{(i)})=\theta_0+\theta_1x_1+\theta_3x_3+\theta_4x_4$</p>
+<p>我们手动去掉了$x_3$和$x_4$，其等价的说法就是令$\theta_3, \theta_4\equiv0$</p>
+<p>但这样直接的做法会完全去掉$x_3$和$x_4$两种特征的影响。有的时候我们并不像接受这种简单粗暴的做法，而是想在不过拟合的基础上，保留$x_3$和$x_4$的一部分影响。于是我们就思考，怎样做才能让最终的$\theta_3$和$\theta_4$趋于$0$而又不等于0呢？</p>
+<p>答案是，对我们的代价函数进行改造。</p>
+<p>对于MSE代价函数，我们有如下形式</p>
+<p>$J(\theta)=min_\theta\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$</p>
+<p>如果我们在其后加上大系数的$\theta_3$和$\theta_4$，例如$+1000\theta_3+1000\theta_4$，那么当我们尝试最小化$J(\theta)$的时候，$\theta_3$和$\theta_4$自然就会非常小。相比于$\theta_1$和$\theta_2$来讲，它们就好像收到了额外的”惩罚“，于是我们称$+1000\theta_3+1000\theta_4$为 $x_3$和$x_4$ 的惩罚项。</p>
+<h4 id="正则化参数（Regularization-Parameter）"><a href="#正则化参数（Regularization-Parameter）" class="headerlink" title="正则化参数（Regularization Parameter）"></a>正则化参数（Regularization Parameter）</h4><p>当我们添加了一些参数的惩罚项之后，在最小化代价函数之后，假设函数就会变得简单，更加平滑，不易过拟合。</p>
+<p>但是显然，我们在事先并不清楚哪些特征时相关度较低的，这怎么办呢？</p>
+<p>先别忙，解决这个问题之前，我们先来下个定义</p>
+<p>我们首先对于所有的特征都添加惩罚项（除了$x_0$），但是系数向量$\lambda$待定。这个$\lambda$我们就称为<strong>正则化参数</strong>。</p>
+<p>$J(\theta)=\frac{1}{2m}[\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\Sigma_{i=1}^n\theta_j^2]$</p>
+<p>值得注意的是，这里惩罚项用的是$\theta_j^2$，目的是偏微分后去掉前面的系数$\frac{1}{2m}$</p>
+<p>显然，$\lambda_j$代表了对某一种特征的惩罚程度，如果$\lambda_j$非常大，则对应的$\theta_j\rightarrow0$，拟合结果就变成了一条直线，欠拟合了。</p>
+<p>因此我们可以看出，选择合适的正则化参数对我们是很重要的。</p>
+<p>下面我们具体来给出在线性回归和逻辑回归两种情况下的正则化。</p>
+<h3 id="线性回归与逻辑回归的正则化"><a href="#线性回归与逻辑回归的正则化" class="headerlink" title="线性回归与逻辑回归的正则化"></a>线性回归与逻辑回归的正则化</h3><h4 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h4><script type="math/tex; mode=display">J(\theta)^{old}=\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2</script><p>↓</p>
+<p>$J(\theta)^{new}=\frac{1}{2m}[\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\Sigma_{i=1}^n\theta_j^2]$</p>
+<p>$\frac{\partial J(\theta)}{\partial \theta_j}=\frac{1}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda}{m}\theta_j$</p>
+<p>$\therefore\theta_j^{new}=\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda\alpha}{m}\theta_j=(1-\frac{\alpha\lambda}{m})\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>而对于线性回归中的正规方程，我们可以使用如下方法进行正则化</p>
+<p>$\theta=(X^TX+\lambda\Psi)^{-1}X^Ty$</p>
+<p>其中，$\Psi=\left[\begin{matrix}0\space\space\space\space\space\space\space\space\space\space\space\space\\\space\space1\space\space\space\space\space\space\space\space\space\space\\\space\space1\space\space\space\space\\\space\space\space\space1\\ …\end{matrix}\right]$</p>
+<h4 id="逻辑回归的正则化"><a href="#逻辑回归的正则化" class="headerlink" title="逻辑回归的正则化"></a>逻辑回归的正则化</h4><script type="math/tex; mode=display">J(\theta)^{old}=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))</script><p>↓</p>
+<p>$J(\theta)^{new}=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))+\frac{\lambda}{2m}\Sigma_{j=1}^n\theta_j^2$</p>
+<p>$\frac{\partial J(\theta)}{\partial \theta_j}=\frac{1}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda}{m}\theta_j$</p>
+<p>$\therefore\theta_j^{new}=\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda\alpha}{m}\theta_j=(1-\frac{\alpha\lambda}{m})\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>从这里可以看到，尽管正则化后线性回归和逻辑回归的两种假设函数形式有所区别，但其偏微分项是一致的，因此更新后的$\theta_j$也是形式一致的。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>概念总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分类问题中代价函数的偏微分推导</title>
+    <url>/4e61adc1b875.html</url>
+    <content><![CDATA[<p>在<a href="http://zh.zihengzhang.top/8a55cfbaf1ca.html">分类问题</a>中，我们会遇到代价函数$J(\theta)$</p>
+<p>$J(\theta)=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))$</p>
+<p>而在具体计算中，我们往往要对它求偏导，即$\frac{\partial}{\partial\theta_j}J(\theta)$</p>
+<p>现在我们来具体推导一下，</p>
+<p>$\frac{\partial}{\partial\theta_j}J(\theta)=\frac{\partial}{\partial\theta_j}(\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x))))$</p>
+<p>$=\frac{1}{m}\Sigma^m_{i=1}\frac{\partial}{\partial\theta_j}((-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x))))$</p>
+<p>$=\frac{1}{m}\Sigma^m_{i=1}(\frac{-y}{h_\theta(x)}\frac{\partial h_\theta(x)}{\partial\theta_j}-\frac{1-y}{1-h_\theta(x)}(-\frac{\partial h_\theta(x)}{\partial\theta_j}))$</p>
+<p>$=\frac{1}{m}\Sigma^m_{i=1}(\frac{\partial h_\theta(x)}{\partial\theta_j}(\frac{-y}{h_\theta(x)}+\frac{1-y}{1-h_\theta(x)}))$</p>
+<p>$=\frac{1}{m}\Sigma^m_{i=1}(\frac{\partial h_\theta(x)}{\partial\theta_j}\frac{-y+yh_\theta(x)+h_\theta(x)-yh_\theta(x)}{h_\theta(x)(1-h_\theta(x))})$</p>
+<p>$=\frac{1}{m}\Sigma^m_{i=1}(\frac{\partial h_\theta(x)}{\partial\theta_j}\frac{-y+h_\theta(x)}{h_\theta(x)(1-h_\theta(x))})$</p>
+<p>我们知道，$h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}$</p>
+<p>且$\theta^Tx=\theta_0+\theta_1x_1+…+\theta_nx_n$</p>
+<p>故$\frac{\partial h_\theta(x)}{\partial\theta_j}=\frac{-(-e^{-\theta^Tx}x_j)}{(1+e^{-\theta^Tx})^2}=h_\theta(x)(1-h_\theta(x)x_j$</p>
+<p>$\frac{\partial}{\partial\theta_j}J(\theta)=\frac{1}{m}\Sigma^m_{i=1}(\frac{\partial h_\theta(x)}{\partial\theta_j}\frac{-y+h_\theta(x)}{h_\theta(x)(1-h_\theta(x))})$</p>
+<p>$=\frac{1}{m}\Sigma^m_{i=1}((h_\theta(x)(1-h_\theta(x)x_j)*\frac{-y+h_\theta(x)}{h_\theta(x)(1-h_\theta(x))})$</p>
+<p>$=\frac{1}{m}\Sigma^m_{i=1}(h_\theta(x)-y)x_j$</p>
+<p>推导完成</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习基础概念笔记（二）</title>
+    <url>/8a55cfbaf1ca.html</url>
+    <content><![CDATA[<h3 id="分类（Classification）"><a href="#分类（Classification）" class="headerlink" title="分类（Classification）"></a>分类（Classification）</h3><h4 id="逻辑回归（Logistic-Regression）的引入"><a href="#逻辑回归（Logistic-Regression）的引入" class="headerlink" title="逻辑回归（Logistic Regression）的引入"></a>逻辑回归（Logistic Regression）的引入</h4><p>当我们从传统的回归问题转移到分类问题时，最大的变化就是输出由连续的变为了离散的。对于分类问题，我们可以分为两大部分，即二分类（binary classification）和多分类（multiple classification）。而二分类又是多分类的基础，所以我们必须对二分类加以重点审视。</p>
+<p>所谓的二分类，就是输出结果只有两种，1和0。其中输出为1的类我们称之为正类（positive class），而输出为0的类我们称之为负类（negative class）。</p>
+<p>回顾之前讲的线性回归，其输出结果是连续且没有限制的，也就是说可以出现在[0，1]以内的输出，也可以出现这个范围以外的输出。那么如何将这种输出转化为离散的0，1输出呢？最简单的思路就是设置一个阈值，例如0.5。但如果你尝试这样做的话，你会发现当输出比较极端的训练样本出现时，训练出来的结果往往不能很好地拟合这些样本。</p>
+<p>于是我们思考，能不能将输出的结果限制在[0，1]之间，这样就可以很好地拟合这些样本了。于是就有了我们所说的逻辑回归。</p>
+<h4 id="假设函数（Hypothesis-Function）"><a href="#假设函数（Hypothesis-Function）" class="headerlink" title="假设函数（Hypothesis Function）"></a>假设函数（Hypothesis Function）</h4><p>在前面的回归问题中，我们的假设函数为$h_\theta(x)=\theta^TX$，在这里我们引入一个新的函数，$Sigmoid$函数</p>
+<p>​                                                    $Sigmoid：g(z)=\frac{1}{1+e^{-z}}$</p>
+<img src="/8a55cfbaf1ca/sigmoid.png" class="">
+<p>我们令$z=\theta^TX$，于是得到了新的假设函数</p>
+<p>​                                                   $h_\theta(x)=g(\theta^TX)=\frac{1}{1+e^{-θ^TX}}$</p>
+<p>这样，我们就将假设函数的输出固定在了[0，1]之间。这就是逻辑回归中的假设函数。</p>
+<p>$h_\theta(x)$的具体含义是在以$\theta$为参数，输入为$x$的前提下，$y=1$的概率，即$P(y=1|x;\theta)$</p>
+<p>而由于二分类中输出值要么为1，要么为0，我们可以得出</p>
+<p>​                                               $P(y=0|x;\theta)=1-P(y=1|x;\theta)$</p>
+<h4 id="决策边界（Decision-Boundary）"><a href="#决策边界（Decision-Boundary）" class="headerlink" title="决策边界（Decision Boundary）"></a>决策边界（Decision Boundary）</h4><h5 id="从-x-到-y-的映射"><a href="#从-x-到-y-的映射" class="headerlink" title="从$x$到$y$的映射"></a>从$x$到$y$的映射</h5><p>我们首先来总结以下输入$x$到输出$y$的完整映射。</p>
+<p>对于逻辑回归，我们有如下定义，</p>
+<p>$h_\theta(x)=g(\theta^Tx)$，$g(z)=\frac{1}{1+e^-z}$</p>
+<p>又由$Sigmoid$函数的性质，</p>
+<p>$g(z)\geq0.5,\quad 当\,z\geq0\quad;\quad\,g(z)&lt;0.5,\quad 当\,z&lt;0$</p>
+<p>我们可以推出，</p>
+<p>$h_\theta(x)=g(\theta^Tx)\geq0.5,\quad 当\,\theta^Tx\geq0\quad;\quad\,h_\theta(x)=g(\theta^Tx)&lt;0.5,\quad 当\,\theta^Tx&lt;0$</p>
+<p>若我们再给出阈值$0.5$，使得</p>
+<p>$y=1,\quad 当h_\theta(x)\geq0.5 \quad;\quad y=0,\quad 当h_\theta(x)&lt;0.5$ </p>
+<p>我们就得到了由$x$到$y$的完整映射。</p>
+<h5 id="决策边界的举例"><a href="#决策边界的举例" class="headerlink" title="决策边界的举例"></a>决策边界的举例</h5><p>此时我们举一例，$h_\theta(x)=g(\theta^Tx)=g(-3+x_1+x_2)$</p>
+<p>当$h_\theta(x)\geq0.5$时，即$-3+x_1+x_2\geq0$时，$y=1$</p>
+<p>可见，直线$-3+x_1+x_2$是区分正类和负类的边界，我们称之为<strong>决策边界</strong>。</p>
+<h5 id="决策边界的两点说明"><a href="#决策边界的两点说明" class="headerlink" title="决策边界的两点说明"></a>决策边界的两点说明</h5><p>对于决策边界，有两点需要说明：</p>
+<ol>
+<li>决策边界不一定只有直线，在添加高阶变量后决策边界可以是很复杂的形状。例如，$h_\theta(x)=g(\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_1^2+\theta_4x_2^2)$，若最终$\theta=\left[-1,0,0,1,1\right]^T$，则决策边界为$x_1^2+x_2^2=1$，是一个圆。</li>
+<li>决策边界是假设函数的一个属性，每一个参数确定的假设函数都对应着一个决策边界，而非训练集的属性。训练集是用来获得假设函数的参数的。</li>
+</ol>
+<h4 id="代价函数（Cost-Function）"><a href="#代价函数（Cost-Function）" class="headerlink" title="代价函数（Cost Function）"></a>代价函数（Cost Function）</h4><h5 id="代价函数的修改"><a href="#代价函数的修改" class="headerlink" title="代价函数的修改"></a>代价函数的修改</h5><p>我们之前说过，对于平方误差代价函数，</p>
+<p>$J(θ)=\frac{1}{2m}Σ_{i=1}^m(h_θ(x^{(i)})-y^{(i)})^2=\frac{1}{m}\Sigma^m_{i=1}Cost(h_\theta(x^{(i)}-y^{(i)}))$</p>
+<p>其中，$Cost(h_\theta(x^{(i)}-y^{(i)}))=\frac{1}{2}(h_θ(x^{(i)})-y^{(i)})^2$</p>
+<p>在线性回归问题中$J(\theta)$是凸函数，因此梯度下降始终可以获得全局最优解。但是可以证明的是，到了分类问题中，对于我们的假设函数$h_\theta(x)=g(\theta^TX)=\frac{1}{1+e^{-θ^TX}}$，此时的$J(\theta)$就是非凸的（not convex）。这显然与我们的期望不符，我们仍然希望它是凸的。</p>
+<p>于是我们对$Cost(h_\theta(x^{(i)}-y^{(i)}))$做如下修改</p>
+<p>令$Cost(h_\theta(x^{(i)}-y^{(i)}))=\begin{cases}-ln\,h_\theta(x),\quad y=1\\ -ln\,(1-h_\theta(x)),\quad y=0\end{cases}$</p>
+<p>也可以简写为$Cost(h_\theta(x^{(i)}-y^{(i)}))=-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x))$ </p>
+<p>于是$J(\theta)=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))$</p>
+<img src="/8a55cfbaf1ca/cost_y=1.png" class="">
+<img src="/8a55cfbaf1ca/cost_y=0.png" class="">
+<p>可以看到当$y=1$时，如果预测结果$h_\theta(x)$为$1$，那么$Cost=0$，即没有代价。而如果预测结果$h_\theta(x)$为$1$，那么$Cost\longrightarrow\infty$，即代价无穷大。而当$y=0$时则规则相反。</p>
+<p>可以证明的一点是，这样的代价函数使得$J(\theta)$在分类问题中依然是凸函数。不过这一点在Andrew Ng的课程中没有被证明，至于这样的$Cost$函数是如何被发现的，Andrew Ng提到是由统计学中的极大似然法推广而来，对于这两点，有兴趣的同学可以自行尝试。</p>
+<h5 id="代价函数的偏微分"><a href="#代价函数的偏微分" class="headerlink" title="代价函数的偏微分"></a>代价函数的偏微分</h5><p>在做梯度下降时，我们会涉及到代价函数$J(\theta)$偏微分的计算，即$\frac{\partial}{\partial\theta_j}J(\theta)$</p>
+<p>这一步推导虽然简单，但比较繁琐，我把具体结果写出来，不过有能力的同学建议自己推一遍，这样可以加深理解。我的推导过程<a href="http://zh.zihengzhang.top/4e61adc1b875.html">在这</a>。</p>
+<p>$\frac{\partial}{\partial\theta_j}J(\theta)=\frac{1}{m}\Sigma_{i=1}^mh_\theta((x^{(i)})-y^{(i)})x_j^{(i)}$</p>
+<p>如果你还记得回归问题中代价函数的偏微分，你会惊奇地发现，虽然代价函数$J(\theta)$发生了变化，但其偏微分的形式确实一致的。</p>
+<h4 id="一些高级优化概念"><a href="#一些高级优化概念" class="headerlink" title="一些高级优化概念"></a>一些高级优化概念</h4><p>最后Andrew Ng给我们在分类算法处留了几个高级优化算法，但并没有具体地进行介绍。着重强调的一点是，这些算法的内涵往往比较深奥，但并不需要彻底地弄懂他们的原理也可以熟练地使用。我自己会在之后出几篇专门介绍它们的博客。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>优化算法（Opitimization Algorithm）</th>
+<th>相对于梯度下降的优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- 共轭梯度法（Conjugate Gradient）</td>
+<td>- 不需要手动选择学习率$\alpha$</td>
+<td>-算法结构更加复杂</td>
+</tr>
+<tr>
+<td>- BFGS算法</td>
+<td>- 一般比梯度下降速度快</td>
+<td></td>
+</tr>
+<tr>
+<td>- L-BFGS算法</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="多元分类：一对多（Multiple-Classification）"><a href="#多元分类：一对多（Multiple-Classification）" class="headerlink" title="多元分类：一对多（Multiple Classification）"></a>多元分类：一对多（Multiple Classification）</h4><p>到这里，我们已经大致掌握了二分类的思路，下面我们需要考虑如何将多分类转化为我们熟悉的二分类。</p>
+<p>一个最简单的思想就是，我们对于某一种类，将其视为正类，其他所有类视为负类，这样就变成了二分类，就可以构造出一个分类器。</p>
+<p>如果我们对于每一种类都使用这种思想构造出一种分类器，那么多分类问题不就转化为若干个二分类了吗？</p>
+<img src="/8a55cfbaf1ca/multiple_classification.png" class="">
+<p>具体来说，就像Andrew Ng课件中的这张图一样，我们有三种类需要区分，三角，方块和红叉。</p>
+<p>对于这三种类，分别构建三种训练集，每一种训练集中将对应的类视为正类，而其他的视为负类。就可以训练出右边的三种分类器，它们的作用是对一个输入判断这个输入的输出是三角、方块和红叉的概率。</p>
+<p>通过比较三种分类器的输出，即这个输入对应的输出是三种类的概率，我们就可以知道这个输入对应的输出最可能是哪一种类，也就解决了这个多分类问题。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>概念总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习基础概念笔记（一）</title>
+    <url>/a218cd18cb36.html</url>
+    <content><![CDATA[<h2 id="机器学习（Machine-Learning）的定义："><a href="#机器学习（Machine-Learning）的定义：" class="headerlink" title="机器学习（Machine Learning）的定义："></a>机器学习（Machine Learning）的定义：</h2><p>赋予计算机无需明确编程即可学习的能力的研究领域。—— 阿瑟·萨缪尔</p>
+<p>Field of study that gives computers the ability to learn without being explicitly programmed.    —— Arthur Samuel</p>
+<h2 id="监督学习与非监督学习（Supervised-Learning-and-Unsupervised-Learning）"><a href="#监督学习与非监督学习（Supervised-Learning-and-Unsupervised-Learning）" class="headerlink" title="监督学习与非监督学习（Supervised Learning and Unsupervised Learning）"></a>监督学习与非监督学习（Supervised Learning and Unsupervised Learning）</h2><h3 id="监督学习的特征"><a href="#监督学习的特征" class="headerlink" title="监督学习的特征"></a>监督学习的特征</h3><p>监督学习的特征是训练集中给出样本的正确答案/标签（right answer given），目的是对更多的样本进行预测。监督学习可以分为连续输出的回归问题（regression）和离散输出的分类问题（classification）。</p>
+<h3 id="非监督学习的特征"><a href="#非监督学习的特征" class="headerlink" title="非监督学习的特征"></a>非监督学习的特征</h3><p>无监督学习的特征是训练集中的样本都不具有标签，或具有相同的标签，目的是对样本进行分类，即聚类算法（clustering）。</p>
+<h2 id="常用的记号"><a href="#常用的记号" class="headerlink" title="常用的记号"></a>常用的记号</h2><p>在开始介绍具体内容之前，我们先介绍一下常用的记号。</p>
+<p>对于一个训练集，其中包含$m$个训练样本，每个样本有$n$个输入/特征。$X$代表所有样本的输入/特征，$Y$代表所有样本的输出/标签。$x^{(i)}$代表第$i$个样本的输入/特征，$x^{(i)}_j$代表第$i$个样本的第$j$个输入/特征，$(x,y)$指一个训练样本，$(x^{(i)},y^{(i)})$指第$i$个训练样本。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$m$</td>
+<td>训练样本数量</td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>每个样本输入/特征的数量</td>
+</tr>
+<tr>
+<td>$X$</td>
+<td>输入变量/特征（Input variable/features）</td>
+</tr>
+<tr>
+<td>$y$</td>
+<td>输入变量/特征 （Output variable/label）</td>
+</tr>
+<tr>
+<td>$x^{(i)}$</td>
+<td>第$i$个样本的输入/特征</td>
+</tr>
+<tr>
+<td>$x^{(i)}_j$</td>
+<td>第$i$个样本的第$j$个输入/特征</td>
+</tr>
+<tr>
+<td>$(x,y)$</td>
+<td>一个训练样本</td>
+</tr>
+<tr>
+<td>$(x^{(i)},y^{(i)})$</td>
+<td>第$i$个训练样本</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><h3 id="回归问题（Regression）"><a href="#回归问题（Regression）" class="headerlink" title="回归问题（Regression）"></a>回归问题（Regression）</h3><p>对于回归问题，我们总是有这样的思路</p>
+<p><img src="监督学习经典流程.png" alt=""></p>
+<img src="/a218cd18cb36/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%85%B8%E6%B5%81%E7%A8%8B.png" class="">
+<p>我们使用学习算法对训练集中的样本进行学习，学习的结果就是我们得到的假设函数。再利用这个假设函数对新的输入进行处理，获得对应的输出。</p>
+<p>而在回归问题中线性回归是基础的内容，而一元线性回归则是最为基础的形式。</p>
+<p>对于一元线性回归，我们的假设函数形式总是有这样的形式</p>
+<p>$h_{θ}(x)=θ_0+θ_1x$</p>
+<p>下面我们以一元线性回归为例，对几个最基础的概念进行解释。</p>
+<h4 id="代价函数（Cost-function）"><a href="#代价函数（Cost-function）" class="headerlink" title="代价函数（Cost function）"></a>代价函数（Cost function）</h4><p>代价函数用来描述我们回归的结果对于训练集中样本的偏离程度，显然我们的回归结果由$θ_0$和$θ_1$共同决定，因此，我们定义的代价函数如下</p>
+<p>$J(θ_0,θ_1)=\frac{1}{2m}Σ_{i=1}^m(h_θ(x^{(i)})-y^{(i)})^2$</p>
+<p>即，所有样本预测值和真实值的差的平方和的算数平均。算术平均之所以有系数$\frac{1}{2}$是因为在后面求导的时候可以约掉，而加一个常数并不影响我们对代价函数的理解。这样定义的代价函数我们称之为<strong>平方误差代价函数（Mean Square Error，简称MSE）</strong>。</p>
+<p>我们的目标是使我们的假设函数是对于所有样本最好的回归，因此问题也就转化为了使代价函数的值最小，即$minimize J(θ_0,θ_1)$。</p>
+<p>如何寻找到这个最小值呢？我们下面介绍两种方法，梯度下降和正规方程。</p>
+<h4 id="梯度下降（Gradient-descent）"><a href="#梯度下降（Gradient-descent）" class="headerlink" title="梯度下降（Gradient descent）"></a>梯度下降（Gradient descent）</h4><h5 id="梯度下降的方法"><a href="#梯度下降的方法" class="headerlink" title="梯度下降的方法"></a>梯度下降的方法</h5><p>我们采用求偏导的方法判断下降的方向，设置学习率（learning rate）决定我们下降时每一步走的有多远。</p>
+<p>具体的方法是：</p>
+<p>重复直至$θ_j$收敛(convergence) : {</p>
+<p>​    $θ_j$ = $θ_j-\alpha\frac{\partial}{\partialθ_j}J(θ_0,θ_1)$ $(for j=0, j=1)$</p>
+<p>}</p>
+<p>值得注意的一点是，若干个$θ_j$需要同时被更新，否则$θ_1$将被$J(newθ_0,θ_1)$所决定，这是不正确的。</p>
+<p>而当接近局部最低点的时候，导数项（derivative）趋于零，所以$θ_j$的变化是越来越小的。</p>
+<h5 id="偏导的简单计算和说明"><a href="#偏导的简单计算和说明" class="headerlink" title="偏导的简单计算和说明"></a>偏导的简单计算和说明</h5><p>下面我对一元线性回归的两个偏导项做一个简单的计算，如果你有微积分基础一定可以看懂。</p>
+<p>$\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\Sigma_{i=1}^m(\theta_0+\theta_1x^{(i)}-y^{(i)})^2$</p>
+<p>对$\theta_0$，$j=0$：</p>
+<p>$\frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)=\frac{1}{m}\Sigma^m_{i=1}(\theta_0+\theta_1x^{(i)}-y^{(i)})$</p>
+<p>对$\theta_1$，$j=1$：</p>
+<p>$\frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)=\frac{1}{m}\Sigma^m_{i=1}(\theta_0+\theta_1x^{(i)}-y^{(i)})x^{(i)}$</p>
+<p>可以想见，如果$h_{θ}(x)$的表达式为$h_{θ}(x)=θ_0+θ_1x_1+\theta_2x_2$的话，对$\theta_2$的偏导结果在形式上与$\theta_1$是一致的，只有下标不同。而$\theta_0$的表达式则缺少$x^{(i)}$一项，因此我们通常假设一个输入特征$x_0\equiv0$，这样的结果就是所有$\theta_j$的偏导在形式上都得到了统一。</p>
+<h5 id="线性回归最优解的必然性"><a href="#线性回归最优解的必然性" class="headerlink" title="线性回归最优解的必然性"></a>线性回归最优解的必然性</h5><p>但显然，按照梯度下降收敛的结果可能只是一个局部最优解，就像在半山腰的你只会往山下走，而山的那一边可能有着更加低洼的地带不被你所见。不过这个问题在线性回归中并不存在，原因是<strong>线性回归的代价函数一定是凸函数（convex function），只有一个最低点</strong>。因此线性回归问题使用梯度下降总是可以得到全局最优。</p>
+<h5 id="Batch-和-Iteration的定义"><a href="#Batch-和-Iteration的定义" class="headerlink" title="Batch 和 Iteration的定义"></a>Batch 和 Iteration的定义</h5><p>从上述代价函数的定义可以看出，我们使用所有训练样本之后会进行一次梯度下降，那么一次梯度下降所使用的样本集群我们称之为一个<strong>Batch</strong>，而这样一次更新的过程我们称之为一个<strong>iteration</strong>。</p>
+<h4 id="多特征（Multiple-Features-Variables）"><a href="#多特征（Multiple-Features-Variables）" class="headerlink" title="多特征（Multiple Features/ Variables）"></a>多特征（Multiple Features/ Variables）</h4><p>多特征的输入导致了回归问题由一元变成了多元线性回归（multiple linear regression），即$x^{(i)}_j$的$j$不再始终为1。</p>
+<p>我们的假设函数因此随之改变为$h_\theta(x)=\theta_0+\theta_1x_1+…+\theta_nx_n$。在<code>偏导的简单计算和说明</code>部分中我们提到了，添加$x_0\equiv0$可以使各个偏导项具有相同的形式，于是我们的假设函数变为</p>
+<p>$h_\theta(x)=\theta_0x_0+\theta_1x_1+…+\theta_nx_n$</p>
+<p>使用矩阵乘法可以写作</p>
+<p>$h_\theta(x)=\left[\begin{matrix}\theta_0,\theta_1,…,\theta_n\end{matrix}\right]\left[\begin{matrix}x_0\\x_1\\ .\\ .\\ .\\x_n\end{matrix}\right]=\theta^TX$</p>
+<p>同样的，对于多元线性回归，我们的代价函数也需要增加相应的系数$\theta_j$作为变量，即</p>
+<p>$J(\theta)=J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\Sigma_{i=1}^mh_\theta(x^{(i)}-y^{(i)})^2$</p>
+<h5 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h5><p>所谓的特征缩放，指的是让训练集样本的不同特征都大致在同一个范围内。</p>
+<p>例如我们每个样本有两个特征，$x_1$和$x_2$，分别代表着房屋的面积（平方米）和卧室数量（个）。那么$x_1$的变化范围大概是$50-500$这个范围，而$x_2$的变化范围则是在10以下。</p>
+<p>在这样的情况下，$J(\theta)$的等高线会是一个个瘦长的椭圆，如果此时进行梯度下降的话，迭代的次数会更多，整体的速度也会更慢。因此我们要将这两个特征变化到大致一致的范围里，目的是提高梯度下降的速度。</p>
+<p>常用的手段是均值归一化（mean normalization）</p>
+<p>令$x_i=\frac{x_i-\mu_i}{S_i}$，其中$S_i$代表$x$这个特征的范围</p>
+<p>这样的变换可以将$x_i$缩放到[-0.5，0.5]的范围中。</p>
+<p>值得一提的是，我们不需要把所有的特征都严格地缩放到同意范围，只要大致在一个数量级就可以，例如[-3，3]，[-0.5，0.5]都是可以接受的。</p>
+<h5 id="学习率（Learning-Rate）"><a href="#学习率（Learning-Rate）" class="headerlink" title="学习率（Learning Rate）"></a>学习率（Learning Rate）</h5><p>通过式子$θ_j=θ_j-\alpha\frac{\partial}{\partialθ_j}J(θ_0,θ_1)$， $(for j=0, j=1)$</p>
+<p>我们可以发现$\alpha$决定着每一次$\theta_j$变化的程度。如果$\alpha$太大，那么$\theta_j$可能会在变化的过程中错过局部最小值，于是最后$J(\theta)$便无法收敛。</p>
+<p>而如果$\alpha$变得太小，虽然最终一定会收敛到局部最小值，但步子迈的太小势必导致这个过程是很缓慢的。</p>
+<p>因此我们需要在不同的问题中恰当地调整$\alpha$来使得$J(\theta)$能够收敛，又能够尽快收敛。具体来说，我们可以在每一次更新$\theta_j$后统计一下$J(\theta)$的值，并画图，这样我们就得到了$J(\theta)$关于迭代次数（number of iterations）的变化曲线。当这条曲线趋于平缓乃至直线的时候，就收敛了。我们可以此为依据进行$\alpha$的调整。</p>
+<p>当然你也可以统计每次$\theta_j$变化之后$J_\theta$缩小的比例，这些都是可用的方法。</p>
+<h5 id="特征与多项式回归-Polynomial-Regression"><a href="#特征与多项式回归-Polynomial-Regression" class="headerlink" title="特征与多项式回归(Polynomial Regression)"></a>特征与多项式回归(Polynomial Regression)</h5><p>有的时候输出和输入的关系并非是简单的线性关系，例如某些问题的假设函数存在如下关系</p>
+<p>$h_\theta(x)=\theta_0+\theta_1x_1+\theta_2x_1^2+\theta_3x_1^3$</p>
+<p>这显然超出了我们线性回归的范畴，于是我们需要把它变化成线性的形式，也就是<strong>多项式回归</strong>。</p>
+<p>$h_\theta(x)=\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_3$，其中$x_1=x_1,x_2=x_1^2,x_3=x_1^3$</p>
+<p>这样的变化使得原本输入只有一个特征$x_1$，现在多出了两个特征$x_2$和$x_3$。只不过他们都和$x_1$有着对应的关系。</p>
+<p>但这样做会导致这几个特征不在一个数量级上，因此需要对这些特征做特征缩放才行。</p>
+<h4 id="正规方程（Normal-Equation）"><a href="#正规方程（Normal-Equation）" class="headerlink" title="正规方程（Normal Equation）"></a>正规方程（Normal Equation）</h4><p>正规方程提供了一种梯度下降以外的求$J_\theta$最小值的方法，那就是对$J_\theta$求偏导，并让所有的$\frac{\partial}{\partial\theta_j}J(\theta)=0$。不过这需要一定的数学基础，在这里Andrew Ng直接给出了方程，使用这个方程即可求出使得$J_\theta$达到最小值的$\theta$。</p>
+<p>$\theta=(X^TX)^{-1}X^TY$</p>
+<p>在刚看到这个式子的时候不太理解为什么不是$\theta=(X)^{-1}Y$，后来发现$X$未必是方阵，所以不一定能取逆，只有$X^TX$才能够保证是方阵。</p>
+<p>但是方阵也未必可以取逆，如果这个方阵是非满秩的，即存在某些行或者某些列之间线性相关，就不能取逆。</p>
+<p>如果是列之间线性相关，则说明存在多余的特征，例如预测房价的时候输入了房子的面积和房子的公摊面积，而公摊面积=面积*常数，那这个公摊面积就是一个多余的特征，去掉即可。</p>
+<p>如果是行之间线性相关，则说明存在两个样本所有特征都存在一个倍数关系，这种情况下我们可以采取求伪逆矩阵的方式（例如matlab中的pinv()函数）来规避。（其实列线性相关也可以求伪逆矩阵，但冗余的特征总是不必要存在的，所以我们选择删除）</p>
+<p>下面我们对比一下梯度下降和正规方程的优劣</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">梯度下降（Gradient Descent）</th>
+<th>正规方程（Normal Equation）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">需要选择合适的学习率$\alpha$</td>
+<td>不需要选择学习率$\alpha$</td>
+</tr>
+<tr>
+<td style="text-align:left">需要很多次迭代</td>
+<td>只需要一次迭代</td>
+</tr>
+<tr>
+<td style="text-align:left">在特征数$n$很大时可以很好地工作</td>
+<td>在特征数$n$很大时速度很慢</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>概念总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>クローラー1号機初体験（爬虫1号的初体验）</title>
+    <url>/a022104043b5.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>室友写了<a href="https://arspi.github.io/e2cdae171593.html">理论教程</a>，大家可以先看完再回来看我这一篇实践，也许会更有帮助一些。</p>
+<p>最近有很多事情都需要用到爬虫从网页上爬取相关的信息，但是自己一直没有写过也不懂原理，好在室友是个老手，直接出了一篇教程指导我。那么我今天就把自己第一次写爬虫的过程<strong>复现</strong>一下，包括直链的下载和保存都有的，大家学会还是能用到很多地方的。</p>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>众所周知，北京四中是一所不错的高中，也是我的母校。我时常会怀念四中的老师，怎么办呢？<strong>我准备把四中老师在官网的照片都保存下来，并命名为各位老师的名字。</strong></p>
+<h4 id="爬虫的局限性"><a href="#爬虫的局限性" class="headerlink" title="爬虫的局限性"></a>爬虫的局限性</h4><p>其实本身想扒北航的，无奈北航老师的主页格式不太固定，由此也可以看出这个爬虫和对应的网站时一个紧耦合的系统，格式出现不同就会造成扒不下来的结果。</p>
+<h3 id="网站观察与代码构建"><a href="#网站观察与代码构建" class="headerlink" title="网站观察与代码构建"></a>网站观察与代码构建</h3><h4 id="主页"><a href="#主页" class="headerlink" title="主页"></a>主页</h4><h5 id="内容获取"><a href="#内容获取" class="headerlink" title="内容获取"></a>内容获取</h5><p>我们要想把爬虫写出来，首先要去观察网站上各种信息的结构，这样才能指示爬虫把想要的信息获取下来。</p>
+<p>我们首先打开四中官网中<a href="http://bhsf.lezhiyun.com/cms/bjsz/xs/8406.jhtml">师资队伍</a>的界面作为主页，如下图所示，从<code>语文组</code>到<code>心理</code>都是我们要爬取的内容。</p>
+<p><img src="网站观察1.png" alt=""></p>
+<img src="/a022104043b5/%E7%BD%91%E7%AB%99%E8%A7%82%E5%AF%9F1.png" class="">
+<p>可以发现，我们想要爬取的内容在这个主页上并不是唯一的，是从<code>语文组</code> 到<code>心理</code>共15个目标。这就是所谓的<code>批量筛选内容</code>。</p>
+<p>我们先使用以下代码将主页的内容爬取下来并解析成树状结构。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将主页网址的字符串设置为url_mainpage</span></span><br><span class="line">url_mainpage = <span class="string">&#x27;http://bhsf.lezhiyun.com/cms/bjsz/xs/8406.jhtml&#x27;</span></span><br><span class="line"><span class="comment"># 使用request.get获取网页内容</span></span><br><span class="line">response_mainpage = requests.get(url)</span><br><span class="line"><span class="comment"># 将网页内容以‘utf-8’的格式解码</span></span><br><span class="line">content_mainpage = response_mainpage.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># 将网页的内容解析成树状结构</span></span><br><span class="line">soup_mainpage = BeautifulSoup(content_mainpage,<span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>现在主页的内容已经获取到了，我们开始挑选自己感兴趣的内容，即<code>语文组</code> 到<code>心理</code>共15个目标。</p>
+<p>在这里我们要用到soup.select(‘筛选条件’)，筛选条件本身是由我们感兴趣的内容来具体决定的。这一点在室友的教程里没有提到很多，只是给了<a href="https://www.w3school.com.cn/cssref/css_selectors.asp">官网教程地址</a>。</p>
+<p>那么我就来结合今天的内容具体讲一下常用的几条，更多的以后会慢慢介绍，大家也可以自行学习。</p>
+<h5 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h5><p>首先我们在主页按<code>F12</code>，点击<code>Ctrl + shift + C</code>，点选我们想关注的内容就可以在右边看到它的结构了。</p>
+<p><img src="查看网页.png" alt=""></p>
+<img src="/a022104043b5/%E6%9F%A5%E7%9C%8B%E7%BD%91%E9%A1%B5.png" class="">
+<p>比如这里我们要选的第一个节点是<code>语文组</code>，上面的<code>校级</code>并不是我们想要的，而下面的<code>数学组</code>是我们想要的。</p>
+<p>通过观察我们发现，<code>语文组</code>和<code>数学组</code>两个节点所在的标签（就是&lt;&gt;）都是以<code>a</code>开头，代表着它们都是<code>a</code>元素。并且之后都跟有<code>href</code>，而<code>href</code>代表的是这个节点的链接，也就是我们要访问语文组老师主页必经的<strong>语文组页面</strong></p>
+<p><code>语文组</code>和<code>数学组</code>的<code>href</code>又都是以<code>http://bhsf.lezhiyun.com/cms/bjsz/</code>开头，以<code>/index.jhtml</code>结尾。（其实你会发现，中间只差一个ywz，即<code>语文组</code>的简称，这里可以偷个懒直接写，但是出于普适性的原因，我们不钻这个空子）</p>
+<p>之后，<code>语文组</code>和<code>数学组</code>的标签中又都含有<code>style=&quot;color: #888; font-size:15px;&quot;</code>这个元素。</p>
+<p>观察后面各组发现规律一致，而观察前面的校级发现<code>style</code>中的<code>color</code>变成了<code>981316</code>。从而我们可以判断出筛选的条件如下：</p>
+<ol>
+<li>是<code>a</code>元素的标签</li>
+<li><code>href</code>以<code>http://bhsf.lezhiyun.com/cms/bjsz/</code>开头，并以<code>/index.jhtml</code>结尾</li>
+<li>带有<code>style=&quot;color: #888; font-size:15px;&quot;</code>这个属性。</li>
+</ol>
+<p>那么这个筛选条件怎么写呢？</p>
+<ol>
+<li>第一个条件写一个<code>a</code>代表是a元素</li>
+<li><p>第二个条件写<code>[href^=&quot;http://bhsf.lezhiyun.com/cms/bjsz/&quot;]</code>代表href以此内容开头，再写<code>[href$=&quot;/index.jhtml&quot;]</code>代表href以此内容结尾</p>
+</li>
+<li><p>第三个条件写<code>[style=color: #888; font-size:15px;]</code>代表style元素的内容是什么</p>
+</li>
+<li><p>最后把他们直接连起来<code>a[href^=&quot;http://bhsf.lezhiyun.com/cms/bjsz/&quot;][href$=&quot;/index.jhtml&quot;][style=color: #888; font-size:15px;]</code>代表同时满足这个几个筛选条件。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用soup.select选择自己想要的内容，筛选条件根据你想要的内容自定</span></span><br><span class="line">node_mainpage = soup_mainpage.select(<span class="string">&#x27;a[href^=&quot;http://bhsf.lezhiyun.com/cms/bjsz/&quot;][href$=&quot;/index.jhtml&quot;][style=color: #888; font-size:15px;]&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这样我们就将想要的<code>15</code>个节点从主页中选出来了，它们构成了一个元组，名叫<code>node_mainpage</code>。</p>
+<h4 id="课题组页面"><a href="#课题组页面" class="headerlink" title="课题组页面"></a>课题组页面</h4><p>我们选出来了想要的<code>15</code>个课题组，下面需要获得它们的页面并进行新的访问。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 遍历node_mainpage里的每一个节点，等于访问了每一个想要去的页面</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(node_mainpage)):</span><br><span class="line">    <span class="comment">#获得某个节点的href，即课题组的网址</span></span><br><span class="line">    url_grouppage = node_mainpage[i][<span class="string">&#x27;href&#x27;</span>]</span><br><span class="line">    <span class="comment">#重复上面的获取网页内容，解码，实例化步骤</span></span><br><span class="line">    response_grouppage = requests.get(url_grouppage)</span><br><span class="line">    content_grouppage = response_grouppage.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    soup_grouppage = BeautifulSoup(content_grouppage,<span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>此时我们对课题组页面进行观察，</p>
+<p><img src="课题组页面.png" alt=""></p>
+<img src="/a022104043b5/%E8%AF%BE%E9%A2%98%E7%BB%84%E9%A1%B5%E9%9D%A2.png" class="">
+<p>一样用上述的方法，写出了如下的筛选条件：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 对课题组页面中感兴趣的节点进行筛选</span></span><br><span class="line">    node_grouppage = soup_grouppage.select(<span class="string">&#x27;a[href^=&quot;http://bhsf.lezhiyun.com/cms/bjsz/&quot;][href$=&quot;.jhtml&quot;][style=color:]&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>不过通过观察发现，<code>语文组</code> <code>数学组</code> 和 <code>英语组</code> 老师人数多，有两页，所以在这里我们加一个小的判断。</p>
+<p><img src="下一页.png" alt=""></p>
+<img src="/a022104043b5/%E4%B8%8B%E4%B8%80%E9%A1%B5.png" class="">
+]]></content>
+      <categories>
+        <category>经验记录</category>
+      </categories>
+      <tags>
+        <tag>下载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Research Proposal的写作方式</title>
+    <url>/77844727fb45.html</url>
+    <content><![CDATA[<p>首先给大家提供一个爱丁堡大学的<a href="https://github.com/TVT233/personal-information/raw/main/How-to-Write-a-Good-Postgraduate-Research-Proposal.pdf">写作指导</a></p>
+<h3 id="Research-Proposal-的黄金法则"><a href="#Research-Proposal-的黄金法则" class="headerlink" title="Research Proposal 的黄金法则"></a>Research Proposal 的黄金法则</h3><h4 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h4><ol>
+<li>目标明确、客观、简介且现实</li>
+<li>问问自己为什么应该资助这项项目？为什么你是承担这个项目的最佳人选？</li>
+<li>问问自己为什么这项研究很重要，很及时？</li>
+<li>清楚地陈述和证明项目的目标的意义（仅仅有趣是不够的）</li>
+<li>这项研究如何造福更广泛的群体？</li>
+</ol>
+<h4 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h4><ol>
+<li>如果空间允许，请提供清晰的项目名称</li>
+<li>使用章节题目</li>
+<li>尽量分段，而不是把文本堆积在一起</li>
+<li>尽量写短句，没人愿意在研究计划里分析长难句</li>
+<li>如果允许，提供图表、图像来解释文本</li>
+</ol>
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><ol>
+<li>可以提前和潜在主管聊一聊（email），询问他们的想法</li>
+<li>如果有机会，将自己的想法呈现一下，听取他们的意见</li>
+<li>查看资助机构/学校的具体要求，例如字数等</li>
+</ol>
+<h3 id="Research-Proposal-的文章结构"><a href="#Research-Proposal-的文章结构" class="headerlink" title="Research Proposal 的文章结构"></a>Research Proposal 的文章结构</h3><p>一般来说，要具体看机构的要求，这里只给出最普遍的结构供大家参考。在不同场景下（例如有字数限制），大家根据需求自行删改即可。</p>
+<h4 id="常见的结构"><a href="#常见的结构" class="headerlink" title="常见的结构"></a>常见的结构</h4><ol>
+<li>标题（<code>Title</code>)和摘要（<code>Abstract</code>）</li>
+<li>背景（<code>Background Information</code>）/  相关工作（<code>Related Work</code>）</li>
+<li>假设（<code>Hypothesis</code>）和目标（<code>Objectives</code>）</li>
+<li>研究方法（<code>Methodology</code>）</li>
+<li>总结（<code>Summary</code>）/  结论（<code>Conclusion</code>）</li>
+</ol>
+<h3 id="具体写作要求"><a href="#具体写作要求" class="headerlink" title="具体写作要求"></a>具体写作要求</h3><h4 id="学术诚信在先"><a href="#学术诚信在先" class="headerlink" title="学术诚信在先"></a>学术诚信在先</h4><p>先说一点比较重要的，在研究计划中提及的所有出版物都应该被标注引用，如果不这样做的话实际上是抄袭（<code>Plagiarism</code>）。即使你觉得作者的原话是对这个意思的最好阐述，你也最好用自己的话改写一下。如果必须要逐字引用，记得使用<strong>引号</strong>和<strong>斜体</strong>来标注。</p>
+<h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><p>在摘要中，我们应该向读者表达清楚自己研究计划的要点和结论。整体风格应该和全文一致。</p>
+<h4 id="背景-相关工作"><a href="#背景-相关工作" class="headerlink" title="背景/相关工作"></a>背景/相关工作</h4><p>在这里，我们应该首先向读者以文献综述的形式介绍背景信息，尽快引起将读者的思绪带入情景之中。之后清楚地阐明自己研究的有效性和必要性，说明研究的目的和目标。</p>
+<p>值得说明的一点是，这种有效性只要是基于合理的假设和推理即可，不必非要说得很夸张。</p>
+<p>之后可以介绍本方向之前的一些工作，并探讨它们的不足，证明自己对于此研究所属领域的背景、方法、理论和矛盾点都有着很好的了解。</p>
+<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h5 id="假设和目标"><a href="#假设和目标" class="headerlink" title="假设和目标"></a>假设和目标</h5><p>我们在此部分可以详实地阐述自己研究所基于的假设和期望的目标。值得注意的是，目标不必过于夸大，可行永远是目标的第一要素，在此基础上则可以进行扩展。</p>
+<p>在描述的过程中，你可以通过向自己提问的方式来找出需要补充的要素：</p>
+<ol>
+<li>为什么其他人应该为我的研究投入资金？</li>
+<li>我的研究最终的受益群体是谁？最好说的具体一点，让世界受益的研究听起来太模糊了。</li>
+<li>是否有证据，比如文献或数据，证明这项研究的成果将填补某项空白，或者可以很好的应用于现在的体系之上？</li>
+<li>这项研究是否够及时，有创新，响应大的行业趋势？</li>
+<li>其实你也可以写上具体的日程目标，比如每6个月的时间计划。</li>
+</ol>
+<h5 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h5><p>研究方法可以说是最为重要的部分。</p>
+<ol>
+<li>自己使用的研究方法做出简要的介绍</li>
+<li>解释为什么你认为它是最为合适的研究方法</li>
+<li>考虑了哪些替代方法</li>
+<li>为什么没有使用这些替代方法（反向证明自己方法的合理性）</li>
+<li>为什么你选择的这个研究场所适合你的这套研究方法（比如提供专业知识，数据，设备等）</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在<code>Research Proposal</code>的结尾写好总结可以帮助审阅的人识别重要信息，毕竟大家都爱看摘要和总结。总结的方式有很多种，但大体上来说都是对自己的研究的完整概括：使用什么方法，解决了什么问题，提升了哪些性能，使得哪些人受益等等。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>申请</tag>
+        <tag>研究</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GRE Analysing Writing 总结——部分主题思路</title>
     <url>/cb6183d6dc95.html</url>
     <content><![CDATA[<h3 id="Assumption类指令题目"><a href="#Assumption类指令题目" class="headerlink" title="Assumption类指令题目"></a>Assumption类指令题目</h3><h4 id="Driver’s-education"><a href="#Driver’s-education" class="headerlink" title="Driver’s education"></a>Driver’s education</h4><p>The following appeared in a letter to the school board in the town of Centerville. </p>
@@ -225,352 +884,28 @@
       </tags>
   </entry>
   <entry>
-    <title>你好！欢迎来到我的网站！</title>
-    <url>/414d15ce29a6.html</url>
-    <content><![CDATA[<h4 id="来看看这有什么"><a href="#来看看这有什么" class="headerlink" title="来看看这有什么"></a>来看看这有什么</h4><p><strong><a href="https://zh.zihengzhang.top/about/">关于</a></strong>：在这你可以看到关于我的个人信息，教育和研究经历。如果你需要，里面还有我的个人简历和联系方式。</p>
-<p><strong><a href="https://zh.zihengzhang.top/research/">研究</a></strong>：在这你可以看到我之前做过的一些研究，以及我现在正在做的研究。</p>
-<p><strong><a href="https://zh.zihengzhang.top/applications/">应用</a></strong>：在这你可以找到我做过的一些应用方向的项目，展示视频以及相关理论介绍的论文。</p>
-<h4 id="关于我的博客"><a href="#关于我的博客" class="headerlink" title="关于我的博客"></a>关于我的博客</h4><p>在未来，我会写一些博客来记录自己的学习和生活，你可以依靠<a href="https://zh.zihengzhang.top/tags/">标签</a> 和 <a href="https://zh.zihengzhang.top/categories/">分类</a> 来找到它们。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>如何写一篇文章的“related work”部分</title>
-    <url>/f2a7da94c8dc.html</url>
-    <content><![CDATA[<h3 id="如何写一篇文章的“related-work”部分"><a href="#如何写一篇文章的“related-work”部分" class="headerlink" title="如何写一篇文章的“related work”部分"></a>如何写一篇文章的“related work”部分</h3>]]></content>
-  </entry>
-  <entry>
-    <title>Research Proposal的写作方式</title>
-    <url>/77844727fb45.html</url>
-    <content><![CDATA[<p>首先给大家提供一个爱丁堡大学的<a href="https://github.com/TVT233/personal-information/raw/main/How-to-Write-a-Good-Postgraduate-Research-Proposal.pdf">写作指导</a></p>
-<h3 id="Research-Proposal-的黄金法则"><a href="#Research-Proposal-的黄金法则" class="headerlink" title="Research Proposal 的黄金法则"></a>Research Proposal 的黄金法则</h3><h4 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h4><ol>
-<li>目标明确、客观、简介且现实</li>
-<li>问问自己为什么应该资助这项项目？为什么你是承担这个项目的最佳人选？</li>
-<li>问问自己为什么这项研究很重要，很及时？</li>
-<li>清楚地陈述和证明项目的目标的意义（仅仅有趣是不够的）</li>
-<li>这项研究如何造福更广泛的群体？</li>
-</ol>
-<h4 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h4><ol>
-<li>如果空间允许，请提供清晰的项目名称</li>
-<li>使用章节题目</li>
-<li>尽量分段，而不是把文本堆积在一起</li>
-<li>尽量写短句，没人愿意在研究计划里分析长难句</li>
-<li>如果允许，提供图表、图像来解释文本</li>
-</ol>
-<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><ol>
-<li>可以提前和潜在主管聊一聊（email），询问他们的想法</li>
-<li>如果有机会，将自己的想法呈现一下，听取他们的意见</li>
-<li>查看资助机构/学校的具体要求，例如字数等</li>
-</ol>
-<h3 id="Research-Proposal-的文章结构"><a href="#Research-Proposal-的文章结构" class="headerlink" title="Research Proposal 的文章结构"></a>Research Proposal 的文章结构</h3><p>一般来说，要具体看机构的要求，这里只给出最普遍的结构供大家参考。在不同场景下（例如有字数限制），大家根据需求自行删改即可。</p>
-<h4 id="常见的结构"><a href="#常见的结构" class="headerlink" title="常见的结构"></a>常见的结构</h4><ol>
-<li>标题（<code>Title</code>)和摘要（<code>Abstract</code>）</li>
-<li>背景（<code>Background Information</code>）/  相关工作（<code>Related Work</code>）</li>
-<li>假设（<code>Hypothesis</code>）和目标（<code>Objectives</code>）</li>
-<li>研究方法（<code>Methodology</code>）</li>
-<li>总结（<code>Summary</code>）/  结论（<code>Conclusion</code>）</li>
-</ol>
-<h3 id="具体写作要求"><a href="#具体写作要求" class="headerlink" title="具体写作要求"></a>具体写作要求</h3><h4 id="学术诚信在先"><a href="#学术诚信在先" class="headerlink" title="学术诚信在先"></a>学术诚信在先</h4><p>先说一点比较重要的，在研究计划中提及的所有出版物都应该被标注引用，如果不这样做的话实际上是抄袭（<code>Plagiarism</code>）。即使你觉得作者的原话是对这个意思的最好阐述，你也最好用自己的话改写一下。如果必须要逐字引用，记得使用<strong>引号</strong>和<strong>斜体</strong>来标注。</p>
-<h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><p>在摘要中，我们应该向读者表达清楚自己研究计划的要点和结论。整体风格应该和全文一致。</p>
-<h4 id="背景-相关工作"><a href="#背景-相关工作" class="headerlink" title="背景/相关工作"></a>背景/相关工作</h4><p>在这里，我们应该首先向读者以文献综述的形式介绍背景信息，尽快引起将读者的思绪带入情景之中。之后清楚地阐明自己研究的有效性和必要性，说明研究的目的和目标。</p>
-<p>值得说明的一点是，这种有效性只要是基于合理的假设和推理即可，不必非要说得很夸张。</p>
-<p>之后可以介绍本方向之前的一些工作，并探讨它们的不足，证明自己对于此研究所属领域的背景、方法、理论和矛盾点都有着很好的了解。</p>
-<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h5 id="假设和目标"><a href="#假设和目标" class="headerlink" title="假设和目标"></a>假设和目标</h5><p>我们在此部分可以详实地阐述自己研究所基于的假设和期望的目标。值得注意的是，目标不必过于夸大，可行永远是目标的第一要素，在此基础上则可以进行扩展。</p>
-<p>在描述的过程中，你可以通过向自己提问的方式来找出需要补充的要素：</p>
-<ol>
-<li>为什么其他人应该为我的研究投入资金？</li>
-<li>我的研究最终的受益群体是谁？最好说的具体一点，让世界受益的研究听起来太模糊了。</li>
-<li>是否有证据，比如文献或数据，证明这项研究的成果将填补某项空白，或者可以很好的应用于现在的体系之上？</li>
-<li>这项研究是否够及时，有创新，响应大的行业趋势？</li>
-<li>其实你也可以写上具体的日程目标，比如每6个月的时间计划。</li>
-</ol>
-<h5 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h5><p>研究方法可以说是最为重要的部分。</p>
-<ol>
-<li>自己使用的研究方法做出简要的介绍</li>
-<li>解释为什么你认为它是最为合适的研究方法</li>
-<li>考虑了哪些替代方法</li>
-<li>为什么没有使用这些替代方法（反向证明自己方法的合理性）</li>
-<li>为什么你选择的这个研究场所适合你的这套研究方法（比如提供专业知识，数据，设备等）</li>
-</ol>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在<code>Research Proposal</code>的结尾写好总结可以帮助审阅的人识别重要信息，毕竟大家都爱看摘要和总结。总结的方式有很多种，但大体上来说都是对自己的研究的完整概括：使用什么方法，解决了什么问题，提升了哪些性能，使得哪些人受益等等。</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>申请</tag>
-        <tag>研究</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>YOLO系列之我见：YOLOv1</title>
-    <url>/ff8c2a327d16.html</url>
-    <content><![CDATA[<p>爷又回来了</p>
-<p>最近开始做毕设了，毕设需要用到YOLOv5，因此我准备彻底把YOLOv1-v5的原理理解一下。一来自己用着也能更加顺手，而来后期答辩可能会被问到，早晚得准备。</p>
-<p>虽然说YOLOv5的开源代码使用起来是比较方便的，但是如果不对原理进行理解，始终像黑盒一样使用，那对于后续的延申、扩展以及研究都是很不利的，答辩问到大概也是个寄。所以今天来总结一下我对于YOLOv1的理解。</p>
-<hr>
-<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>YOLOv1的输入是一整张$448×448×3$的图像，如果原始图像非此尺寸，则需要进行缩放。究其原因是网络末尾衔接了两个全连接层，而全连接层的输入是固定的，因此反推回去我们的输入也是需要固定的。</p>
-<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>直接输出的是一个$7<em>7</em>30$的张量。</p>
-<h5 id="7-7的含义"><a href="#7-7的含义" class="headerlink" title="7*7的含义"></a>7*7的含义</h5><img src="/ff8c2a327d16/7X7.jpg" class="">
-<p>如图所示，对于一张图像，首先将它分为7*7个网格（grid cell）。</p>
-<h5 id="30的含义"><a href="#30的含义" class="headerlink" title="30的含义"></a>30的含义</h5><p>可以考虑是每一个网格输出一个30维的向量。对于某一个网格来说，它负责给出两个bounding box，这两个bounding box每个都包含5个参数，即4个位置参数与1个置信度confidence。</p>
-<p>4个位置参数，即</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>centre_X</td>
-<td>bounding box 中心的横坐标</td>
-</tr>
-<tr>
-<td>centre_Y</td>
-<td>bounding box 中心的纵坐标</td>
-</tr>
-<tr>
-<td>width</td>
-<td>bounding box 的宽</td>
-</tr>
-<tr>
-<td>height</td>
-<td>bounding box 的高</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>所谓的置信度，我们现在可以简单的理解为这个bounding box中含有目标的概率，注意是含有目标，而非含有某一类目标。</p>
-<p>而具体到哪一类目标，我们还需要在存在目标的前提下，是某一类目标的条件概率**，YOLOv1中共分20类，因此我们需要如下参数：</p>
-<p>$Pr(C_1|Object),Pr(C_2|Object),…,Pr(C_{20}|Object)$</p>
-<p>注意，这些条件概率对于在同一个网格中的两个bounding box是一致的，故我们认为对一个网格需要：$2*(4+1)+20=30$个参数，这就是30的含义。</p>
-<hr>
-<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><img src="/ff8c2a327d16/%E5%AE%8C%E6%95%B4%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg" class="">
-<p>总体来说，YOLOv1的网络结构还是比较简单的，若干卷积层，池化层，最后衔接两个全连接层。和最常见的CNN对象分类网络几乎没啥区别。</p>
-<img src="/ff8c2a327d16/%E7%AE%80%E7%95%A5%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg" class="">
-<p>所以我们可以简单地把网络看成输入图像经过神经网络整合成一个输出张量。既然网络结构是常见且简单的，那最重要的事情就是去理解输出的含义和损失函数的计算。</p>
-<hr>
-<h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>在进行反向传播之前我们需要先构造好训练样本，换句话说，你得告诉网络正确的$7<em>7</em>30$输出张量是什么。</p>
-<h4 id="训练样本构造"><a href="#训练样本构造" class="headerlink" title="训练样本构造"></a>训练样本构造</h4><p>首先，所有7*7个网格的20个类别参数全部置为0，如果某个目标的中心点落在某个网格内，那就将这个网格对应的这个目标的类别参数改为1.</p>
-<p>其次，对于负责预测对象的网格（即目标中心点落在的这个网格），看它的两个bounding box与基准事实（Ground Truth，后称GT）的交并比（Intersection over Union，后称IOU），较大的那个bounding box对应的4个位置参数改为GT的位置参数，较小的bounding box对应的位置参数则保持不变。同样，对于IOU较大的bounding box，置信度参数置为1，较小的则置为0。</p>
-<img src="/ff8c2a327d16/%E6%A0%B7%E6%9C%AC%E6%A0%87%E7%AD%BE.jpg" class="">
-<p>例如，某个网格中包含一自行车的中心点，那么该网格的30维向量中，自行车类别参数为1，其余类别参数为0。而该网格的两个bounding box中，bounding box1的IOU更大，则其置信度为1，位置参数为GT的位置参数。</p>
-<h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><img src="/ff8c2a327d16/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpg" class="">
-<p>待续…</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>クローラー1号機初体験（爬虫1号的初体验）</title>
-    <url>/a022104043b5.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>室友写了<a href="https://arspi.github.io/e2cdae171593.html">理论教程</a>，大家可以先看完再回来看我这一篇实践，也许会更有帮助一些。</p>
-<p>最近有很多事情都需要用到爬虫从网页上爬取相关的信息，但是自己一直没有写过也不懂原理，好在室友是个老手，直接出了一篇教程指导我。那么我今天就把自己第一次写爬虫的过程<strong>复现</strong>一下，包括直链的下载和保存都有的，大家学会还是能用到很多地方的。</p>
-<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>众所周知，北京四中是一所不错的高中，也是我的母校。我时常会怀念四中的老师，怎么办呢？<strong>我准备把四中老师在官网的照片都保存下来，并命名为各位老师的名字。</strong></p>
-<h4 id="爬虫的局限性"><a href="#爬虫的局限性" class="headerlink" title="爬虫的局限性"></a>爬虫的局限性</h4><p>其实本身想扒北航的，无奈北航老师的主页格式不太固定，由此也可以看出这个爬虫和对应的网站时一个紧耦合的系统，格式出现不同就会造成扒不下来的结果。</p>
-<h3 id="网站观察与代码构建"><a href="#网站观察与代码构建" class="headerlink" title="网站观察与代码构建"></a>网站观察与代码构建</h3><h4 id="主页"><a href="#主页" class="headerlink" title="主页"></a>主页</h4><h5 id="内容获取"><a href="#内容获取" class="headerlink" title="内容获取"></a>内容获取</h5><p>我们要想把爬虫写出来，首先要去观察网站上各种信息的结构，这样才能指示爬虫把想要的信息获取下来。</p>
-<p>我们首先打开四中官网中<a href="http://bhsf.lezhiyun.com/cms/bjsz/xs/8406.jhtml">师资队伍</a>的界面作为主页，如下图所示，从<code>语文组</code>到<code>心理</code>都是我们要爬取的内容。</p>
-<p><img src="网站观察1.png" alt=""></p>
-<img src="/a022104043b5/%E7%BD%91%E7%AB%99%E8%A7%82%E5%AF%9F1.png" class="">
-<p>可以发现，我们想要爬取的内容在这个主页上并不是唯一的，是从<code>语文组</code> 到<code>心理</code>共15个目标。这就是所谓的<code>批量筛选内容</code>。</p>
-<p>我们先使用以下代码将主页的内容爬取下来并解析成树状结构。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将主页网址的字符串设置为url_mainpage</span></span><br><span class="line">url_mainpage = <span class="string">&#x27;http://bhsf.lezhiyun.com/cms/bjsz/xs/8406.jhtml&#x27;</span></span><br><span class="line"><span class="comment"># 使用request.get获取网页内容</span></span><br><span class="line">response_mainpage = requests.get(url)</span><br><span class="line"><span class="comment"># 将网页内容以‘utf-8’的格式解码</span></span><br><span class="line">content_mainpage = response_mainpage.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># 将网页的内容解析成树状结构</span></span><br><span class="line">soup_mainpage = BeautifulSoup(content_mainpage,<span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>现在主页的内容已经获取到了，我们开始挑选自己感兴趣的内容，即<code>语文组</code> 到<code>心理</code>共15个目标。</p>
-<p>在这里我们要用到soup.select(‘筛选条件’)，筛选条件本身是由我们感兴趣的内容来具体决定的。这一点在室友的教程里没有提到很多，只是给了<a href="https://www.w3school.com.cn/cssref/css_selectors.asp">官网教程地址</a>。</p>
-<p>那么我就来结合今天的内容具体讲一下常用的几条，更多的以后会慢慢介绍，大家也可以自行学习。</p>
-<h5 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h5><p>首先我们在主页按<code>F12</code>，点击<code>Ctrl + shift + C</code>，点选我们想关注的内容就可以在右边看到它的结构了。</p>
-<p><img src="查看网页.png" alt=""></p>
-<img src="/a022104043b5/%E6%9F%A5%E7%9C%8B%E7%BD%91%E9%A1%B5.png" class="">
-<p>比如这里我们要选的第一个节点是<code>语文组</code>，上面的<code>校级</code>并不是我们想要的，而下面的<code>数学组</code>是我们想要的。</p>
-<p>通过观察我们发现，<code>语文组</code>和<code>数学组</code>两个节点所在的标签（就是&lt;&gt;）都是以<code>a</code>开头，代表着它们都是<code>a</code>元素。并且之后都跟有<code>href</code>，而<code>href</code>代表的是这个节点的链接，也就是我们要访问语文组老师主页必经的<strong>语文组页面</strong></p>
-<p><code>语文组</code>和<code>数学组</code>的<code>href</code>又都是以<code>http://bhsf.lezhiyun.com/cms/bjsz/</code>开头，以<code>/index.jhtml</code>结尾。（其实你会发现，中间只差一个ywz，即<code>语文组</code>的简称，这里可以偷个懒直接写，但是出于普适性的原因，我们不钻这个空子）</p>
-<p>之后，<code>语文组</code>和<code>数学组</code>的标签中又都含有<code>style=&quot;color: #888; font-size:15px;&quot;</code>这个元素。</p>
-<p>观察后面各组发现规律一致，而观察前面的校级发现<code>style</code>中的<code>color</code>变成了<code>981316</code>。从而我们可以判断出筛选的条件如下：</p>
-<ol>
-<li>是<code>a</code>元素的标签</li>
-<li><code>href</code>以<code>http://bhsf.lezhiyun.com/cms/bjsz/</code>开头，并以<code>/index.jhtml</code>结尾</li>
-<li>带有<code>style=&quot;color: #888; font-size:15px;&quot;</code>这个属性。</li>
-</ol>
-<p>那么这个筛选条件怎么写呢？</p>
-<ol>
-<li>第一个条件写一个<code>a</code>代表是a元素</li>
-<li><p>第二个条件写<code>[href^=&quot;http://bhsf.lezhiyun.com/cms/bjsz/&quot;]</code>代表href以此内容开头，再写<code>[href$=&quot;/index.jhtml&quot;]</code>代表href以此内容结尾</p>
-</li>
-<li><p>第三个条件写<code>[style=color: #888; font-size:15px;]</code>代表style元素的内容是什么</p>
-</li>
-<li><p>最后把他们直接连起来<code>a[href^=&quot;http://bhsf.lezhiyun.com/cms/bjsz/&quot;][href$=&quot;/index.jhtml&quot;][style=color: #888; font-size:15px;]</code>代表同时满足这个几个筛选条件。</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用soup.select选择自己想要的内容，筛选条件根据你想要的内容自定</span></span><br><span class="line">node_mainpage = soup_mainpage.select(<span class="string">&#x27;a[href^=&quot;http://bhsf.lezhiyun.com/cms/bjsz/&quot;][href$=&quot;/index.jhtml&quot;][style=color: #888; font-size:15px;]&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这样我们就将想要的<code>15</code>个节点从主页中选出来了，它们构成了一个元组，名叫<code>node_mainpage</code>。</p>
-<h4 id="课题组页面"><a href="#课题组页面" class="headerlink" title="课题组页面"></a>课题组页面</h4><p>我们选出来了想要的<code>15</code>个课题组，下面需要获得它们的页面并进行新的访问。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 遍历node_mainpage里的每一个节点，等于访问了每一个想要去的页面</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(node_mainpage)):</span><br><span class="line">    <span class="comment">#获得某个节点的href，即课题组的网址</span></span><br><span class="line">    url_grouppage = node_mainpage[i][<span class="string">&#x27;href&#x27;</span>]</span><br><span class="line">    <span class="comment">#重复上面的获取网页内容，解码，实例化步骤</span></span><br><span class="line">    response_grouppage = requests.get(url_grouppage)</span><br><span class="line">    content_grouppage = response_grouppage.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    soup_grouppage = BeautifulSoup(content_grouppage,<span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>此时我们对课题组页面进行观察，</p>
-<p><img src="课题组页面.png" alt=""></p>
-<img src="/a022104043b5/%E8%AF%BE%E9%A2%98%E7%BB%84%E9%A1%B5%E9%9D%A2.png" class="">
-<p>一样用上述的方法，写出了如下的筛选条件：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 对课题组页面中感兴趣的节点进行筛选</span></span><br><span class="line">    node_grouppage = soup_grouppage.select(<span class="string">&#x27;a[href^=&quot;http://bhsf.lezhiyun.com/cms/bjsz/&quot;][href$=&quot;.jhtml&quot;][style=color:]&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>不过通过观察发现，<code>语文组</code> <code>数学组</code> 和 <code>英语组</code> 老师人数多，有两页，所以在这里我们加一个小的判断。</p>
-<p><img src="下一页.png" alt=""></p>
-<img src="/a022104043b5/%E4%B8%8B%E4%B8%80%E9%A1%B5.png" class="">
-]]></content>
-      <categories>
-        <category>经验记录</category>
-      </categories>
-      <tags>
-        <tag>下载</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一些尴尬事</title>
-    <url>/6b01edd3d048.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>分类问题中代价函数的偏微分推导</title>
-    <url>/4e61adc1b875.html</url>
-    <content><![CDATA[<p>在<a href="http://zh.zihengzhang.top/8a55cfbaf1ca.html">分类问题</a>中，我们会遇到代价函数$J(\theta)$</p>
-<p>$J(\theta)=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))$</p>
-<p>而在具体计算中，我们往往要对它求偏导，即$\frac{\partial}{\partial\theta_j}J(\theta)$</p>
-<p>现在我们来具体推导一下，</p>
-<p>$\frac{\partial}{\partial\theta_j}J(\theta)=\frac{\partial}{\partial\theta_j}(\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x))))$</p>
-<p>$=\frac{1}{m}\Sigma^m_{i=1}\frac{\partial}{\partial\theta_j}((-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x))))$</p>
-<p>$=\frac{1}{m}\Sigma^m_{i=1}(\frac{-y}{h_\theta(x)}\frac{\partial h_\theta(x)}{\partial\theta_j}-\frac{1-y}{1-h_\theta(x)}(-\frac{\partial h_\theta(x)}{\partial\theta_j}))$</p>
-<p>$=\frac{1}{m}\Sigma^m_{i=1}(\frac{\partial h_\theta(x)}{\partial\theta_j}(\frac{-y}{h_\theta(x)}+\frac{1-y}{1-h_\theta(x)}))$</p>
-<p>$=\frac{1}{m}\Sigma^m_{i=1}(\frac{\partial h_\theta(x)}{\partial\theta_j}\frac{-y+yh_\theta(x)+h_\theta(x)-yh_\theta(x)}{h_\theta(x)(1-h_\theta(x))})$</p>
-<p>$=\frac{1}{m}\Sigma^m_{i=1}(\frac{\partial h_\theta(x)}{\partial\theta_j}\frac{-y+h_\theta(x)}{h_\theta(x)(1-h_\theta(x))})$</p>
-<p>我们知道，$h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}$</p>
-<p>且$\theta^Tx=\theta_0+\theta_1x_1+…+\theta_nx_n$</p>
-<p>故$\frac{\partial h_\theta(x)}{\partial\theta_j}=\frac{-(-e^{-\theta^Tx}x_j)}{(1+e^{-\theta^Tx})^2}=h_\theta(x)(1-h_\theta(x)x_j$</p>
-<p>$\frac{\partial}{\partial\theta_j}J(\theta)=\frac{1}{m}\Sigma^m_{i=1}(\frac{\partial h_\theta(x)}{\partial\theta_j}\frac{-y+h_\theta(x)}{h_\theta(x)(1-h_\theta(x))})$</p>
-<p>$=\frac{1}{m}\Sigma^m_{i=1}((h_\theta(x)(1-h_\theta(x)x_j)*\frac{-y+h_\theta(x)}{h_\theta(x)(1-h_\theta(x))})$</p>
-<p>$=\frac{1}{m}\Sigma^m_{i=1}(h_\theta(x)-y)x_j$</p>
-<p>推导完成</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>从零搭建MC服务器记录</title>
-    <url>/d3af824b28d7.html</url>
-    <content><![CDATA[<p>最近朋友准备搭建一个MC服务器，以供几位好友随时玩，网易的联机总是需要主机在线，不大方便。但等了几天也没搭好，赶上我有空，就尝试了一下。顺手记录。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先需要一台云服务器，国内主流的云平台像阿里云、腾讯云、华为云、U刻得（Ucloud）等都可以。</p>
-<p>这里我因为只是尝试一下，遂选用了<a href="https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fecs.console.aliyun.com%2Fserver%2Fi-0jla9660a9theaakxa14%2Fdetail%3FregionId%3Dcn-wulanchabu">阿里云</a>，因为它有个<a href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
-<p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
-<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
-<img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png" class="">
-<p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
-<img src="/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png" class="">
-<h4 id="打开服务器控制台"><a href="#打开服务器控制台" class="headerlink" title="打开服务器控制台"></a>打开服务器控制台</h4><p>此时，我们点击左侧标签栏的“<strong>实例</strong>”，并选择我们的云服务器，进入页面后点击远程连接。选择“<strong>Workbench远程登陆</strong>”，即可在新的标签页中找到我们服务器的控制台。如果你喜欢用VNC或者其他任何连接方式也没问题，这里我以Workbench为例。</p>
-<img src="/d3af824b28d7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.jpg" class="">
-<img src="/d3af824b28d7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0.jpg" class="">
-<p>至此，我们的服务器配置问题结束了。</p>
-<h3 id="下载Java和MC服务器端"><a href="#下载Java和MC服务器端" class="headerlink" title="下载Java和MC服务器端"></a>下载Java和MC服务器端</h3><h4 id="建立目录"><a href="#建立目录" class="headerlink" title="建立目录"></a>建立目录</h4><p>首先，我们给MC建立一个目录</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#建立mc1.13.2</span></span><br><span class="line"><span class="built_in">mkdir</span> mc1.13.2</span><br><span class="line"><span class="comment">#进入mc1.13.2</span></span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
-<h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><p>1.16及以下的版本使用Java8即可，而1.17及以上的版本则需要更新的Java。大家按照自己想玩的版本对应即可，我这里准备玩1.13.2所以使用Java8。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装Java</span></span><br><span class="line">sudo yum install java-1.8.0-openjdk</span><br><span class="line"><span class="comment">#安装过程中会出现询问，记得输入y以同意。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完毕后可用以下代码验证成功安装</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
-<p>若出现以下版本，则代表安装完成。</p>
-<img src="/d3af824b28d7/Java%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.jpg" class="">
-<h4 id="下载MC服务端"><a href="#下载MC服务端" class="headerlink" title="下载MC服务端"></a>下载MC服务端</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载MC服务端</span></span><br><span class="line">sudo wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar</span><br></pre></td></tr></table></figure>
-<p>这里我下载的是1.13.2的服务端，如果你想要玩其他版本，可以从<a href="https://mcversions.net/">这里</a>找到。</p>
-<h4 id="下载screen"><a href="#下载screen" class="headerlink" title="下载screen"></a>下载screen</h4><p>screen是一个可以创建虚拟终端的插件，我们可以使用它做到24小时运行服务器。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装screen</span></span><br><span class="line">sudo yum install -y screen</span><br><span class="line"><span class="comment">#创建并打开一个虚拟终端，名叫“mc”</span></span><br><span class="line">screen -R mc</span><br></pre></td></tr></table></figure>
-<p>此时你应该进入了一个新的界面，这说明你成功进入了虚拟终端。</p>
-<p>同样我们使用以下命令组合进入mc1.13.2目录下</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
-<h3 id="运行MC服务器端"><a href="#运行MC服务器端" class="headerlink" title="运行MC服务器端"></a>运行MC服务器端</h3><h4 id="运行服务器端"><a href="#运行服务器端" class="headerlink" title="运行服务器端"></a>运行服务器端</h4><p>至此，我们就可以准备运行我们的服务器啦。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Xmx是最大使用内存 Xms是最小使用内存 server.jar是文件名.后缀</span></span><br><span class="line">java -Xmx1000M -Xms256M -jar server.jar</span><br></pre></td></tr></table></figure>
-<p>第一次没运行成功？没关系，往下看~</p>
-<h4 id="修改相关文件"><a href="#修改相关文件" class="headerlink" title="修改相关文件"></a>修改相关文件</h4><p>第一次运行不会成功，会报需要先同意EULA。</p>
-<p>这时我们进入Eula文件并修改</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入eula.txt文件</span></span><br><span class="line">vim eula.txt</span><br></pre></td></tr></table></figure>
-<p>进入后，点击<code>i</code>键进入编辑模式，将<code>false</code>更改为<code>true</code>。</p>
-<p>修改完毕后点击<code>ESC</code>退出编辑模式，并输入<code>:wq</code>退出文件。</p>
-<p>如果你或者你的朋友们使用的不是正版mc登录，那么你还需要将正版验证关掉。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入server.properties</span></span><br><span class="line">vim server.properties</span><br></pre></td></tr></table></figure>
-<p>找到其中的<code>online-mode</code>一行，并将<code>true</code>改为<code>false</code>即可。</p>
-<h3 id="用HMCL登录MC服务器"><a href="#用HMCL登录MC服务器" class="headerlink" title="用HMCL登录MC服务器"></a>用HMCL登录MC服务器</h3><p>打开<a href="https://hmcl.huangyuhui.net/">HMCL</a>启动器，下载对应的版本并打开多人模式。</p>
-<img src="/d3af824b28d7/MC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0.png" class="">
-<p>服务器地址为<strong>你服务器的<code>公网ip:25565</code></strong>。特别要注意的一点是，冒号是英文的冒号，MC窗口内中英文冒号看起来一样，自己一定要注意，否则导致<strong>主机名解析失败</strong>。</p>
-<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><img src="/d3af824b28d7/%E6%88%90%E5%8A%9F.png" class="">
-<h4 id="退出screen，完成24小时运行"><a href="#退出screen，完成24小时运行" class="headerlink" title="退出screen，完成24小时运行"></a>退出screen，完成24小时运行</h4><p>最后别忘了使用<code>Ctrl+a</code> 和 <code>d</code>退出screen，这样就可以24小时开启服务器不管啦。</p>
-]]></content>
-      <categories>
-        <category>游戏</category>
-      </categories>
-      <tags>
-        <tag>我的世界</tag>
-        <tag>MC</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客搭建及相关问题记录（一）</title>
-    <url>/1b1c750fe7e1.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近做了自己的博客，说实话我自己对前端的配置相关的问题确实不太懂，所以一切都是在边学边用下完成的。网上的教程有些写的不错，但时间太古早了。有些写的问题比较贴合我自己的情况，又比较零散。</p>
-<p>因此，我准备写一个帖子来记录自己的搭建过程。</p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="静态？动态？"><a href="#静态？动态？" class="headerlink" title="静态？动态？"></a>静态？动态？</h4><p>首先，我们要知道自己想要的博客属于静态还是动态。</p>
-<p>所谓的静态并不是指网站不含有动画等可”动“的部分，而是指网站上的内容相对恒定，无互动性，服务器和数据库的支撑，但同时更新内容往往需要手动操作，因此维护工作量比较大。</p>
-<p>而动态网站则使用服务器和数据库来支持自己更加具有互动性，更自动的功能。但同时，这些功能也带来了网站的运行成本增加（一年几百很正常），以及在访问量大时网站运行速度下降等问题。</p>
-<p>说到这，你可能就明白了，我们的个人博客属于静态网站，因此运行成本是比较低的。</p>
-<h4 id="hexo-github托管"><a href="#hexo-github托管" class="headerlink" title="hexo + github托管"></a>hexo + github托管</h4><p>对于静态博客，我们在这里选择<a href="https://hexo.io/zh-cn/"><code>hexo</code></a>博客框架+<a href="https://github.com/"><code>github</code></a>托管的方式，这对于新手来说是比较友好的。等我们有了更多经验，则可以尝试更多的框架和更丰富的方式。</p>
-<p>有关于<code>hexo</code>的具体介绍和<code>github</code>的账号注册，大家可以在上面的链接中自行查看。我就不一一赘述了。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><p><a href="https://git-scm.com/"><code>git</code></a>是一个分布式版本控制系统，我们用<code>git</code>来向<code>github</code>这个服务器提交文件。</p>
-<p>在官网中选择<code>download</code>，选择你的系统，例如<code>windows</code>，再选择<code>64</code>位系统版本，下载安装即可。</p>
-<img src="/1b1c750fe7e1/git%E4%B8%8B%E8%BD%BD.png" class=""> 
-<p>安装后我们在文件夹中右键，会出现如下选项。</p>
-<img src="/1b1c750fe7e1/%E9%AA%8C%E8%AF%81git.jpg" class=""> 
-<p>选择后，进入命令行，输入<code>git --version</code>，若出现版本号，即为成功。</p>
-<img src="/1b1c750fe7e1/git%E7%89%88%E6%9C%AC.png" class="">
-<h4 id="连接git与github"><a href="#连接git与github" class="headerlink" title="连接git与github"></a>连接git与github</h4><p>之前我们说过，<code>git</code>可以理解为向<code>github</code>传输文件的工具。那么这种传输如何实现呢？</p>
-<p>我们用<code>SSH</code>来实现，即<code>Secure Shell</code>协议。</p>
-<h5 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h5><p>在任意文件夹中右键打开<code>git bash here</code>输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#用rsa加密生成ssh钥匙</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>一直空格默认后，我们就可以发现在本地生成了两把钥匙：<code>id_rsa</code> 和 <code>id_rsa.pub</code>。由于我是<code>windows</code>系统，路径是<code>C:/Users/admin/.ssh</code>。</p>
-<h5 id="获取公钥并连接"><a href="#获取公钥并连接" class="headerlink" title="获取公钥并连接"></a>获取公钥并连接</h5><p>在该文件夹中右键打开<code>git bash here</code>依次输入</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>就可以看到对应的公钥了，将其复制下来备用。</p>
-<img src="/1b1c750fe7e1/ssh%E5%85%AC%E9%92%A5.png" class="">
-<p>打开<code>github</code>并登录，点击右上角个人头像，选择下拉菜单中的<code>settings</code>，点击左侧标签栏的<code>SSH and GPG keys</code>，点击<code>New SSH key</code>。输入你的公钥内容，<code>Title</code>任意填写，最后选择<code>Add SSH key</code>以保存即可。</p>
-<p>此时我们回到之前的<code>git bash</code>窗口，输入以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>若出现<code>Are you sure you want to continue connecting (yes/no/[fingerprint])?</code></p>
-<p>我们输入<code>yes</code>，当弹出以下回复时，说明连接成功。</p>
-<img src="/1b1c750fe7e1/git%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F.png" class="">
-<p>至此，<code>git</code>与<code>github</code>成功连接。</p>
-<h3 id="github建库"><a href="#github建库" class="headerlink" title="github建库"></a>github建库</h3><p>接下来，我们在<code>github</code>建立一个仓库来保存自己主页的资源。</p>
-<p>登录<code>github</code>，点击右上角头像，下拉菜单中选择<code>repositories</code>，进入页面后点击<code>New</code>。</p>
-<p>在<code>repository name</code>一栏输入<code>自己的github账户名.github.io</code>。例如我的账户名叫<code>TVT233</code>，那么我在这里就要输入<code>TVT233.github.io</code>。</p>
-<img src="/1b1c750fe7e1/github%E5%BB%BA%E5%BA%93.png" class="">
-<p>并在下方勾选<code>Public</code>。</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p><code>Hexo</code>博客框架的搭建需要用到<code>npm</code>，一个<code>node</code>包管理工具，因此我们先来安装<code>node</code>。</p>
-<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h4><p>进入<a href="http://nodejs.cn/download/">node</a>官网，选择自己的操作系统并点击，即可下载对应的版本。</p>
-<p>下载完成后，我们建立一个文件夹作为安装目录。打开安装包后，一路<code>next</code>即可。记得更改安装路径就行了。</p>
-<p>安装好之后，我们来验证一下。<code>win+R</code>组合键，输入<code>cmd</code>打开命令行工具，输入以下命令</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看node安装版本</span></span><br><span class="line">node -v</span><br><span class="line"><span class="comment">#查看node安装路径</span></span><br><span class="line"><span class="built_in">where</span> node</span><br></pre></td></tr></table></figure>
-<p>若有对应的输出结果，即为安装成功。</p>
-<h4 id="搭建本地博客"><a href="#搭建本地博客" class="headerlink" title="搭建本地博客"></a>搭建本地博客</h4><p>安装好<code>node</code>后，我们在本地搭建自己的博客文件。首先新建一个文件夹，作为本地博客文件的存储点。<strong>大家一定要记得这个路径</strong>。</p>
-<h5 id="本地资源存储"><a href="#本地资源存储" class="headerlink" title="本地资源存储"></a>本地资源存储</h5><p>进入这个文件夹，右键<code>git bash here</code>,依次输入以下命令</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装hexo</span></span><br><span class="line">npm i -g hexo-cli</span><br><span class="line"><span class="comment">#初始化hexo</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-<p>此时继续输入以下命令（二者等价，前者是后者的缩写）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">#</span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-<p>在博客文件夹中会生成一个<code>public</code>文件夹，里面就是我们博客托管的内容</p>
-<h5 id="本地网页浏览"><a href="#本地网页浏览" class="headerlink" title="本地网页浏览"></a>本地网页浏览</h5><p>此时我们输入以下命令（二者等价，前者是后者的缩写）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br><span class="line">#</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>会反馈一个本地连接，左键点击它即可访问本地网页浏览我们的博客了。</p>
-<p>使用<code>Ctrl+c</code>可以关闭它。</p>
-<img src="/1b1c750fe7e1/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" class="">
-<p>到此，我们的博客就搭建完成啦。</p>
+    <title>博客搭建及相关问题记录（四）</title>
+    <url>/2c0f12af2268.html</url>
+    <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/bbb012e90cee.html">上文</a>，今天继续介绍一些博客装饰内容。</p>
+<h3 id="Pjax-优化"><a href="#Pjax-优化" class="headerlink" title="Pjax 优化"></a>Pjax 优化</h3><p><code>pjax</code>是一款基于<code>jQuery</code>的插件，基于<code>pushState</code>和<code>ajax</code>，实现站点的局部刷新。它将站点转化为<code>SPA</code>应用，可以提升页面切换速度。同时它可以解决<code>aplayer</code>插件切换页面后重新播放的问题。</p>
+<p>我们在根目录终端依次键入以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pjax <span class="built_in">source</span>/lib/pjax</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
+<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>标签云插件<code>hexo-tag-cloud</code>实现了较为炫酷的标签环绕效果，可以自定义标签云的字体、颜色、高亮显示。</p>
+<p>我们在终端键入命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-cloud --save</span><br></pre></td></tr></table></figure>
+<p>进入路径<code>themes/next/layout/_macro/sidebar.swig</code>，然后找到<code>&lt;div class=&quot;site-overview-wrap sidebar-panel&quot;&gt;</code>，在该标签的后面添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if site.tags.length &gt; 1 %&#125;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcloud.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcanvas.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;div class=&quot;widget-wrap&quot;&gt;</span><br><span class="line">  &lt;h5 class=&quot;widget-title&quot;&gt;标签云&lt;/h5&gt;</span><br><span class="line">  &lt;div id=&quot;myCanvasContainer&quot; class=&quot;widget tagcloud&quot;&gt;</span><br><span class="line">    &lt;canvas width=&quot;250&quot; height=&quot;250&quot; id=&quot;resCanvas&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line">      &#123;&#123; list_tags() &#125;&#125;</span><br><span class="line">    &lt;/canvas&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>具体位置如图所示：</p>
+<p><img src="位置.png" alt=""></p>
+<p>之后，进入项目根目录<code>blog</code>，打开站点配置文件<code>_config.yml</code>，找个空地添加以下代码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">标签云</span></span><br><span class="line">tag_cloud:</span><br><span class="line">  textFont: Trebuchet MS, Helvetica # 字体</span><br><span class="line">  textColor: &quot;#333&quot; # 字体颜色</span><br><span class="line">  textHeight: 20 # 字体大小</span><br><span class="line">  outlineColor: &quot;#E2E1D1&quot;</span><br><span class="line">  maxSpeed: 0.2 # 旋转速度</span><br><span class="line">  pauseOnSelected: true # 当选中对应标签时，是否停止转动</span><br></pre></td></tr></table></figure>
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>custom_file_path</code>字段，将<code>style</code>的注释取消：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line">  style: <span class="built_in">source</span>/_data/styles.styl</span><br></pre></td></tr></table></figure>
+<p>在<code>blog/source</code>下新建一个<code>_data</code>文件夹，文件夹中新建一个<code>styles.styl</code>文件（不用<code>VScode</code>的同学，可以新建一个<code>styles.txt</code>，再更改它的后缀）。在上面编辑以下代码：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">code</span> &#123;</span><br><span class="line">  <span class="attr">color:</span> <span class="comment">#ff7600;</span></span><br><span class="line">  <span class="attr">background:</span> <span class="comment">#fbf7f8;</span></span><br><span class="line">  <span class="attr">margin:</span> <span class="string">2px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">margin:</span> <span class="string">5px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line">  <span class="attr">padding:</span> <span class="string">5px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">code,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#d6d6d6;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码块高亮"><a href="#代码块高亮" class="headerlink" title="代码块高亮"></a>代码块高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>codeblock</code>字段：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">night</span> <span class="string">bright</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">mac</span></span><br></pre></td></tr></table></figure>
+<p><code>codeblock</code>字段会更改代码块的主题样式，感兴趣的同学不妨都尝试一下，找到自己喜欢的风格。</p>
 ]]></content>
       <categories>
         <category>经验记录</category>
@@ -578,6 +913,39 @@
       <tags>
         <tag>博客</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>种子文件与磁力链接及其下载方式</title>
+    <url>/2b7de3448214.html</url>
+    <content><![CDATA[<p>最近，室友总是问我关于种子文件和磁力链接的概念问题。好像我很了解这些一样，今天索性写一篇帖子介绍一下我对这两种下载方式的理解。</p>
+<h3 id="中心化下载与非中心化下载"><a href="#中心化下载与非中心化下载" class="headerlink" title="中心化下载与非中心化下载"></a>中心化下载与非中心化下载</h3><h4 id="中心化下载"><a href="#中心化下载" class="headerlink" title="中心化下载"></a>中心化下载</h4><p>中心化下载是我们最常接触到的下载模式，常见的<code>HTTP下载</code>，<code>FTP下载</code>都是中心化下载模式的具体方式。顾名思义，这种下载存在着一个中心，也就是存储资源的服务器。当你作为一个客户端向服务器请求下载时，服务器就会向你传输信息。而当很多人一起请求下载时，服务器也就成为了这个网络的<strong>中心</strong>。</p>
+<p>但这样的下载方式有一个很明显的缺陷，当同时下载的人过多，服务器的上行带宽一定会变得捉襟见肘，因此每个人的下载速度都会变慢。就像全班同学都去问同一个老师问题，老师就很难快速解答某一个同学了。</p>
+<h4 id="非中心化下载"><a href="#非中心化下载" class="headerlink" title="非中心化下载"></a>非中心化下载</h4><p>对于非中心化下载，就是由中心化下载进行<strong>去中心化</strong>的产物，让这个中心变得不再那么关键。而我们今天要说的种子文件和磁力链接都是非中心下载模式的具体方式。</p>
+<p>具体来说，就是我们的下载由原先的服务器向客户端传输数据，变为了客户端向客户端传输(<code>pear to pear</code>，简称<code>p2p</code>)。这样就形成了与中心化下载截然相反的局面，同时下载的人数越多，意味着同时向你传输数据的人数也可能越多，在一定合理的调度下，你的下载速度可能会不降反升。</p>
+<h3 id="种子文件与磁力链接"><a href="#种子文件与磁力链接" class="headerlink" title="种子文件与磁力链接"></a>种子文件与磁力链接</h3><h4 id="种子文件（BT下载）"><a href="#种子文件（BT下载）" class="headerlink" title="种子文件（BT下载）"></a>种子文件（BT下载）</h4><p>所谓的种子，就是包含着一颗植物的所有信息的原型，有它，你就有了整颗植物的指向性信息。同样，种子文件中也包含了我们整个文件的指向性信息（例如：文件的块大小，块索引，<code>Hash</code>验证码等），但同时它还包含了<code>Tracker</code>服务器的信息。</p>
+<p>当你尝试用种子文件下载时，首先你的客户端会解析<code>Tracker</code>信息，找到服务器地址并合理设置，之后由这个<code>Tracker</code>服务器为你指向正在同时下载这个文件的其他用户，由这些用户彼此之间进行上传和下载。</p>
+<p>如果继续用学生与老师的例子来比喻的话，那就是很多学生去问老师，老师并不直接回答问题，而是告诉每个人他们有疑惑的问题哪个同学明白，让他们互相解决，这样对老师的压力就小很多了。尽管这样听起来挺不负责任的，但由于种子文件中有Hash校验，在一定程度上不会出现<strong>不懂的同学误人子弟</strong>的现象。</p>
+<h4 id="磁力链接"><a href="#磁力链接" class="headerlink" title="磁力链接"></a>磁力链接</h4><p>尽管<code>BT下载</code>是去中心化的产物，但你一定看出来了，<code>Tracker</code>服务器仍然处于整个网络的中心地位，如果<code>Tracker</code>服务器被关闭，就可以阻断所有下载。</p>
+<p>有没有一种方式可以实现<code>P2P</code>下载模式，又没有真正的中心呢？</p>
+<p>答案是，有。那就是<a href="https://en.wikipedia.org/wiki/Distributed_hash_table">DHT技术</a>，<code>Distributed Hash Table</code>，即分布式哈希表。</p>
+<p>简单来说就是每个客户端负责一个小范围的路由并存储少量数据，从而连接成一个下载网络，而没有真正的中心。</p>
+<p>当你在客户端输入一个磁力链接后，客户端会从其中提取出一个20字节大小的哈希方法名，<code>infohash</code>，由这个哈希方法名得知自己周围的节点，并发送种子文件的下载请求，如果这些种子文件中包含<code>Tracker</code>，那么就可以像上述种子文件的下载方式那样进行下载。如果不包含<code>Tracker</code>，其中就会有哪些节点有包含Tracker的种子文件的信息，继续向这些节点发送种子文件的下载请求即可。</p>
+<p>这就是好像是当你不会一道题，班里没有老师，你就可以问周围的同学，如果他们有人会做且会讲，那你就可以让他给你讲，如果有人只会做不会讲，那他一定可以告诉你他是从哪里学会的，于是你就找到了那个会讲的人，你也就变成了有一个会做且知道谁会讲的人。</p>
+<h3 id="下载方式"><a href="#下载方式" class="headerlink" title="下载方式"></a>下载方式</h3><p>我知道，你们最关心的还是下载方式。</p>
+<p>由于P2P传输不经过中心服务器，因此在监管上存在着很大的难度，也由此滋生了盗版资源和非法资源的传播。但毕竟还有很多优秀的正版资源值得我们去下载，在这里我推荐两个客户端。</p>
+<h4 id="Bitcomet"><a href="#Bitcomet" class="headerlink" title="Bitcomet"></a>Bitcomet</h4><p><a href="https://www.bitcomet.com/en">bitcomet</a>是一款经典的BT下载器。下载完成后，安装时选择中文。安装好之后，打开<code>工具</code>标签，下来菜单中点击<code>选项</code>。依次点击<code>任务</code>，<code>bt下载</code>，<code>Tracker</code>。</p>
+<p>在这里你可以添加自己找到的Tracker服务器，这样当任务开始的时候，可以向更多的Tracker发送询问，从而获得更多的传输节点，提升下载速度。</p>
+<p>添加好后，勾选自动向BT下载任务添加以下Tracker服务器 和 每天自动更新Tracker列表。</p>
+<h4 id="qbittorent"><a href="#qbittorent" class="headerlink" title="qbittorent"></a>qbittorent</h4><p><a href="https://github.com/qbittorrent/qBittorrent">qbittorent</a>是另一款经典BT下载器，使用起来也是大同小异。大家自己探索以下就好。</p>
+<h4 id="Tracker"><a href="#Tracker" class="headerlink" title="Tracker"></a>Tracker</h4><p>至于Tracker列表，也许你能在<a href="https://trackerslist.com/#/zh?id=bitcomet-%e6%af%94%e7%89%b9%e5%bd%97%e6%98%9f">这里</a>找到。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>下载</tag>
+        <tag>经验记录</tag>
       </tags>
   </entry>
   <entry>
@@ -675,28 +1043,62 @@
       </tags>
   </entry>
   <entry>
-    <title>博客搭建及相关问题记录（四）</title>
-    <url>/2c0f12af2268.html</url>
-    <content><![CDATA[<p>书接<a href="http://zh.zihengzhang.top/bbb012e90cee.html">上文</a>，今天继续介绍一些博客装饰内容。</p>
-<h3 id="Pjax-优化"><a href="#Pjax-优化" class="headerlink" title="Pjax 优化"></a>Pjax 优化</h3><p><code>pjax</code>是一款基于<code>jQuery</code>的插件，基于<code>pushState</code>和<code>ajax</code>，实现站点的局部刷新。它将站点转化为<code>SPA</code>应用，可以提升页面切换速度。同时它可以解决<code>aplayer</code>插件切换页面后重新播放的问题。</p>
-<p>我们在根目录终端依次键入以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pjax <span class="built_in">source</span>/lib/pjax</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
-<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>标签云插件<code>hexo-tag-cloud</code>实现了较为炫酷的标签环绕效果，可以自定义标签云的字体、颜色、高亮显示。</p>
-<p>我们在终端键入命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-cloud --save</span><br></pre></td></tr></table></figure>
-<p>进入路径<code>themes/next/layout/_macro/sidebar.swig</code>，然后找到<code>&lt;div class=&quot;site-overview-wrap sidebar-panel&quot;&gt;</code>，在该标签的后面添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if site.tags.length &gt; 1 %&#125;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcloud.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcanvas.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;div class=&quot;widget-wrap&quot;&gt;</span><br><span class="line">  &lt;h5 class=&quot;widget-title&quot;&gt;标签云&lt;/h5&gt;</span><br><span class="line">  &lt;div id=&quot;myCanvasContainer&quot; class=&quot;widget tagcloud&quot;&gt;</span><br><span class="line">    &lt;canvas width=&quot;250&quot; height=&quot;250&quot; id=&quot;resCanvas&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line">      &#123;&#123; list_tags() &#125;&#125;</span><br><span class="line">    &lt;/canvas&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>具体位置如图所示：</p>
-<p><img src="位置.png" alt=""></p>
-<p>之后，进入项目根目录<code>blog</code>，打开站点配置文件<code>_config.yml</code>，找个空地添加以下代码：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">标签云</span></span><br><span class="line">tag_cloud:</span><br><span class="line">  textFont: Trebuchet MS, Helvetica # 字体</span><br><span class="line">  textColor: &quot;#333&quot; # 字体颜色</span><br><span class="line">  textHeight: 20 # 字体大小</span><br><span class="line">  outlineColor: &quot;#E2E1D1&quot;</span><br><span class="line">  maxSpeed: 0.2 # 旋转速度</span><br><span class="line">  pauseOnSelected: true # 当选中对应标签时，是否停止转动</span><br></pre></td></tr></table></figure>
-<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>custom_file_path</code>字段，将<code>style</code>的注释取消：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line">  style: <span class="built_in">source</span>/_data/styles.styl</span><br></pre></td></tr></table></figure>
-<p>在<code>blog/source</code>下新建一个<code>_data</code>文件夹，文件夹中新建一个<code>styles.styl</code>文件（不用<code>VScode</code>的同学，可以新建一个<code>styles.txt</code>，再更改它的后缀）。在上面编辑以下代码：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">code</span> &#123;</span><br><span class="line">  <span class="attr">color:</span> <span class="comment">#ff7600;</span></span><br><span class="line">  <span class="attr">background:</span> <span class="comment">#fbf7f8;</span></span><br><span class="line">  <span class="attr">margin:</span> <span class="string">2px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">margin:</span> <span class="string">5px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line">  <span class="attr">padding:</span> <span class="string">5px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">code,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#d6d6d6;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="代码块高亮"><a href="#代码块高亮" class="headerlink" title="代码块高亮"></a>代码块高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>codeblock</code>字段：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">night</span> <span class="string">bright</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">mac</span></span><br></pre></td></tr></table></figure>
-<p><code>codeblock</code>字段会更改代码块的主题样式，感兴趣的同学不妨都尝试一下，找到自己喜欢的风格。</p>
+    <title>博客搭建及相关问题记录（一）</title>
+    <url>/1b1c750fe7e1.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近做了自己的博客，说实话我自己对前端的配置相关的问题确实不太懂，所以一切都是在边学边用下完成的。网上的教程有些写的不错，但时间太古早了。有些写的问题比较贴合我自己的情况，又比较零散。</p>
+<p>因此，我准备写一个帖子来记录自己的搭建过程。</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="静态？动态？"><a href="#静态？动态？" class="headerlink" title="静态？动态？"></a>静态？动态？</h4><p>首先，我们要知道自己想要的博客属于静态还是动态。</p>
+<p>所谓的静态并不是指网站不含有动画等可”动“的部分，而是指网站上的内容相对恒定，无互动性，服务器和数据库的支撑，但同时更新内容往往需要手动操作，因此维护工作量比较大。</p>
+<p>而动态网站则使用服务器和数据库来支持自己更加具有互动性，更自动的功能。但同时，这些功能也带来了网站的运行成本增加（一年几百很正常），以及在访问量大时网站运行速度下降等问题。</p>
+<p>说到这，你可能就明白了，我们的个人博客属于静态网站，因此运行成本是比较低的。</p>
+<h4 id="hexo-github托管"><a href="#hexo-github托管" class="headerlink" title="hexo + github托管"></a>hexo + github托管</h4><p>对于静态博客，我们在这里选择<a href="https://hexo.io/zh-cn/"><code>hexo</code></a>博客框架+<a href="https://github.com/"><code>github</code></a>托管的方式，这对于新手来说是比较友好的。等我们有了更多经验，则可以尝试更多的框架和更丰富的方式。</p>
+<p>有关于<code>hexo</code>的具体介绍和<code>github</code>的账号注册，大家可以在上面的链接中自行查看。我就不一一赘述了。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><p><a href="https://git-scm.com/"><code>git</code></a>是一个分布式版本控制系统，我们用<code>git</code>来向<code>github</code>这个服务器提交文件。</p>
+<p>在官网中选择<code>download</code>，选择你的系统，例如<code>windows</code>，再选择<code>64</code>位系统版本，下载安装即可。</p>
+<img src="/1b1c750fe7e1/git%E4%B8%8B%E8%BD%BD.png" class=""> 
+<p>安装后我们在文件夹中右键，会出现如下选项。</p>
+<img src="/1b1c750fe7e1/%E9%AA%8C%E8%AF%81git.jpg" class=""> 
+<p>选择后，进入命令行，输入<code>git --version</code>，若出现版本号，即为成功。</p>
+<img src="/1b1c750fe7e1/git%E7%89%88%E6%9C%AC.png" class="">
+<h4 id="连接git与github"><a href="#连接git与github" class="headerlink" title="连接git与github"></a>连接git与github</h4><p>之前我们说过，<code>git</code>可以理解为向<code>github</code>传输文件的工具。那么这种传输如何实现呢？</p>
+<p>我们用<code>SSH</code>来实现，即<code>Secure Shell</code>协议。</p>
+<h5 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h5><p>在任意文件夹中右键打开<code>git bash here</code>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#用rsa加密生成ssh钥匙</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>一直空格默认后，我们就可以发现在本地生成了两把钥匙：<code>id_rsa</code> 和 <code>id_rsa.pub</code>。由于我是<code>windows</code>系统，路径是<code>C:/Users/admin/.ssh</code>。</p>
+<h5 id="获取公钥并连接"><a href="#获取公钥并连接" class="headerlink" title="获取公钥并连接"></a>获取公钥并连接</h5><p>在该文件夹中右键打开<code>git bash here</code>依次输入</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>就可以看到对应的公钥了，将其复制下来备用。</p>
+<img src="/1b1c750fe7e1/ssh%E5%85%AC%E9%92%A5.png" class="">
+<p>打开<code>github</code>并登录，点击右上角个人头像，选择下拉菜单中的<code>settings</code>，点击左侧标签栏的<code>SSH and GPG keys</code>，点击<code>New SSH key</code>。输入你的公钥内容，<code>Title</code>任意填写，最后选择<code>Add SSH key</code>以保存即可。</p>
+<p>此时我们回到之前的<code>git bash</code>窗口，输入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>若出现<code>Are you sure you want to continue connecting (yes/no/[fingerprint])?</code></p>
+<p>我们输入<code>yes</code>，当弹出以下回复时，说明连接成功。</p>
+<img src="/1b1c750fe7e1/git%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F.png" class="">
+<p>至此，<code>git</code>与<code>github</code>成功连接。</p>
+<h3 id="github建库"><a href="#github建库" class="headerlink" title="github建库"></a>github建库</h3><p>接下来，我们在<code>github</code>建立一个仓库来保存自己主页的资源。</p>
+<p>登录<code>github</code>，点击右上角头像，下拉菜单中选择<code>repositories</code>，进入页面后点击<code>New</code>。</p>
+<p>在<code>repository name</code>一栏输入<code>自己的github账户名.github.io</code>。例如我的账户名叫<code>TVT233</code>，那么我在这里就要输入<code>TVT233.github.io</code>。</p>
+<img src="/1b1c750fe7e1/github%E5%BB%BA%E5%BA%93.png" class="">
+<p>并在下方勾选<code>Public</code>。</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p><code>Hexo</code>博客框架的搭建需要用到<code>npm</code>，一个<code>node</code>包管理工具，因此我们先来安装<code>node</code>。</p>
+<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h4><p>进入<a href="http://nodejs.cn/download/">node</a>官网，选择自己的操作系统并点击，即可下载对应的版本。</p>
+<p>下载完成后，我们建立一个文件夹作为安装目录。打开安装包后，一路<code>next</code>即可。记得更改安装路径就行了。</p>
+<p>安装好之后，我们来验证一下。<code>win+R</code>组合键，输入<code>cmd</code>打开命令行工具，输入以下命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看node安装版本</span></span><br><span class="line">node -v</span><br><span class="line"><span class="comment">#查看node安装路径</span></span><br><span class="line"><span class="built_in">where</span> node</span><br></pre></td></tr></table></figure>
+<p>若有对应的输出结果，即为安装成功。</p>
+<h4 id="搭建本地博客"><a href="#搭建本地博客" class="headerlink" title="搭建本地博客"></a>搭建本地博客</h4><p>安装好<code>node</code>后，我们在本地搭建自己的博客文件。首先新建一个文件夹，作为本地博客文件的存储点。<strong>大家一定要记得这个路径</strong>。</p>
+<h5 id="本地资源存储"><a href="#本地资源存储" class="headerlink" title="本地资源存储"></a>本地资源存储</h5><p>进入这个文件夹，右键<code>git bash here</code>,依次输入以下命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装hexo</span></span><br><span class="line">npm i -g hexo-cli</span><br><span class="line"><span class="comment">#初始化hexo</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>此时继续输入以下命令（二者等价，前者是后者的缩写）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">#</span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<p>在博客文件夹中会生成一个<code>public</code>文件夹，里面就是我们博客托管的内容</p>
+<h5 id="本地网页浏览"><a href="#本地网页浏览" class="headerlink" title="本地网页浏览"></a>本地网页浏览</h5><p>此时我们输入以下命令（二者等价，前者是后者的缩写）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br><span class="line">#</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>会反馈一个本地连接，左键点击它即可访问本地网页浏览我们的博客了。</p>
+<p>使用<code>Ctrl+c</code>可以关闭它。</p>
+<img src="/1b1c750fe7e1/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" class="">
+<p>到此，我们的博客就搭建完成啦。</p>
 ]]></content>
       <categories>
         <category>经验记录</category>
@@ -707,197 +1109,57 @@
       </tags>
   </entry>
   <entry>
-    <title>机器学习基础概念笔记（二）</title>
-    <url>/8a55cfbaf1ca.html</url>
-    <content><![CDATA[<h3 id="分类（Classification）"><a href="#分类（Classification）" class="headerlink" title="分类（Classification）"></a>分类（Classification）</h3><h4 id="逻辑回归（Logistic-Regression）的引入"><a href="#逻辑回归（Logistic-Regression）的引入" class="headerlink" title="逻辑回归（Logistic Regression）的引入"></a>逻辑回归（Logistic Regression）的引入</h4><p>当我们从传统的回归问题转移到分类问题时，最大的变化就是输出由连续的变为了离散的。对于分类问题，我们可以分为两大部分，即二分类（binary classification）和多分类（multiple classification）。而二分类又是多分类的基础，所以我们必须对二分类加以重点审视。</p>
-<p>所谓的二分类，就是输出结果只有两种，1和0。其中输出为1的类我们称之为正类（positive class），而输出为0的类我们称之为负类（negative class）。</p>
-<p>回顾之前讲的线性回归，其输出结果是连续且没有限制的，也就是说可以出现在[0，1]以内的输出，也可以出现这个范围以外的输出。那么如何将这种输出转化为离散的0，1输出呢？最简单的思路就是设置一个阈值，例如0.5。但如果你尝试这样做的话，你会发现当输出比较极端的训练样本出现时，训练出来的结果往往不能很好地拟合这些样本。</p>
-<p>于是我们思考，能不能将输出的结果限制在[0，1]之间，这样就可以很好地拟合这些样本了。于是就有了我们所说的逻辑回归。</p>
-<h4 id="假设函数（Hypothesis-Function）"><a href="#假设函数（Hypothesis-Function）" class="headerlink" title="假设函数（Hypothesis Function）"></a>假设函数（Hypothesis Function）</h4><p>在前面的回归问题中，我们的假设函数为$h_\theta(x)=\theta^TX$，在这里我们引入一个新的函数，$Sigmoid$函数</p>
-<p>​                                                    $Sigmoid：g(z)=\frac{1}{1+e^{-z}}$</p>
-<img src="/8a55cfbaf1ca/sigmoid.png" class="">
-<p>我们令$z=\theta^TX$，于是得到了新的假设函数</p>
-<p>​                                                   $h_\theta(x)=g(\theta^TX)=\frac{1}{1+e^{-θ^TX}}$</p>
-<p>这样，我们就将假设函数的输出固定在了[0，1]之间。这就是逻辑回归中的假设函数。</p>
-<p>$h_\theta(x)$的具体含义是在以$\theta$为参数，输入为$x$的前提下，$y=1$的概率，即$P(y=1|x;\theta)$</p>
-<p>而由于二分类中输出值要么为1，要么为0，我们可以得出</p>
-<p>​                                               $P(y=0|x;\theta)=1-P(y=1|x;\theta)$</p>
-<h4 id="决策边界（Decision-Boundary）"><a href="#决策边界（Decision-Boundary）" class="headerlink" title="决策边界（Decision Boundary）"></a>决策边界（Decision Boundary）</h4><h5 id="从-x-到-y-的映射"><a href="#从-x-到-y-的映射" class="headerlink" title="从$x$到$y$的映射"></a>从$x$到$y$的映射</h5><p>我们首先来总结以下输入$x$到输出$y$的完整映射。</p>
-<p>对于逻辑回归，我们有如下定义，</p>
-<p>$h_\theta(x)=g(\theta^Tx)$，$g(z)=\frac{1}{1+e^-z}$</p>
-<p>又由$Sigmoid$函数的性质，</p>
-<p>$g(z)\geq0.5,\quad 当\,z\geq0\quad;\quad\,g(z)&lt;0.5,\quad 当\,z&lt;0$</p>
-<p>我们可以推出，</p>
-<p>$h_\theta(x)=g(\theta^Tx)\geq0.5,\quad 当\,\theta^Tx\geq0\quad;\quad\,h_\theta(x)=g(\theta^Tx)&lt;0.5,\quad 当\,\theta^Tx&lt;0$</p>
-<p>若我们再给出阈值$0.5$，使得</p>
-<p>$y=1,\quad 当h_\theta(x)\geq0.5 \quad;\quad y=0,\quad 当h_\theta(x)&lt;0.5$ </p>
-<p>我们就得到了由$x$到$y$的完整映射。</p>
-<h5 id="决策边界的举例"><a href="#决策边界的举例" class="headerlink" title="决策边界的举例"></a>决策边界的举例</h5><p>此时我们举一例，$h_\theta(x)=g(\theta^Tx)=g(-3+x_1+x_2)$</p>
-<p>当$h_\theta(x)\geq0.5$时，即$-3+x_1+x_2\geq0$时，$y=1$</p>
-<p>可见，直线$-3+x_1+x_2$是区分正类和负类的边界，我们称之为<strong>决策边界</strong>。</p>
-<h5 id="决策边界的两点说明"><a href="#决策边界的两点说明" class="headerlink" title="决策边界的两点说明"></a>决策边界的两点说明</h5><p>对于决策边界，有两点需要说明：</p>
-<ol>
-<li>决策边界不一定只有直线，在添加高阶变量后决策边界可以是很复杂的形状。例如，$h_\theta(x)=g(\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_1^2+\theta_4x_2^2)$，若最终$\theta=\left[-1,0,0,1,1\right]^T$，则决策边界为$x_1^2+x_2^2=1$，是一个圆。</li>
-<li>决策边界是假设函数的一个属性，每一个参数确定的假设函数都对应着一个决策边界，而非训练集的属性。训练集是用来获得假设函数的参数的。</li>
-</ol>
-<h4 id="代价函数（Cost-Function）"><a href="#代价函数（Cost-Function）" class="headerlink" title="代价函数（Cost Function）"></a>代价函数（Cost Function）</h4><h5 id="代价函数的修改"><a href="#代价函数的修改" class="headerlink" title="代价函数的修改"></a>代价函数的修改</h5><p>我们之前说过，对于平方误差代价函数，</p>
-<p>$J(θ)=\frac{1}{2m}Σ_{i=1}^m(h_θ(x^{(i)})-y^{(i)})^2=\frac{1}{m}\Sigma^m_{i=1}Cost(h_\theta(x^{(i)}-y^{(i)}))$</p>
-<p>其中，$Cost(h_\theta(x^{(i)}-y^{(i)}))=\frac{1}{2}(h_θ(x^{(i)})-y^{(i)})^2$</p>
-<p>在线性回归问题中$J(\theta)$是凸函数，因此梯度下降始终可以获得全局最优解。但是可以证明的是，到了分类问题中，对于我们的假设函数$h_\theta(x)=g(\theta^TX)=\frac{1}{1+e^{-θ^TX}}$，此时的$J(\theta)$就是非凸的（not convex）。这显然与我们的期望不符，我们仍然希望它是凸的。</p>
-<p>于是我们对$Cost(h_\theta(x^{(i)}-y^{(i)}))$做如下修改</p>
-<p>令$Cost(h_\theta(x^{(i)}-y^{(i)}))=\begin{cases}-ln\,h_\theta(x),\quad y=1\\ -ln\,(1-h_\theta(x)),\quad y=0\end{cases}$</p>
-<p>也可以简写为$Cost(h_\theta(x^{(i)}-y^{(i)}))=-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x))$ </p>
-<p>于是$J(\theta)=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))$</p>
-<img src="/8a55cfbaf1ca/cost_y=1.png" class="">
-<img src="/8a55cfbaf1ca/cost_y=0.png" class="">
-<p>可以看到当$y=1$时，如果预测结果$h_\theta(x)$为$1$，那么$Cost=0$，即没有代价。而如果预测结果$h_\theta(x)$为$1$，那么$Cost\longrightarrow\infty$，即代价无穷大。而当$y=0$时则规则相反。</p>
-<p>可以证明的一点是，这样的代价函数使得$J(\theta)$在分类问题中依然是凸函数。不过这一点在Andrew Ng的课程中没有被证明，至于这样的$Cost$函数是如何被发现的，Andrew Ng提到是由统计学中的极大似然法推广而来，对于这两点，有兴趣的同学可以自行尝试。</p>
-<h5 id="代价函数的偏微分"><a href="#代价函数的偏微分" class="headerlink" title="代价函数的偏微分"></a>代价函数的偏微分</h5><p>在做梯度下降时，我们会涉及到代价函数$J(\theta)$偏微分的计算，即$\frac{\partial}{\partial\theta_j}J(\theta)$</p>
-<p>这一步推导虽然简单，但比较繁琐，我把具体结果写出来，不过有能力的同学建议自己推一遍，这样可以加深理解。我的推导过程<a href="http://zh.zihengzhang.top/4e61adc1b875.html">在这</a>。</p>
-<p>$\frac{\partial}{\partial\theta_j}J(\theta)=\frac{1}{m}\Sigma_{i=1}^mh_\theta((x^{(i)})-y^{(i)})x_j^{(i)}$</p>
-<p>如果你还记得回归问题中代价函数的偏微分，你会惊奇地发现，虽然代价函数$J(\theta)$发生了变化，但其偏微分的形式确实一致的。</p>
-<h4 id="一些高级优化概念"><a href="#一些高级优化概念" class="headerlink" title="一些高级优化概念"></a>一些高级优化概念</h4><p>最后Andrew Ng给我们在分类算法处留了几个高级优化算法，但并没有具体地进行介绍。着重强调的一点是，这些算法的内涵往往比较深奥，但并不需要彻底地弄懂他们的原理也可以熟练地使用。我自己会在之后出几篇专门介绍它们的博客。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>优化算法（Opitimization Algorithm）</th>
-<th>相对于梯度下降的优势</th>
-<th>劣势</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- 共轭梯度法（Conjugate Gradient）</td>
-<td>- 不需要手动选择学习率$\alpha$</td>
-<td>-算法结构更加复杂</td>
-</tr>
-<tr>
-<td>- BFGS算法</td>
-<td>- 一般比梯度下降速度快</td>
-<td></td>
-</tr>
-<tr>
-<td>- L-BFGS算法</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="多元分类：一对多（Multiple-Classification）"><a href="#多元分类：一对多（Multiple-Classification）" class="headerlink" title="多元分类：一对多（Multiple Classification）"></a>多元分类：一对多（Multiple Classification）</h4><p>到这里，我们已经大致掌握了二分类的思路，下面我们需要考虑如何将多分类转化为我们熟悉的二分类。</p>
-<p>一个最简单的思想就是，我们对于某一种类，将其视为正类，其他所有类视为负类，这样就变成了二分类，就可以构造出一个分类器。</p>
-<p>如果我们对于每一种类都使用这种思想构造出一种分类器，那么多分类问题不就转化为若干个二分类了吗？</p>
-<img src="/8a55cfbaf1ca/multiple_classification.png" class="">
-<p>具体来说，就像Andrew Ng课件中的这张图一样，我们有三种类需要区分，三角，方块和红叉。</p>
-<p>对于这三种类，分别构建三种训练集，每一种训练集中将对应的类视为正类，而其他的视为负类。就可以训练出右边的三种分类器，它们的作用是对一个输入判断这个输入的输出是三角、方块和红叉的概率。</p>
-<p>通过比较三种分类器的输出，即这个输入对应的输出是三种类的概率，我们就可以知道这个输入对应的输出最可能是哪一种类，也就解决了这个多分类问题。</p>
+    <title>从零搭建MC服务器记录</title>
+    <url>/d3af824b28d7.html</url>
+    <content><![CDATA[<p>最近朋友准备搭建一个MC服务器，以供几位好友随时玩，网易的联机总是需要主机在线，不大方便。但等了几天也没搭好，赶上我有空，就尝试了一下。顺手记录。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先需要一台云服务器，国内主流的云平台像阿里云、腾讯云、华为云、U刻得（Ucloud）等都可以。</p>
+<p>这里我因为只是尝试一下，遂选用了<a href="https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fecs.console.aliyun.com%2Fserver%2Fi-0jla9660a9theaakxa14%2Fdetail%3FregionId%3Dcn-wulanchabu">阿里云</a>，因为它有个<a href="https://developer.aliyun.com/plan/student#J_5144437010">学生入门免费领取一月</a>的服务器。配置是2核2G，1M带宽，40G资源盘。可能联机3个人以上就费劲了，但作为入门总归是够的。</p>
+<p>领取服务器之前需要完成一个小任务并且答题，小任务跟着手册做就行，大概需要10分钟，答题也很简单，不会的大家自己搜搜就搞定啦。</p>
+<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="端口放行"><a href="#端口放行" class="headerlink" title="端口放行"></a>端口放行</h4><p>首先我们打开服务器，看到安全组的名称，并点击。</p>
+<img src="/d3af824b28d7/%E5%AE%89%E5%85%A8%E7%BB%84.png" class="">
+<p>在出入端口（出方向和入方向都要）手动添加25565端口。具体的设置方式是，目的处写<code>25565/25565</code>，授权对象处写<code>0.0.0.0/0</code>。后续所有端口设置均如此。</p>
+<img src="/d3af824b28d7/%E8%AE%BE%E7%BD%AE%E5%87%BA%E5%85%A5%E7%AB%AF%E5%8F%A3.png" class="">
+<h4 id="打开服务器控制台"><a href="#打开服务器控制台" class="headerlink" title="打开服务器控制台"></a>打开服务器控制台</h4><p>此时，我们点击左侧标签栏的“<strong>实例</strong>”，并选择我们的云服务器，进入页面后点击远程连接。选择“<strong>Workbench远程登陆</strong>”，即可在新的标签页中找到我们服务器的控制台。如果你喜欢用VNC或者其他任何连接方式也没问题，这里我以Workbench为例。</p>
+<img src="/d3af824b28d7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.jpg" class="">
+<img src="/d3af824b28d7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0.jpg" class="">
+<p>至此，我们的服务器配置问题结束了。</p>
+<h3 id="下载Java和MC服务器端"><a href="#下载Java和MC服务器端" class="headerlink" title="下载Java和MC服务器端"></a>下载Java和MC服务器端</h3><h4 id="建立目录"><a href="#建立目录" class="headerlink" title="建立目录"></a>建立目录</h4><p>首先，我们给MC建立一个目录</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#建立mc1.13.2</span></span><br><span class="line"><span class="built_in">mkdir</span> mc1.13.2</span><br><span class="line"><span class="comment">#进入mc1.13.2</span></span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+<h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><p>1.16及以下的版本使用Java8即可，而1.17及以上的版本则需要更新的Java。大家按照自己想玩的版本对应即可，我这里准备玩1.13.2所以使用Java8。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装Java</span></span><br><span class="line">sudo yum install java-1.8.0-openjdk</span><br><span class="line"><span class="comment">#安装过程中会出现询问，记得输入y以同意。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装完毕后可用以下代码验证成功安装</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<p>若出现以下版本，则代表安装完成。</p>
+<img src="/d3af824b28d7/Java%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.jpg" class="">
+<h4 id="下载MC服务端"><a href="#下载MC服务端" class="headerlink" title="下载MC服务端"></a>下载MC服务端</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载MC服务端</span></span><br><span class="line">sudo wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar</span><br></pre></td></tr></table></figure>
+<p>这里我下载的是1.13.2的服务端，如果你想要玩其他版本，可以从<a href="https://mcversions.net/">这里</a>找到。</p>
+<h4 id="下载screen"><a href="#下载screen" class="headerlink" title="下载screen"></a>下载screen</h4><p>screen是一个可以创建虚拟终端的插件，我们可以使用它做到24小时运行服务器。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装screen</span></span><br><span class="line">sudo yum install -y screen</span><br><span class="line"><span class="comment">#创建并打开一个虚拟终端，名叫“mc”</span></span><br><span class="line">screen -R mc</span><br></pre></td></tr></table></figure>
+<p>此时你应该进入了一个新的界面，这说明你成功进入了虚拟终端。</p>
+<p>同样我们使用以下命令组合进入mc1.13.2目录下</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">cd</span> mc1.13.2</span><br></pre></td></tr></table></figure>
+<h3 id="运行MC服务器端"><a href="#运行MC服务器端" class="headerlink" title="运行MC服务器端"></a>运行MC服务器端</h3><h4 id="运行服务器端"><a href="#运行服务器端" class="headerlink" title="运行服务器端"></a>运行服务器端</h4><p>至此，我们就可以准备运行我们的服务器啦。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Xmx是最大使用内存 Xms是最小使用内存 server.jar是文件名.后缀</span></span><br><span class="line">java -Xmx1000M -Xms256M -jar server.jar</span><br></pre></td></tr></table></figure>
+<p>第一次没运行成功？没关系，往下看~</p>
+<h4 id="修改相关文件"><a href="#修改相关文件" class="headerlink" title="修改相关文件"></a>修改相关文件</h4><p>第一次运行不会成功，会报需要先同意EULA。</p>
+<p>这时我们进入Eula文件并修改</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入eula.txt文件</span></span><br><span class="line">vim eula.txt</span><br></pre></td></tr></table></figure>
+<p>进入后，点击<code>i</code>键进入编辑模式，将<code>false</code>更改为<code>true</code>。</p>
+<p>修改完毕后点击<code>ESC</code>退出编辑模式，并输入<code>:wq</code>退出文件。</p>
+<p>如果你或者你的朋友们使用的不是正版mc登录，那么你还需要将正版验证关掉。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入server.properties</span></span><br><span class="line">vim server.properties</span><br></pre></td></tr></table></figure>
+<p>找到其中的<code>online-mode</code>一行，并将<code>true</code>改为<code>false</code>即可。</p>
+<h3 id="用HMCL登录MC服务器"><a href="#用HMCL登录MC服务器" class="headerlink" title="用HMCL登录MC服务器"></a>用HMCL登录MC服务器</h3><p>打开<a href="https://hmcl.huangyuhui.net/">HMCL</a>启动器，下载对应的版本并打开多人模式。</p>
+<img src="/d3af824b28d7/MC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0.png" class="">
+<p>服务器地址为<strong>你服务器的<code>公网ip:25565</code></strong>。特别要注意的一点是，冒号是英文的冒号，MC窗口内中英文冒号看起来一样，自己一定要注意，否则导致<strong>主机名解析失败</strong>。</p>
+<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><img src="/d3af824b28d7/%E6%88%90%E5%8A%9F.png" class="">
+<h4 id="退出screen，完成24小时运行"><a href="#退出screen，完成24小时运行" class="headerlink" title="退出screen，完成24小时运行"></a>退出screen，完成24小时运行</h4><p>最后别忘了使用<code>Ctrl+a</code> 和 <code>d</code>退出screen，这样就可以24小时开启服务器不管啦。</p>
 ]]></content>
       <categories>
-        <category>学习</category>
+        <category>游戏</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
-        <tag>概念总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>机器学习基础概念笔记（四）</title>
-    <url>/69f0ef2f8958.html</url>
-    <content><![CDATA[<h3 id="非线性假设"><a href="#非线性假设" class="headerlink" title="非线性假设"></a>非线性假设</h3><p>之前我们讲到了，在非线性的情况下我们可以采用多项式拟合的方法将非线性的问题转化为线性的。但事实上，这样做存在着很大的局限性。</p>
-<p>问题就出在当某个问题存在的特征较多时，采用多项式拟合会有很多很多项，超出了我们的接受范围。</p>
-<p>举例，在一张50*50的图中，共有2500个像素。我们只考虑对其进行二项式回归，可以计算的是，符合条件的二次项就将达到300多万个。因此，当特征数量$n$较大时，多项式拟合并非一个好办法。</p>
-<h3 id="神经网络（Neural-Network）"><a href="#神经网络（Neural-Network）" class="headerlink" title="神经网络（Neural Network）"></a>神经网络（Neural Network）</h3><h4 id="神经元与大脑"><a href="#神经元与大脑" class="headerlink" title="神经元与大脑"></a>神经元与大脑</h4><p>众所周知，神经元包含轴突和树突，可以粗略的理解为每个神经元利用树突来从其他神经元获得信息，而后经过激活从轴突向其他神经元输出信息。</p>
-<p>这样的结构给了人们以启发，创造了拥有类似结构的<strong>神经网络（Neural Network）</strong>。神经网络起源于人们希望制造出模拟大脑的机器，在上世纪80-90年代得到广泛地应用。计算机技术的发展使得大规模神经网络得以应用。</p>
-<h4 id="模型展示"><a href="#模型展示" class="headerlink" title="模型展示"></a>模型展示</h4><p>逻辑单元(logistic unit)</p>
-<img src="/69f0ef2f8958/neural_unit.jpg" class="">
-<p>最基础的逻辑单元大致如上图所示，左边的x1,x2,x3为输入层的神经元，右边空置的圆圈则是由这三个输入逻辑单元得出的输出，我们定义为x。这个输出x经过$Sigmoid$激活后，也就对应着我们的假设函数$h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}$.值得一提的是，在输入层中存在着一个不由输入决定的神经元x0，我们称之为偏置单元（bias unit）。</p>
-<p>可以看到，我们在这个逻辑单元中实现了$h_\theta(x)$的计算，大致可以分为两步：</p>
-<ol>
-<li>由输入层和偏置单元计算出激活前的输出结果x。</li>
-<li>由x经$Sigmoid$激活得到真正的输出$h_\theta(x)$</li>
-</ol>
-<h4 id="一些记号"><a href="#一些记号" class="headerlink" title="一些记号"></a>一些记号</h4><p>接下来我们是对神经网络中的一些常见的概念和记号进行定义，以方便我们后续的讨论。</p>
-<p>在神经网络中：</p>
-<p>第一层：输入层（input layer）</p>
-<p>最后一层：输出层（output layer）</p>
-<p>中间层：隐藏层（hidden layer）</p>
-<p>记号：$a^{(j)}_i$为第$j$层的第$i$个神经元的激活项</p>
-<p>激活（activation）：指使一个神经元计算并输出值</p>
-<p>$\Theta^j$：控制$j$到$j+1$层的权重矩阵，显然如果$j$层和$j+1$层分别有$S_j$和$S_{J+1}$个单元。则$\Theta_j$有$[S_{j+1}*(S_j+1)]$的维度。</p>
-<p>$\theta^{(i)}_{jk}$指的是第$i$层中第$k$个神经元到第$i+1$层中第$j$个神经元的权重，其中偏置神经元的序号为0.</p>
-<h4 id="前向传播与架构"><a href="#前向传播与架构" class="headerlink" title="前向传播与架构"></a>前向传播与架构</h4><p>有了这些定义，我们就可以将上面这张图中的逻辑单元以数学的形式表达出来。</p>
-<p>显然，中间层激活输出的结果应为$a^{(2)}_1$</p>
-<p>$a^{(2)}_1=g(\theta_{10}^{(1)}x_0+\theta_{11}^{(1)}x_1+\theta_{12}^{(1)}x_2+\theta_{13}^{(1)}x_3)$</p>
-<p>我们给在括号里的部分，也就是经$Sigmoid$激活之前的结果赋予一个记号$Z$</p>
-<p>$a^{(2)}=g(Z^{(2)})$</p>
-<p>$h_\theta(x)=a^{(2)}$</p>
-<p>这个过程我们由输入层推导出了输出层的结果，这个过程我们称之为<strong>前向传播（forward propagation）</strong>。</p>
-<p>不同神经元之间的连接方式，我们称之为<strong>架构（architecture）</strong>。</p>
-<h3 id="对神经网络直觉理解"><a href="#对神经网络直觉理解" class="headerlink" title="对神经网络直觉理解"></a>对神经网络直觉理解</h3><p>我们之前给出的定义都是比较抽象的，接下来我们通过几个例子给出神经网络具体是如何工作的。</p>
-<h4 id="逻辑“与”"><a href="#逻辑“与”" class="headerlink" title="逻辑“与”"></a>逻辑“与”</h4><p>对于$Sigmoid$函数，我们可以认为</p>
-<p>当$x&gt;5$的时候，$g(x)\rightarrow1$</p>
-<p>当$x&lt;-5$的时候，$g(x)\rightarrow0$</p>
-<p>因此，我们设$\Theta^{(1)}=[-30,20,20]$，</p>
-<img src="/69f0ef2f8958/AND.jpg" class="">
-<p>则中间层神经元激活输出为$a^{(2)}=g(-30+20x_1+20x_2)$</p>
-<p>我们发现，当且仅当二值化输入x1和x2均为1的时候，激活输出$a^{(2)}=1$，实现了逻辑“与”的效果。</p>
-<h4 id="逻辑“或”"><a href="#逻辑“或”" class="headerlink" title="逻辑“或”"></a>逻辑“或”</h4><p>同理，对于逻辑“或”，我们可以设权重矩阵$\Theta^{(1)}=[-10,20,20]$，即可达成逻辑“或”的效果。</p>
-<h4 id="更复杂的情况：逻辑“同或”"><a href="#更复杂的情况：逻辑“同或”" class="headerlink" title="更复杂的情况：逻辑“同或”"></a>更复杂的情况：逻辑“同或”</h4><p>所谓的“同或”，指的是当两个输入相同的时候，输出1，而当两个输入不同时，输出0.</p>
-<p>对于两个二值化输入x1和x2，显然我们可以分为两种情况讨论，即同时为0或同时为1时，输出1，否则均输出0.</p>
-<p>那么对于这样的情况我们也可以构建对应的神经网络如下</p>
-<img src="/69f0ef2f8958/XNOR.jpg" class="">
-<p>可以看到，对于x1和x2的四种不同输入，我们有着如下输出。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>$x_1$</th>
-<th>$x_2$</th>
-<th>$a_1^{(2)}$</th>
-<th>$a_2^{(2)}$</th>
-<th>$a_1^{(3)}$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>我们在神经网络中添加了更多的隐藏层，从而实现了逻辑“同或”。我们在这里只需要对神经网络的工作方式有一个直观的理解即可，具体参数的求解会在后面涉及。</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>概念总结</tag>
+        <tag>我的世界</tag>
+        <tag>MC</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -921,241 +1183,8 @@
       </tags>
   </entry>
   <entry>
-    <title>种子文件与磁力链接及其下载方式</title>
-    <url>/2b7de3448214.html</url>
-    <content><![CDATA[<p>最近，室友总是问我关于种子文件和磁力链接的概念问题。好像我很了解这些一样，今天索性写一篇帖子介绍一下我对这两种下载方式的理解。</p>
-<h3 id="中心化下载与非中心化下载"><a href="#中心化下载与非中心化下载" class="headerlink" title="中心化下载与非中心化下载"></a>中心化下载与非中心化下载</h3><h4 id="中心化下载"><a href="#中心化下载" class="headerlink" title="中心化下载"></a>中心化下载</h4><p>中心化下载是我们最常接触到的下载模式，常见的<code>HTTP下载</code>，<code>FTP下载</code>都是中心化下载模式的具体方式。顾名思义，这种下载存在着一个中心，也就是存储资源的服务器。当你作为一个客户端向服务器请求下载时，服务器就会向你传输信息。而当很多人一起请求下载时，服务器也就成为了这个网络的<strong>中心</strong>。</p>
-<p>但这样的下载方式有一个很明显的缺陷，当同时下载的人过多，服务器的上行带宽一定会变得捉襟见肘，因此每个人的下载速度都会变慢。就像全班同学都去问同一个老师问题，老师就很难快速解答某一个同学了。</p>
-<h4 id="非中心化下载"><a href="#非中心化下载" class="headerlink" title="非中心化下载"></a>非中心化下载</h4><p>对于非中心化下载，就是由中心化下载进行<strong>去中心化</strong>的产物，让这个中心变得不再那么关键。而我们今天要说的种子文件和磁力链接都是非中心下载模式的具体方式。</p>
-<p>具体来说，就是我们的下载由原先的服务器向客户端传输数据，变为了客户端向客户端传输(<code>pear to pear</code>，简称<code>p2p</code>)。这样就形成了与中心化下载截然相反的局面，同时下载的人数越多，意味着同时向你传输数据的人数也可能越多，在一定合理的调度下，你的下载速度可能会不降反升。</p>
-<h3 id="种子文件与磁力链接"><a href="#种子文件与磁力链接" class="headerlink" title="种子文件与磁力链接"></a>种子文件与磁力链接</h3><h4 id="种子文件（BT下载）"><a href="#种子文件（BT下载）" class="headerlink" title="种子文件（BT下载）"></a>种子文件（BT下载）</h4><p>所谓的种子，就是包含着一颗植物的所有信息的原型，有它，你就有了整颗植物的指向性信息。同样，种子文件中也包含了我们整个文件的指向性信息（例如：文件的块大小，块索引，<code>Hash</code>验证码等），但同时它还包含了<code>Tracker</code>服务器的信息。</p>
-<p>当你尝试用种子文件下载时，首先你的客户端会解析<code>Tracker</code>信息，找到服务器地址并合理设置，之后由这个<code>Tracker</code>服务器为你指向正在同时下载这个文件的其他用户，由这些用户彼此之间进行上传和下载。</p>
-<p>如果继续用学生与老师的例子来比喻的话，那就是很多学生去问老师，老师并不直接回答问题，而是告诉每个人他们有疑惑的问题哪个同学明白，让他们互相解决，这样对老师的压力就小很多了。尽管这样听起来挺不负责任的，但由于种子文件中有Hash校验，在一定程度上不会出现<strong>不懂的同学误人子弟</strong>的现象。</p>
-<h4 id="磁力链接"><a href="#磁力链接" class="headerlink" title="磁力链接"></a>磁力链接</h4><p>尽管<code>BT下载</code>是去中心化的产物，但你一定看出来了，<code>Tracker</code>服务器仍然处于整个网络的中心地位，如果<code>Tracker</code>服务器被关闭，就可以阻断所有下载。</p>
-<p>有没有一种方式可以实现<code>P2P</code>下载模式，又没有真正的中心呢？</p>
-<p>答案是，有。那就是<a href="https://en.wikipedia.org/wiki/Distributed_hash_table">DHT技术</a>，<code>Distributed Hash Table</code>，即分布式哈希表。</p>
-<p>简单来说就是每个客户端负责一个小范围的路由并存储少量数据，从而连接成一个下载网络，而没有真正的中心。</p>
-<p>当你在客户端输入一个磁力链接后，客户端会从其中提取出一个20字节大小的哈希方法名，<code>infohash</code>，由这个哈希方法名得知自己周围的节点，并发送种子文件的下载请求，如果这些种子文件中包含<code>Tracker</code>，那么就可以像上述种子文件的下载方式那样进行下载。如果不包含<code>Tracker</code>，其中就会有哪些节点有包含Tracker的种子文件的信息，继续向这些节点发送种子文件的下载请求即可。</p>
-<p>这就是好像是当你不会一道题，班里没有老师，你就可以问周围的同学，如果他们有人会做且会讲，那你就可以让他给你讲，如果有人只会做不会讲，那他一定可以告诉你他是从哪里学会的，于是你就找到了那个会讲的人，你也就变成了有一个会做且知道谁会讲的人。</p>
-<h3 id="下载方式"><a href="#下载方式" class="headerlink" title="下载方式"></a>下载方式</h3><p>我知道，你们最关心的还是下载方式。</p>
-<p>由于P2P传输不经过中心服务器，因此在监管上存在着很大的难度，也由此滋生了盗版资源和非法资源的传播。但毕竟还有很多优秀的正版资源值得我们去下载，在这里我推荐两个客户端。</p>
-<h4 id="Bitcomet"><a href="#Bitcomet" class="headerlink" title="Bitcomet"></a>Bitcomet</h4><p><a href="https://www.bitcomet.com/en">bitcomet</a>是一款经典的BT下载器。下载完成后，安装时选择中文。安装好之后，打开<code>工具</code>标签，下来菜单中点击<code>选项</code>。依次点击<code>任务</code>，<code>bt下载</code>，<code>Tracker</code>。</p>
-<p>在这里你可以添加自己找到的Tracker服务器，这样当任务开始的时候，可以向更多的Tracker发送询问，从而获得更多的传输节点，提升下载速度。</p>
-<p>添加好后，勾选自动向BT下载任务添加以下Tracker服务器 和 每天自动更新Tracker列表。</p>
-<h4 id="qbittorent"><a href="#qbittorent" class="headerlink" title="qbittorent"></a>qbittorent</h4><p><a href="https://github.com/qbittorrent/qBittorrent">qbittorent</a>是另一款经典BT下载器，使用起来也是大同小异。大家自己探索以下就好。</p>
-<h4 id="Tracker"><a href="#Tracker" class="headerlink" title="Tracker"></a>Tracker</h4><p>至于Tracker列表，也许你能在<a href="https://trackerslist.com/#/zh?id=bitcomet-%e6%af%94%e7%89%b9%e5%bd%97%e6%98%9f">这里</a>找到。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>下载</tag>
-        <tag>经验记录</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>机器学习基础概念笔记（一）</title>
-    <url>/a218cd18cb36.html</url>
-    <content><![CDATA[<h2 id="机器学习（Machine-Learning）的定义："><a href="#机器学习（Machine-Learning）的定义：" class="headerlink" title="机器学习（Machine Learning）的定义："></a>机器学习（Machine Learning）的定义：</h2><p>赋予计算机无需明确编程即可学习的能力的研究领域。—— 阿瑟·萨缪尔</p>
-<p>Field of study that gives computers the ability to learn without being explicitly programmed.    —— Arthur Samuel</p>
-<h2 id="监督学习与非监督学习（Supervised-Learning-and-Unsupervised-Learning）"><a href="#监督学习与非监督学习（Supervised-Learning-and-Unsupervised-Learning）" class="headerlink" title="监督学习与非监督学习（Supervised Learning and Unsupervised Learning）"></a>监督学习与非监督学习（Supervised Learning and Unsupervised Learning）</h2><h3 id="监督学习的特征"><a href="#监督学习的特征" class="headerlink" title="监督学习的特征"></a>监督学习的特征</h3><p>监督学习的特征是训练集中给出样本的正确答案/标签（right answer given），目的是对更多的样本进行预测。监督学习可以分为连续输出的回归问题（regression）和离散输出的分类问题（classification）。</p>
-<h3 id="非监督学习的特征"><a href="#非监督学习的特征" class="headerlink" title="非监督学习的特征"></a>非监督学习的特征</h3><p>无监督学习的特征是训练集中的样本都不具有标签，或具有相同的标签，目的是对样本进行分类，即聚类算法（clustering）。</p>
-<h2 id="常用的记号"><a href="#常用的记号" class="headerlink" title="常用的记号"></a>常用的记号</h2><p>在开始介绍具体内容之前，我们先介绍一下常用的记号。</p>
-<p>对于一个训练集，其中包含$m$个训练样本，每个样本有$n$个输入/特征。$X$代表所有样本的输入/特征，$Y$代表所有样本的输出/标签。$x^{(i)}$代表第$i$个样本的输入/特征，$x^{(i)}_j$代表第$i$个样本的第$j$个输入/特征，$(x,y)$指一个训练样本，$(x^{(i)},y^{(i)})$指第$i$个训练样本。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$m$</td>
-<td>训练样本数量</td>
-</tr>
-<tr>
-<td>$n$</td>
-<td>每个样本输入/特征的数量</td>
-</tr>
-<tr>
-<td>$X$</td>
-<td>输入变量/特征（Input variable/features）</td>
-</tr>
-<tr>
-<td>$y$</td>
-<td>输入变量/特征 （Output variable/label）</td>
-</tr>
-<tr>
-<td>$x^{(i)}$</td>
-<td>第$i$个样本的输入/特征</td>
-</tr>
-<tr>
-<td>$x^{(i)}_j$</td>
-<td>第$i$个样本的第$j$个输入/特征</td>
-</tr>
-<tr>
-<td>$(x,y)$</td>
-<td>一个训练样本</td>
-</tr>
-<tr>
-<td>$(x^{(i)},y^{(i)})$</td>
-<td>第$i$个训练样本</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><h3 id="回归问题（Regression）"><a href="#回归问题（Regression）" class="headerlink" title="回归问题（Regression）"></a>回归问题（Regression）</h3><p>对于回归问题，我们总是有这样的思路</p>
-<p><img src="监督学习经典流程.png" alt=""></p>
-<img src="/a218cd18cb36/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%85%B8%E6%B5%81%E7%A8%8B.png" class="">
-<p>我们使用学习算法对训练集中的样本进行学习，学习的结果就是我们得到的假设函数。再利用这个假设函数对新的输入进行处理，获得对应的输出。</p>
-<p>而在回归问题中线性回归是基础的内容，而一元线性回归则是最为基础的形式。</p>
-<p>对于一元线性回归，我们的假设函数形式总是有这样的形式</p>
-<p>$h_{θ}(x)=θ_0+θ_1x$</p>
-<p>下面我们以一元线性回归为例，对几个最基础的概念进行解释。</p>
-<h4 id="代价函数（Cost-function）"><a href="#代价函数（Cost-function）" class="headerlink" title="代价函数（Cost function）"></a>代价函数（Cost function）</h4><p>代价函数用来描述我们回归的结果对于训练集中样本的偏离程度，显然我们的回归结果由$θ_0$和$θ_1$共同决定，因此，我们定义的代价函数如下</p>
-<p>$J(θ_0,θ_1)=\frac{1}{2m}Σ_{i=1}^m(h_θ(x^{(i)})-y^{(i)})^2$</p>
-<p>即，所有样本预测值和真实值的差的平方和的算数平均。算术平均之所以有系数$\frac{1}{2}$是因为在后面求导的时候可以约掉，而加一个常数并不影响我们对代价函数的理解。这样定义的代价函数我们称之为<strong>平方误差代价函数（Mean Square Error，简称MSE）</strong>。</p>
-<p>我们的目标是使我们的假设函数是对于所有样本最好的回归，因此问题也就转化为了使代价函数的值最小，即$minimize J(θ_0,θ_1)$。</p>
-<p>如何寻找到这个最小值呢？我们下面介绍两种方法，梯度下降和正规方程。</p>
-<h4 id="梯度下降（Gradient-descent）"><a href="#梯度下降（Gradient-descent）" class="headerlink" title="梯度下降（Gradient descent）"></a>梯度下降（Gradient descent）</h4><h5 id="梯度下降的方法"><a href="#梯度下降的方法" class="headerlink" title="梯度下降的方法"></a>梯度下降的方法</h5><p>我们采用求偏导的方法判断下降的方向，设置学习率（learning rate）决定我们下降时每一步走的有多远。</p>
-<p>具体的方法是：</p>
-<p>重复直至$θ_j$收敛(convergence) : {</p>
-<p>​    $θ_j$ = $θ_j-\alpha\frac{\partial}{\partialθ_j}J(θ_0,θ_1)$ $(for j=0, j=1)$</p>
-<p>}</p>
-<p>值得注意的一点是，若干个$θ_j$需要同时被更新，否则$θ_1$将被$J(newθ_0,θ_1)$所决定，这是不正确的。</p>
-<p>而当接近局部最低点的时候，导数项（derivative）趋于零，所以$θ_j$的变化是越来越小的。</p>
-<h5 id="偏导的简单计算和说明"><a href="#偏导的简单计算和说明" class="headerlink" title="偏导的简单计算和说明"></a>偏导的简单计算和说明</h5><p>下面我对一元线性回归的两个偏导项做一个简单的计算，如果你有微积分基础一定可以看懂。</p>
-<p>$\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\Sigma_{i=1}^m(\theta_0+\theta_1x^{(i)}-y^{(i)})^2$</p>
-<p>对$\theta_0$，$j=0$：</p>
-<p>$\frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)=\frac{1}{m}\Sigma^m_{i=1}(\theta_0+\theta_1x^{(i)}-y^{(i)})$</p>
-<p>对$\theta_1$，$j=1$：</p>
-<p>$\frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)=\frac{1}{m}\Sigma^m_{i=1}(\theta_0+\theta_1x^{(i)}-y^{(i)})x^{(i)}$</p>
-<p>可以想见，如果$h_{θ}(x)$的表达式为$h_{θ}(x)=θ_0+θ_1x_1+\theta_2x_2$的话，对$\theta_2$的偏导结果在形式上与$\theta_1$是一致的，只有下标不同。而$\theta_0$的表达式则缺少$x^{(i)}$一项，因此我们通常假设一个输入特征$x_0\equiv0$，这样的结果就是所有$\theta_j$的偏导在形式上都得到了统一。</p>
-<h5 id="线性回归最优解的必然性"><a href="#线性回归最优解的必然性" class="headerlink" title="线性回归最优解的必然性"></a>线性回归最优解的必然性</h5><p>但显然，按照梯度下降收敛的结果可能只是一个局部最优解，就像在半山腰的你只会往山下走，而山的那一边可能有着更加低洼的地带不被你所见。不过这个问题在线性回归中并不存在，原因是<strong>线性回归的代价函数一定是凸函数（convex function），只有一个最低点</strong>。因此线性回归问题使用梯度下降总是可以得到全局最优。</p>
-<h5 id="Batch-和-Iteration的定义"><a href="#Batch-和-Iteration的定义" class="headerlink" title="Batch 和 Iteration的定义"></a>Batch 和 Iteration的定义</h5><p>从上述代价函数的定义可以看出，我们使用所有训练样本之后会进行一次梯度下降，那么一次梯度下降所使用的样本集群我们称之为一个<strong>Batch</strong>，而这样一次更新的过程我们称之为一个<strong>iteration</strong>。</p>
-<h4 id="多特征（Multiple-Features-Variables）"><a href="#多特征（Multiple-Features-Variables）" class="headerlink" title="多特征（Multiple Features/ Variables）"></a>多特征（Multiple Features/ Variables）</h4><p>多特征的输入导致了回归问题由一元变成了多元线性回归（multiple linear regression），即$x^{(i)}_j$的$j$不再始终为1。</p>
-<p>我们的假设函数因此随之改变为$h_\theta(x)=\theta_0+\theta_1x_1+…+\theta_nx_n$。在<code>偏导的简单计算和说明</code>部分中我们提到了，添加$x_0\equiv0$可以使各个偏导项具有相同的形式，于是我们的假设函数变为</p>
-<p>$h_\theta(x)=\theta_0x_0+\theta_1x_1+…+\theta_nx_n$</p>
-<p>使用矩阵乘法可以写作</p>
-<p>$h_\theta(x)=\left[\begin{matrix}\theta_0,\theta_1,…,\theta_n\end{matrix}\right]\left[\begin{matrix}x_0\\x_1\\ .\\ .\\ .\\x_n\end{matrix}\right]=\theta^TX$</p>
-<p>同样的，对于多元线性回归，我们的代价函数也需要增加相应的系数$\theta_j$作为变量，即</p>
-<p>$J(\theta)=J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\Sigma_{i=1}^mh_\theta(x^{(i)}-y^{(i)})^2$</p>
-<h5 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h5><p>所谓的特征缩放，指的是让训练集样本的不同特征都大致在同一个范围内。</p>
-<p>例如我们每个样本有两个特征，$x_1$和$x_2$，分别代表着房屋的面积（平方米）和卧室数量（个）。那么$x_1$的变化范围大概是$50-500$这个范围，而$x_2$的变化范围则是在10以下。</p>
-<p>在这样的情况下，$J(\theta)$的等高线会是一个个瘦长的椭圆，如果此时进行梯度下降的话，迭代的次数会更多，整体的速度也会更慢。因此我们要将这两个特征变化到大致一致的范围里，目的是提高梯度下降的速度。</p>
-<p>常用的手段是均值归一化（mean normalization）</p>
-<p>令$x_i=\frac{x_i-\mu_i}{S_i}$，其中$S_i$代表$x$这个特征的范围</p>
-<p>这样的变换可以将$x_i$缩放到[-0.5，0.5]的范围中。</p>
-<p>值得一提的是，我们不需要把所有的特征都严格地缩放到同意范围，只要大致在一个数量级就可以，例如[-3，3]，[-0.5，0.5]都是可以接受的。</p>
-<h5 id="学习率（Learning-Rate）"><a href="#学习率（Learning-Rate）" class="headerlink" title="学习率（Learning Rate）"></a>学习率（Learning Rate）</h5><p>通过式子$θ_j=θ_j-\alpha\frac{\partial}{\partialθ_j}J(θ_0,θ_1)$， $(for j=0, j=1)$</p>
-<p>我们可以发现$\alpha$决定着每一次$\theta_j$变化的程度。如果$\alpha$太大，那么$\theta_j$可能会在变化的过程中错过局部最小值，于是最后$J(\theta)$便无法收敛。</p>
-<p>而如果$\alpha$变得太小，虽然最终一定会收敛到局部最小值，但步子迈的太小势必导致这个过程是很缓慢的。</p>
-<p>因此我们需要在不同的问题中恰当地调整$\alpha$来使得$J(\theta)$能够收敛，又能够尽快收敛。具体来说，我们可以在每一次更新$\theta_j$后统计一下$J(\theta)$的值，并画图，这样我们就得到了$J(\theta)$关于迭代次数（number of iterations）的变化曲线。当这条曲线趋于平缓乃至直线的时候，就收敛了。我们可以此为依据进行$\alpha$的调整。</p>
-<p>当然你也可以统计每次$\theta_j$变化之后$J_\theta$缩小的比例，这些都是可用的方法。</p>
-<h5 id="特征与多项式回归-Polynomial-Regression"><a href="#特征与多项式回归-Polynomial-Regression" class="headerlink" title="特征与多项式回归(Polynomial Regression)"></a>特征与多项式回归(Polynomial Regression)</h5><p>有的时候输出和输入的关系并非是简单的线性关系，例如某些问题的假设函数存在如下关系</p>
-<p>$h_\theta(x)=\theta_0+\theta_1x_1+\theta_2x_1^2+\theta_3x_1^3$</p>
-<p>这显然超出了我们线性回归的范畴，于是我们需要把它变化成线性的形式，也就是<strong>多项式回归</strong>。</p>
-<p>$h_\theta(x)=\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_3$，其中$x_1=x_1,x_2=x_1^2,x_3=x_1^3$</p>
-<p>这样的变化使得原本输入只有一个特征$x_1$，现在多出了两个特征$x_2$和$x_3$。只不过他们都和$x_1$有着对应的关系。</p>
-<p>但这样做会导致这几个特征不在一个数量级上，因此需要对这些特征做特征缩放才行。</p>
-<h4 id="正规方程（Normal-Equation）"><a href="#正规方程（Normal-Equation）" class="headerlink" title="正规方程（Normal Equation）"></a>正规方程（Normal Equation）</h4><p>正规方程提供了一种梯度下降以外的求$J_\theta$最小值的方法，那就是对$J_\theta$求偏导，并让所有的$\frac{\partial}{\partial\theta_j}J(\theta)=0$。不过这需要一定的数学基础，在这里Andrew Ng直接给出了方程，使用这个方程即可求出使得$J_\theta$达到最小值的$\theta$。</p>
-<p>$\theta=(X^TX)^{-1}X^TY$</p>
-<p>在刚看到这个式子的时候不太理解为什么不是$\theta=(X)^{-1}Y$，后来发现$X$未必是方阵，所以不一定能取逆，只有$X^TX$才能够保证是方阵。</p>
-<p>但是方阵也未必可以取逆，如果这个方阵是非满秩的，即存在某些行或者某些列之间线性相关，就不能取逆。</p>
-<p>如果是列之间线性相关，则说明存在多余的特征，例如预测房价的时候输入了房子的面积和房子的公摊面积，而公摊面积=面积*常数，那这个公摊面积就是一个多余的特征，去掉即可。</p>
-<p>如果是行之间线性相关，则说明存在两个样本所有特征都存在一个倍数关系，这种情况下我们可以采取求伪逆矩阵的方式（例如matlab中的pinv()函数）来规避。（其实列线性相关也可以求伪逆矩阵，但冗余的特征总是不必要存在的，所以我们选择删除）</p>
-<p>下面我们对比一下梯度下降和正规方程的优劣</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">梯度下降（Gradient Descent）</th>
-<th>正规方程（Normal Equation）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">需要选择合适的学习率$\alpha$</td>
-<td>不需要选择学习率$\alpha$</td>
-</tr>
-<tr>
-<td style="text-align:left">需要很多次迭代</td>
-<td>只需要一次迭代</td>
-</tr>
-<tr>
-<td style="text-align:left">在特征数$n$很大时可以很好地工作</td>
-<td>在特征数$n$很大时速度很慢</td>
-</tr>
-</tbody>
-</table>
-</div>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>概念总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>机器学习基础概念笔记（三）</title>
-    <url>/67c960a4ba76.html</url>
-    <content><![CDATA[<h3 id="欠拟合问题和过拟合问题（Underfitting-and-Overfitting）"><a href="#欠拟合问题和过拟合问题（Underfitting-and-Overfitting）" class="headerlink" title="欠拟合问题和过拟合问题（Underfitting and Overfitting）"></a>欠拟合问题和过拟合问题（Underfitting and Overfitting）</h3><h4 id="欠拟合问题"><a href="#欠拟合问题" class="headerlink" title="欠拟合问题"></a>欠拟合问题</h4><p>之前我们说过了，如果对一个比较复杂的问题，采用形式比较简单的假设函数，那么就会导致最终结果的代价函数最低值很高，也就是说假设函数和训练集数据拟合的并不好。这样的状态我们称之为欠拟合（underfitting）</p>
-<p>例如在线性回归中的欠拟合</p>
-<img src="/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png" class="">
-<p>以及在逻辑回归中的欠拟合</p>
-<img src="/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%AC%A0%E6%8B%9F%E5%90%88.png" class="">
-<h4 id="过拟合问题"><a href="#过拟合问题" class="headerlink" title="过拟合问题"></a>过拟合问题</h4><p>通过欠拟合问题的情况，我们不难想到还存在一种情况，就是假设函数对训练集数据过于“符合“了。这种符合超过了我们的需求，甚至对我们之后的预测工作是不利的。这样的状态我们称之为过拟合（overfitting）。</p>
-<p>例如在线性回归中的过拟合</p>
-<img src="/67c960a4ba76/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png" class="">
-<p>以及在逻辑回归中的过拟合</p>
-<img src="/67c960a4ba76/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%BF%87%E6%8B%9F%E5%90%88.png" class="">
-<p>而导致这种现象根本的原因是假设函数中的变量太多了，没有足够的数据对它们进行约束。</p>
-<h4 id="解决过拟合的两种手段"><a href="#解决过拟合的两种手段" class="headerlink" title="解决过拟合的两种手段"></a>解决过拟合的两种手段</h4><ol>
-<li>减少特征的数量：可以手动选择哪些特征应该被保留，也可以使用模型选择算法（Model Selection Algorithm），这个之后我们会具体讲到。</li>
-<li>正则化（Regularization）：保留特征，但减小量级或$\theta_j$的值</li>
-</ol>
-<p>我们接下来的内容就来具体讲讲正则化的含义和具体实现方法</p>
-<h3 id="正则化与代价函数"><a href="#正则化与代价函数" class="headerlink" title="正则化与代价函数"></a>正则化与代价函数</h3><h4 id="代价函数的更新"><a href="#代价函数的更新" class="headerlink" title="代价函数的更新"></a>代价函数的更新</h4><p>当出现过拟合时，我们最简单的手段就是手动地去挑选一些变量并去掉。</p>
-<p>例如，对假设函数</p>
-<p>$h_\theta(x^{(i)})=\theta_0+\theta_1x_1+\theta_3x_3+\theta_4x_4$</p>
-<p>我们手动去掉了$x_3$和$x_4$，其等价的说法就是令$\theta_3, \theta_4\equiv0$</p>
-<p>但这样直接的做法会完全去掉$x_3$和$x_4$两种特征的影响。有的时候我们并不像接受这种简单粗暴的做法，而是想在不过拟合的基础上，保留$x_3$和$x_4$的一部分影响。于是我们就思考，怎样做才能让最终的$\theta_3$和$\theta_4$趋于$0$而又不等于0呢？</p>
-<p>答案是，对我们的代价函数进行改造。</p>
-<p>对于MSE代价函数，我们有如下形式</p>
-<p>$J(\theta)=min_\theta\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$</p>
-<p>如果我们在其后加上大系数的$\theta_3$和$\theta_4$，例如$+1000\theta_3+1000\theta_4$，那么当我们尝试最小化$J(\theta)$的时候，$\theta_3$和$\theta_4$自然就会非常小。相比于$\theta_1$和$\theta_2$来讲，它们就好像收到了额外的”惩罚“，于是我们称$+1000\theta_3+1000\theta_4$为 $x_3$和$x_4$ 的惩罚项。</p>
-<h4 id="正则化参数（Regularization-Parameter）"><a href="#正则化参数（Regularization-Parameter）" class="headerlink" title="正则化参数（Regularization Parameter）"></a>正则化参数（Regularization Parameter）</h4><p>当我们添加了一些参数的惩罚项之后，在最小化代价函数之后，假设函数就会变得简单，更加平滑，不易过拟合。</p>
-<p>但是显然，我们在事先并不清楚哪些特征时相关度较低的，这怎么办呢？</p>
-<p>先别忙，解决这个问题之前，我们先来下个定义</p>
-<p>我们首先对于所有的特征都添加惩罚项（除了$x_0$），但是系数向量$\lambda$待定。这个$\lambda$我们就称为<strong>正则化参数</strong>。</p>
-<p>$J(\theta)=\frac{1}{2m}[\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\Sigma_{i=1}^n\theta_j^2]$</p>
-<p>值得注意的是，这里惩罚项用的是$\theta_j^2$，目的是偏微分后去掉前面的系数$\frac{1}{2m}$</p>
-<p>显然，$\lambda_j$代表了对某一种特征的惩罚程度，如果$\lambda_j$非常大，则对应的$\theta_j\rightarrow0$，拟合结果就变成了一条直线，欠拟合了。</p>
-<p>因此我们可以看出，选择合适的正则化参数对我们是很重要的。</p>
-<p>下面我们具体来给出在线性回归和逻辑回归两种情况下的正则化。</p>
-<h3 id="线性回归与逻辑回归的正则化"><a href="#线性回归与逻辑回归的正则化" class="headerlink" title="线性回归与逻辑回归的正则化"></a>线性回归与逻辑回归的正则化</h3><h4 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h4><script type="math/tex; mode=display">J(\theta)^{old}=\frac{1}{2m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2</script><p>↓</p>
-<p>$J(\theta)^{new}=\frac{1}{2m}[\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\Sigma_{i=1}^n\theta_j^2]$</p>
-<p>$\frac{\partial J(\theta)}{\partial \theta_j}=\frac{1}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda}{m}\theta_j$</p>
-<p>$\therefore\theta_j^{new}=\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda\alpha}{m}\theta_j=(1-\frac{\alpha\lambda}{m})\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$</p>
-<p>而对于线性回归中的正规方程，我们可以使用如下方法进行正则化</p>
-<p>$\theta=(X^TX+\lambda\Psi)^{-1}X^Ty$</p>
-<p>其中，$\Psi=\left[\begin{matrix}0\space\space\space\space\space\space\space\space\space\space\space\space\\\space\space1\space\space\space\space\space\space\space\space\space\space\\\space\space1\space\space\space\space\\\space\space\space\space1\\ …\end{matrix}\right]$</p>
-<h4 id="逻辑回归的正则化"><a href="#逻辑回归的正则化" class="headerlink" title="逻辑回归的正则化"></a>逻辑回归的正则化</h4><script type="math/tex; mode=display">J(\theta)^{old}=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))</script><p>↓</p>
-<p>$J(\theta)^{new}=\frac{1}{m}\Sigma^m_{i=1}(-yln\,(h_\theta(x))-(1-y)ln\,(1-h_\theta(x)))+\frac{\lambda}{2m}\Sigma_{j=1}^n\theta_j^2$</p>
-<p>$\frac{\partial J(\theta)}{\partial \theta_j}=\frac{1}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda}{m}\theta_j$</p>
-<p>$\therefore\theta_j^{new}=\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}+\frac{\lambda\alpha}{m}\theta_j=(1-\frac{\alpha\lambda}{m})\theta_j-\frac{\alpha}{m}\Sigma_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$</p>
-<p>从这里可以看到，尽管正则化后线性回归和逻辑回归的两种假设函数形式有所区别，但其偏微分项是一致的，因此更新后的$\theta_j$也是形式一致的。</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>概念总结</tag>
-      </tags>
+    <title>如何写一篇文章的“related work”部分</title>
+    <url>/f2a7da94c8dc.html</url>
+    <content><![CDATA[<h3 id="如何写一篇文章的“related-work”部分"><a href="#如何写一篇文章的“related-work”部分" class="headerlink" title="如何写一篇文章的“related work”部分"></a>如何写一篇文章的“related work”部分</h3>]]></content>
   </entry>
 </search>
