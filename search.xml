@@ -10,6 +10,47 @@
 ]]></content>
   </entry>
   <entry>
+    <title>队列和栈（quene and stack)</title>
+    <url>/90122bff0cd7.html</url>
+    <content><![CDATA[<p>今天学习了队列和栈的概念，下面简单总结一下</p>
+<h3 id="队列和栈"><a href="#队列和栈" class="headerlink" title="队列和栈"></a>队列和栈</h3><h4 id="概念与特点"><a href="#概念与特点" class="headerlink" title="概念与特点"></a>概念与特点</h4><p>为什么把这两个一起说呢，我认为队列和栈都是存储数据的空间，而它们的特点又恰恰相反。队列的最大特点是先入先出，FIFO（First-in-fitst-out）；而栈的特点则恰恰相反，是先入后出，FILO（First-in-last-out）。</p>
+<h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><p>虽然这两个概念在特点上完全相反，但它们拥有着相同的操作，例如：压入（push）元素，弹出（pop）元素，读取长度，判断是否为空，判断是否已满，读取即将弹出的元素（但不弹出）等等。</p>
+<h4 id="造轮子"><a href="#造轮子" class="headerlink" title="造轮子"></a>造轮子</h4><p>虽然说成熟的库很多了，完全不需要我们自己造轮子，例如collections中的deque双端队列已经非常好用了，但其实想一下怎么把这个轮子造出来对于我们更好地理解和运用这些概念也挺有意义的。这点大家可以去力扣上做一下尝试，我觉得还不错。</p>
+<h5 id="队列思路"><a href="#队列思路" class="headerlink" title="队列思路"></a>队列思路</h5><p>常规的思路是开一个列表来存储这个队列，但是考虑到队列是先进先出的原则，如果我们把之前存入的元素取走，那么位于列表前部分的内存就会有所空缺，而我们在之后添加元素时为了保持顺序这部分内存也无法使用，这是很浪费的。</p>
+<p>因此我们使用“循环列表”来完成队列的创造思路：</p>
+<ol>
+<li><p>给定一个列表空间，长度为length，和两个指针，即首指针和尾指针，当列表为空时，head = tail = -1</p>
+</li>
+<li><p>当压入元素时，如果列表为空，则重置head = tail = 0，并将该元素压入到0下标位置。如果列表不为空且不满，则 tail = （tail + 1）% length，并将该元素压入到tail指向的位置。如果列表已满，则返回False</p>
+</li>
+<li><p>当弹出元素时，如果列表为空，则返回False。如果列表中只有一个元素，即head = tail != -1，则返回tail所指向的元素，并重置head = tail = -1。否则，将head所指的元素返回并 head = (head + 1) % length.这里不需要在head + 1后删除之前的元素，因为后面再压入新的元素会直接覆盖</p>
+</li>
+<li><p>读取首个即将被弹出的元素，返回head所指的元素。若列表为空，返回False</p>
+</li>
+<li><p>列表为空的条件是head = tail = -1 ；列表已满的条件是head = (tail + 1) % length ; 列表只有一个元素的条件是head = tail != -1</p>
+</li>
+</ol>
+<h5 id="栈思路"><a href="#栈思路" class="headerlink" title="栈思路"></a>栈思路</h5><p>栈的思路也是类似的：</p>
+<ol>
+<li>给定一个列表空间，长度为length，和一个指针，即尾指针，当列表为空时， tail = -1</li>
+<li>当压入元素时，如果列表为空，则重置 tail = 0，并将该元素压入到0下标位置。如果列表不为空且不满，则 tail = tail + 1，并将该元素压入到tail指向的位置。如果列表已满，则返回False</li>
+<li>当弹出元素时，如果列表为空，则返回False。如果列表中只有一个元素，即tail = 0，则返回tail所指向的元素，并重置tail = -1。否则，将tail所指的元素返回并 tail = tail + 1.</li>
+<li><p>读取首个即将被弹出的元素，返回tail所指的元素。若列表为空，返回False</p>
+</li>
+<li><p>列表为空的条件是 tail = -1 ；列表已满的条件是tail = length - 1 ; 列表只有一个元素的条件是tail = 0</p>
+</li>
+</ol>
+<h3 id="DFS和BFS"><a href="#DFS和BFS" class="headerlink" title="DFS和BFS"></a>DFS和BFS</h3><p>所谓的DFS和BFS都是搜算算法，DFS（Depth-First-Search）是深度优先算法，BFS（Breadth-First-Search）是广度优先算法。</p>
+<p>待续…</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>算法与数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字符串匹配算法KMP</title>
     <url>/53dc1a240a44.html</url>
     <content><![CDATA[<h3 id="KMP算法的原理粗解"><a href="#KMP算法的原理粗解" class="headerlink" title="KMP算法的原理粗解"></a>KMP算法的原理粗解</h3><p>首先给出两篇讲解作为辅助，一篇在<a href="https://leetcode.cn/leetbook/read/array-and-string/cpoo6/">leetcode</a>，一篇在<a href="https://blog.csdn.net/yyzsir/article/details/89462339">CSDN</a>。</p>
