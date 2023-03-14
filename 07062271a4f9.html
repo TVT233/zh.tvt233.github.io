@@ -20,23 +20,26 @@
     var CONFIG = {"hostname":"zh.zihengzhang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文介绍了博客的Pjax优化，标签云，代码和代码块高亮的配置方式">
+  <meta name="description" content="在毕设过程中，为Jetson Nano的操作系统配置YOLOv5环境的过程、问题及解决办法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客搭建及相关问题记录（四）">
-<meta property="og:url" content="https://zh.zihengzhang.top/2c0f12af2268.html">
+<meta property="og:title" content="Jetson_Nano_配置YOLOv5环境记录">
+<meta property="og:url" content="https://zh.zihengzhang.top/07062271a4f9.html">
 <meta property="og:site_name" content="张子恒">
-<meta property="og:description" content="本文介绍了博客的Pjax优化，标签云，代码和代码块高亮的配置方式">
+<meta property="og:description" content="在毕设过程中，为Jetson Nano的操作系统配置YOLOv5环境的过程、问题及解决办法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zh.zihengzhang.top/%E4%BD%8D%E7%BD%AE.png">
-<meta property="article:published_time" content="2022-11-03T06:58:18.000Z">
-<meta property="article:modified_time" content="2022-11-06T02:32:34.732Z">
+<meta property="og:image" content="https://zh.zihengzhang.top/07062271a4f9/NVIDIA%E5%AE%98%E7%BD%91%E9%95%9C%E5%83%8F.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/07062271a4f9/SDCardFormatter.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/07062271a4f9/balena.png">
+<meta property="og:image" content="https://zh.zihengzhang.top/07062271a4f9/torchvision.jpg">
+<meta property="article:published_time" content="2023-03-14T13:49:28.000Z">
+<meta property="article:modified_time" content="2023-03-14T15:26:47.767Z">
 <meta property="article:author" content="张子恒">
-<meta property="article:tag" content="博客">
-<meta property="article:tag" content="Github">
+<meta property="article:tag" content="Jetson Nano">
+<meta property="article:tag" content="YOLO">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zh.zihengzhang.top/%E4%BD%8D%E7%BD%AE.png">
+<meta name="twitter:image" content="https://zh.zihengzhang.top/07062271a4f9/NVIDIA%E5%AE%98%E7%BD%91%E9%95%9C%E5%83%8F.png">
 
-<link rel="canonical" href="https://zh.zihengzhang.top/2c0f12af2268.html">
+<link rel="canonical" href="https://zh.zihengzhang.top/07062271a4f9.html">
 
 
 <script id="page-configurations">
@@ -49,7 +52,7 @@
   };
 </script>
 
-  <title>博客搭建及相关问题记录（四） | 张子恒</title>
+  <title>Jetson_Nano_配置YOLOv5环境记录 | 张子恒</title>
   
 
 
@@ -214,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zh.zihengzhang.top/2c0f12af2268.html">
+    <link itemprop="mainEntityOfPage" href="https://zh.zihengzhang.top/07062271a4f9.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -227,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          博客搭建及相关问题记录（四）
+          Jetson_Nano_配置YOLOv5环境记录
         </h1>
 
         <div class="post-meta">
@@ -236,16 +239,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-11-03 14:58:18" itemprop="dateCreated datePublished" datetime="2022-11-03T14:58:18+08:00">2022-11-03</time>
+              <time title="创建时间：2023-03-14 21:49:28 / 修改时间：23:26:47" itemprop="dateCreated datePublished" datetime="2023-03-14T21:49:28+08:00">2023-03-14</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-06 10:32:34" itemprop="dateModified" datetime="2022-11-06T10:32:34+08:00">2022-11-06</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -269,16 +266,16 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>651</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
-            <div class="post-description">本文介绍了博客的Pjax优化，标签云，代码和代码块高亮的配置方式</div>
+            <div class="post-description">在毕设过程中，为Jetson Nano的操作系统配置YOLOv5环境的过程、问题及解决办法</div>
 
         </div>
       </header>
@@ -289,26 +286,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>书接<a href="http://zh.zihengzhang.top/bbb012e90cee.html">上文</a>，今天继续介绍一些博客装饰内容。</p>
-<h3 id="Pjax-优化"><a href="#Pjax-优化" class="headerlink" title="Pjax 优化"></a>Pjax 优化</h3><p><code>pjax</code>是一款基于<code>jQuery</code>的插件，基于<code>pushState</code>和<code>ajax</code>，实现站点的局部刷新。它将站点转化为<code>SPA</code>应用，可以提升页面切换速度。同时它可以解决<code>aplayer</code>插件切换页面后重新播放的问题。</p>
-<p>我们在根目录终端依次键入以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pjax <span class="built_in">source</span>/lib/pjax</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
-<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>标签云插件<code>hexo-tag-cloud</code>实现了较为炫酷的标签环绕效果，可以自定义标签云的字体、颜色、高亮显示。</p>
-<p>我们在终端键入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-cloud --save</span><br></pre></td></tr></table></figure>
-<p>进入路径<code>themes/next/layout/_macro/sidebar.swig</code>，然后找到<code>&lt;div class=&quot;site-overview-wrap sidebar-panel&quot;&gt;</code>，在该标签的后面添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if site.tags.length &gt; 1 %&#125;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcloud.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;script</span><br><span class="line">  type=&quot;text/javascript&quot;</span><br><span class="line">  charset=&quot;utf-8&quot;</span><br><span class="line">  src=&quot;&#123;&#123; url_for(&#x27;/js/tagcanvas.js&#x27;) &#125;&#125;&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line">&lt;div class=&quot;widget-wrap&quot;&gt;</span><br><span class="line">  &lt;h5 class=&quot;widget-title&quot;&gt;标签云&lt;/h5&gt;</span><br><span class="line">  &lt;div id=&quot;myCanvasContainer&quot; class=&quot;widget tagcloud&quot;&gt;</span><br><span class="line">    &lt;canvas width=&quot;250&quot; height=&quot;250&quot; id=&quot;resCanvas&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line">      &#123;&#123; list_tags() &#125;&#125;</span><br><span class="line">    &lt;/canvas&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>具体位置如图所示：</p>
-<p><img src="位置.png" alt=""></p>
-<p>之后，进入项目根目录<code>blog</code>，打开站点配置文件<code>_config.yml</code>，找个空地添加以下代码：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">标签云</span></span><br><span class="line">tag_cloud:</span><br><span class="line">  textFont: Trebuchet MS, Helvetica # 字体</span><br><span class="line">  textColor: &quot;#333&quot; # 字体颜色</span><br><span class="line">  textHeight: 20 # 字体大小</span><br><span class="line">  outlineColor: &quot;#E2E1D1&quot;</span><br><span class="line">  maxSpeed: 0.2 # 旋转速度</span><br><span class="line">  pauseOnSelected: true # 当选中对应标签时，是否停止转动</span><br></pre></td></tr></table></figure>
-<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>custom_file_path</code>字段，将<code>style</code>的注释取消：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line">custom_file_path:</span><br><span class="line">  style: <span class="built_in">source</span>/_data/styles.styl</span><br></pre></td></tr></table></figure>
-<p>在<code>blog/source</code>下新建一个<code>_data</code>文件夹，文件夹中新建一个<code>styles.styl</code>文件（不用<code>VScode</code>的同学，可以新建一个<code>styles.txt</code>，再更改它的后缀）。在上面编辑以下代码：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">code</span> &#123;</span><br><span class="line">  <span class="attr">color:</span> <span class="comment">#ff7600;</span></span><br><span class="line">  <span class="attr">background:</span> <span class="comment">#fbf7f8;</span></span><br><span class="line">  <span class="attr">margin:</span> <span class="string">2px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">margin:</span> <span class="string">5px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line">  <span class="attr">padding:</span> <span class="string">5px;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">.highlight,</span></span><br><span class="line"><span class="string">code,</span></span><br><span class="line"><span class="string">pre</span> &#123;</span><br><span class="line">  <span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#d6d6d6;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="代码块高亮"><a href="#代码块高亮" class="headerlink" title="代码块高亮"></a>代码块高亮</h3><p>进入路径<code>themes/next/_config.yml</code>，修改主题配置文件的<code>codeblock</code>字段：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">night</span> <span class="string">bright</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">mac</span></span><br></pre></td></tr></table></figure>
-<p><code>codeblock</code>字段会更改代码块的主题样式，感兴趣的同学不妨都尝试一下，找到自己喜欢的风格。</p>
+        <p>做毕设要把YOLOv5模型放在Jetson Nano板子上离线运行一些程序，所以得在Jetson Nano上配置YOLOv5的环境，从3.12日晚配到3.14晚上，整整两天，给我人配麻了，头配掉了。如今终于大功告成，遂把经验记录下来，以备以后参考。</p>
+<h3 id="前言：难点"><a href="#前言：难点" class="headerlink" title="前言：难点"></a>前言：难点</h3><p>我先说一下为什么这玩意比较难配。我不是第一次在Linux系统上配环境，也不是第一次给YOLOv5配环境，一开始我也觉得这不就是几个小时的事情吗？但后来我发现，这个Jetson Nano的操作系统不是常见的X86架构的linux，而是aarch64架构的，因此网上很多ubuntu的配环境经验就使用不了了。</p>
+<p>此外，这个Jetson Nano它的内存相对来说比较小，很多包安装的时候，会产生大量的中间文件，容易被kill，所以有些包还是需要自己编译，安装，这比较麻烦。对于我这种对于配环境没什么专业知识的人来说，看不懂中间出的报错是一件更麻烦的事，有时候甚至搜都不知道搜什么。</p>
+<h3 id="系统烧录"><a href="#系统烧录" class="headerlink" title="系统烧录"></a>系统烧录</h3><h4 id="系统镜像选择"><a href="#系统镜像选择" class="headerlink" title="系统镜像选择"></a>系统镜像选择</h4><p>我的Jetson Nano是老师从创乐博购买的，套件比较齐全，也给了一些指导文档 ，在文末我会分享给大家。在指导文档里，给出的是创乐博自己做的镜像系统，配置好了很多设置，但是我不喜欢用别人配好的东西，总感觉不是针对我这个项目专门配置的就会有许多冗余，而且除了报错也不好查是因为什么。所以我选择安装纯净的系统。</p>
+<p>从NVIDIA官网下载纯净的系统镜像：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/embedded/downloads#?tx=$product,jetson_nano">jetson-nano-jp461-sd-card-image.zip</a></p>
+<p>这个镜像内部包含了python 2.7，python 3.6，cuda10.2等，版本是Ubuntu 18.04</p>
+<img src="/07062271a4f9/NVIDIA%E5%AE%98%E7%BD%91%E9%95%9C%E5%83%8F.png" class="">
+<h4 id="烧录的方法"><a href="#烧录的方法" class="headerlink" title="烧录的方法"></a>烧录的方法</h4><p>烧录的方法也很简单，需要准备两个软件：SDCardFormatter和balenaEtcher，可以在我<strong>文末分享的Jetson Nano指导文档中的附件-工具软件安装包</strong>中找到。还需要准备一个读卡器，和一张不小于64G的SD卡（这点我亲测，再小真的没法用了，64G已经是勉强了）。</p>
+<p>首先，使用SDCardFormatter将SD卡快速格式化。</p>
+<img src="/07062271a4f9/SDCardFormatter.png" class="">
+<p>然后打开balenaEtcher，</p>
+<img src="/07062271a4f9/balena.png" class="">
+<p>在Select Image中选择我们下载的系统镜像，这里下载的镜像不需要解压，.zip，.iso和.img都是可以接受的。</p>
+<p>之后选择我们要烧录到的SD卡，点击Flash即可烧录。这是一个漫长的过程，大概要30分钟左右。</p>
+<p>在烧录后，我们连接HDMI显示器，如果开机后看到NVIDIA大标后进入Linux操作系统，则成功。</p>
+<h3 id="Torch和TorchVision的安装"><a href="#Torch和TorchVision的安装" class="headerlink" title="Torch和TorchVision的安装"></a>Torch和TorchVision的安装</h3><h4 id="Torch的安装"><a href="#Torch的安装" class="headerlink" title="Torch的安装"></a>Torch的安装</h4><p>如果你的系统中没有pip3，最好先安装pip3，这是必要的。</p>
+<p>torch相对来说好安装一点，但是也不能直接pip3 install torch联网安装，需要下载<a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-11-now-available/72048">NVIDIA官方给Jetson Nano编译的pytorch离线包</a>，下载好后进入到保存的目录进行安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 你保存那个包的路径</span><br><span class="line">pip3 install torch-1.10.0-cp36-cp36m-linux_aarch64.whl</span><br></pre></td></tr></table></figure>
+<h4 id="TorchVision的安装"><a href="#TorchVision的安装" class="headerlink" title="TorchVision的安装"></a>TorchVision的安装</h4><p>相比而言，TorchVision的安装就麻烦许多，我踩了许多坑。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43443001/article/details/125635568">这篇文章</a>说建议大家安装TorchVision 0.11.0，也能够与Torch 1.10.0适配。但据我实践，虽然NVIDIA官方也这样说，仍然有许多意外的报错和连锁反应，很麻烦。查找<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44112313/article/details/124442104">对应关系</a>知道，Torch1.10.0对应的TorchVision版本应为0.11.1。从<a target="_blank" rel="noopener" href="https://gitcode.net/mirrors/pytorch/vision">这里</a>可以找到TorchVision 0.11.1的包，下载。</p>
+<img src="/07062271a4f9/torchvision.jpg" class="">
+<p>下载后将这个包和上面的torch-1.10.0-cp36-cp36m-linux_aarch64.whl放在同一个文件夹下。在终端中进入文件夹，首先安装依赖项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev</span><br></pre></td></tr></table></figure>
+<p>如果你的终端报无法定位软件包，说明你需要更换一些新的国内的源，可以参照<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43716281/article/details/120104953">这篇博客</a>。</p>
+<p>解压torchvision的压缩包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unzip vision-v0.11.1.zip #如果你没改名的话，这个压缩包就叫vision-v0.11.1.zip</span><br><span class="line">cd vision-v0.11.1</span><br></pre></td></tr></table></figure>
+<p>接下来我们修改环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gedit ~/.bashrc </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在弹出的文件中最后一行写下：<span class="built_in">export</span> BUILD_VERSION=0.11.1</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">保存</span></span><br><span class="line">source ~/.bashrc #使环境变量更改立即生效</span><br></pre></td></tr></table></figure>
+<p>之后我们开始编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 setup.py install --user</span><br></pre></td></tr></table></figure>
+<p>安装过程很长，且有warning，如不想深究也不用理，没太大问题，如想解决可参考下面<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21843433/article/details/119255360?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=jetson%20nx%20%E5%AE%89%E8%A3%85torchvision&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-119255360.142%5Ev66%5Econtrol,201%5Ev3%5Econtrol_2,213%5Ev2%5Et3_esquery_v2&amp;spm=1018.2226.3001.4187">这篇博客</a>。</p>
+<h4 id="验证是否成功安装"><a href="#验证是否成功安装" class="headerlink" title="验证是否成功安装"></a>验证是否成功安装</h4><p>安装完成后，可以用以下方式验证Torch和TorchVision是否安装成功</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)  <span class="comment"># 查看torch版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(torchvision.__version__)  <span class="comment"># 查看torchvision版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())  <span class="comment"># 查看torch下cuda是否可用</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;4&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.device_count())  <span class="comment"># 查看#GPU驱动数量</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;5&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.get_device_name())  <span class="comment"># 查看#GPU驱动动名称</span></span><br></pre></td></tr></table></figure>
+<p>如果结果如下，说明安装成功，否则对应错误的输出追查哪一项有问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1.10.0  # torch版本</span><br><span class="line">2</span><br><span class="line">0.11.0a0  # torchvision版本</span><br><span class="line">3</span><br><span class="line">True  # cuda是否可用，若为flase，继续往下看</span><br><span class="line">4</span><br><span class="line">1   #这一项可能输出不同，只要和你的设备相符即可 GPU驱动数量</span><br><span class="line">5</span><br><span class="line">你设备的GPU  # 这一项可能输出不同，只要和你的设备相符即可 GPU驱动名称</span><br></pre></td></tr></table></figure>
+<p>若出现错误，可参考一下<a target="_blank" rel="noopener" href="https://blog.csdn.net/hhfhng/article/details/127910237">这篇博客</a>。</p>
+<h3 id="opencv-python的安装"><a href="#opencv-python的安装" class="headerlink" title="opencv-python的安装"></a>opencv-python的安装</h3><p>这一项给我坑惨了，我一开始直接pip3安装，但始终安装不上，经查有人说需要下载离线编译，但编译过程无比漫长不说，还有各种各样奇怪的报错，第一晚一直没能推进。知道我在<a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/install-opencv-for-python3-in-jetson-nano/74042/5">NVIDIA官网评论区</a>查询</p>
+<p>使用如下语句成功安装opencv-python</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python3-opencv</span><br></pre></td></tr></table></figure>
+<h4 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h4><p>进入python3后，输入以下语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="built_in">print</span>(cv2.__version__)</span><br></pre></td></tr></table></figure>
+<p>若未报错且成功输出版本号，则安装成功。</p>
+<h3 id="Matplotlib-3-3-3的安装"><a href="#Matplotlib-3-3-3的安装" class="headerlink" title="Matplotlib 3.3.3的安装"></a>Matplotlib 3.3.3的安装</h3><p>因为我们需要3.3.3版本或以上的Matplotlib，而环境中只有3.3.2版本，因此需要安装更新的版本。可以参考以下<a target="_blank" rel="noopener" href="https://blog.csdn.net/wtsdu/article/details/121518040">这篇博客</a></p>
+<p>首先安装依赖项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove python3-matplotlib</span><br><span class="line">sudo apt install libfreetype6-dev </span><br><span class="line">sudo pip3 install --upgrade setuptools wheel</span><br></pre></td></tr></table></figure>
+<p>安装Cython</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install Cython</span><br></pre></td></tr></table></figure>
+<p>去<a target="_blank" rel="noopener" href="https://github.com/matplotlib/matplotlib/tree/v3.3.3">github</a>下载源代码包，下载后解压，并进入解压的文件夹，并开始编译，安装。如果过程中出现了缺少包的情况，请大家先安装好上面说的依赖项，很可能是那里出了问题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd matplotlib-3.3.3</span><br><span class="line">sudo OPENBLAS_CORETYPE=ARMV8 python3 setup.py build</span><br><span class="line">sudo OPENBLAS_CORETYPE=ARMV8 python3 setup.py install</span><br></pre></td></tr></table></figure>
+<h4 id="验证是否安装成功-1"><a href="#验证是否安装成功-1" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h4><p>pip3 list 查看matplotlib的版本是否为3.3.3</p>
+<p>接着进入python后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br></pre></td></tr></table></figure>
+<p>未报错即可。</p>
+<h3 id="其余环境依赖项"><a href="#其余环境依赖项" class="headerlink" title="其余环境依赖项"></a>其余环境依赖项</h3><p>大家在YOLOv5-master中的requirements.txt中可以找到依赖项，注释其中的Torch、TorchVision、opencv-python和matplotlib，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># pip install -r requirements.txt</span><br><span class="line"></span><br><span class="line"># Base ----------------------------------------</span><br><span class="line"># matplotlib&gt;=3.2.2</span><br><span class="line">numpy&gt;=1.18.5</span><br><span class="line"># opencv-python&gt;=4.1.2</span><br><span class="line">Pillow&gt;=7.1.2</span><br><span class="line">PyYAML&gt;=5.3.1</span><br><span class="line">requests&gt;=2.23.0</span><br><span class="line">scipy&gt;=1.4.1</span><br><span class="line"># torch&gt;=1.7.0</span><br><span class="line"># torchvision&gt;=0.8.1</span><br><span class="line">tqdm&gt;=4.41.0</span><br><span class="line"></span><br><span class="line"># Logging -------------------------------------</span><br><span class="line">tensorboard&gt;=2.4.1</span><br><span class="line"># wandb</span><br><span class="line"></span><br><span class="line"># Plotting ------------------------------------</span><br><span class="line">pandas&gt;=1.1.4</span><br><span class="line">seaborn&gt;=0.11.0</span><br><span class="line"></span><br><span class="line"># Export --------------------------------------</span><br><span class="line"># coremltools&gt;=4.1  # CoreML export</span><br><span class="line"># onnx&gt;=1.9.0  # ONNX export</span><br><span class="line"># onnx-simplifier&gt;=0.3.6  # ONNX simplifier</span><br><span class="line"># scikit-learn==0.19.2  # CoreML quantization</span><br><span class="line"># tensorflow&gt;=2.4.1  # TFLite export</span><br><span class="line"># tensorflowjs&gt;=3.9.0  # TF.js export</span><br><span class="line"></span><br><span class="line"># Extras --------------------------------------</span><br><span class="line"># albumentations&gt;=1.0.3</span><br><span class="line"># Cython  # for pycocotools https://github.com/cocodataset/cocoapi/issues/172</span><br><span class="line"># pycocotools&gt;=2.0  # COCO mAP</span><br><span class="line"># roboflow</span><br><span class="line">thop  # FLOPs computation</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>之后进入yolov5-master文件夹，使用如下语句进行安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>至此大功告成！环境配置成功！<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。</p>
+<p>过两天写一下Jetbot的摄像头调用和驱动方法，我想最后我的项目代码会在Github上开源的。</p>
+<h3 id="一些资源"><a href="#一些资源" class="headerlink" title="一些资源"></a>一些资源</h3><p><a href="">Jetson Nano指导文档链接</a>  ： 提取码：8m0o </p>
 
     </div>
 
@@ -319,8 +356,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"><i class="fa fa-tag"></i> 博客</a>
-              <a href="/tags/Github/" rel="tag"><i class="fa fa-tag"></i> Github</a>
+              <a href="/tags/Jetson-Nano/" rel="tag"><i class="fa fa-tag"></i> Jetson Nano</a>
+              <a href="/tags/YOLO/" rel="tag"><i class="fa fa-tag"></i> YOLO</a>
           </div>
 
         
@@ -329,13 +366,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2b7de3448214.html" rel="prev" title="种子文件与磁力链接及其下载方式">
-      <i class="fa fa-chevron-left"></i> 种子文件与磁力链接及其下载方式
+    <a href="/90122bff0cd7.html" rel="prev" title="队列和栈（quene and stack)">
+      <i class="fa fa-chevron-left"></i> 队列和栈（quene and stack)
     </a></div>
-      <div class="post-nav-item">
-    <a href="/8296d351526e.html" rel="next" title="GRE Analysing Writing 总结——指令篇">
-      GRE Analysing Writing 总结——指令篇 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -408,7 +442,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pjax-%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Pjax 优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E4%BA%91"><span class="nav-number">2.</span> <span class="nav-text">标签云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">3.</span> <span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97%E9%AB%98%E4%BA%AE"><span class="nav-number">4.</span> <span class="nav-text">代码块高亮</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E9%9A%BE%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">前言：难点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">系统烧录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E9%80%89%E6%8B%A9"><span class="nav-number">2.1.</span> <span class="nav-text">系统镜像选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%83%A7%E5%BD%95%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">烧录的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Torch%E5%92%8CTorchVision%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">Torch和TorchVision的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Torch%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">Torch的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TorchVision%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">3.2.</span> <span class="nav-text">TorchVision的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85"><span class="nav-number">3.3.</span> <span class="nav-text">验证是否成功安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#opencv-python%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">4.</span> <span class="nav-text">opencv-python的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="nav-number">4.1.</span> <span class="nav-text">验证是否安装成功</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matplotlib-3-3-3%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">Matplotlib 3.3.3的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F-1"><span class="nav-number">5.1.</span> <span class="nav-text">验证是否安装成功</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BD%99%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="nav-number">6.</span> <span class="nav-text">其余环境依赖项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90"><span class="nav-number">7.</span> <span class="nav-text">一些资源</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -732,6 +766,61 @@ window.addEventListener('pjax:success', () => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 <script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
